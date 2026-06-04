@@ -1,0 +1,59 @@
+name: Report a problem or improvement
+description: "Tell us about something that isn't working as expected or could work better."
+title: "[Issue]: "
+labels:
+  - needs-triage
+
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Where were you and what were you trying to do?
+      description: Share the page URL or location, and describe the task you were trying to accomplish.
+      placeholder: |
+        Examples:
+
+        On https://wholepersonphysiome.org/...
+
+        I was trying to:
+        - Find a kidney model
+        - Compare biomarkers
+        - Download data
+        - Navigate between pages
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened or what could be improved?
+      description: Describe what you saw or experienced.
+      placeholder: |
+        Examples:
+        - Nothing happened when I clicked the button
+        - The page showed an error
+        - I couldn't find the information I needed
+        - The layout was difficult to use
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+      description: Describe what you thought would happen.
+      placeholder: |
+        Example:
+        I expected the search results to update automatically.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting information (optional)
+      description: Add screenshots, recordings, links, browser information, or anything else that may help.
+      placeholder: |
+        Drag and drop screenshots here, paste a link, or add any additional notes.
+    validations:
+      required: false
