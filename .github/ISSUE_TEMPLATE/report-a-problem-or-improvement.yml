@@ -1,6 +1,7 @@
 name: Report a problem or improvement
 description: "Tell us about something that isn't working as expected or could work better."
 title: "[Issue]: "
+type: "Bug"
 labels:
   - needs-triage
 
