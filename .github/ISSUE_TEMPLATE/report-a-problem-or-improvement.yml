@@ -3,7 +3,7 @@ description: "Tell us about something that isn't working as expected or could wo
 title: "[Issue]: "
 type: "Bug"
 labels:
-  - needs-triage
+  - "🔍 Needs triage"
 
 body:
   - type: textarea
