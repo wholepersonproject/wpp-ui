@@ -15,6 +15,8 @@
     "@angular/forms": "~21.2.0",
     "@angular/platform-browser": "~21.2.0",
     "@angular/router": "~21.2.0",
+    "@atlasng/design-system": "^0.0.3",
+    "@atlasng/labs": "^0.0.3",
     "rxjs": "~7.8.0"
   },
   "devDependencies": {
@@ -25,6 +27,11 @@
     "@angular/compiler-cli": "~21.2.0",
     "@angular/language-service": "~21.2.0",
     "@eslint/js": "^9.8.0",
+    "@fontsource-variable/material-symbols-rounded": "^5.2.45",
+    "@fontsource-variable/montserrat": "^5.2.8",
+    "@fontsource-variable/nunito-sans": "^5.2.7",
+    "@fontsource-variable/open-sans": "^5.2.7",
+    "@fontsource/metropolis": "^5.2.5",
     "@nx/angular": "22.7.5",
     "@nx/eslint": "22.7.5",
     "@nx/eslint-plugin": "22.7.5",

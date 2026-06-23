@@ -1,0 +1,7 @@
+@use '@angular/material' as mat;
+@use './typography';
+@use './fonts';
+
+@mixin theme($theme, $overrides: typography.$typography-overrides) {
+  @include mat.theme($theme, $overrides: $overrides);
+}

@@ -1,0 +1,11 @@
+:host {
+  --ang-header-shell-logo-background-color: transparent;
+
+  ::ng-deep {
+    .ang-navigation-menu-social {
+      width: 100%;
+      gap: 0.5rem;
+      justify-content: center !important;
+    }
+  }
+}

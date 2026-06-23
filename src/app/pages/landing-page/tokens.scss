@@ -1,0 +1,13 @@
+@use '@atlasng/design-system/sass/internal/breakpoints';
+@use '@atlasng/design-system/sass/internal/token-utils';
+
+$config: (
+  namespace: 'landing-page',
+  tokens: (
+    outline-radius: token-utils.sys-token(corner-extra-large),
+  ),
+);
+
+@mixin overrides($overrides) {
+  @include token-utils.apply-overrides($overrides, $config);
+}

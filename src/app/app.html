@@ -1,2 +1,21 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<ang-header-shell
+  logoUrl="wpp-header.svg"
+  [hasLocalNavigation]="true"
+  [localNavigationExpanded]="navigation.leftMenuOpen()"
+  (localNavigationToggle)="navigation.localNavigationToggle()"
+  (appsMenuToggle)="navigation.appsMenuToggle()"
+  [navigationItems]="navigationItems().filter((item) => item.id !== 'home')"
+></ang-header-shell>
+<ang-navigation-container
+  [navigationItems]="navigationItems()"
+  [navRight]="appMenuItems()"
+  [socialMediaIds]="socialMediaIds()"
+  #navigation
+>
+  <router-outlet />
+</ang-navigation-container>
+<ang-footer
+  orgName="Whole Person Physiome"
+  logoUrl="wpp.svg"
+  [socials]="socialMediaIds()"
+></ang-footer>

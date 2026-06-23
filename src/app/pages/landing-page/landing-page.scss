@@ -1,0 +1,52 @@
+@use '@atlasng/design-system/sass/internal/breakpoints';
+@use '@atlasng/design-system/sass/internal/token-utils';
+@use './tokens' as *;
+
+:host {
+  .landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .landing-page-content-container {
+    max-width: 106.25rem;
+    padding: 1.25rem;
+
+    @include breakpoints.breakpoint(medium, large, x-large) {
+      padding: 2.5rem;
+    }
+  }
+
+  .landing-page-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 31rem;
+    padding: 2.5rem;
+    background: rgb(from var(--mat-sys-surface-bright) r g b / 0.8);
+    color: var(--mat-sys-on-surface-variant);
+    border-radius: token-utils.slot(outline-radius, $config);
+
+    .header {
+      font: var(--mat-sys-display-medium);
+      letter-spacing: -0.75px;
+      font-weight: 500;
+      color: var(--mat-sys-on-surface);
+    }
+
+    .description {
+      font: var(--mat-sys-title-large);
+      letter-spacing: var(--mat-sys-title-large-tracking);
+    }
+
+    .funder {
+      font: var(--mat-sys-body-large);
+      letter-spacing: var(--mat-sys-body-large-tracking);
+    }
+  }
+}
