@@ -1,0 +1,90 @@
+headerContent:
+  title: Data
+  subtitle: |
+    Whole Person Physiome (WPP) data aims to support the development and validation of an integrated map 
+    of the "healthy" male and female body; it will serve as a foundation for modeling dynamic, inter-organ 
+    interactions and analyzing clinical data.
+  breadcrumbs:
+    - name: Home
+      command: /
+    - name: Data
+content:
+  - type: section
+    tagline: Whole Person Physiome tables
+    anchor: wpp-tables
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Initially, 14 physiological systems are modeled. All data is publicly available via CSV files but 
+          users are encouraged to query the [Whole Person Physiome Knowledge Graph](https://example.com) to access the data.
+      - type: button
+        text: Download summary
+        icon: download
+        route: /
+      - type: table
+        rows:
+          - systemTable:
+              label: Cardiovascular
+              link: https:www.google.com
+            uniqueOrgans: 1
+            uniqueAS: 1
+            uniqueFTU: 1
+            uniqueCT: 1
+            uniqueB: 1
+            uniqueProcesses: 1
+            spatialScales: 1
+            temporalScales: 1
+        columns:
+          - column: systemTable
+            label: System table
+            sticky: true
+          - column: uniqueOrgans
+            label: |
+              #Unique organs
+            numeric: true
+          - column: uniqueAS
+            label: |
+              #Unique AS
+            numeric: true
+          - column: uniqueFTU
+            label: |
+              #Unique FTU
+            numeric: true
+          - column: uniqueCT
+            label: |
+              #Unique CT
+            numeric: true
+          - column: uniqueB
+            label: |
+              #Unique B
+            numeric: true
+          - column: uniqueProcesses
+            label: |
+              #Unique processes
+            numeric: true
+          - column: spatialScales
+            label: |
+              #Spatial scales
+            numeric: true
+          - column: temporalScales
+            label: |
+              #Temporal scales
+            numeric: true
+      - type: section
+        tagline: Limitations
+        anchor: limitations
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              WPP table design is iterative. We are running interviews with leading experts around the globe 
+              to understand how to best capture the fractal nature and emergent behavior of human physiology.
+  - type: section
+    tagline: References
+    anchor: references
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          * [Whole Person Physiome Glossary](https://docs.google.com/document/d/1fT4v741fXElJAnzFzRxt6sY2FZ4NcCn7O24ecDWrU6M/edit?tab=t.0#heading=h.ybp2o1i0zvhf)

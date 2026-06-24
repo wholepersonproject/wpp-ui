@@ -1,0 +1,43 @@
+@use '@atlasng/design-system/sass/internal/breakpoints';
+@use '@atlasng/design-system/sass/internal/token-utils';
+@use './tokens' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 1.25rem;
+  gap: 3rem;
+  font-family: token-utils.slot(font, $config);
+  font-size: token-utils.slot(font-size, $config);
+  line-height: token-utils.slot(line-height, $config);
+  letter-spacing: token-utils.slot(tracking, $config);
+  font-weight: token-utils.slot(weight, $config);
+
+  @include breakpoints.breakpoint(medium, large, x-large) {
+    padding: 2.5rem;
+  }
+
+  .content-page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .content-page-subsections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+}
+
+::ng-deep .ang-section-header-link-container {
+  
+  @media (min-width: 640px) {
+    display: none !important;
+  }
+
+  @media (min-width: 960px) {
+    display: inline-block !important;
+  }
+}

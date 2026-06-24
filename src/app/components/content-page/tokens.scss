@@ -1,0 +1,17 @@
+@use '@atlasng/design-system/sass/internal/breakpoints';
+@use '@atlasng/design-system/sass/internal/token-utils';
+
+$config: (
+  namespace: 'content-page',
+  tokens: (
+    font: token-utils.sys-token(body-large-font),
+    line-height: token-utils.sys-token(body-large-line-height),
+    font-size: token-utils.sys-token(body-large-size),
+    tracking: token-utils.sys-token(body-large-tracking),
+    weight: token-utils.sys-token(body-large-weight),
+  ),
+);
+
+@mixin overrides($overrides) {
+  @include token-utils.apply-overrides($overrides, $config);
+}
