@@ -5,6 +5,26 @@ $config: (
   namespace: 'landing-page',
   tokens: (
     outline-radius: token-utils.sys-token(corner-extra-large),
+    card-background: token-utils.sys-token(surface-bright),
+    card-color: token-utils.sys-token(on-surface-variant),
+    card-header-color: token-utils.sys-token(on-surface),
+    card-header-font: token-utils.sys-token(display-medium-font),
+    card-header-line-height: token-utils.sys-token(display-medium-line-height),
+    card-header-font-size: token-utils.sys-token(display-medium-size),
+    card-header-tracking: -0.75px,
+    card-header-weight: 500,
+
+    card-description-font: token-utils.sys-token(title-large-font),
+    card-description-line-height: token-utils.sys-token(title-large-line-height),
+    card-description-font-size: token-utils.sys-token(title-large-size),
+    card-description-tracking: token-utils.sys-token(title-large-tracking),
+    card-description-weight: 400,
+
+    card-funder-font: token-utils.sys-token(body-large-font),
+    card-funder-line-height: token-utils.sys-token(body-large-line-height),
+    card-funder-font-size: token-utils.sys-token(body-large-size),
+    card-funder-tracking: token-utils.sys-token(body-large-tracking),
+    card-funder-weight: token-utils.sys-token(body-large-weight),
   ),
 );
 

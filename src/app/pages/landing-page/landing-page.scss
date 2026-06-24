@@ -28,25 +28,35 @@
     gap: 1.5rem;
     max-width: 31rem;
     padding: 2.5rem;
-    background: rgb(from var(--mat-sys-surface-bright) r g b / 0.8);
-    color: var(--mat-sys-on-surface-variant);
+    background: rgb(
+      from token-utils.slot(card-background, $config) r g b / 0.8
+    );
+    color: token-utils.slot(card-color, $config);
     border-radius: token-utils.slot(outline-radius, $config);
 
     .header {
-      font: var(--mat-sys-display-medium);
-      letter-spacing: -0.75px;
-      font-weight: 500;
-      color: var(--mat-sys-on-surface);
+      color: token-utils.slot(card-header-color, $config);
+      font-family: token-utils.slot(card-header-font, $config);
+      line-height: token-utils.slot(card-header-line-height, $config);
+      font-size: token-utils.slot(card-header-font-size, $config);
+      letter-spacing: token-utils.slot(card-header-tracking, $config);
+      font-weight: token-utils.slot(card-header-weight, $config);
     }
 
     .description {
-      font: var(--mat-sys-title-large);
-      letter-spacing: var(--mat-sys-title-large-tracking);
+      font-family: token-utils.slot(card-description-font, $config);
+      line-height: token-utils.slot(card-description-line-height, $config);
+      font-size: token-utils.slot(card-description-font-size, $config);
+      letter-spacing: token-utils.slot(card-description-tracking, $config);
+      font-weight: token-utils.slot(card-description-weight, $config);
     }
 
     .funder {
-      font: var(--mat-sys-body-large);
-      letter-spacing: var(--mat-sys-body-large-tracking);
+      font-family: token-utils.slot(card-funder-font, $config);
+      line-height: token-utils.slot(card-funder-line-height, $config);
+      font-size: token-utils.slot(card-funder-font-size, $config);
+      letter-spacing: token-utils.slot(card-funder-tracking, $config);
+      font-weight: token-utils.slot(card-funder-weight, $config);
     }
   }
 }

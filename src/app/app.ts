@@ -9,7 +9,7 @@ import {
 
 @Component({
   imports: [RouterModule, Footer, HeaderShell, NavigationContainer],
-  selector: 'app-website',
+  selector: 'wpp-website',
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

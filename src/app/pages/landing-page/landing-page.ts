@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { AnyLinkCommand } from '@atlasng/common';
 
 @Component({
-  selector: 'app-landing-page',
+  selector: 'wpp-landing-page',
   imports: [],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
