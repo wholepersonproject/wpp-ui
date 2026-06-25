@@ -8,5 +8,5 @@ import { AnyLinkCommand } from '@atlasng/common';
   styleUrl: './landing-page.scss',
 })
 export class LandingPage {
-  readonly backgroundImageUrl = input<AnyLinkCommand>('./home-splash.png');
+  readonly backgroundImageUrl = input<AnyLinkCommand>();
 }

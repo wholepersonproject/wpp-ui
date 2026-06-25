@@ -4,8 +4,9 @@ import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as yaml from 'js-yaml';
 import { map } from 'rxjs';
+import { LandingPage } from './pages/landing-page/landing-page';
 
-export function createYamlSpecResolver(
+function createYamlSpecResolver(
   url: string,
 ): ResolveFn<Record<string, unknown>> {
   return () => {
@@ -25,8 +26,10 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    loadComponent: () =>
-      import('./pages/landing-page/landing-page').then((m) => m.LandingPage),
+    component: LandingPage,
+    data: {
+      backgroundImageUrl: './home-splash.png'
+    }
   },
   {
     path: 'data',

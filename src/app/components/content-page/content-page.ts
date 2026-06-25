@@ -7,6 +7,7 @@ import { SectionHeader } from '@atlasng/labs/section-header';
 import { Table } from '@atlasng/labs/table';
 import { MarkdownModule } from 'ngx-markdown';
 import { TextLink } from '@atlasng/design-system/text-link';
+import { RouterLink } from "@angular/router";
 
 export type TableRow = Record<string, string | number | TableCell>;
 
@@ -70,9 +71,11 @@ interface ContentPageData {
   content: Content[];
 }
 
+const isPageSection = (content: Content): content is PageSection => content.type === 'section';
+
 @Component({
   selector: 'wpp-content-page',
-  imports: [Breadcrumbs, SectionHeader, MatButtonModule, MatIconModule, Table, MarkdownModule, TextLink],
+  imports: [Breadcrumbs, SectionHeader, MatButtonModule, MatIconModule, Table, MarkdownModule, TextLink, RouterLink],
   templateUrl: './content-page.html',
   styleUrl: './content-page.scss',
 })
@@ -83,9 +86,28 @@ export class ContentPage {
   /** Content data */
   protected readonly content = computed(() => coerceArray(this.data().content));
 
+  /** All nested sections flattened into a single list */
+  protected readonly flattenedSections = computed(() => this.flattenSectionContent(this.content()));
+
   constructor() {
     effect(() => {
       console.log('ContentPage data:', this.data());
+      console.log(this.flattenedSections());
     });
+  }
+
+  protected flattenSectionContent(content: Content[]): PageSection[] {
+    const sections: PageSection[] = [];
+
+    for (const item of content) {
+      if (!isPageSection(item)) {
+        continue;
+      }
+
+      sections.push(item);
+      sections.push(...this.flattenSectionContent(item.content));
+    }
+
+    return sections;
   }
 }

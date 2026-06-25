@@ -6,15 +6,24 @@
   </div>
 </div>
 
+<div class="content-page-toc">
+  <div class="content-page-toc-header">On this page</div>
+  <div class="links">
+    @for (section of flattenedSections(); track $index) {
+      <a angTextLink class="link" [href]="'#' + section.anchor" [style.--indentation-level]="section.level">{{ section.tagline }}</a>
+    }
+  </div>
+</div>
+
 @for (section of data().content; track $index) {
   <div class="content-page-section">
     @if (section.type === 'section') {
-      <h2 angSectionHeader [anchor]="section.anchor">{{ section.tagline }}</h2>
+      <h2 angSectionHeader [anchor]="section.anchor" [id]="section.anchor">{{ section.tagline }}</h2>
       <div class="content-page-subsections">
         @for (subsection of section.content; track $index) {
           <div class="content-page-subsection">
             @if (subsection.type === 'section') {
-              <h3 angSectionHeader [anchor]="subsection.anchor">{{ subsection.tagline }}</h3>
+              <h3 angSectionHeader [anchor]="subsection.anchor" [id]="subsection.anchor">{{ subsection.tagline }}</h3>
               @if (subsection.content) {
                 @for (subsubsection of subsection.content; track $index) {
                   @if (subsubsection.type === 'markdown') {

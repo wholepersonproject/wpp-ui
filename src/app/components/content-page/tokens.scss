@@ -9,6 +9,12 @@ $config: (
     font-size: token-utils.sys-token(body-large-size),
     tracking: token-utils.sys-token(body-large-tracking),
     weight: token-utils.sys-token(body-large-weight),
+
+    toc-radius: token-utils.sys-token(corner-small),
+    toc-header-background: token-utils.sys-token(surface-container-low),
+    toc-border: token-utils.sys-token(outline-variant),
+    toc-font: token-utils.sys-token(body-medium),
+    toc-header-font: token-utils.sys-token(title-small),
   ),
 );
 

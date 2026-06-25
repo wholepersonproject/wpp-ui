@@ -29,10 +29,44 @@
     gap: 2rem;
   }
 
+  .content-page-toc {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid token-utils.slot(toc-border, $config);
+    border-radius: token-utils.slot(toc-radius, $config);
+    font: token-utils.slot(toc-font, $config);
+    
+    .content-page-toc-header {
+      padding: .75rem 1rem;
+      font: token-utils.slot(toc-header-font, $config);
+      background-color: token-utils.slot(toc-header-background, $config);
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+
+      .link {
+        min-height: 2rem;
+        border-radius: 0.5rem;
+        padding: 0.3438rem 1rem;
+        margin-left: calc((var(--indentation-level, 1) - 2) * 0.75rem);
+        text-decoration: none;
+
+        &:hover {
+          // background-color: utils.with-alpha(vars.$secondary, 8%);
+        }
+
+        &:focus-visible {
+          // @include utils.inset-outline(vars.$primary);
+        }
+      }
+    }
+  }
 }
 
 ::ng-deep .ang-section-header-link-container {
-  
   @media (min-width: 640px) {
     display: none !important;
   }
