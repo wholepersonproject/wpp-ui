@@ -21,7 +21,7 @@ content:
       - type: button
         text: Download summary
         icon: download
-        route: /
+        route: /assets/content/data-page/wpp-table.csv
       - type: table
         url: /assets/content/data-page/wpp-table.csv
         columns:

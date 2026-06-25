@@ -6,19 +6,12 @@ import * as yaml from 'js-yaml';
 import { map } from 'rxjs';
 import { LandingPage } from './pages/landing-page/landing-page';
 
-function createYamlSpecResolver(
-  url: string,
-): ResolveFn<Record<string, unknown>> {
+function createYamlSpecResolver(url: string): ResolveFn<Record<string, unknown>> {
   return () => {
     const http = inject(HttpClient);
     return http
       .get(url, { responseType: 'text' })
-      .pipe(
-        map(
-          (data) =>
-            yaml.load(data, { filename: url }) as Record<string, unknown>,
-        ),
-      );
+      .pipe(map((data) => yaml.load(data, { filename: url }) as Record<string, unknown>));
   };
 }
 
@@ -28,8 +21,8 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     component: LandingPage,
     data: {
-      backgroundImageUrl: './home-splash.png'
-    }
+      backgroundImageUrl: './home-splash.png',
+    },
   },
   {
     path: 'data',
