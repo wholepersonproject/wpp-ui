@@ -23,21 +23,11 @@ content:
         icon: download
         route: /
       - type: table
-        rows:
-          - systemTable:
-              label: Cardiovascular
-              link: https:www.google.com
-            uniqueOrgans: 1
-            uniqueAS: 1
-            uniqueFTU: 1
-            uniqueCT: 1
-            uniqueB: 1
-            uniqueProcesses: 1
-            spatialScales: 1
-            temporalScales: 1
+        url: /assets/content/data-page/wpp-table.csv
         columns:
-          - column: systemTable
+          - column: label
             label: System table
+            urlColumn: url
             sticky: true
           - column: uniqueOrgans
             label: |

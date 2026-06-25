@@ -36,7 +36,7 @@
               <markdown [data]="subsection.data"></markdown>
             }
             @if (subsection.type === 'table') {
-              <ang-table [rows]="subsection.rows" [columns]="subsection.columns" [enableSort]="true"></ang-table>
+              <ang-table [rows]="getTableRows(subsection)" [columns]="subsection.columns" [enableSort]="true"></ang-table>
             }
             @if (subsection.type === 'image') {
               <img [src]="subsection.src" [alt]="subsection.alt">
