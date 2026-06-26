@@ -10,10 +10,12 @@
   <div class="content-page-toc-header">On this page</div>
   <div class="links">
     @for (section of flattenedSections(); track $index) {
-      <a 
-        angTextLink 
-        class="link" 
-        [href]="'#' + section.anchor" 
+      <a
+        matButton
+        class="link"
+        [class.active]="activeSectionService.isSectionActive(section.anchor)"
+        [attr.aria-current]="activeSectionService.isSectionActive(section.anchor) ? 'location' : null"
+        [href]="'#' + section.anchor"
         [style.--indentation-level]="section.level"
       >
         {{ section.tagline }}
@@ -22,51 +24,48 @@
   </div>
 </div>
 
-@for (section of data().content; track $index) {
-  <div class="content-page-section">
-    <h2 angSectionHeader [anchor]="section.anchor" [id]="section.anchor">{{ section.tagline }}</h2>
-    <div class="content-page-subsections">
-      @for (subsection of section.content; track $index) {
-        <div class="content-page-subsection">
-          @if (subsection.type === 'section') {
-            <h3 
-              angSectionHeader 
-              [anchor]="subsection.anchor" 
-              [id]="subsection.anchor"
-            >
-              {{ subsection.tagline }}
-            </h3>
-            @if (subsection.content) {
-              @for (subsubsection of subsection.content; track $index) {
-                @if (subsubsection.type === 'markdown') {
-                  <markdown [data]="subsubsection.data"></markdown>
-                }
-              }
+<div class="content-page-sections">
+  @for (section of data().content; track $index) {
+    <div class="content-page-section" [id]="section.anchor">
+      <h2 angSectionHeader [anchor]="section.anchor">{{ section.tagline }}</h2>
+
+      <div class="content-page-subsections">
+        @for (subsection of section.content; track $index) {
+          <div class="content-page-subsection">
+            @if (subsection.type === 'section') {
+              <h3 angSectionHeader [anchor]="subsection.anchor" [id]="subsection.anchor">
+                {{ subsection.tagline }}
+              </h3>
+
+              @if (subsection.content) { 
+                @for (subsubsection of subsection.content; track $index) { 
+                  @if (subsubsection.type === 'markdown') {
+                    <markdown [data]="subsubsection.data"></markdown>
+                  } 
+                } 
+              } 
+            } @if (subsection.type === 'markdown') {
+              <markdown [data]="subsection.data"></markdown>
+            } @if (subsection.type === 'table') {
+              <ang-table
+                [rows]="tableService.getTableRows(subsection)"
+                [columns]="subsection.columns"
+                [enableSort]="true"
+              >
+              </ang-table>
+            } @if (subsection.type === 'image') {
+              <img [src]="subsection.src" [alt]="subsection.alt" />
+            } @if (subsection.type === 'button') {
+              <a matButton="filled" [href]="subsection.route">
+                @if (subsection.icon) {
+                  <mat-icon [fontIcon]="subsection.icon"></mat-icon>
+                } 
+                {{ subsection.text }}
+              </a>
             }
-          }
-          @if (subsection.type === 'markdown') {
-            <markdown [data]="subsection.data"></markdown>
-          }
-          @if (subsection.type === 'table') {
-            <ang-table 
-              [rows]="tableService.getTableRows(subsection)" 
-              [columns]="subsection.columns" 
-              [enableSort]="true">
-            </ang-table>
-          }
-          @if (subsection.type === 'image') {
-            <img [src]="subsection.src" [alt]="subsection.alt">
-          }
-          @if (subsection.type === 'button') {
-            <a matButton="filled" [href]="subsection.route">
-              @if (subsection.icon) {
-                <mat-icon [fontIcon]="subsection.icon"></mat-icon>
-              }
-              {{ subsection.text }}
-            </a>
-          }
-        </div>
-      }
+          </div>
+        }
+      </div>
     </div>
-  </div>
-}
+  }
+</div>

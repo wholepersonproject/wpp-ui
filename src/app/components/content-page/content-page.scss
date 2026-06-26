@@ -3,8 +3,16 @@
 @use './tokens' as *;
 
 :host {
-  display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-areas:
+    'header'
+    'toc'
+    'sections';
+  grid-template-columns: 100%;
+  width: 100%;
+  max-width: 1700px;
+  margin: auto;
   padding: 2.5rem 1.25rem;
   gap: 3rem;
   font-family: token-utils.slot(font, $config);
@@ -15,12 +23,35 @@
 
   @include breakpoints.breakpoint(medium, large, x-large) {
     padding: 2.5rem;
+    grid-template-areas:
+      'header toc'
+      'sections .';
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 18.75rem);
+
+    .content-page-toc {
+      position: sticky;
+      top: 2.5rem;
+      max-width: 18.75rem;
+      border-width: 0px !important;
+
+      .content-page-toc-header {
+        background-color: transparent !important;
+      }
+    }
   }
 
   .content-page-header {
+    grid-area: header;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .content-page-sections {
+    grid-area: sections;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
   }
 
   .content-page-subsections {
@@ -30,15 +61,18 @@
   }
 
   .content-page-toc {
+    grid-area: toc;
+    width: 100%;
+    height: min-content;
+    justify-self: end;
     display: flex;
     flex-direction: column;
-    width: 100%;
     border: 1px solid token-utils.slot(toc-border, $config);
     border-radius: token-utils.slot(toc-radius, $config);
     font: token-utils.slot(toc-font, $config);
-    
+
     .content-page-toc-header {
-      padding: .75rem 1rem;
+      padding: 0.75rem 1rem;
       font: token-utils.slot(toc-header-font, $config);
       background-color: token-utils.slot(toc-header-background, $config);
     }
@@ -50,18 +84,24 @@
       .link {
         min-height: 2rem;
         border-radius: 0.5rem;
-        padding: 0.3438rem 1rem;
+        padding: 0.125rem 1rem;
         margin-left: calc((var(--indentation-level, 1) - 2) * 0.75rem);
         text-decoration: none;
+        justify-content: start;
 
-        &:hover {
-          // background-color: utils.with-alpha(vars.$secondary, 8%);
-        }
-
-        &:focus-visible {
-          // @include utils.inset-outline(vars.$primary);
+        &.active {
+          background-color: color-mix(in srgb, var(--mat-sys-primary) 12%, transparent);
         }
       }
+    }
+  }
+
+  ::ng-deep markdown {
+    a {
+      display: inline-flex;
+      // color: token-utils.slot(color, tokens.$config);
+      text-decoration: underline;
+      font-weight: 600;
     }
   }
 }
