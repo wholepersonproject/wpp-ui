@@ -6,6 +6,30 @@
 @include theming.theme(wpp-theme.$theme);
 
 body {
+  --ang-header-shell-logo-background-color: transparent;
   margin: 0;
   min-width: 20rem;
+}
+
+.ang-navigation-menu-social {
+  width: 100%;
+  gap: 0.5rem;
+  justify-content: center !important;
+}
+
+span.ang-breadcrumbs-label,
+.ang-breadcrumbs-separator {
+  font-weight: 400;
+}
+
+ang-table {
+  max-height: unset;
+
+  .mat-mdc-cell {
+    padding: 0.625rem 1.5rem 0.625rem 1rem;
+  }
+
+  .mat-mdc-header-cell {
+    padding: 0.625rem 0.625rem 0.625rem 1rem;
+  }
 }

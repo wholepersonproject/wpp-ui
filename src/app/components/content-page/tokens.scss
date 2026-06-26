@@ -11,10 +11,23 @@ $config: (
     weight: token-utils.sys-token(body-large-weight),
 
     toc-radius: token-utils.sys-token(corner-small),
-    toc-header-background: token-utils.sys-token(surface-container-low),
     toc-border: token-utils.sys-token(outline-variant),
-    toc-font: token-utils.sys-token(body-medium),
+    
+    toc-link-font: token-utils.sys-token(body-medium-font),
+    toc-link-font-size: token-utils.sys-token(body-medium-size),
+    toc-link-tracking: token-utils.sys-token(body-medium-tracking),
+    toc-link-weight: token-utils.sys-token(body-medium-weight),
+    toc-link-color: token-utils.sys-token(on-surface-variant),
+    toc-link-active-background: token-utils.sys-token(primary-container),
+    
+    toc-header-background: token-utils.sys-token(surface-container-low),
     toc-header-font: token-utils.sys-token(title-small),
+    toc-header-color: token-utils.sys-token(on-surface),
+    toc-header-tracking: token-utils.sys-token(title-small-tracking),
+
+    h1-tracking: token-utils.sys-token(display-medium-tracking),
+    h2-tracking: token-utils.sys-token(display-small-tracking),
+    h3-tracking: token-utils.sys-token(headline-large-tracking),
   ),
 );
 

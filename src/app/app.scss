@@ -1,11 +1,9 @@
 :host {
-  --ang-header-shell-logo-background-color: transparent;
-
   ::ng-deep {
-    .ang-navigation-menu-social {
-      width: 100%;
-      gap: 0.5rem;
-      justify-content: center !important;
+    mat-drawer-content {
+      --mat-sidenav-content-text-color: var(--mat-sys-on-surface-variant);
+      display: flex;
+      flex-direction: column;
     }
   }
 }

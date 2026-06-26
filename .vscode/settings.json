@@ -1,6 +1,4 @@
 {
   "nxConsole.nxWorkspacePath": "",
-  "conventionalCommits.scopes": ["pages"],
-  "editor.formatOnSave": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "conventionalCommits.scopes": ["pages"]
 }

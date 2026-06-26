@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '@atlasng/design-system/sass/internal/breakpoints';
 @use '@atlasng/design-system/sass/internal/token-utils';
 @use './tokens' as *;
@@ -12,7 +13,7 @@
   grid-template-columns: 100%;
   width: 100%;
   max-width: 1700px;
-  margin: auto;
+  margin: 0 auto auto;
   padding: 2.5rem 1.25rem;
   gap: 3rem;
   font-family: token-utils.slot(font, $config);
@@ -36,6 +37,12 @@
 
       .content-page-toc-header {
         background-color: transparent !important;
+      }
+
+      .link {
+        &.active {
+          background-color: token-utils.slot(toc-link-active-background, $config);
+        }
       }
     }
   }
@@ -69,41 +76,60 @@
     flex-direction: column;
     border: 1px solid token-utils.slot(toc-border, $config);
     border-radius: token-utils.slot(toc-radius, $config);
-    font: token-utils.slot(toc-font, $config);
 
     .content-page-toc-header {
       padding: 0.75rem 1rem;
-      font: token-utils.slot(toc-header-font, $config);
       background-color: token-utils.slot(toc-header-background, $config);
+      color: token-utils.slot(toc-header-color, $config);
+      font: token-utils.slot(toc-header-font, $config);
+      letter-spacing: token-utils.slot(toc-header-tracking, $config);
     }
 
     .links {
+      @include mat.button-overrides(
+        (
+          text-horizontal-padding: 1rem,
+          text-container-height: 2.75rem,
+          text-label-text-color: token-utils.slot(toc-link-color, $config),
+          text-label-text-font: token-utils.slot(toc-link-font, $config),
+          text-label-text-size: token-utils.slot(toc-link-font-size, $config),
+          text-label-text-tracking: token-utils.slot(toc-link-tracking, $config),
+          text-label-text-weight: token-utils.slot(toc-link-weight, $config),
+        )
+      );
+
       display: flex;
       flex-direction: column;
 
       .link {
-        min-height: 2rem;
-        border-radius: 0.5rem;
-        padding: 0.125rem 1rem;
         margin-left: calc((var(--indentation-level, 1) - 2) * 0.75rem);
-        text-decoration: none;
         justify-content: start;
-
-        &.active {
-          background-color: color-mix(in srgb, var(--mat-sys-primary) 12%, transparent);
-        }
       }
     }
+  }
+
+  h1 {
+    letter-spacing: token-utils.slot(h1-tracking, $config);
+  }
+  h2 {
+    letter-spacing: token-utils.slot(h2-tracking, $config);
+  }
+  h3 {
+    letter-spacing: token-utils.slot(h3-tracking, $config);
   }
 
   ::ng-deep markdown {
     a {
       display: inline-flex;
-      // color: token-utils.slot(color, tokens.$config);
+      color: token-utils.slot(toc-link-color, $config);
       text-decoration: underline;
       font-weight: 600;
     }
   }
+}
+
+::ng-deep .ang-section-header-content {
+  font-weight: 500;
 }
 
 ::ng-deep .ang-section-header-link-container {
