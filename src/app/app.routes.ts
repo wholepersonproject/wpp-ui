@@ -39,6 +39,13 @@ export const appRoutes: Route[] = [
     },
   },
   {
+    path: 'models',
+    component: ContentPage,
+    resolve: {
+      data: createYamlSpecResolver('assets/content/models-page/data.yaml'),
+    },
+  },
+  {
     path: 'visualizations',
     component: ContentPage,
     resolve: {
