@@ -1,0 +1,83 @@
+headerContent:
+  title: Resources
+  subtitle: |
+    Educational content supporting Whole Person Physiome research.
+  breadcrumbs:
+    - name: Home
+      command: /
+    - name: Resources
+content:
+  - type: section
+    tagline: Whole Person Physiome (WPP) Tables
+    anchor: wpp-tables
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Jacob Scherba (University of Pennsylvania) presents a brief introduction to the Whole 
+          Person Physiome (WPP) tables on December 3, 2025.
+      - type: youtube
+        videoId: pzUFmDhQEO8
+  - type: section
+    tagline: Standards for Multiscale Cellular Modeling
+    anchor: standards-for-multiscale-cellular-modeling
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Katy Börner (Indiana University) introduces Eran Agmon (UConn Health), who presents his 
+          research on standards for multiscale cellular modeling at Human Reference Atlas Working 
+          Group #68 on November 5, 2025.
+
+          Learn more at Vivarium Lab.
+      - type: youtube
+        videoId: pzUFmDhQEO8
+  - type: section
+    tagline: CompuCell3D
+    anchor: compucell3d
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          James Glazier (Indiana University) presents CompuCell3D, an open-source software 
+          environment for building agent-based models of multicellular biology, at Human Reference 
+          Atlas Working Group #65 on August 6, 2025.
+
+          Learn more at CompuCell3D.
+      - type: youtube
+        videoId: pzUFmDhQEO8
+  - type: section
+    tagline: CIFAR MacMillan Multiscale Human
+    anchor: cifar-macmillan-multiscale-human
+    level: 2
+    content:
+      - type: youtube
+        videoId: pzUFmDhQEO8
+  - type: section
+    tagline: |
+      Understanding Exercise and MoTrPAC: Informational Video
+    anchor: motrpac
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Watch Astronaut Dr. Peggy Whitson explain the importance of understanding exercise and 
+          The NIH Common Fund’s Molecular Transducers of Physical Activity in Humans Consortium 
+          (MoTrPAC). The MoTrPAC program is a trans-NIH effort managed by the NIH Common Fund in 
+          the Office of the Director and supported by several Institutes & Centers including, 
+          NIAMS, NIA and NIDDK. 
+
+          Learn more about the MoTrPAC program and recruitment.
+      - type: youtube
+        videoId: pzUFmDhQEO8
+  - type: section
+    tagline: MoTrPAC Data Hub Tutorial
+    anchor: motrpac-tutorial
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Learn about how to navigate the MoTrPAC Data Hub and explore the multi-omics multi-tissue 
+          exercise data.
+      - type: youtube
+        videoId: pzUFmDhQEO8

@@ -1,0 +1,32 @@
+headerContent:
+  title: Models
+  subtitle: |
+    Models simulate how the body works and how it changes over time.
+  breadcrumbs:
+    - name: Home
+      command: /
+    - name: Models
+content:
+  - type: section
+    tagline: Visualizations
+    anchor: visualizations
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Whole Person Physiome models are intended to mathematically and computationally model the 
+          dynamics of physiological processes contained in the tables, data, and knowledge graph. 
+          These models will serve as population references and serve as methods for physiological 
+          simulations. Further iterations of these models will be validated on clinical data and 
+          focus on potential personalized use cases.
+      - type: image
+        src: /assets/content/models-page/multiscale-dynamics.png
+        alt: Multiscale dynamics
+  - type: section
+    tagline: References
+    anchor: references
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          - [Github: Whole Person Physiome Models](https://github.com/wholepersonproject/wpp-models)

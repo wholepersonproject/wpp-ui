@@ -1,0 +1,156 @@
+headerContent:
+  title: Visualizations
+  subtitle: |
+    Visualizations, tables, and interactive tools help validate, optimize, and explore Whole Person
+    Physiome (WPP) data and models.
+  breadcrumbs:
+    - name: Home
+      command: /
+    - name: Visualizations
+content:
+  - type: section
+    tagline: Data over time
+    anchor: data-over-time
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Track how the number of anatomical structures, functional tissue units, and cell types 
+          included in the Whole Person Physiome tables expands quality and coverage over time.
+      - type: visualization
+        url: assets/content/visualizations-page/wpp-growth.vl.json
+  - type: section
+    tagline: Data overlap with the Human Reference Atlas
+    anchor: data-overlap-with-hra
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          See which entities are represented in the Whole Person Physiome (WPP) and Human Reference 
+          Atlas (HRA) to understand shared coverage.
+      - type: table
+        url: /assets/content/visualizations-page/data-overlap.csv
+        columns:
+          - column: counts
+            label: Anatomical structures
+            sticky: true
+          - column: wpp
+            label: Whole Person Physiome
+            numeric: true
+          - column: hra
+            label: Human Reference Atlas
+            numeric: true
+          - column: wpp-hra
+            label: WPP & HRA
+            numeric: true
+  - type: section
+    tagline: Time-space graphs
+    anchor: time-space-graphs
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Explore how many biological processes occur at which spatial and temporal scales.
+      - type: visualization
+        url: assets/content/visualizations-page/time-space.vl.json
+  - type: section
+    tagline: Unique processes
+    anchor: unique-processes
+    level: 2
+    content:
+      - type: table
+        url: /assets/content/visualizations-page/unique-processes.csv
+        columns:
+          - column: system
+            label: System
+            sticky: true
+          - column: biomarkers
+            label: Biomarkers
+            numeric: true
+          - column: ct
+            label: Cell types
+            numeric: true
+          - column: ftu
+            label: Functional tissue units
+            numeric: true
+          - column: organ
+            label: Organ
+            numeric: true
+          - column: as
+            label: Anatomical structures
+            numeric: true
+          - column: total
+            label: Total
+            numeric: true
+          - column: total-unique
+            label: Total unique
+            numeric: true
+      - type: table
+        url: /assets/content/visualizations-page/unique-effectors.csv
+        columns:
+          - column: system
+            label: System
+            sticky: true
+          - column: organ
+            label: Organ
+            numeric: true
+          - column: as
+            label: Anatomical structures
+            numeric: true
+          - column: ct
+            label: Cell types
+            numeric: true
+          - column: total
+            label: Total
+            numeric: true
+          - column: total-unique
+            label: Total unique
+            numeric: true
+  - type: section
+    tagline: Multimodal networks
+    anchor: multimodal-networks
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Explore how major physiological systems connect to anatomical structures, functional 
+          tissue units (FTUs), and resources across biological scales.
+      - type: image
+        src: /assets/content/visualizations-page/bimodal-network.png
+        alt: Bimodal network
+  - type: section
+    tagline: BioModels Explorer
+    anchor: biomodels-explorer
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Explore the healthy human physiome in 3D.
+      - type: button
+        text: Use app
+        route: https://wholepersonproject.github.io/wpp-eui-experiment/
+      - type: image
+        src: /assets/content/visualizations-page/physiome-explorer.png
+        alt: Physiome Explorer
+  - type: section
+    tagline: Knowledge Graph visualization
+    anchor: knowledge-graph-visualization
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Examine how entities and relationships are organized within the Whole Person Physiome
+          Knowledge Graph. Identify missing terms, inconsistencies, and opportunities to improve 
+          and harmonize WPP tables.
+      - type: image
+        src: /assets/content/visualizations-page/knowledge-graph-schema.png
+        alt: Knowledge Graph schema
+  - type: section
+    tagline: References
+    anchor: references
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          - [Whole Person Physiome Data Products](https://cdn.wholepersonphysiome.org/data-products/)
+          - [Knowledge Graph Explorer](https://kg.wholepersonphysiome.org/)
