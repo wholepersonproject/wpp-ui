@@ -8,7 +8,7 @@ import { Table } from '@atlasng/labs/table';
 import { MarkdownModule } from 'ngx-markdown';
 import { ActiveSectionService } from './active-section-service';
 import { TableContent, TableService } from './table-service';
-import { Visualization } from './visualization/visualization';
+import { Visualization } from '../visualization/visualization';
 import { YoutubePlayer } from '@atlasng/labs/youtube-player';
 
 interface MarkdownContent {

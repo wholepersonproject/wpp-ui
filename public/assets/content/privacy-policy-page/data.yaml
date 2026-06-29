@@ -1,0 +1,20 @@
+headerContent:
+  title: Privacy Policy
+  subtitle: |
+    Effective: 2026-06-05
+  breadcrumbs:
+    - name: Home
+      command: /
+    - name: Privacy Policy
+content:
+  - type: section
+    tagline: Overview
+    anchor: overview
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          At Indiana University (IU), we are committed to protecting the privacy and confidentiality of personal information entrusted to us.
+          By accessing and using IU's services, you acknowledge and consent to the practices described in our global privacy statement: https://privacy.iu.edu/privacy/global.htmlFor additional information outlining how Cyberinfrastructure for Network Science Center at Indiana University collects, uses, and safeguards personal information obtained specifically through our website (https://wholepersonphysiome.org), please review the information below.
+          Continued use of our website indicates consent to the collection, use, and disclosure of this information as described in this notice.
+          Visitors to other IU websites should review the privacy notices for the sites they visit, as other units at the university may collect and use visitor information in different ways. Cyberinfrastructure for Network Science Center at Indiana University is not responsible for the content of other websites or for the privacy practices of websites outside the scope of this notice.

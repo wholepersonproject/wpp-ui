@@ -4,7 +4,7 @@ import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as yaml from 'js-yaml';
 import { map } from 'rxjs';
-import { LandingPage } from './pages/landing-page/landing-page';
+import { LandingPage } from './components/landing-page/landing-page';
 
 function createYamlSpecResolver(
   url: string,
@@ -43,6 +43,15 @@ export const appRoutes: Route[] = [
     component: ContentPage,
     resolve: {
       data: createYamlSpecResolver('assets/content/models-page/data.yaml'),
+    },
+  },
+  {
+    path: 'privacy-policy',
+    component: ContentPage,
+    resolve: {
+      data: createYamlSpecResolver(
+        'assets/content/privacy-policy-page/data.yaml',
+      ),
     },
   },
   {

@@ -44,8 +44,7 @@
 
   .content-page-toc {
     grid-area: toc;
-    display: flex;
-    flex-direction: column;
+    height: fit-content;
     overflow: hidden;
     border: 1px solid token-utils.slot(toc-border, $config);
     border-radius: token-utils.slot(toc-radius, $config);
@@ -122,7 +121,7 @@
   @include breakpoints.breakpoint(medium, large, x-large) {
     grid-template-areas:
       'header toc'
-      'sections .';
+      'sections toc';
     grid-template-columns: minmax(40rem, 87.5rem) minmax(15rem, 18.75rem);
     column-gap: 2.5rem;
     padding: 2.5rem 0 2.5rem 2.5rem;
