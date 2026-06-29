@@ -11,46 +11,21 @@
     'toc'
     'sections';
   grid-template-columns: 100%;
+  row-gap: 3rem;
   width: 100%;
   max-width: 1700px;
   margin: 0 auto auto;
-  padding: 2.5rem 1.25rem;
-  gap: 3rem;
   font-family: token-utils.slot(font, $config);
   font-size: token-utils.slot(font-size, $config);
   line-height: token-utils.slot(line-height, $config);
   letter-spacing: token-utils.slot(tracking, $config);
   font-weight: token-utils.slot(weight, $config);
 
-  @include breakpoints.breakpoint(medium, large, x-large) {
-    padding: 2.5rem;
-    grid-template-areas:
-      'header toc'
-      'sections .';
-    grid-template-columns: minmax(0, 1fr) minmax(15rem, 18.75rem);
-
-    .content-page-toc {
-      position: sticky;
-      top: 2.5rem;
-      max-width: 18.75rem;
-      border-width: 0px !important;
-
-      .content-page-toc-header {
-        background-color: transparent !important;
-      }
-
-      .link {
-        &.active {
-          background-color: token-utils.slot(toc-link-active-background, $config);
-        }
-      }
-    }
-  }
-
   .content-page-header {
     grid-area: header;
     display: flex;
     flex-direction: column;
+    padding: 2.5rem 1.25rem 0 1.25rem;
     gap: 2rem;
   }
 
@@ -58,6 +33,7 @@
     grid-area: sections;
     display: flex;
     flex-direction: column;
+    padding: 0 1.25rem 2.5rem 1.25rem;
     gap: 3rem;
   }
 
@@ -69,11 +45,10 @@
 
   .content-page-toc {
     grid-area: toc;
-    width: 100%;
-    height: min-content;
-    justify-self: end;
+    margin: 0 1.25rem;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     border: 1px solid token-utils.slot(toc-border, $config);
     border-radius: token-utils.slot(toc-radius, $config);
 
@@ -88,8 +63,6 @@
     .links {
       @include mat.button-overrides(
         (
-          text-horizontal-padding: 1rem,
-          text-container-height: 2.75rem,
           text-label-text-color: token-utils.slot(toc-link-color, $config),
           text-label-text-font: token-utils.slot(toc-link-font, $config),
           text-label-text-size: token-utils.slot(toc-link-font-size, $config),
@@ -102,10 +75,20 @@
       flex-direction: column;
 
       .link {
+        height: unset;
+        min-height: 2.75rem;
+        line-height: token-utils.slot(toc-link-line-height, $config);
+        padding: 0.75rem 1rem;
         margin-left: calc((var(--indentation-level, 1) - 2) * 0.75rem);
         justify-content: start;
       }
     }
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 1rem;
   }
 
   h1 {
@@ -118,12 +101,57 @@
     letter-spacing: token-utils.slot(h3-tracking, $config);
   }
 
+  .content-page-image {
+    width: 100%;
+  }
+
   ::ng-deep markdown {
+    p,
+    ul {
+      margin: 0;
+    }
+
     a {
       display: inline-flex;
       color: token-utils.slot(toc-link-color, $config);
       text-decoration: underline;
       font-weight: 600;
+    }
+  }
+
+  @include breakpoints.breakpoint(medium, large, x-large) {
+    grid-template-areas:
+      'header toc'
+      'sections .';
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    .content-page-header,
+    .content-page-sections {
+      padding-right: 2.5rem;
+      padding-left: 2.5rem;
+    }
+
+    .content-page-toc {
+      position: sticky;
+      top: 2.5rem;
+      height: 0;
+      max-width: 18.75rem;
+      border-width: 0px !important;
+      margin: 0 !important;
+      padding: 0rem 1rem;
+
+      .content-page-toc-header {
+        background-color: transparent !important;
+      }
+
+      .link {
+        &.active {
+          background-color: token-utils.slot(
+            toc-link-active-background,
+            $config
+          );
+        }
+      }
     }
   }
 }

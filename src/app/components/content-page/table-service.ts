@@ -22,6 +22,7 @@ export interface TableContent {
   type: 'table';
   url: string;
   columns: TableColumn[];
+  footer?: boolean;
 }
 
 @Injectable({
@@ -29,7 +30,9 @@ export interface TableContent {
 })
 export class TableService {
   /** Loaded table rows keyed by CSV URL */
-  protected readonly tableRowsByUrl = signal<Partial<Record<string, TableRow[]>>>({});
+  protected readonly tableRowsByUrl = signal<
+    Partial<Record<string, TableRow[]>>
+  >({});
 
   private readonly tableRowRequests = new Map<string, Promise<TableRow[]>>();
 
@@ -70,7 +73,11 @@ export class TableService {
         header: true,
         skipEmptyLines: 'greedy',
         complete: (result) => {
-          resolve(result.data.map((row) => this.toTableRow(row, tableContent.columns)));
+          resolve(
+            result.data.map((row) =>
+              this.toTableRow(row, tableContent.columns),
+            ),
+          );
         },
       });
     });

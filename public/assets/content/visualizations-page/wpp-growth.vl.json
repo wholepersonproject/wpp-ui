@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://cdn.wholepersonphysiome.org/data-products/reports/growth/wpp-growths.csv"
+  },
+  "width": "container",
+  "height": "container",
+  "config": {
+    "font": "Metropolis",
+    "axis": {
+      "labelFontSize": 14,
+      "titleFontSize": 14,
+      "titleFontWeight": 500,
+      "labelFontWeight": 500,
+      "titleLineHeight": 21,
+      "labelLineHeight": 21,
+      "titleColor": "#201E3D",
+      "labelColor": "#4B4B5E",
+      "titlePadding": 20
+    },
+    "legend": {
+      "labelFontSize": 14,
+      "titleFontSize": 14,
+      "titleLineHeight": 21,
+      "titleColor": "#201E3D",
+      "labelColor": "#4B4B5E",
+      "titleFontWeight": 500,
+      "labelFontWeight": 500
+    }
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "tooltip": true,
+    "strokeWidth": 2
+  },
+  "params": [
+    {
+      "name": "user-selection",
+      "select": {
+        "type": "point",
+        "fields": ["group"]
+      },
+      "bind": "legend"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "date",
+      "title": "Date"
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Count"
+    },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "title": "Legend",
+      "scale": {
+        "domain": [
+          "#Anatomical structures",
+          "#Functional tissue units",
+          "#Cell types",
+          "#Processes",
+          "#Clinical metrics",
+          "#Interacting functions",
+          "#References"
+        ],
+        "range": [
+          "#EE1313",
+          "#E47A10",
+          "#A09500",
+          "#1DAC2B",
+          "#698FDD",
+          "#8C00FF",
+          "#E151C2"
+        ]
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "user-selection",
+        "value": 1
+      },
+      "value": 0.2
+    }
+  }
+}

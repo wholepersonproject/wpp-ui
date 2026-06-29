@@ -24,6 +24,7 @@ content:
         route: /assets/content/data-page/wpp-table.csv
       - type: table
         url: /assets/content/data-page/wpp-table.csv
+        footer: true
         columns:
           - column: label
             label: System table

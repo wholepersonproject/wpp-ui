@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.content-page-visualization-container {
+  width: 100%;
+  overflow: auto;
+}
+
+.content-page-visualization {
+  width: 100%;
+  min-width: 40rem;
+  aspect-ratio: 16 / 9;
+}

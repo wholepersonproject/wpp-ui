@@ -35,7 +35,11 @@ export class App {
   readonly appMenuItems = model<HeaderShellNavigationItem[]>([
     { id: 'home', label: 'Home', link: '/' },
     { id: 'biomodels-explorer', label: 'BioModels Explorer', link: '/' },
-    { id: 'kg-explorer', label: 'Knowledge Graph Explorer', link: '/' },
+    {
+      id: 'kg-explorer',
+      label: 'Knowledge Graph Explorer',
+      link: 'https://kg.wholepersonphysiome.org',
+    },
   ]);
 
   readonly socialMediaIds = model<string[]>([

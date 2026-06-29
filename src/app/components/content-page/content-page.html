@@ -61,11 +61,16 @@
                 [rows]="tableService.getTableRows(subsection)"
                 [columns]="subsection.columns"
                 [enableSort]="true"
+                [totalsFooter]="subsection.footer || false"
               >
               </ang-table>
             }
             @if (subsection.type === 'image') {
-              <img [src]="subsection.src" [alt]="subsection.alt" />
+              <img
+                class="content-page-image"
+                [src]="subsection.src"
+                [alt]="subsection.alt"
+              />
             }
             @if (subsection.type === 'button') {
               <a matButton="filled" [href]="subsection.route">
@@ -74,6 +79,10 @@
                 }
                 {{ subsection.text }}
               </a>
+            }
+
+            @if (subsection.type === 'visualization') {
+              <wpp-visualization [url]="subsection.url"></wpp-visualization>
             }
           </div>
         }

@@ -25,11 +25,13 @@ span.ang-breadcrumbs-label,
 ang-table {
   max-height: unset;
 
-  .mat-mdc-cell {
-    padding: 0.625rem 1.5rem 0.625rem 1rem;
+  .align-right .mat-sort-header-container {
+    justify-content: end;
   }
 
-  .mat-mdc-header-cell {
-    padding: 0.625rem 0.625rem 0.625rem 1rem;
+  .mat-mdc-cell {
+    div {
+      margin-right: 1.125rem;
+    }
   }
 }

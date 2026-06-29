@@ -1,0 +1,148 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://cdn.wholepersonphysiome.org/data-products/reports/validation/wpp-temporal-spatial-counts-cleaned.csv"
+  },
+  "width": "container",
+  "height": "container",
+  "padding": {
+    "left": 10,
+    "right": 10
+  },
+  "config": {
+    "font": "Metropolis",
+    "axis": {
+      "labelFontSize": 14,
+      "titleFontSize": 14,
+      "titleFontWeight": 500,
+      "labelFontWeight": 500,
+      "titleLineHeight": 21,
+      "labelLineHeight": 21,
+      "titleColor": "#201E3D",
+      "labelColor": "#4B4B5E",
+      "titlePadding": 30
+    },
+    "legend": {
+      "labelFontSize": 14,
+      "titleFontSize": 14,
+      "titleLineHeight": 21,
+      "titleColor": "#201E3D",
+      "labelColor": "#4B4B5E",
+      "titleFontWeight": 500,
+      "labelFontWeight": 500
+    },
+    "range": {
+      "category": {
+        "scheme": "category10"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "group_by",
+      "value": "<all tables combined>",
+      "bind": {
+        "input": "select",
+        "options": [
+          "<all tables combined>",
+          "cardiovascular-system",
+          "dental-and-craniofacial-system",
+          "digestive-system",
+          "endocrine-system",
+          "fascia-system",
+          "female-reproductive-system",
+          "immune-and-lymphatic-system",
+          "integumentary-system",
+          "male-reproductive-system",
+          "muscular-system",
+          "nervous-system",
+          "pulmonary-system",
+          "skeletal-system",
+          "urinary-system"
+        ],
+        "name": "WPP Table: "
+      }
+    }
+  ],
+  "mark": {
+    "type": "point",
+    "tooltip": true,
+    "filled": true,
+    "stroke": "#808080",
+    "strokeWidth": 0.5,
+    "fillOpacity": 0.7
+  },
+  "transform": [
+    {
+      "filter": "group_by === '<all tables combined>' || datum.table === group_by"
+    },
+    {
+      "calculate": "datum.process_count",
+      "as": "process_count_for_shape"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "effector_scale",
+      "type": "nominal",
+      "title": "Spatial Scale",
+      "axis": {
+        "labelAngle": -45,
+        "labelExpr": "upper(slice(datum.label, 0, 1)) + slice(datum.label, 1)"
+      },
+      "scale": {
+        "domain": ["Body", "Organ system", "Organ", "Tissue", "FTU", "Cell"]
+      }
+    },
+    "y": {
+      "field": "time_scale",
+      "type": "nominal",
+      "title": "Time Range",
+      "axis": {
+        "labelAngle": 0,
+        "labelExpr": "upper(slice(datum.label, 0, 1)) + slice(datum.label, 1)"
+      },
+      "scale": {
+        "domain": [
+          "1year or longer",
+          "1week - < 1year",
+          "1day - < 1week",
+          "1hr - < 1day",
+          "1min - < 1hr",
+          "1s - < 1min",
+          "<1 second"
+        ]
+      }
+    },
+    "size": {
+      "aggregate": "sum",
+      "field": "process_count_for_shape",
+      "type": "quantitative",
+      "title": "# Processes",
+      "scale": {
+        "scheme": "yellowgreen",
+        "domain": [0, 150],
+        "zero": true,
+        "clamp": true
+      },
+      "legend": {
+        "title": " ",
+        "type": "symbol",
+        "symbolFillColor": "white",
+        "tickCount": 4
+      }
+    },
+    "color": {
+      "aggregate": "sum",
+      "field": "process_count",
+      "type": "quantitative",
+      "title": "# Processes",
+      "scale": {
+        "scheme": "yellowgreen",
+        "domain": [0, 150],
+        "zero": true,
+        "clamp": true
+      }
+    }
+  }
+}

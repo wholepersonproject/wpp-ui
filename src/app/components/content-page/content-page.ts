@@ -1,5 +1,5 @@
 import { coerceArray } from '@angular/cdk/coercion';
-import { AfterViewInit, Component, computed, effect, inject, input } from '@angular/core';
+import { Component, computed, effect, inject, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Breadcrumbs } from '@atlasng/design-system/buttons/breadcrumbs';
@@ -8,6 +8,7 @@ import { Table } from '@atlasng/labs/table';
 import { MarkdownModule } from 'ngx-markdown';
 import { ActiveSectionService } from './active-section-service';
 import { TableContent, TableService } from './table-service';
+import { Visualization } from './visualization/visualization';
 
 interface MarkdownContent {
   type: 'markdown';
@@ -32,13 +33,19 @@ interface YoutubeContent {
   url: string;
 }
 
+interface VisualizationContent {
+  type: 'visualization';
+  url: string;
+}
+
 type Content =
   | PageSection
   | MarkdownContent
   | ButtonContent
   | TableContent
   | ImageContent
-  | YoutubeContent;
+  | YoutubeContent
+  | VisualizationContent;
 
 interface PageSection {
   type: 'section';
@@ -57,9 +64,6 @@ interface ContentPageData {
   content: PageSection[];
 }
 
-const isPageSection = (content: Content): content is PageSection => content.type === 'section';
-const isTableContent = (content: Content): content is TableContent => content.type === 'table';
-
 @Component({
   selector: 'wpp-content-page',
   imports: [
@@ -69,12 +73,13 @@ const isTableContent = (content: Content): content is TableContent => content.ty
     MatIconModule,
     Table,
     MarkdownModule,
+    Visualization,
   ],
   providers: [ActiveSectionService],
   templateUrl: './content-page.html',
   styleUrl: './content-page.scss',
 })
-export class ContentPage implements AfterViewInit {
+export class ContentPage {
   /** Input data for content page */
   readonly data = input.required<ContentPageData>();
 
@@ -85,10 +90,13 @@ export class ContentPage implements AfterViewInit {
   protected readonly content = computed(() => coerceArray(this.data().content));
 
   /** All nested sections flattened into a single list */
-  protected readonly flattenedSections = computed(() => this.flattenSectionContent(this.content()));
+  protected readonly flattenedSections = computed(() =>
+    this.flattenSectionContent(this.content()),
+  );
 
   constructor() {
     effect(() => {
+      this.activeSectionService.initialize();
       this.activeSectionService.setSections(this.flattenedSections());
 
       for (const tableContent of this.flattenTableContent(this.content())) {
@@ -97,15 +105,11 @@ export class ContentPage implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    this.activeSectionService.initialize();
-  }
-
   protected flattenSectionContent(content: Content[]): PageSection[] {
     const sections: PageSection[] = [];
 
     for (const item of content) {
-      if (!isPageSection(item)) {
+      if (item.type !== 'section') {
         continue;
       }
 
@@ -120,12 +124,12 @@ export class ContentPage implements AfterViewInit {
     const tables: TableContent[] = [];
 
     for (const item of content) {
-      if (isTableContent(item)) {
+      if (item.type === 'table') {
         tables.push(item);
         continue;
       }
 
-      if (isPageSection(item)) {
+      if (item.type === 'section') {
         tables.push(...this.flattenTableContent(item.content));
       }
     }
