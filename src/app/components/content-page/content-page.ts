@@ -9,6 +9,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { ActiveSectionService } from './active-section-service';
 import { TableContent, TableService } from './table-service';
 import { Visualization } from './visualization/visualization';
+import { YoutubePlayer } from '@atlasng/labs/youtube-player';
 
 interface MarkdownContent {
   type: 'markdown';
@@ -30,7 +31,7 @@ interface ImageContent {
 
 interface YoutubeContent {
   type: 'youtube';
-  url: string;
+  videoId: string;
 }
 
 interface VisualizationContent {
@@ -74,6 +75,7 @@ interface ContentPageData {
     Table,
     MarkdownModule,
     Visualization,
+    YoutubePlayer,
   ],
   providers: [ActiveSectionService],
   templateUrl: './content-page.html',

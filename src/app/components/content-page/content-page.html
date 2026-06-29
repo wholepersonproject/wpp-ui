@@ -84,6 +84,15 @@
             @if (subsection.type === 'visualization') {
               <wpp-visualization [url]="subsection.url"></wpp-visualization>
             }
+
+            @if (subsection.type === 'youtube') {
+              <div class="content-page-youtube-container">
+                <ang-youtube-player
+                  [videoId]="subsection.videoId"
+                  [label]="'a'"
+                ></ang-youtube-player>
+              </div>
+            }
           </div>
         }
       </div>

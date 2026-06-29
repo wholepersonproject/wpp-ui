@@ -22,6 +22,10 @@ span.ang-breadcrumbs-label,
   font-weight: 400;
 }
 
+mat-drawer-content {
+  display: block !important;
+}
+
 ang-table {
   max-height: unset;
 
