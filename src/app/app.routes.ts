@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import * as yaml from 'js-yaml';
 import { map } from 'rxjs';
 import { LandingPage } from './components/landing-page/landing-page';
+import { NotFoundPage } from './components/not-found-page/not found page';
+import { ServerErrorPage } from './components/server-error-page/server error page';
 
 function createYamlSpecResolver(
   url: string,
@@ -69,5 +71,19 @@ export const appRoutes: Route[] = [
         'assets/content/visualizations-page/data.yaml',
       ),
     },
+  },
+
+  // Error pages
+  {
+    path: '500',
+    component: ServerErrorPage,
+    data: {
+      reportIssueLink:
+        'https://github.com/wholepersonproject/wpp-ui/issues/new',
+    },
+  },
+  {
+    path: '404',
+    component: NotFoundPage,
   },
 ];
