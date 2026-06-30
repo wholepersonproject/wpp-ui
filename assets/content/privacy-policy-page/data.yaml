@@ -14,7 +14,192 @@ content:
     content:
       - type: markdown
         data: |
-          At Indiana University (IU), we are committed to protecting the privacy and confidentiality of personal information entrusted to us.
-          By accessing and using IU's services, you acknowledge and consent to the practices described in our global privacy statement: https://privacy.iu.edu/privacy/global.htmlFor additional information outlining how Cyberinfrastructure for Network Science Center at Indiana University collects, uses, and safeguards personal information obtained specifically through our website (https://wholepersonphysiome.org), please review the information below.
-          Continued use of our website indicates consent to the collection, use, and disclosure of this information as described in this notice.
-          Visitors to other IU websites should review the privacy notices for the sites they visit, as other units at the university may collect and use visitor information in different ways. Cyberinfrastructure for Network Science Center at Indiana University is not responsible for the content of other websites or for the privacy practices of websites outside the scope of this notice.
+          At Indiana University (IU), we are committed to protecting the privacy and confidentiality 
+          of personal information entrusted to us.
+
+          By accessing and using IU's services, you acknowledge and consent to the practices described 
+          in our global privacy statement: https://privacy.iu.edu/privacy/global.html
+
+          For additional information outlining how Cyberinfrastructure for Network Science Center at 
+          Indiana University collects, uses, and safeguards personal information obtained specifically 
+          through our website (https://wholepersonphysiome.org), please review the information below.
+
+          Continued use of our website indicates consent to the collection, use, and disclosure of 
+          this information as described in this notice.
+
+          Visitors to other IU websites should review the privacy notices for the sites they visit, 
+          as other units at the university may collect and use visitor information in different ways. 
+          Cyberinfrastructure for Network Science Center at Indiana University is not responsible for 
+          the content of other websites or for the privacy practices of websites outside the scope of 
+          this notice.
+  - type: section
+    tagline: Changes
+    anchor: changes
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Because Internet technologies continue to evolve rapidly, Cyberinfrastructure for Network 
+          Science Center at Indiana University may make appropriate changes to this notice in the 
+          future. Any such changes will be consistent with our commitment to respecting visitor 
+          privacy, and will be clearly posted in a revised privacy notice.
+  - type: section
+    tagline: Collection and use
+    anchor: collection-and-use
+    level: 2
+    content:
+      - type: section
+        tagline: Passive/automatic collection
+        anchor: passive-automatic-collection
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              In addition to any information outline in the global statement, our server and/or site 
+              collects the following:
+
+              - Your IP address
+              - The domain name from which you visit our site
+              - Aggregate information on pages visited
+              - The referring website
+              - The date and time of visit
+              - The duration of visit
+              - Your browser type
+              - Your screen resolution
+
+              Some technical information is retained in aggregate for up to 365 days.
+      - type: section
+        tagline: Active/manual/voluntary collection
+        anchor: active-manual-voluntary-collection
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              We will not attempt to collect any information from you through the use of forms or 
+              other type of manual input.
+      - type: section
+        tagline: Information usage
+        anchor: information-usage
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              This information is:
+
+              - Used for internal review and is then discarded
+      - type: section
+        tagline: Information sharing
+        anchor: information-sharing
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              We may share aggregate, non-personally identifiable information with other entities or organizations.
+
+              Except as described in the [IU Privacy statement](https://privacy.iu.edu/privacy/global.html), we will 
+              not share any information with any other entities or organizations for any reason.
+
+              Except as provided in the sections below, we do not attempt to use the technical information discussed 
+              in this section to identify individual visitors.
+      - type: section
+        tagline: Cookies
+        anchor: cookies
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              For more information on how we use cookies, please review the 
+              [IU Privacy statement](https://privacy.iu.edu/privacy/global.html).
+      - type: section
+        tagline: Children
+        anchor: children
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              This site is not directed to children under 13 years of age, does not sell products or 
+              services intended for purchase by children, and does not knowingly collect or store any 
+              personal information, even in aggregate, about children under the age of 13. We encourage 
+              parents and teachers to be involved in children's Internet explorations. It is particularly 
+              important for parents to guide their children when they are asked to provide personal 
+              information online.
+      - type: section
+        tagline: Use of third party services
+        anchor: third-party-services
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              This website utilizes Amazon Web Services a web analytics service. More information about 
+              this service can be found here: https://aws.amazon.com/privacy
+  - type: section
+    tagline: Security
+    anchor: security
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Due to the rapidly evolving nature of information technologies, no transmission of information 
+          over the Internet can be guaranteed to be completely secure. While Indiana University is 
+          committed to protecting user privacy, IU cannot guarantee the security of any information 
+          users transmit to university sites, and users do so at their own risk.
+
+          - Once we receive user information, we will use reasonable safeguards consistent with prevailing 
+          industry standards and commensurate with the sensitivity of the data being stored to maintain 
+          the security of that information on our systems.
+          - We will comply with all applicable federal, state and local laws regarding the privacy and 
+          security of user information.
+  - type: section
+    tagline: Links to non-university sites
+    anchor: links-to-non-university-sites
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Indiana University is not responsible for the availability, content, or privacy practices of
+          non-university sites. Non-university sites are not bound by this site privacy notice policy
+          and may or may not have their own privacy policies.
+  - type: section
+    tagline: Privacy notice changes
+    anchor: privacy-notice-changes
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          From time to time, we may use visitor information for new, unanticipated uses not previously
+          disclosed in our privacy notice.
+
+          We will post the policy changes to our Website to notify you of these changes,
+          but only data collected from the time of the policy change forward will be used for these new purposes.
+          If you are concerned about how your information is used, you should check back at our Website periodically.
+
+          Visitors may prevent their information from being used for purposes other than those for which it was
+          originally collected by:
+
+          - Sending us email at the listed address
+          - Calling us at the listed telephone number
+          - Writing to us at the listed address
+  - type: section
+    tagline: Contact information
+    anchor: contact-information
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          If you have questions or concerns about this policy, please contact us.
+
+          Whole Person Physiome
+          ATTN: Cyberinfrastructure for Network Science Center
+          700 N Woodlawn Ave Luddy Hall Suite 4018
+          Bloomington, IN
+          47408
+          cnscntr@iu.edu
+          812-856-7034
+
+          If you feel as though this site's privacy practices differ from the information stated, you
+          may contact us at the listed address or phone number.
+
+          If you feel that this site is not following its stated policy and communicating with the owner
+          of this site does not resolve the matter, or if you have general questions or concerns about privacy
+          or information technology policy at Indiana University, please contact the chief privacy officer
+          through the University Information Policy Office, 812-855-UIPO, [privacy@iu.edu](mailto:privacy@iu.edu).
