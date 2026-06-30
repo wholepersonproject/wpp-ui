@@ -1,16 +1,13 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "data": {
     "url": "https://cdn.wholepersonphysiome.org/data-products/reports/validation/wpp-temporal-spatial-counts-cleaned.csv"
   },
   "width": "container",
   "height": "container",
-  "padding": {
-    "left": 10,
-    "right": 10
-  },
+  "padding": 8,
   "config": {
-    "font": "Metropolis",
+    "font": "Open Sans Variable",
     "axis": {
       "labelFontSize": 14,
       "titleFontSize": 14,
@@ -85,9 +82,9 @@
     "x": {
       "field": "effector_scale",
       "type": "nominal",
-      "title": "Spatial Scale",
+      "title": "Space",
       "axis": {
-        "labelAngle": -45,
+        "labelAngle": 0,
         "labelExpr": "upper(slice(datum.label, 0, 1)) + slice(datum.label, 1)"
       },
       "scale": {
@@ -97,7 +94,7 @@
     "y": {
       "field": "time_scale",
       "type": "nominal",
-      "title": "Time Range",
+      "title": "Time",
       "axis": {
         "labelAngle": 0,
         "labelExpr": "upper(slice(datum.label, 0, 1)) + slice(datum.label, 1)"
@@ -120,8 +117,8 @@
       "type": "quantitative",
       "title": "# Processes",
       "scale": {
-        "scheme": "yellowgreen",
-        "domain": [0, 150],
+        "range": [0, 1000],
+        "domain": [0, 400],
         "zero": true,
         "clamp": true
       },
@@ -138,7 +135,7 @@
       "type": "quantitative",
       "title": "# Processes",
       "scale": {
-        "scheme": "yellowgreen",
+        "range": ["#D5D6FF", "#241F67"],
         "domain": [0, 150],
         "zero": true,
         "clamp": true

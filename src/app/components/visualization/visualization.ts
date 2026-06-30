@@ -15,10 +15,19 @@ export class Visualization {
     viewChild.required<ElementRef<HTMLDivElement>>('vis');
 
   constructor() {
-    effect(async (onCleanup) => {
+    effect((onCleanup) => {
       const el = this.visRef().nativeElement;
-      const { finalize } = await embed(el, this.url());
-      onCleanup(() => finalize());
+      let finalize: (() => void) | undefined;
+      onCleanup(() => {
+        finalize?.();
+      });
+
+      void (async () => {
+        const result = await embed(el, this.url(), {
+          renderer: 'canvas',
+        });
+        finalize = result.finalize;
+      })();
     });
   }
 }

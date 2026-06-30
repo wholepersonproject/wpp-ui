@@ -1,6 +1,12 @@
+@use '@angular/material' as mat;
+@use '@atlasng/design-system/sass/internal/breakpoints';
+@use '@atlasng/design-system/sass/internal/token-utils';
+@use './tokens' as *;
+
 :host {
   display: block;
   width: 100%;
+  font-family: token-utils.slot(font-family, $config);
 }
 
 .content-page-visualization-container {
@@ -12,4 +18,9 @@
   width: 100%;
   min-width: 40rem;
   aspect-ratio: 16 / 9;
+
+  ::ng-deep canvas {
+    border-radius: token-utils.slot(border-radius, $config);
+    border: 1px solid token-utils.slot(border-color, $config);
+  }
 }

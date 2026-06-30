@@ -5,8 +5,9 @@
   },
   "width": "container",
   "height": "container",
+  "padding": 8,
   "config": {
-    "font": "Metropolis",
+    "font": "Open Sans Variable",
     "axis": {
       "labelFontSize": 14,
       "titleFontSize": 14,

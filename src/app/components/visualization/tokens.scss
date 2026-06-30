@@ -1,0 +1,15 @@
+@use '@atlasng/design-system/sass/internal/breakpoints';
+@use '@atlasng/design-system/sass/internal/token-utils';
+
+$config: (
+  namespace: 'visualization',
+  tokens: (
+    font-family: 'Open Sans Variable',
+    border-radius: token-utils.sys-token(corner-extra-small),
+    border-color: token-utils.sys-token(outline),
+  ),
+);
+
+@mixin overrides($overrides) {
+  @include token-utils.apply-overrides($overrides, $config);
+}
