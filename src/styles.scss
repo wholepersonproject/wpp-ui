@@ -39,3 +39,10 @@ ang-table {
     }
   }
 }
+
+ang-providers-list {
+  .ang-provider-list--card {
+    display: flex;
+    flex-direction: column;
+  }
+}

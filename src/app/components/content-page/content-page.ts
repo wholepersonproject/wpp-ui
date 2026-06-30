@@ -10,6 +10,8 @@ import { ActiveSectionService } from './active-section-service';
 import { TableContent, TableService } from './table-service';
 import { Visualization } from '../visualization/visualization';
 import { YoutubePlayer } from '@atlasng/labs/youtube-player';
+import { AnalyticsEventCategory } from '@atlasng/analytics/events';
+import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
 
 interface MarkdownContent {
   type: 'markdown';
@@ -87,6 +89,7 @@ export class ContentPage {
 
   readonly activeSectionService = inject(ActiveSectionService);
   readonly tableService = inject(TableService);
+  private readonly permissionsManager = inject(AnalyticsPermissionsManager);
 
   /** Content data */
   protected readonly content = computed(() => coerceArray(this.data().content));
@@ -94,6 +97,12 @@ export class ContentPage {
   /** All nested sections flattened into a single list */
   protected readonly flattenedSections = computed(() =>
     this.flattenSectionContent(this.content()),
+  );
+
+  protected readonly hasMarketingPermissions = computed(() =>
+    this.permissionsManager
+      .permissions()
+      .isCategoryEnabled(AnalyticsEventCategory.Marketing),
   );
 
   constructor() {
@@ -120,6 +129,14 @@ export class ContentPage {
     }
 
     return sections;
+  }
+
+  protected enableMarketingPermissions(): void {
+    this.permissionsManager.setPermissions(
+      this.permissionsManager
+        .permissions()
+        .enableCategory(AnalyticsEventCategory.Marketing),
+    );
   }
 
   private flattenTableContent(content: Content[]): TableContent[] {

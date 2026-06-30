@@ -89,7 +89,9 @@
               <div class="content-page-youtube-container">
                 <ang-youtube-player
                   [videoId]="subsection.videoId"
-                  [label]="'a'"
+                  [label]="section.tagline"
+                  [hasCookiesEnabled]="hasMarketingPermissions()"
+                  (enableCookies)="enableMarketingPermissions()"
                 ></ang-youtube-player>
               </div>
             }

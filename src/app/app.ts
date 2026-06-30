@@ -1,5 +1,8 @@
-import { Component, model } from '@angular/core';
+import { Component, inject, model } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
+import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
+import { CookieModal, CookieModalData } from '@atlasng/labs/cookie-modal';
 import { Footer } from '@atlasng/labs/footer';
 import {
   HeaderShell,
@@ -14,6 +17,10 @@ import {
   styleUrl: './app.scss',
 })
 export class App {
+  private readonly dialog = inject(MatDialog);
+  private readonly permissionsManager = inject(AnalyticsPermissionsManager);
+  private ref?: MatDialogRef<CookieModal>;
+
   readonly navigationItems = model<HeaderShellNavigationItem[]>([
     { id: 'home', label: 'Home', link: '/', icon: 'home' },
     { id: 'data', label: 'Data', link: '/data', icon: 'database' },
@@ -48,4 +55,27 @@ export class App {
     'bluesky',
     'x',
   ]);
+
+  openPrivacyPolicy() {
+    this.ref = this.dialog.open(CookieModal, {
+      data: {
+        logoSrc: 'wpp-header.svg',
+        permissions: this.permissionsManager.permissions(),
+        providers: {
+          marketing: [
+            {
+              label: 'YouTube',
+              href: 'https://policies.google.com/privacy',
+            },
+          ],
+        },
+      } satisfies CookieModalData,
+    });
+
+    this.ref.afterClosed().subscribe((value) => {
+      if (value) {
+        this.permissionsManager.setPermissions(value);
+      }
+    });
+  }
 }
