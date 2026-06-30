@@ -20,7 +20,7 @@ content:
           simulations. Further iterations of these models will be validated on clinical data and 
           focus on potential personalized use cases.
       - type: image
-        src: /assets/content/models-page/multiscale-dynamics.png
+        src: assets/content/models-page/multiscale-dynamics.png
         alt: Multiscale dynamics
   - type: section
     tagline: References
