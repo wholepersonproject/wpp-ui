@@ -17,7 +17,8 @@ content:
       - type: markdown
         data: |
           Initially, 14 physiological systems are modeled. All data is publicly available via CSV files but 
-          users are encouraged to query the [Whole Person Physiome Knowledge Graph](https://example.com) to access the data.
+          users are encouraged to query the [Whole Person Physiome Knowledge Graph](https://kg.wholepersonphysiome.org/) 
+          to access the data.
       - type: button
         text: Download summary
         icon: download

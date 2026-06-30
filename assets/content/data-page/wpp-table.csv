@@ -1,15 +1,15 @@
 label,url,uniqueOrgans,uniqueAS,uniqueFTU,uniqueCT,uniqueB,uniqueProcesses,spatialScales,temporalScales
-Cardiovascular,https:www.example.com,1,1,1,1,1,1,1,1
-Dental and craniofacial,https:www.example.com,1,1,1,1,1,1,1,1
-Digestive,https:www.example.com,1,1,1,1,1,1,1,1
-Endocrine,https:www.example.com,1,1,1,1,1,1,1,1
-Fascia,https:www.example.com,1,1,1,1,1,1,1,1
-Female reproductive,https:www.example.com,1,1,1,1,1,1,1,1
-Immune and lymphatic,https:www.example.com,1,1,1,1,1,1,1,1
-Integumentary,https:www.example.com,1,1,1,1,1,1,1,1
-Male reproductive,https:www.example.com,1,1,1,1,1,1,1,1
-Muscular,https:www.example.com,1,1,1,1,1,1,1,1
-Nervous,https:www.example.com,1,1,1,1,1,1,1,1
-Pulmonary,https:www.example.com,1,1,1,1,1,1,1,1
-Skeletal,https:www.example.com,1,1,1,1,1,1,1,1
-Urinary,https:www.example.com,1,1,1,1,1,1,1,1
+pulmonary system,https://purl.wholepersonphysiome.org/wpp/pulmonary-system,13,30,1,9,0,73,4,7
+urinary system,https://purl.wholepersonphysiome.org/wpp/urinary-system,5,26,3,18,0,140,4,10
+nervous system,https://purl.wholepersonphysiome.org/wpp/nervous-system,21,177,7,19,0,56,2,3
+skeletal system,https://purl.wholepersonphysiome.org/wpp/skeletal-system,3,10,2,7,0,7,2,3
+integumentary system,https://purl.wholepersonphysiome.org/wpp/integumentary-system,24,57,3,62,0,452,4,24
+immune and lymphatic system,https://purl.wholepersonphysiome.org/wpp/immune-and-lymphatic-system,25,52,1,183,0,896,4,18
+dental and craniofacial system,https://purl.wholepersonphysiome.org/wpp/dental-and-craniofacial-system,9,82,8,12,0,34,2,6
+female reproductive system,https://purl.wholepersonphysiome.org/wpp/female-reproductive-system,13,51,1,14,0,61,3,11
+endocrine system,https://purl.wholepersonphysiome.org/wpp/endocrine-system,19,52,6,41,0,66,5,6
+digestive system,https://purl.wholepersonphysiome.org/wpp/digestive-system,15,19,0,32,0,264,4,20
+cardiovascular system,https://purl.wholepersonphysiome.org/wpp/cardiovascular-system,18,108,2,9,0,10,2,6
+fascia system,https://purl.wholepersonphysiome.org/wpp/fascia-system,24,83,0,14,0,245,4,8
+male reproductive system,https://purl.wholepersonphysiome.org/wpp/male-reproductive-system,10,53,1,9,0,28,3,11
+muscular system,https://purl.wholepersonphysiome.org/wpp/muscular-system,9,13,0,5,0,2,2,6
