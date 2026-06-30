@@ -1,15 +1,15 @@
 system,biomarkers,ct,ftu,organ,as,total,total-unique
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
-System,1,1,1,1,1,1,1
+nervous system,0,19,7,21,177,82,56
+urinary system,0,18,3,5,26,153,140
+skeletal system,0,7,2,3,10,7,7
+male reproductive system,0,9,1,10,53,49,28
+pulmonary system,0,9,1,13,30,203,73
+endocrine system,0,41,6,19,52,69,66
+immune and lymphatic system,0,183,1,25,52,1144,896
+female reproductive system,0,14,1,13,51,61,61
+integumentary system,0,62,3,24,57,490,452
+dental and craniofacial system,0,12,8,9,82,51,34
+cardiovascular system,0,9,2,18,108,23,10
+muscular system,0,5,,9,13,2,2
+fascia system,0,14,,24,83,288,245
+digestive system,0,32,,15,19,267,264
