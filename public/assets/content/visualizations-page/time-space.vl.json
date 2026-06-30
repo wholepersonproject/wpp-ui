@@ -9,24 +9,24 @@
   "config": {
     "font": "Open Sans Variable",
     "axis": {
-      "labelFontSize": 14,
+      "labelFontSize": 12,
       "titleFontSize": 14,
-      "titleFontWeight": 500,
-      "labelFontWeight": 500,
+      "titleFontWeight": 600,
+      "labelFontWeight": 400,
       "titleLineHeight": 21,
       "labelLineHeight": 21,
-      "titleColor": "#201E3D",
-      "labelColor": "#4B4B5E",
-      "titlePadding": 30
+      "titleColor": "#1C1B1E",
+      "labelColor": "#33404A",
+      "labelPadding": 4
     },
     "legend": {
-      "labelFontSize": 14,
+      "labelFontSize": 12,
       "titleFontSize": 14,
       "titleLineHeight": 21,
-      "titleColor": "#201E3D",
-      "labelColor": "#4B4B5E",
-      "titleFontWeight": 500,
-      "labelFontWeight": 500
+      "titleColor": "#1C1B1E",
+      "labelColor": "#33404A",
+      "titleFontWeight": 600,
+      "labelFontWeight": 400
     },
     "range": {
       "category": {
@@ -37,11 +37,11 @@
   "params": [
     {
       "name": "group_by",
-      "value": "<all tables combined>",
+      "value": "All systems combined",
       "bind": {
         "input": "select",
         "options": [
-          "<all tables combined>",
+          "All systems combined",
           "cardiovascular-system",
           "dental-and-craniofacial-system",
           "digestive-system",
@@ -71,7 +71,7 @@
   },
   "transform": [
     {
-      "filter": "group_by === '<all tables combined>' || datum.table === group_by"
+      "filter": "group_by === 'All systems combined' || datum.table === group_by"
     },
     {
       "calculate": "datum.process_count",
@@ -85,7 +85,7 @@
       "title": "Space",
       "axis": {
         "labelAngle": 0,
-        "labelExpr": "upper(slice(datum.label, 0, 1)) + slice(datum.label, 1)"
+        "labelExpr": "split(datum.label, ' ')"
       },
       "scale": {
         "domain": ["Body", "Organ system", "Organ", "Tissue", "FTU", "Cell"]
@@ -115,9 +115,9 @@
       "aggregate": "sum",
       "field": "process_count_for_shape",
       "type": "quantitative",
-      "title": "# Processes",
+      "title": "#Processes",
       "scale": {
-        "range": [0, 1000],
+        "range": [0, 1200],
         "domain": [0, 400],
         "zero": true,
         "clamp": true
@@ -126,7 +126,9 @@
         "title": " ",
         "type": "symbol",
         "symbolFillColor": "white",
-        "tickCount": 4
+        "tickCount": 4,
+        "labelOffset": 8,
+        "values": [400, 300, 200, 100]
       }
     },
     "color": {
@@ -136,9 +138,15 @@
       "title": "# Processes",
       "scale": {
         "range": ["#D5D6FF", "#241F67"],
-        "domain": [0, 150],
+        "domain": [0, 400],
         "zero": true,
         "clamp": true
+      },
+      "legend": {
+        "gradientLength": 121,
+        "gradientThickness": 20,
+        "tickCount": 4,
+        "labelOffset": 6
       }
     }
   }
