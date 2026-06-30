@@ -1,6 +1,6 @@
 import { Component, inject, model } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
 import { CookieModal, CookieModalData } from '@atlasng/labs/cookie-modal';
 import { Footer } from '@atlasng/labs/footer';
@@ -18,6 +18,7 @@ import {
 })
 export class App {
   private readonly dialog = inject(MatDialog);
+  private readonly router = inject(Router);
   private readonly permissionsManager = inject(AnalyticsPermissionsManager);
   private ref?: MatDialogRef<CookieModal>;
 
@@ -57,6 +58,10 @@ export class App {
   ]);
 
   openPrivacyPolicy() {
+    void this.router.navigate(['/privacy-policy']);
+  }
+
+  openPrivacyPreferences() {
     this.ref = this.dialog.open(CookieModal, {
       data: {
         logoSrc: 'wpp-header.svg',

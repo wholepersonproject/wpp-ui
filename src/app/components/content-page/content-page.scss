@@ -39,7 +39,8 @@
   .content-page-subsections {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
+    margin-top: 2rem;
   }
 
   .content-page-toc {
@@ -102,20 +103,6 @@
 
   .content-page-image {
     width: 100%;
-  }
-
-  ::ng-deep markdown {
-    p,
-    ul {
-      margin: 0;
-    }
-
-    a {
-      display: inline-flex;
-      color: token-utils.slot(toc-link-color, $config);
-      text-decoration: underline;
-      font-weight: 600;
-    }
   }
 
   @include breakpoints.breakpoint(medium, large, x-large) {
