@@ -29,7 +29,7 @@ content:
           See which entities are represented in the Whole Person Physiome (WPP) and Human Reference 
           Atlas (HRA) to understand shared coverage.
       - type: table
-        url: /assets/content/visualizations-page/data-overlap.csv
+        url: assets/content/visualizations-page/data-overlap.csv
         columns:
           - column: counts
             label: Anatomical structures
@@ -59,7 +59,7 @@ content:
     level: 2
     content:
       - type: table
-        url: /assets/content/visualizations-page/unique-processes.csv
+        url: assets/content/visualizations-page/unique-processes.csv
         columns:
           - column: system
             label: System
@@ -86,7 +86,7 @@ content:
             label: Total unique
             numeric: true
       - type: table
-        url: /assets/content/visualizations-page/unique-effectors.csv
+        url: assets/content/visualizations-page/unique-effectors.csv
         columns:
           - column: system
             label: System
@@ -116,7 +116,7 @@ content:
           Explore how major physiological systems connect to anatomical structures, functional 
           tissue units (FTUs), and resources across biological scales.
       - type: image
-        src: /assets/content/visualizations-page/bimodal-network.png
+        src: assets/content/visualizations-page/bimodal-network.png
         alt: Bimodal network
   - type: section
     tagline: BioModels Explorer
@@ -130,7 +130,7 @@ content:
         text: Use app
         route: https://wholepersonproject.github.io/wpp-eui-experiment/
       - type: image
-        src: /assets/content/visualizations-page/physiome-explorer.png
+        src: assets/content/visualizations-page/physiome-explorer.png
         alt: Physiome Explorer
   - type: section
     tagline: Knowledge Graph visualization
@@ -143,7 +143,7 @@ content:
           Knowledge Graph. Identify missing terms, inconsistencies, and opportunities to improve 
           and harmonize WPP tables.
       - type: image
-        src: /assets/content/visualizations-page/knowledge-graph-schema.png
+        src: assets/content/visualizations-page/knowledge-graph-schema.png
         alt: Knowledge Graph schema
   - type: section
     tagline: References
