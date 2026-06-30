@@ -17,7 +17,7 @@ content:
           Jacob Scherba (University of Pennsylvania) presents a brief introduction to the Whole 
           Person Physiome (WPP) tables on December 3, 2025.
       - type: youtube
-        videoId: pzUFmDhQEO8
+        videoId: HLs_Tmjiz8U
   - type: section
     tagline: Standards for Multiscale Cellular Modeling
     anchor: standards-for-multiscale-cellular-modeling
@@ -29,9 +29,9 @@ content:
           research on standards for multiscale cellular modeling at Human Reference Atlas Working 
           Group #68 on November 5, 2025.
 
-          Learn more at Vivarium Lab.
+          Learn more at [Vivarium Lab](https://vivariumlab.com).
       - type: youtube
-        videoId: pzUFmDhQEO8
+        videoId: hmCrPPL6kyQ
   - type: section
     tagline: CompuCell3D
     anchor: compucell3d
@@ -43,16 +43,16 @@ content:
           environment for building agent-based models of multicellular biology, at Human Reference 
           Atlas Working Group #65 on August 6, 2025.
 
-          Learn more at CompuCell3D.
+          Learn more at [CompuCell3D](https://compucell3d.org).
       - type: youtube
-        videoId: pzUFmDhQEO8
+        videoId: WYKv-yB_j2M
   - type: section
     tagline: CIFAR MacMillan Multiscale Human
     anchor: cifar-macmillan-multiscale-human
     level: 2
     content:
       - type: youtube
-        videoId: pzUFmDhQEO8
+        videoId: -F6i5KOVGx8
   - type: section
     tagline: |
       Understanding Exercise and MoTrPAC: Informational Video
@@ -67,9 +67,9 @@ content:
           the Office of the Director and supported by several Institutes & Centers including, 
           NIAMS, NIA and NIDDK. 
 
-          Learn more about the MoTrPAC program and recruitment.
+          Learn more about the [MoTrPAC program and recruitment](https://commonfund.nih.gov/MolecularTransducers/PublicHealthRelevance).
       - type: youtube
-        videoId: pzUFmDhQEO8
+        videoId: STdfWChns5w
   - type: section
     tagline: MoTrPAC Data Hub Tutorial
     anchor: motrpac-tutorial
@@ -80,4 +80,4 @@ content:
           Learn about how to navigate the MoTrPAC Data Hub and explore the multi-omics multi-tissue 
           exercise data.
       - type: youtube
-        videoId: pzUFmDhQEO8
+        videoId: 3zHnzUMo_vw

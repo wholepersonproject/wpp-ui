@@ -40,6 +40,7 @@
               <h3
                 angSectionHeader
                 [anchor]="subsection.anchor"
+                [underlined]="subsection.underline ?? true"
                 [id]="subsection.anchor"
               >
                 {{ subsection.tagline }}
@@ -49,6 +50,15 @@
                 @for (subsubsection of subsection.content; track $index) {
                   @if (subsubsection.type === 'markdown') {
                     <markdown [data]="subsubsection.data"></markdown>
+                  }
+                  @if (subsubsection.type === 'table') {
+                    <ang-table
+                      [rows]="tableService.getTableRows(subsubsection)"
+                      [columns]="subsubsection.columns"
+                      [enableSort]="true"
+                      [totalsFooter]="subsubsection.footer || false"
+                    >
+                    </ang-table>
                   }
                 }
               }

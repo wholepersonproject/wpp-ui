@@ -1,5 +1,5 @@
 <ang-header-shell
-  logoUrl="wpp-header.svg"
+  [logoUrl]="headerLogo()"
   [hasLocalNavigation]="true"
   [localNavigationExpanded]="navigation.leftMenuOpen()"
   (localNavigationToggle)="navigation.localNavigationToggle()"
@@ -15,7 +15,7 @@
   <router-outlet />
   <ang-footer
     orgName="Whole Person Physiome"
-    logoUrl="wpp.svg"
+    [logoUrl]="footerLogo()"
     [socials]="socialMediaIds()"
     (openPrivacyPolicy)="openPrivacyPolicy()"
     (openPrivacyPreferences)="openPrivacyPreferences()"

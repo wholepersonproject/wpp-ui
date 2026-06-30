@@ -1,9 +1,3 @@
 :host {
-  ::ng-deep {
-    mat-drawer-content {
-      --mat-sidenav-content-text-color: var(--mat-sys-on-surface-variant);
-      display: flex;
-      flex-direction: column;
-    }
-  }
+  display: block;
 }

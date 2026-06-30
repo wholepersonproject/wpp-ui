@@ -56,6 +56,7 @@ interface PageSection {
   anchor: string;
   level: number;
   content: Content[];
+  underline?: boolean;
 }
 
 interface ContentPageData {

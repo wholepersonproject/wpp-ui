@@ -3,48 +3,20 @@
 @use './styles/theming' as theming;
 @use './styles/palettes' as wpp-theme;
 
-@include theming.theme(wpp-theme.$theme);
+:root {
+  @include theming.theme(wpp-theme.$theme);
+  color-scheme: light;
+
+  @media (prefers-color-scheme: dark) {
+    @include theming.theme(wpp-theme.$theme-dark);
+    color-scheme: dark;
+  }
+}
 
 body {
   --ang-header-shell-logo-background-color: transparent;
   margin: 0;
   min-width: 20rem;
-}
-
-.ang-navigation-menu-social {
-  width: 100%;
-  gap: 0.5rem;
-  justify-content: center !important;
-}
-
-span.ang-breadcrumbs-label,
-.ang-breadcrumbs-separator {
-  font-weight: 400;
-}
-
-mat-drawer-content {
-  display: block !important;
-}
-
-ang-table {
-  max-height: unset;
-
-  .align-right .mat-sort-header-container {
-    justify-content: end;
-  }
-
-  .mat-mdc-cell {
-    div {
-      margin-right: 1.125rem;
-    }
-  }
-}
-
-ang-providers-list {
-  .ang-provider-list--card {
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 markdown {
@@ -66,5 +38,60 @@ markdown {
     text-decoration-thickness: 2px;
     text-underline-offset: 2px;
     font-weight: 600;
+  }
+}
+
+mat-drawer-content {
+  --mat-sidenav-content-text-color: var(--mat-sys-on-surface-variant);
+}
+
+ang-navigation-menu {
+  .ang-navigation-menu-social {
+    width: 100%;
+    gap: 0.5rem;
+    justify-content: center !important;
+    border-top: none !important;
+  }
+}
+
+ang-breadcrumbs {
+  span.ang-breadcrumbs-label,
+  .ang-breadcrumbs-separator {
+    font-weight: 400;
+  }
+}
+
+ang-table {
+  max-height: unset;
+
+  th {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .align-right .mat-sort-header-container {
+    justify-content: flex-end;
+  }
+
+  .align-right.mat-sort-header {
+    padding-right: 7.5px;
+  }
+
+  td,
+  .align-right.mat-mdc-footer-cell {
+    padding-right: 1.5rem !important;
+  }
+}
+
+ang-providers-list {
+  .ang-provider-list--card {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+ang-cookie-modal {
+  .ang-cookie-modal--logo {
+    margin-right: auto;
   }
 }

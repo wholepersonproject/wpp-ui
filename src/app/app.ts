@@ -1,4 +1,4 @@
-import { Component, inject, model } from '@angular/core';
+import { Component, computed, inject, model } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, RouterModule } from '@angular/router';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
@@ -42,7 +42,11 @@ export class App {
 
   readonly appMenuItems = model<HeaderShellNavigationItem[]>([
     { id: 'home', label: 'Home', link: '/' },
-    { id: 'biomodels-explorer', label: 'BioModels Explorer', link: '/' },
+    {
+      id: 'biomodels-explorer',
+      label: 'BioModels Explorer',
+      link: 'https://wholepersonproject.github.io/wpp-eui-experiment/',
+    },
     {
       id: 'kg-explorer',
       label: 'Knowledge Graph Explorer',
@@ -57,6 +61,29 @@ export class App {
     'x',
   ]);
 
+  readonly currentTheme = model<'light' | 'dark'>();
+
+  readonly headerLogo = computed(() =>
+    this.currentTheme() === 'dark' ? 'wpp-header-dark.svg' : 'wpp-header.svg',
+  );
+  readonly footerLogo = computed(() =>
+    this.currentTheme() === 'dark' ? 'wpp-footer-dark.svg' : 'wpp-footer.svg',
+  );
+
+  constructor() {
+    this.currentTheme.set(
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light',
+    );
+
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (event) => {
+        this.currentTheme.set(event.matches ? 'dark' : 'light');
+      });
+  }
+
   openPrivacyPolicy() {
     void this.router.navigate(['/privacy-policy']);
   }
@@ -64,7 +91,7 @@ export class App {
   openPrivacyPreferences() {
     this.ref = this.dialog.open(CookieModal, {
       data: {
-        logoSrc: 'wpp-header.svg',
+        logoSrc: this.headerLogo(),
         permissions: this.permissionsManager.permissions(),
         providers: {
           marketing: [
