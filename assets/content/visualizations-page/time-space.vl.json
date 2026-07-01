@@ -1,35 +1,35 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "data": {
     "url": "https://cdn.wholepersonphysiome.org/data-products/reports/validation/wpp-temporal-spatial-counts-cleaned.csv"
   },
   "width": "container",
   "height": "container",
-  "padding": {
-    "left": 10,
-    "right": 10
-  },
+  "padding": 8,
   "config": {
-    "font": "Metropolis",
+    "font": "Open Sans Variable",
     "axis": {
-      "labelFontSize": 14,
+      "labelFontSize": 12,
       "titleFontSize": 14,
-      "titleFontWeight": 500,
-      "labelFontWeight": 500,
+      "titleFontWeight": 600,
+      "labelFontWeight": 400,
       "titleLineHeight": 21,
       "labelLineHeight": 21,
-      "titleColor": "#201E3D",
-      "labelColor": "#4B4B5E",
-      "titlePadding": 30
+      "titleColor": "#1C1B1E",
+      "labelColor": "#33404A",
+      "labelPadding": 4
     },
     "legend": {
-      "labelFontSize": 14,
+      "labelFontSize": 12,
       "titleFontSize": 14,
       "titleLineHeight": 21,
-      "titleColor": "#201E3D",
-      "labelColor": "#4B4B5E",
-      "titleFontWeight": 500,
-      "labelFontWeight": 500
+      "titleColor": "#1C1B1E",
+      "labelColor": "#33404A",
+      "titleFontWeight": 600,
+      "labelFontWeight": 400
+    },
+    "view": {
+      "stroke": "transparent"
     },
     "range": {
       "category": {
@@ -40,11 +40,11 @@
   "params": [
     {
       "name": "group_by",
-      "value": "<all tables combined>",
+      "value": "All systems combined",
       "bind": {
         "input": "select",
         "options": [
-          "<all tables combined>",
+          "All systems combined",
           "cardiovascular-system",
           "dental-and-craniofacial-system",
           "digestive-system",
@@ -74,7 +74,7 @@
   },
   "transform": [
     {
-      "filter": "group_by === '<all tables combined>' || datum.table === group_by"
+      "filter": "group_by === 'All systems combined' || datum.table === group_by"
     },
     {
       "calculate": "datum.process_count",
@@ -85,10 +85,10 @@
     "x": {
       "field": "effector_scale",
       "type": "nominal",
-      "title": "Spatial Scale",
+      "title": "Space",
       "axis": {
-        "labelAngle": -45,
-        "labelExpr": "upper(slice(datum.label, 0, 1)) + slice(datum.label, 1)"
+        "labelAngle": 0,
+        "labelExpr": "split(datum.label, ' ')"
       },
       "scale": {
         "domain": ["Body", "Organ system", "Organ", "Tissue", "FTU", "Cell"]
@@ -97,7 +97,7 @@
     "y": {
       "field": "time_scale",
       "type": "nominal",
-      "title": "Time Range",
+      "title": "Time",
       "axis": {
         "labelAngle": 0,
         "labelExpr": "upper(slice(datum.label, 0, 1)) + slice(datum.label, 1)"
@@ -118,10 +118,10 @@
       "aggregate": "sum",
       "field": "process_count_for_shape",
       "type": "quantitative",
-      "title": "# Processes",
+      "title": "#Processes",
       "scale": {
-        "scheme": "yellowgreen",
-        "domain": [0, 150],
+        "range": [0, 1200],
+        "domain": [0, 400],
         "zero": true,
         "clamp": true
       },
@@ -129,7 +129,9 @@
         "title": " ",
         "type": "symbol",
         "symbolFillColor": "white",
-        "tickCount": 4
+        "tickCount": 4,
+        "labelOffset": 8,
+        "values": [400, 300, 200, 100]
       }
     },
     "color": {
@@ -138,10 +140,16 @@
       "type": "quantitative",
       "title": "# Processes",
       "scale": {
-        "scheme": "yellowgreen",
-        "domain": [0, 150],
+        "range": ["#D5D6FF", "#241F67"],
+        "domain": [0, 400],
         "zero": true,
         "clamp": true
+      },
+      "legend": {
+        "gradientLength": 121,
+        "gradientThickness": 20,
+        "tickCount": 4,
+        "labelOffset": 6
       }
     }
   }

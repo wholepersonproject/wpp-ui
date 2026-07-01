@@ -37,19 +37,19 @@ content:
             numeric: true
           - column: uniqueAS
             label: |
-              #Unique AS
+              #Unique anatomical structures
             numeric: true
           - column: uniqueFTU
             label: |
-              #Unique FTU
+              #Unique functional tissue units
             numeric: true
           - column: uniqueCT
             label: |
-              #Unique CT
+              #Unique cell types
             numeric: true
           - column: uniqueB
             label: |
-              #Unique B
+              #Unique biomarkers
             numeric: true
           - column: uniqueProcesses
             label: |
