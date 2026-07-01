@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100%;
     background-attachment: fixed;
     background-size: cover;
@@ -16,9 +17,11 @@
   .landing-page-content-container {
     max-width: 106.25rem;
     padding: 1.25rem;
+    width: calc(100% - 2.5rem);
 
     @include breakpoints.breakpoint(medium, large, x-large) {
       padding: 2.5rem;
+      width: calc(100% - 5rem);
     }
   }
 
