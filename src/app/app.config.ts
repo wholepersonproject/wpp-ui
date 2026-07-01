@@ -14,6 +14,7 @@ import {
 } from '@atlasng/design-system/buttons/social-media';
 import { provideMarkdown } from 'ngx-markdown';
 import { appRoutes } from './app.routes';
+import { provideAnalytics, withDefaultBackend } from '@atlasng/analytics';
 
 // Social media button definitions for the application
 const SOCIAL_MEDIA_DEFS: SocialMediaButtonDef[] = [
@@ -56,5 +57,11 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     provideSocialMediaButtons(SOCIAL_MEDIA_DEFS),
+    provideAnalytics(
+      {},
+      withDefaultBackend({
+        endpoint: 'https://api.atlasng.dev/t',
+      }),
+    ),
   ],
 };
