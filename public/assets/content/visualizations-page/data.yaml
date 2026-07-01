@@ -75,7 +75,7 @@ content:
                 label: Functional tissue units
                 numeric: true
               - column: organ
-                label: Organ
+                label: Organs
                 numeric: true
               - column: as
                 label: Anatomical structures
@@ -99,7 +99,7 @@ content:
                 label: System
                 sticky: true
               - column: organ
-                label: Organ
+                label: Organs
                 numeric: true
               - column: as
                 label: Anatomical structures

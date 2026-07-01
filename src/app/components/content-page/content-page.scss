@@ -105,6 +105,10 @@
     width: 100%;
   }
 
+  .content-page-youtube-container {
+    max-width: 28rem;
+  }
+
   @include breakpoints.breakpoint(medium, large, x-large) {
     grid-template-areas:
       'header toc'

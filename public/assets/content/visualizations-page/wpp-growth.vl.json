@@ -9,24 +9,25 @@
   "config": {
     "font": "Open Sans Variable",
     "axis": {
-      "labelFontSize": 14,
+      "labelFontSize": 12,
       "titleFontSize": 14,
-      "titleFontWeight": 500,
-      "labelFontWeight": 500,
+      "titleFontWeight": 600,
+      "labelFontWeight": 400,
       "titleLineHeight": 21,
       "labelLineHeight": 21,
-      "titleColor": "#201E3D",
-      "labelColor": "#4B4B5E",
-      "titlePadding": 20
+      "titleColor": "#1C1B1E",
+      "labelColor": "#33404A",
+      "labelPadding": 4,
+      "titlePadding": 16
     },
     "legend": {
-      "labelFontSize": 14,
+      "labelFontSize": 12,
       "titleFontSize": 14,
       "titleLineHeight": 21,
-      "titleColor": "#201E3D",
-      "labelColor": "#4B4B5E",
-      "titleFontWeight": 500,
-      "labelFontWeight": 500
+      "titleColor": "#1C1B1E",
+      "labelColor": "#33404A",
+      "titleFontWeight": 600,
+      "labelFontWeight": 400
     }
   },
   "mark": {

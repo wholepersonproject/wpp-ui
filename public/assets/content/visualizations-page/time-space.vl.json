@@ -28,6 +28,9 @@
       "titleFontWeight": 600,
       "labelFontWeight": 400
     },
+    "view": {
+      "stroke": "transparent"
+    },
     "range": {
       "category": {
         "scheme": "category10"
