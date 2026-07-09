@@ -124,21 +124,21 @@ content:
           tissue units (FTUs), and resources across biological scales.
       - type: image
         src: assets/content/visualizations-page/bimodal-network.png
-        alt: Bimodal network
+        alt: A bimodal network visualization showing how major physiological systems connect to anatomical structures and functional tissue units across biological scales. Large purple nodes label physiological systems such as Fluid/Osmotic balance, Acid-base regulation, Glucose homeostasis, Endocrine cross-talk, Immune regulation, Calcium homeostasis, and Blood pressure regulation. Smaller tan nodes label related functional tissue units and anatomical structures, with curved gray lines showing weighted connections between them.
   - type: section
-    tagline: BioModels Explorer
-    anchor: biomodels-explorer
+    tagline: Multiscale Models Explorer
+    anchor: multiscale-models-explorer
     level: 2
     content:
       - type: markdown
         data: |
-          Explore the healthy human physiome in 3D.
+          The Multiscale Model Explorer is a 3D app for exploring human biology and anatomy models across organs, spatial scales, and temporal scales. Currently using data from [BioModels](https://www.biomodels.org), it helps researchers, developers, and educators quickly see what models are available and how they connect to the human body.
       - type: button
         text: Use app
         route: https://wholepersonproject.github.io/wpp-eui-experiment/
       - type: image
         src: assets/content/visualizations-page/physiome-explorer.png
-        alt: Physiome Explorer
+        alt: Screenshot of the Multiscale Model Explorer user interface. A 3D body visualization appears in the center, showing male and female human figures with selected internal organs highlighted. The left panel includes filters for anatomical structures, cell types, and biomarkers, while the right panel shows experimental data, summary statistics, and tissue block metadata links.
   - type: section
     tagline: Knowledge Graph visualization
     anchor: knowledge-graph-visualization
@@ -151,7 +151,7 @@ content:
           and harmonize WPP tables.
       - type: image
         src: assets/content/visualizations-page/knowledge-graph-schema.png
-        alt: Knowledge Graph schema
+        alt: Knowledge graph schema visualization for the Whole Person Physiome Knowledge Graph. A central Record node connects to fields such as ReferenceField, ClinicalMeasureField, FunctionField, InteractionField, EffectorField, and EffectorLocationField. These field nodes link to a Class node through source concept relationships, with additional loops showing ontology relationships such as subclass of, see also, consider, term replaced by, and mutually spatially disjoint with.
   - type: section
     tagline: References
     anchor: references
