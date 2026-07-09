@@ -43,7 +43,7 @@ export class App {
   readonly appMenuItems = model<HeaderShellNavigationItem[]>([
     { id: 'home', label: 'Home', link: '/' },
     {
-      id: 'biomodels-explorer',
+      id: 'multiscale-model-explorer',
       label: 'Multiscale Model Explorer',
       link: 'https://wholepersonproject.github.io/wpp-eui-experiment/',
     },
