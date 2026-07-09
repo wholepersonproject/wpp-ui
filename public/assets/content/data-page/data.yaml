@@ -22,7 +22,7 @@ content:
       - type: button
         text: Download summary
         icon: download
-        route: assets/content/data-page/wpp-table.csv
+        route: assets/content/data-page/wpp-table-summary.csv
       - type: table
         url: assets/content/data-page/wpp-table.csv
         footer: true

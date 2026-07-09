@@ -1,0 +1,15 @@
+System table,URL,#Unique organs,#Unique anatomical structures,#Unique functional tissue units,#Unique cell types,#Unique biomarkers,#Unique processes,#Spatial scales,#Temporal scales
+Cardiovascular system,https://purl.wholepersonphysiome.org/wpp/cardiovascular-system,18,108,2,9,0,10,2,6
+Dental and craniofacial system,https://purl.wholepersonphysiome.org/wpp/dental-and-craniofacial-system,9,82,8,12,0,34,2,6
+Digestive system,https://purl.wholepersonphysiome.org/wpp/digestive-system,15,19,0,32,0,264,4,20
+Endocrine system,https://purl.wholepersonphysiome.org/wpp/endocrine-system,19,52,6,41,0,66,5,6
+Fascia system,https://purl.wholepersonphysiome.org/wpp/fascia-system,24,83,0,14,0,245,4,8
+Female reproductive system,https://purl.wholepersonphysiome.org/wpp/female-reproductive-system,13,51,1,14,0,61,3,11
+Immune and lymphatic system,https://purl.wholepersonphysiome.org/wpp/immune-and-lymphatic-system,25,52,1,183,0,896,4,18
+Integumentary system,https://purl.wholepersonphysiome.org/wpp/integumentary-system,24,57,3,62,0,452,4,24
+Male reproductive system,https://purl.wholepersonphysiome.org/wpp/male-reproductive-system,10,53,1,9,0,28,3,11
+Muscular system,https://purl.wholepersonphysiome.org/wpp/muscular-system,9,13,0,5,0,2,2,6
+Nervous system,https://purl.wholepersonphysiome.org/wpp/nervous-system,21,177,7,19,0,56,2,3
+Pulmonary system,https://purl.wholepersonphysiome.org/wpp/pulmonary-system,13,30,1,9,0,73,4,7
+Skeletal system,https://purl.wholepersonphysiome.org/wpp/skeletal-system,3,10,2,7,0,7,2,3
+Urinary system,https://purl.wholepersonphysiome.org/wpp/urinary-system,5,26,3,18,0,140,4,10
