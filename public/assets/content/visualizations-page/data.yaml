@@ -126,8 +126,8 @@ content:
         src: assets/content/visualizations-page/bimodal-network.png
         alt: A bimodal network visualization showing how major physiological systems connect to anatomical structures and functional tissue units across biological scales. Large purple nodes label physiological systems such as Fluid/Osmotic balance, Acid-base regulation, Glucose homeostasis, Endocrine cross-talk, Immune regulation, Calcium homeostasis, and Blood pressure regulation. Smaller tan nodes label related functional tissue units and anatomical structures, with curved gray lines showing weighted connections between them.
   - type: section
-    tagline: Multiscale Models Explorer
-    anchor: multiscale-models-explorer
+    tagline: Multiscale Model Explorer
+    anchor: multiscale-model-explorer
     level: 2
     content:
       - type: markdown
