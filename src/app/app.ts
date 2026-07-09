@@ -44,7 +44,7 @@ export class App {
     { id: 'home', label: 'Home', link: '/' },
     {
       id: 'biomodels-explorer',
-      label: 'BioModels Explorer',
+      label: 'Multiscale Model Explorer',
       link: 'https://wholepersonproject.github.io/wpp-eui-experiment/',
     },
     {
