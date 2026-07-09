@@ -17201,12 +17201,12 @@ var kTe = (() => {
         this.reactiveHref.set(n);
       }
       set target(n) {
-        this._self.set(n);
+        this._target.set(n);
       }
       get target() {
-        return Vn(this._self);
+        return Vn(this._target);
       }
-      _self = at(void 0);
+      _target = at(void 0);
       set queryParams(n) {
         this._queryParams.set(n);
       }
@@ -17348,7 +17348,7 @@ var kTe = (() => {
             st('click', function (a) {
               return i.onClick(a.button, a.ctrlKey, a.shiftKey, a.altKey, a.metaKey);
             }),
-            r & 2 && Re('href', i.reactiveHref(), Q_)('target', i._self()));
+            r & 2 && Re('href', i.reactiveHref(), Q_)('target', i._target()));
         },
         inputs: {
           target: 'target',
@@ -19144,7 +19144,7 @@ var rs = (function (e) {
     return e;
   })(),
   Ux = class e {
-    _self;
+    _target;
     _ngZone;
     _platform;
     _containerElement;
@@ -19157,7 +19157,7 @@ var rs = (function (e) {
     _containerRect = null;
     static _eventManager = new L$();
     constructor(t, n, r, i, o) {
-      ((this._self = t), (this._ngZone = n), (this._platform = i), i.isBrowser && (this._containerElement = ns(r)), o && o.get(vr).load(JTe));
+      ((this._target = t), (this._ngZone = n), (this._platform = i), i.isBrowser && (this._containerElement = ns(r)), o && o.get(vr).load(JTe));
     }
     fadeInRipple(t, n, r = {}) {
       let i = (this._containerRect = this._containerRect || this._containerElement.getBoundingClientRect()),
@@ -19262,13 +19262,13 @@ var rs = (function (e) {
     _onMousedown(t) {
       let n = Qp(t),
         r = this._lastTouchStartEvent && Date.now() < this._lastTouchStartEvent + ZTe;
-      !this._self.rippleDisabled && !n && !r && ((this._isPointerDown = !0), this.fadeInRipple(t.clientX, t.clientY, this._self.rippleConfig));
+      !this._target.rippleDisabled && !n && !r && ((this._isPointerDown = !0), this.fadeInRipple(t.clientX, t.clientY, this._target.rippleConfig));
     }
     _onTouchStart(t) {
-      if (!this._self.rippleDisabled && !Zp(t)) {
+      if (!this._target.rippleDisabled && !Zp(t)) {
         ((this._lastTouchStartEvent = Date.now()), (this._isPointerDown = !0));
         let n = t.changedTouches;
-        if (n) for (let r = 0; r < n.length; r++) this.fadeInRipple(n[r].clientX, n[r].clientY, this._self.rippleConfig);
+        if (n) for (let r = 0; r < n.length; r++) this.fadeInRipple(n[r].clientX, n[r].clientY, this._target.rippleConfig);
       }
     }
     _onPointerUp() {
@@ -23260,7 +23260,7 @@ var hM = (() => {
       decls: 5,
       vars: 4,
       consts: [
-        ['matIconButton', '', 'angTrackClick', '', 'target', '_blank'],
+        ['matIconButton', '', 'angTrackClick', '', 'target', '_self'],
         [3, 'class', 'svgIcon'],
         [3, 'class', 'fontIcon'],
         [1, 'mask-icon', 3, 'class'],
@@ -28810,7 +28810,7 @@ var Tre = (() => {
         ['mat-header-cell', '', 'mat-sort-header', ''],
         ['mat-cell', ''],
         [2, 'text-align', 'right'],
-        ['angTextLink', '', 'target', '_blank', 3, 'href'],
+        ['angTextLink', '', 'target', '_self', 3, 'href'],
         ['mat-footer-cell', '', 'class', 'footer', 3, 'align-right', 4, 'matFooterCellDef'],
         ['mat-footer-cell', '', 1, 'footer'],
         ['mat-header-row', ''],
@@ -69866,7 +69866,7 @@ async function qnt(e, t, n = {}, r) {
             M = ce(n.scaleFactor) ? n.scaleFactor[_] : n.scaleFactor;
           ((k.text = S),
             (k.href = '#'),
-            (k.target = '_blank'),
+            (k.target = '_self'),
             (k.download = `${c}.${_}`),
             k.addEventListener('mousedown', async function (I) {
               I.preventDefault();
@@ -70307,7 +70307,7 @@ var rrt = [
     ['dir', { policyAction: Jr.KEEP_AND_NORMALIZE, conditions: Hd(() => new Map([['dir', new Set(['auto', 'ltr', 'rtl'])]])) }],
     ['async', { policyAction: Jr.KEEP_AND_NORMALIZE, conditions: Hd(() => new Map([['async', new Set(['async'])]])) }],
     ['loading', { policyAction: Jr.KEEP_AND_NORMALIZE, conditions: Hd(() => new Map([['loading', new Set(['eager', 'lazy'])]])) }],
-    ['target', { policyAction: Jr.KEEP_AND_NORMALIZE, conditions: Hd(() => new Map([['target', new Set(['_self', '_blank'])]])) }],
+    ['target', { policyAction: Jr.KEEP_AND_NORMALIZE, conditions: Hd(() => new Map([['target', new Set(['_self', '_self'])]])) }],
   ],
   r0e = new dS(new Set(rrt), new Map(irt), new Set(ort), new Map(art), void 0);
 function Tq(e, ...t) {
@@ -70862,7 +70862,7 @@ var l0e = (() => {
         ['player', ''],
         [3, 'videoId', 'playerVars', 'disableCookies'],
         [1, 'youtube-thumbnail-container'],
-        ['target', '_blank', 'rel', 'noopener noreferrer'],
+        ['target', '_self', 'rel', 'noopener noreferrer'],
         [1, 'thumbnail-image'],
         [1, 'enable-cookies-message'],
         [1, 'enable-cookies-button', 3, 'click'],
@@ -78545,7 +78545,7 @@ var Xat = (() => {
           [1, 'ang-provider-list--card', 3, 'angEventScope'],
           [1, 'ang-provider-list--card'],
           [1, 'ang-provider-list--label'],
-          ['angTextLink', '', 'target', '_blank', 1, 'ang-provider-list--link', 3, 'angAnyLink'],
+          ['angTextLink', '', 'target', '_self', 1, 'ang-provider-list--link', 3, 'angAnyLink'],
           ['fontIcon', 'open_in_new'],
           [1, 'ang-provider-list--empty-text'],
         ],
@@ -78872,7 +78872,7 @@ var S_e = (() => {
       decls: 16,
       vars: 7,
       consts: [
-        ['target', '_blank', 1, 'ang-footer-logo', 3, 'angAnyLink'],
+        ['target', '_self', 1, 'ang-footer-logo', 3, 'angAnyLink'],
         [3, 'src'],
         [1, 'ang-footer-socials'],
         [1, 'ang-footer-social-icon', 3, 'id'],
@@ -78880,7 +78880,7 @@ var S_e = (() => {
         [1, 'ang-footer-privacy'],
         ['matButton', '', 3, 'click'],
         [1, 'ang-footer-copyright'],
-        ['angTextLink', '', 'target', '_blank', 1, 'ang-footer-link', 3, 'angAnyLink'],
+        ['angTextLink', '', 'target', '_self', 1, 'ang-footer-link', 3, 'angAnyLink'],
       ],
       template: function (r, i) {
         (r & 1 &&
@@ -83069,7 +83069,7 @@ var q_e = (() => {
           'matTooltip',
           'Help & documentation',
           'target',
-          '_blank',
+          '_self',
           3,
           'angAnyLink',
         ],
@@ -83104,7 +83104,7 @@ var clt = ['*'],
         decls: 3,
         vars: 1,
         consts: [
-          ['matButton', '', 'angTrackClick', '', 'target', '_blank', 'disableRipple', '', 1, 'ang-navigation-button', 3, 'angAnyLink'],
+          ['matButton', '', 'angTrackClick', '', 'target', '_self', 'disableRipple', '', 1, 'ang-navigation-button', 3, 'angAnyLink'],
           [1, 'ang-navigation-text'],
         ],
         template: function (r, i) {
@@ -83879,7 +83879,7 @@ var Ilt = ['*'],
           [1, 'ang-header-shell'],
           [1, 'ang-header-shell-left'],
           ['matIconButton', '', 'angTrackClick', '', 'type', 'button', 1, 'ang-header-shell-menu-button', 3, 'matTooltip'],
-          ['aria-label', 'Go to homepage', 'target', '_blank', 'matTooltip', 'Homepage', 1, 'ang-header-shell-logo', 3, 'angAnyLink'],
+          ['aria-label', 'Go to homepage', 'target', '_self', 'matTooltip', 'Homepage', 1, 'ang-header-shell-logo', 3, 'angAnyLink'],
           ['alt', 'App Logo', 3, 'src'],
           ['vertical', '', 1, 'ang-header-shell-divider'],
           ['aria-label', 'Primary navigation', 1, 'ang-header-shell-desktop-nav'],
