@@ -8,76 +8,115 @@ headerContent:
     - name: Resources
 content:
   - type: section
-    tagline: Whole Person Physiome (WPP) Tables
-    anchor: wpp-tables
+    tagline: Videos
+    anchor: Videos
     level: 2
     content:
       - type: markdown
         data: |
-          Jacob Scherba (University of Pennsylvania) presents a brief introduction to the Whole 
-          Person Physiome (WPP) tables on December 3, 2025.
-      - type: youtube
-        videoId: HLs_Tmjiz8U
-  - type: section
-    tagline: Standards for Multiscale Cellular Modeling
-    anchor: standards-for-multiscale-cellular-modeling
-    level: 2
-    content:
-      - type: markdown
-        data: |
-          Katy Börner (Indiana University) introduces Eran Agmon (UConn Health), who presents his 
-          research on standards for multiscale cellular modeling at Human Reference Atlas Working 
-          Group #68 on November 5, 2025.
+          Videos supporting Whole Person Physiome research.
 
-          Learn more at [Vivarium Lab](https://vivariumlab.com).
-      - type: youtube
-        videoId: hmCrPPL6kyQ
-  - type: section
-    tagline: CompuCell3D
-    anchor: compucell3d
-    level: 2
-    content:
-      - type: markdown
-        data: |
-          James Glazier (Indiana University) presents CompuCell3D, an open-source software 
-          environment for building agent-based models of multicellular biology, at Human Reference 
-          Atlas Working Group #65 on August 6, 2025.
+      - type: section
+        tagline: Whole Person Physiome (WPP) Tables
+        anchor: wpp-tables
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              Jacob Scherba (University of Pennsylvania) presents a brief introduction to the Whole 
+              Person Physiome (WPP) tables on December 3, 2025.
+          - type: youtube
+            videoId: HLs_Tmjiz8U
 
-          Learn more at [CompuCell3D](https://compucell3d.org).
-      - type: youtube
-        videoId: WYKv-yB_j2M
-  - type: section
-    tagline: CIFAR MacMillan Multiscale Human
-    anchor: cifar-macmillan-multiscale-human
-    level: 2
-    content:
-      - type: youtube
-        videoId: -F6i5KOVGx8
-  - type: section
-    tagline: |
-      Understanding Exercise and MoTrPAC: Informational Video
-    anchor: motrpac
-    level: 2
-    content:
-      - type: markdown
-        data: |
-          Watch Astronaut Dr. Peggy Whitson explain the importance of understanding exercise and 
-          The NIH Common Fund’s Molecular Transducers of Physical Activity in Humans Consortium 
-          (MoTrPAC). The MoTrPAC program is a trans-NIH effort managed by the NIH Common Fund in 
-          the Office of the Director and supported by several Institutes & Centers including, 
-          NIAMS, NIA and NIDDK. 
+      - type: section
+        tagline: Standards for Multiscale Cellular Modeling
+        anchor: standards-for-multiscale-cellular-modeling
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              Katy Börner (Indiana University) introduces Eran Agmon (UConn Health), who presents his 
+              research on standards for multiscale cellular modeling at Human Reference Atlas Working 
+              Group #68 on November 5, 2025.
 
-          Learn more about the [MoTrPAC program and recruitment](https://commonfund.nih.gov/MolecularTransducers/PublicHealthRelevance).
-      - type: youtube
-        videoId: STdfWChns5w
+              Learn more at [Vivarium Lab](https://vivariumlab.com).
+          - type: youtube
+            videoId: hmCrPPL6kyQ
+
+      - type: section
+        tagline: CompuCell3D
+        anchor: compucell3d
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              James Glazier (Indiana University) presents CompuCell3D, an open-source software 
+              environment for building agent-based models of multicellular biology, at Human Reference 
+              Atlas Working Group #65 on August 6, 2025.
+
+              Learn more at [CompuCell3D](https://compucell3d.org).
+          - type: youtube
+            videoId: WYKv-yB_j2M
+      - type: section
+        tagline: CIFAR MacMillan Multiscale Human
+        anchor: cifar-macmillan-multiscale-human
+        level: 3
+        content:
+          - type: youtube
+            videoId: -F6i5KOVGx8
+      - type: section
+        tagline: |
+          Understanding Exercise and MoTrPAC: Informational Video
+        anchor: motrpac
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              Watch Astronaut Dr. Peggy Whitson explain the importance of understanding exercise and 
+              The NIH Common Fund’s Molecular Transducers of Physical Activity in Humans Consortium 
+              (MoTrPAC). The MoTrPAC program is a trans-NIH effort managed by the NIH Common Fund in 
+              the Office of the Director and supported by several Institutes & Centers including, 
+              NIAMS, NIA and NIDDK. 
+
+              Learn more about the [MoTrPAC program and recruitment](https://commonfund.nih.gov/MolecularTransducers/PublicHealthRelevance).
+          - type: youtube
+            videoId: STdfWChns5w
+      - type: section
+        tagline: MoTrPAC Data Hub Tutorial
+        anchor: motrpac-tutorial
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              Learn about how to navigate the MoTrPAC Data Hub and explore the multi-omics multi-tissue 
+              exercise data.
+
+          - type: youtube
+            videoId: 3zHnzUMo_vw
+
   - type: section
-    tagline: MoTrPAC Data Hub Tutorial
-    anchor: motrpac-tutorial
+    tagline: Upcoming events
+    anchor: upcoming-events
     level: 2
     content:
       - type: markdown
         data: |
-          Learn about how to navigate the MoTrPAC Data Hub and explore the multi-omics multi-tissue 
-          exercise data.
-      - type: youtube
-        videoId: 3zHnzUMo_vw
+          See the latest events and webinars related to the Whole Person Physiome.
+
+  - type: section
+    tagline: Upcoming events
+    anchor: upcoming-events
+    level: 3
+    content:
+      - type: markdown
+        data: |
+          See the latest events and webinars related to the Whole Person Physiome.
+
+  - type: section
+    tagline: Past events
+    anchor: past-events
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Past event and webinar details.

@@ -1,0 +1,73 @@
+headerContent:
+  title: About
+  subtitle: |
+    Explore the mission, governance, and people advancing the Whole Person Physiome.
+  breadcrumbs:
+    - name: Home
+      command: /
+    - name: About
+content:
+  - type: section
+    tagline: Mission
+    anchor: mission
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          To construct a digital human physiome resource that integrates the multiscale interactions and processes of all major organs into a singular framework. 
+
+          We are building a comprehensive, multi-organ, digital map of human physiology designed to unify how we understand the body across scales—from molecular interactions to cross-organ function. The whole person physiome map organizes expert medical knowledge of how the body works into a detailed breakdown of individual, interconnected processes, each linked to clinical measurements and standard ontologies in a computer-readable format. On top of this, we are building and publishing knowledge graphs, visualization tools, and models. Our goal is to build a resource for researchers and clinicians that work on the next generation of biomedical models.
+
+          This is a collaborative effort. We welcome expert review of our whole person physiome map and models. There are many opportunities to collaborate, e.g., joining WPP Hackathons, WPP public meetings in DC, or contacting us here.  All of our resources are made publicly available in regular release cycles through this portal. We welcome input and comments.
+
+          The WPP-RCC is supported under the NCCIH Whole Person Initiative. We are funded through a 3-year grant by the National Center for Complementary and Integrative Health ([U24AT013504](https://reporter.nih.gov/search/yOAlsMKLCEmIyDzF09sw-g/project-details/11224772)) with funding from 21 NIH institutes and offices.
+
+  - type: section
+    tagline: Governance
+    anchor: governance
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Learn how the Whole Person Physiome is organized, governed, and guided through collaborative leadership.
+          
+      - type: button
+        text: View governance structure
+        icon: open_in_new
+        route: assets/content/about-page/governance-structure.pdf
+
+  - type: section
+    tagline: Team
+    anchor: team
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Team text here.
+
+  - type: section
+    tagline: Scientific leadership
+    anchor: scientific-leadership
+    level: 3
+    content:
+      - type: markdown
+        data: |
+          Content here.
+
+  - type: section
+    tagline: Organ domain experts
+    anchor: organ-domain-experts
+    level: 3
+    content:
+      - type: markdown
+        data: |
+          Content here.
+
+  - type: section
+    tagline: External advisory board (EAB)
+    anchor: external-advisory-board
+    level: 3
+    content:
+      - type: markdown
+        data: |
+          Content here.

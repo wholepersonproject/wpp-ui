@@ -24,6 +24,7 @@ export class App {
 
   readonly navigationItems = model<HeaderShellNavigationItem[]>([
     { id: 'home', label: 'Home', link: '/', icon: 'home' },
+    { id: 'about', label: 'About', link: '/about', icon: 'info' },
     { id: 'data', label: 'Data', link: '/data', icon: 'database' },
     {
       id: 'visualizations',
