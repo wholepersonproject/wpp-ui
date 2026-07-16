@@ -25,6 +25,7 @@ content:
             data: |
               Jacob Scherba (University of Pennsylvania) presents a brief introduction to the Whole 
               Person Physiome (WPP) tables on December 3, 2025.
+
           - type: youtube
             videoId: HLs_Tmjiz8U
 
@@ -55,8 +56,10 @@ content:
               Atlas Working Group #65 on August 6, 2025.
 
               Learn more at [CompuCell3D](https://compucell3d.org).
+            
           - type: youtube
             videoId: WYKv-yB_j2M
+  
       - type: section
         tagline: CIFAR MacMillan Multiscale Human
         anchor: cifar-macmillan-multiscale-human
@@ -79,8 +82,10 @@ content:
               NIAMS, NIA and NIDDK. 
 
               Learn more about the [MoTrPAC program and recruitment](https://commonfund.nih.gov/MolecularTransducers/PublicHealthRelevance).
+
           - type: youtube
             videoId: STdfWChns5w
+    
       - type: section
         tagline: MoTrPAC Data Hub Tutorial
         anchor: motrpac-tutorial
@@ -103,14 +108,14 @@ content:
         data: |
           See the latest events and webinars related to the Whole Person Physiome.
 
-  - type: section
-    tagline: Upcoming events
-    anchor: upcoming-events
-    level: 3
-    content:
-      - type: markdown
-        data: |
-          See the latest events and webinars related to the Whole Person Physiome.
+      - type: section
+        tagline: Human Reference Atlas & Whole Person Physiome Hackathon
+        anchor: hackathon-2026-08-03
+        level: 3
+        content:
+          - type: markdown
+            data: |
+              See the latest events and webinars related to the Whole Person Physiome.
 
   - type: section
     tagline: Past events
@@ -119,4 +124,4 @@ content:
     content:
       - type: markdown
         data: |
-          Past event and webinar details.
+           Past event and webinar details.
