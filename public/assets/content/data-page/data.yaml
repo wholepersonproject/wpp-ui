@@ -63,15 +63,17 @@ content:
             label: |
               #Temporal scales
             numeric: true
-      - type: section
-        tagline: Limitations
-        anchor: limitations
-        level: 3
-        content:
-          - type: markdown
-            data: |
-              WPP table design is iterative. We are running interviews with leading experts around the globe 
-              to understand how to best capture the fractal nature and emergent behavior of human physiology.
+
+  - type: section
+    tagline: Limitations
+    anchor: limitations
+    level: 3
+    content:
+      - type: markdown
+        data: |
+          WPP table design is iterative. We are running interviews with leading experts around the globe 
+          to understand how to best capture the fractal nature and emergent behavior of human physiology.
+
   - type: section
     tagline: References
     anchor: references

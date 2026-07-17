@@ -53,66 +53,66 @@ content:
           Explore how many biological processes occur at which spatial and temporal scales.
       - type: visualization
         url: assets/content/visualizations-page/time-space.vl.json
-      - type: section
-        tagline: Unique processes
-        anchor: unique-processes
-        level: 3
-        underline: false
-        content:
-          - type: table
-            url: assets/content/visualizations-page/unique-processes.csv
-            columns:
-              - column: system
-                label: System
-                sticky: true
-              - column: biomarkers
-                label: Biomarkers
-                numeric: true
-              - column: ct
-                label: Cell types
-                numeric: true
-              - column: ftu
-                label: Functional tissue units
-                numeric: true
-              - column: organ
-                label: Organs
-                numeric: true
-              - column: as
-                label: Anatomical structures
-                numeric: true
-              - column: total
-                label: Total
-                numeric: true
-              - column: total-unique
-                label: Total unique
-                numeric: true
-      - type: section
-        tagline: Unique effectors
-        anchor: unique-effectors
-        level: 3
-        underline: false
-        content:
-          - type: table
-            url: assets/content/visualizations-page/unique-effectors.csv
-            columns:
-              - column: system
-                label: System
-                sticky: true
-              - column: organ
-                label: Organs
-                numeric: true
-              - column: as
-                label: Anatomical structures
-                numeric: true
-              - column: ct
-                label: Cell types
-                numeric: true
-              - column: total
-                label: Total
-                numeric: true
-              - column: total-unique
-                label: Total unique
-                numeric: true
+  - type: section
+    tagline: Unique processes
+    anchor: unique-processes
+    level: 3
+    underline: false
+    content:
+      - type: table
+        url: assets/content/visualizations-page/unique-processes.csv
+        columns:
+          - column: system
+            label: System
+            sticky: true
+          - column: biomarkers
+            label: Biomarkers
+            numeric: true
+          - column: ct
+            label: Cell types
+            numeric: true
+          - column: ftu
+            label: Functional tissue units
+            numeric: true
+          - column: organ
+            label: Organs
+            numeric: true
+          - column: as
+            label: Anatomical structures
+            numeric: true
+          - column: total
+            label: Total
+            numeric: true
+          - column: total-unique
+            label: Total unique
+            numeric: true
+  - type: section
+    tagline: Unique effectors
+    anchor: unique-effectors
+    level: 3
+    underline: false
+    content:
+      - type: table
+        url: assets/content/visualizations-page/unique-effectors.csv
+        columns:
+          - column: system
+            label: System
+            sticky: true
+          - column: organ
+            label: Organs
+            numeric: true
+          - column: as
+            label: Anatomical structures
+            numeric: true
+          - column: ct
+            label: Cell types
+            numeric: true
+          - column: total
+            label: Total
+            numeric: true
+          - column: total-unique
+            label: Total unique
+            numeric: true
   - type: section
     tagline: Multimodal networks
     anchor: multimodal-networks
