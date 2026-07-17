@@ -17,8 +17,10 @@ content:
         data: |
           Track how the number of anatomical structures, functional tissue units, and cell types 
           included in the Whole Person Physiome tables expands quality and coverage over time.
+
       - type: visualization
         url: assets/content/visualizations-page/wpp-growth.vl.json
+        
   - type: section
     tagline: Data overlap with the Human Reference Atlas
     anchor: data-overlap-with-hra
@@ -28,6 +30,7 @@ content:
         data: |
           See which entities are represented in the Whole Person Physiome (WPP) and Human Reference 
           Atlas (HRA) to understand shared coverage.
+
       - type: table
         url: assets/content/visualizations-page/data-overlap.csv
         columns:
@@ -43,6 +46,7 @@ content:
           - column: wpp-hra
             label: WPP & HRA
             numeric: true
+
   - type: section
     tagline: Time-space graphs
     anchor: time-space-graphs
@@ -51,68 +55,72 @@ content:
       - type: markdown
         data: |
           Explore how many biological processes occur at which spatial and temporal scales.
+
       - type: visualization
         url: assets/content/visualizations-page/time-space.vl.json
-      - type: section
-        tagline: Unique processes
-        anchor: unique-processes
-        level: 3
-        underline: false
-        content:
-          - type: table
-            url: assets/content/visualizations-page/unique-processes.csv
-            columns:
-              - column: system
-                label: System
-                sticky: true
-              - column: biomarkers
-                label: Biomarkers
-                numeric: true
-              - column: ct
-                label: Cell types
-                numeric: true
-              - column: ftu
-                label: Functional tissue units
-                numeric: true
-              - column: organ
-                label: Organs
-                numeric: true
-              - column: as
-                label: Anatomical structures
-                numeric: true
-              - column: total
-                label: Total
-                numeric: true
-              - column: total-unique
-                label: Total unique
-                numeric: true
-      - type: section
-        tagline: Unique effectors
-        anchor: unique-effectors
-        level: 3
-        underline: false
-        content:
-          - type: table
-            url: assets/content/visualizations-page/unique-effectors.csv
-            columns:
-              - column: system
-                label: System
-                sticky: true
-              - column: organ
-                label: Organs
-                numeric: true
-              - column: as
-                label: Anatomical structures
-                numeric: true
-              - column: ct
-                label: Cell types
-                numeric: true
-              - column: total
-                label: Total
-                numeric: true
-              - column: total-unique
-                label: Total unique
-                numeric: true
+
+  - type: section
+    tagline: Unique processes
+    anchor: unique-processes
+    level: 3
+    underline: false
+    content:
+      - type: table
+        url: assets/content/visualizations-page/unique-processes.csv
+        columns:
+          - column: system
+            label: System
+            sticky: true
+          - column: biomarkers
+            label: Biomarkers
+            numeric: true
+          - column: ct
+            label: Cell types
+            numeric: true
+          - column: ftu
+            label: Functional tissue units
+            numeric: true
+          - column: organ
+            label: Organs
+            numeric: true
+          - column: as
+            label: Anatomical structures
+            numeric: true
+          - column: total
+            label: Total
+            numeric: true
+          - column: total-unique
+            label: Total unique
+            numeric: true
+
+  - type: section
+    tagline: Unique effectors
+    anchor: unique-effectors
+    level: 3
+    underline: false
+    content:
+      - type: table
+        url: assets/content/visualizations-page/unique-effectors.csv
+        columns:
+          - column: system
+            label: System
+            sticky: true
+          - column: organ
+            label: Organs
+            numeric: true
+          - column: as
+            label: Anatomical structures
+            numeric: true
+          - column: ct
+            label: Cell types
+            numeric: true
+          - column: total
+            label: Total
+            numeric: true
+          - column: total-unique
+            label: Total unique
+            numeric: true
+
   - type: section
     tagline: Multimodal networks
     anchor: multimodal-networks
@@ -125,6 +133,7 @@ content:
       - type: image
         src: assets/content/visualizations-page/bimodal-network.png
         alt: A bimodal network visualization showing how major physiological systems connect to anatomical structures and functional tissue units across biological scales. Large purple nodes label physiological systems such as Fluid/Osmotic balance, Acid-base regulation, Glucose homeostasis, Endocrine cross-talk, Immune regulation, Calcium homeostasis, and Blood pressure regulation. Smaller tan nodes label related functional tissue units and anatomical structures, with curved gray lines showing weighted connections between them.
+  
   - type: section
     tagline: Multiscale Model Explorer
     anchor: multiscale-model-explorer
@@ -139,6 +148,7 @@ content:
       - type: image
         src: assets/content/visualizations-page/physiome-explorer.png
         alt: Screenshot of the Multiscale Model Explorer user interface. A 3D body visualization appears in the center, showing male and female human figures with selected internal organs highlighted. The left panel includes filters for anatomical structures, cell types, and biomarkers, while the right panel shows experimental data, summary statistics, and tissue block metadata links.
+  
   - type: section
     tagline: Knowledge Graph visualization
     anchor: knowledge-graph-visualization
@@ -152,6 +162,7 @@ content:
       - type: image
         src: assets/content/visualizations-page/knowledge-graph-schema.png
         alt: Knowledge graph schema visualization for the Whole Person Physiome Knowledge Graph. A central Record node connects to fields such as ReferenceField, ClinicalMeasureField, FunctionField, InteractionField, EffectorField, and EffectorLocationField. These field nodes link to a Class node through source concept relationships, with additional loops showing ontology relationships such as subclass of, see also, consider, term replaced by, and mutually spatially disjoint with.
+  
   - type: section
     tagline: References
     anchor: references

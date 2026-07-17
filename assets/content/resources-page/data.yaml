@@ -1,27 +1,192 @@
 headerContent:
   title: Resources
   subtitle: |
-    Educational content supporting Whole Person Physiome research.
+    Resources and events supporting Whole Person Physiome research.
   breadcrumbs:
     - name: Home
       command: /
     - name: Resources
 content:
   - type: section
+    tagline: Visual assets
+    anchor: visual-assets
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Download a ZIP file containing Whole Person Physiome logos to support your presentations, publications, and other communications about the effort. File formats included are SVG, PNG, and PDF.
+
+      - type: button
+        text: Download logos
+        icon: download
+        route: assets/content/resources-page/wpp-logos.zip
+
+      - type: image
+        src: assets\content\resources-page\wpp-visuals.png
+        alt: Whole Person Physiome brandmark and logo.
+
+  - type: section
+    tagline: Upcoming official events
+    anchor: upcoming-official-events
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Upcoming events organized by the Whole Person Physiome Research and Coordination Center.
+ 
+  - type: section
+    tagline: "Whole Person Physiome Virtual Hackathon: August 24-25, 2026"
+    anchor: wpp-hackathon-2026-08-24
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          This online hackathon is for primary investigators, programmers, scientists, and clinicians to explore the first version of our whole person knowledge graph and pilot models and identify use cases and features for improvement and collaboration. Open to the public.
+          * When: August 24-25, 2026
+          * Where: Virtual
+          * Organizer: Whole Person Physiome Research and Coordination Center
+
+      - type: button
+        text: Register
+        icon: edit_calendar
+        route: https://docs.google.com/forms/d/e/1FAIpQLSdtlSiGxb6GlXXpDDZMsjO5srpx-3xzKhGIYY1xiS6Ig0YFIA/viewform
+ 
+  - type: section
+    tagline: "Tentative agenda"
+    anchor: wpp-hackathon-2026-agenda
+    level: 4
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          Monday, August 24 — Day 1
+          - 10:00–10:30 a.m. ET — Welcome from the organizers
+          - 10:30 a.m.–12:30 p.m. ET — Introductory talks from all teams: available data, code, expertise, and driving use cases
+          - 12:30–1:30 p.m. ET — Lunch break
+          - 1:30–2:30 p.m. ET — Brainstorm hackathon topics
+          - 2:30–5:30 p.m. ET — Work in small groups
+          - 5:30–6:00 p.m. ET — Joint check-in and reports from each team
+
+          Tuesday, August 25 — Day 2
+          - 10:00 a.m.–12:30 p.m. ET — Work in small groups
+          - 12:30–1:30 p.m. ET — Lunch break
+          - 1:30–4:30 p.m. ET — Work in small groups
+          - 4:30–5:30 p.m. ET — Presentation of results
+          - 5:30–6:00 p.m. ET — Discussion of next steps
+
+  - type: section
+    tagline: Upcoming external events
+    anchor: upcoming-external-events
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Upcoming events organized by external organizations that are relevant to Whole Person Physiome research.
+
+  - type: section
+    tagline: "Human Reference Atlas & Whole Person Physiome Hackathon: August 3-5, 2026"
+    anchor: hackathon-2026-08-03
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          This hackathon brings experts together to build new connections across human anatomy, biology, and data.
+          * When: August 3-5, 2026
+          * Where: Indiana University, Bloomington, Indiana, USA
+          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon)
+
+  - type: section
+    tagline: "Berlin Hackathon: August 27-28, 2026"
+    anchor: berlin-hackathon
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          This two-day hackathon brings researchers and developers together to connect human anatomy, cell types, physical traits, and other biomedical data. Participants will explore new shared resources and build tools that support disease research, precision health, and whole-person modeling.
+          * When: August 27-28, 2026
+          * Where: Berlin Institute of Health at Charité, Berlin, Germany
+          * Participating efforts: Human Reference Atlas, Human Phenotype Ontology, Whole Person Physiome, and other European Union efforts
+          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon)
+
+  - type: section
+    tagline: "24-Hour Human Physiology Event: December 12-13, 2026"
+    anchor: 24-hour-human-physiology-event
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          This two-day event brings researchers and developers together to connect human anatomy, cell types, physical traits, and other biomedical data. Participants will explore new shared resources and build tools that support disease research, precision health, and whole-person modeling.
+          * When: December 12-13, 2026
+          * Where: Virtual via Zoom
+          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon)
+
+  - type: section
+    tagline: Past official events
+    anchor: past-official-events
+    level: 2
+    content:
+      - type: markdown
+        data: |
+           Past events organized by the Whole Person Physiome Research and Coordination Center.
+
+  - type: section
+    tagline: Annual Meeting 2026
+    anchor: annual-meeting-2026
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          The first Whole Person Physiome Annual Meeting brought the research community together on June 17–18, 2026. Attendees explored new tools and resources, discussed priorities with the National Institutes of Health, and helped define early applications for the Whole Person Physiome map and pilot models.
+
+          * When: June 17-18, 2026
+          * Where: Rockville, Maryland, USA
+          * Organizer: Whole Person Physiome Research and Coordination Center
+
+      - type: button
+        text: View agenda
+        icon: event_note
+        route: assets/content/resources-page/wpp-annual-meeting-2026-agenda.pdf    
+
+      - type: image
+        src: assets/content/resources-page/wpp-annual-meeting-2026-poster.png
+        alt: Event Poster for the Whole Person Physiome Annual Meeting, June 17–18, 2026, in Rockville, Maryland.
+
+  - type: section
+    tagline: Videos
+    anchor: videos
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Videos supporting Whole Person Physiome research.
+
+  - type: section
     tagline: Whole Person Physiome (WPP) Tables
     anchor: wpp-tables
-    level: 2
+    level: 3
+    underline: false
     content:
       - type: markdown
         data: |
           Jacob Scherba (University of Pennsylvania) presents a brief introduction to the Whole 
           Person Physiome (WPP) tables on December 3, 2025.
+
       - type: youtube
         videoId: HLs_Tmjiz8U
+
   - type: section
     tagline: Standards for Multiscale Cellular Modeling
     anchor: standards-for-multiscale-cellular-modeling
-    level: 2
+    level: 3
+    underline: false
     content:
       - type: markdown
         data: |
@@ -32,10 +197,12 @@ content:
           Learn more at [Vivarium Lab](https://vivariumlab.com).
       - type: youtube
         videoId: hmCrPPL6kyQ
+
   - type: section
     tagline: CompuCell3D
     anchor: compucell3d
-    level: 2
+    level: 3
+    underline: false
     content:
       - type: markdown
         data: |
@@ -44,20 +211,25 @@ content:
           Atlas Working Group #65 on August 6, 2025.
 
           Learn more at [CompuCell3D](https://compucell3d.org).
+        
       - type: youtube
         videoId: WYKv-yB_j2M
+
   - type: section
     tagline: CIFAR MacMillan Multiscale Human
     anchor: cifar-macmillan-multiscale-human
-    level: 2
+    level: 3
+    underline: false
     content:
       - type: youtube
         videoId: -F6i5KOVGx8
+
   - type: section
     tagline: |
       Understanding Exercise and MoTrPAC: Informational Video
     anchor: motrpac
-    level: 2
+    level: 3
+    underline: false
     content:
       - type: markdown
         data: |
@@ -68,16 +240,21 @@ content:
           NIAMS, NIA and NIDDK. 
 
           Learn more about the [MoTrPAC program and recruitment](https://commonfund.nih.gov/MolecularTransducers/PublicHealthRelevance).
+
       - type: youtube
         videoId: STdfWChns5w
+    
   - type: section
     tagline: MoTrPAC Data Hub Tutorial
     anchor: motrpac-tutorial
-    level: 2
+    level: 3
+    underline: false
     content:
       - type: markdown
         data: |
           Learn about how to navigate the MoTrPAC Data Hub and explore the multi-omics multi-tissue 
           exercise data.
+
       - type: youtube
         videoId: 3zHnzUMo_vw
+
