@@ -31,7 +31,68 @@
 <div class="content-page-sections">
   @for (section of data().content; track $index) {
     <div class="content-page-section" [id]="section.anchor">
-      <h2 angSectionHeader [anchor]="section.anchor">{{ section.tagline }}</h2>
+      @switch (section.level) {
+        @case (1) {
+          <h1
+            angSectionHeader
+            [anchor]="section.anchor"
+            [underlined]="section.underline ?? true"
+            [id]="section.anchor"
+          >
+            {{ section.tagline }}
+          </h1>
+        }
+        @case (2) {
+          <h2
+            angSectionHeader
+            [anchor]="section.anchor"
+            [underlined]="section.underline ?? true"
+            [id]="section.anchor"
+          >
+            {{ section.tagline }}
+          </h2>
+        }
+        @case (3) {
+          <h3
+            angSectionHeader
+            [anchor]="section.anchor"
+            [underlined]="section.underline ?? true"
+            [id]="section.anchor"
+          >
+            {{ section.tagline }}
+          </h3>
+        }
+        @case (4) {
+          <h4
+            angSectionHeader
+            [anchor]="section.anchor"
+            [underlined]="section.underline ?? true"
+            [id]="section.anchor"
+          >
+            {{ section.tagline }}
+          </h4>
+        }
+        @case (5) {
+          <h5
+            angSectionHeader
+            [anchor]="section.anchor"
+            [underlined]="section.underline ?? true"
+            [id]="section.anchor"
+          >
+            {{ section.tagline }}
+          </h5>
+        }
+        @default {
+          <h2
+            angSectionHeader
+            [anchor]="section.anchor"
+            [underlined]="section.underline ?? true"
+            [id]="section.anchor"
+          >
+            {{ section.tagline }}
+          </h2>
+        }
+      }
 
       <div class="content-page-subsections">
         @for (subsection of section.content; track $index) {
@@ -83,7 +144,11 @@
               />
             }
             @if (subsection.type === 'button') {
-              <a matButton="filled" [href]="subsection.route">
+              <a
+                matButton="filled"
+                [attr.href]="subsection.route"
+                [attr.download]="subsection.download ? '' : null"
+              >
                 @if (subsection.icon) {
                   <mat-icon [fontIcon]="subsection.icon"></mat-icon>
                 }

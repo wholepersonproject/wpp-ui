@@ -23,6 +23,7 @@ interface ButtonContent {
   text: string;
   route: string;
   icon?: string;
+  download?: boolean;
 }
 
 interface ImageContent {
