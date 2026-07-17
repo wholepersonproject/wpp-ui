@@ -1,12 +1,80 @@
 headerContent:
   title: Resources
   subtitle: |
-    Event details, educational videos, and news for Whole Person Physiome research.
+    Resources and events supporting Whole Person Physiome research.
   breadcrumbs:
     - name: Home
       command: /
     - name: Resources
 content:
+  - type: section
+    tagline: Visual assets
+    anchor: visual-assets
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Download a ZIP file containing Whole Person Physiome logos to support your presentations, publications, and other communications about the effort. File formats included are SVG, PNG, and PDF.
+
+      - type: button
+        text: Download logos
+        icon: download
+        route: assets/content/resources-page/wpp-logos.zip
+
+      - type: image
+        src: assets\content\resources-page\wpp-visuals.png
+        alt: Whole Person Physiome brandmark and logo.
+
+  - type: section
+    tagline: Upcoming official events
+    anchor: upcoming-official-events
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Upcoming events organized by the Whole Person Physiome Research and Coordination Center.
+ 
+  - type: section
+    tagline: "Whole Person Physiome Virtual Hackathon: August 24-25, 2026"
+    anchor: wpp-hackathon-2026-08-24
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          This online hackathon is for primary investigators, programmers, scientists, and clinicians to explore the first version of our whole person knowledge graph and pilot models and identify use cases and features for improvement and collaboration. Open to the public.
+          * When: August 24-25, 2026
+          * Where: Virtual
+          * Organizer: Whole Person Physiome Research and Coordination Center
+
+      - type: button
+        text: Register
+        icon: edit_calendar
+        route: https://docs.google.com/forms/d/e/1FAIpQLSdtlSiGxb6GlXXpDDZMsjO5srpx-3xzKhGIYY1xiS6Ig0YFIA/viewform
+ 
+  - type: section
+    tagline: "Tentative agenda"
+    anchor: wpp-hackathon-2026-agenda
+    level: 4
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          **Monday, August 24 — Day 1**
+          - 10:00–10:30 a.m. ET — Welcome from the organizers
+          - 10:30 a.m.–12:30 p.m. ET — Introductory talks from all teams: available data, code, expertise, and driving use cases
+          - 12:30–1:30 p.m. ET — Lunch break
+          - 1:30–2:30 p.m. ET — Brainstorm hackathon topics
+          - 2:30–5:30 p.m. ET — Work in small groups
+          - 5:30–6:00 p.m. ET — Joint check-in and reports from each team
+
+          **Tuesday, August 25 — Day 2**
+          - 10:00 a.m.–12:30 p.m. ET — Work in small groups
+          - 12:30–1:30 p.m. ET — Lunch break
+          - 1:30–4:30 p.m. ET — Work in small groups
+          - 4:30–5:30 p.m. ET — Presentation of results
+          - 5:30–6:00 p.m. ET — Discussion of next steps
+
   - type: section
     tagline: Upcoming external events
     anchor: upcoming-external-events
@@ -17,7 +85,7 @@ content:
           Upcoming events organized by external organizations that are relevant to Whole Person Physiome research.
 
   - type: section
-    tagline: Human Reference Atlas & Whole Person Physiome Hackathon
+    tagline: "Human Reference Atlas & Whole Person Physiome Hackathon: August 3-5, 2026"
     anchor: hackathon-2026-08-03
     level: 3
     underline: false
@@ -27,15 +95,11 @@ content:
           This hackathon brings experts together to build new connections across human anatomy, biology, and data.
           * When: August 3-5, 2026
           * Where: Indiana University, Bloomington, Indiana, USA
-          * Organizer: [Cyberinfrastructure for Network Science Center (CNS)](https://cns.iu.edu)
-
-      - type: button
-        text: Event info
-        icon: event_upcoming
-        route: https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon
+          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon)
 
   - type: section
-    tagline: Berlin Hackathon
+    tagline: "Berlin Hackathon: August 27-28, 2026"
     anchor: berlin-hackathon
     level: 3
     underline: false
@@ -45,13 +109,23 @@ content:
           This two-day hackathon brings researchers and developers together to connect human anatomy, cell types, physical traits, and other biomedical data. Participants will explore new shared resources and build tools that support disease research, precision health, and whole-person modeling.
           * When: August 27-28, 2026
           * Where: Berlin Institute of Health at Charité, Berlin, Germany
-          * Organizer: [Cyberinfrastructure for Network Science Center (CNS)](https://cns.iu.edu)
           * Participating efforts: Human Reference Atlas, Human Phenotype Ontology, Whole Person Physiome, and other European Union efforts
+          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon)
 
-      - type: button
-        text: Event info
-        icon: event_upcoming
-        route: https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon
+  - type: section
+    tagline: "24-Hour Human Physiology Event: December 12-13, 2026"
+    anchor: 24-hour-human-physiology-event
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          This two-day event brings researchers and developers together to connect human anatomy, cell types, physical traits, and other biomedical data. Participants will explore new shared resources and build tools that support disease research, precision health, and whole-person modeling.
+          * When: December 12-13, 2026
+          * Where: Virtual via Zoom
+          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon)
 
   - type: section
     tagline: Past official events
@@ -63,14 +137,14 @@ content:
            Past events organized by the Whole Person Physiome Research and Coordination Center.
 
   - type: section
-    tagline: Annual meeting 2026
+    tagline: Annual Meeting 2026
     anchor: annual-meeting-2026
     level: 3
     underline: false
     content:
       - type: markdown
         data: |
-          Join us for our first Whole Person Physiome Annual meeting. The goal of this event is to share on the latest developments and resources generated by the new Whole Person Phyisome Research and Coordinating Center and discuss with the NIH and members of the research community key challenges and goals for the upcoming year, including identifying first use cases for deploying the whole person physiome map and pilot models.
+          The first Whole Person Physiome Annual Meeting brought the research community together on June 17–18, 2026. Attendees explored new tools and resources, discussed priorities with the National Institutes of Health, and helped define early applications for the Whole Person Physiome map and pilot models.
 
           * When: June 17-18, 2026
           * Where: Rockville, Maryland, USA
@@ -83,11 +157,11 @@ content:
 
       - type: image
         src: assets/content/resources-page/wpp-annual-meeting-2026-poster.png
-        alt: "Event Poster for the Whole Person Physiome Annual Meeting, June 17–18, 2026, in Rockville, Maryland."
+        alt: Event Poster for the Whole Person Physiome Annual Meeting, June 17–18, 2026, in Rockville, Maryland.
 
   - type: section
     tagline: Videos
-    anchor: Videos
+    anchor: videos
     level: 2
     content:
       - type: markdown

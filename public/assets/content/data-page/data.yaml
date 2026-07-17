@@ -19,10 +19,12 @@ content:
           Initially, 14 physiological systems are modeled. All data is publicly available via CSV files but 
           users are encouraged to query the [Whole Person Physiome Knowledge Graph](https://kg.wholepersonphysiome.org/) 
           to access the data.
+          
       - type: button
         text: Download summary
         icon: download
         route: assets/content/data-page/wpp-table-summary.csv
+
       - type: table
         url: assets/content/data-page/wpp-table.csv
         footer: true
