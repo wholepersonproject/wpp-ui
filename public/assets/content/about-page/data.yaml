@@ -18,9 +18,9 @@ content:
 
           We are building a comprehensive, multi-organ, digital map of human physiology designed to unify how we understand the body across scales—from molecular interactions to cross-organ function. The whole person physiome map organizes expert medical knowledge of how the body works into a detailed breakdown of individual, interconnected processes, each linked to clinical measurements and standard ontologies in a computer-readable format. On top of this, we are building and publishing knowledge graphs, visualization tools, and models. Our goal is to build a resource for researchers and clinicians that work on the next generation of biomedical models.
 
-          This is a collaborative effort. We welcome expert review of our whole person physiome map and models. There are many opportunities to collaborate, e.g., joining hackathons, public meetings in Washington D.C., or contacting us here.  All of our resources are made publicly available in regular release cycles through this portal. We welcome input and comments.
+          This is a collaborative effort. We welcome expert review of our whole person physiome map and models. There are many opportunities to collaborate, e.g., joining hackathons or public meetings in Washington D.C. All of our resources are made publicly available in regular release cycles through this portal. We welcome input and comments.
 
-          The WPP-RCC is supported under the NCCIH Whole Person Initiative. We are funded through a 3-year grant by the National Center for Complementary and Integrative Health ([U24AT013504](https://reporter.nih.gov/search/yOAlsMKLCEmIyDzF09sw-g/project-details/11224772)) with funding from 21 National Institutes of Health (NIH) institutes and offices.
+          The Whole Person Physiome Research and Coordination Center (WPP-RCC) is supported under the National Center for Complementary and Integrative Health (NCCIH) Whole Person Initiative. We are funded through a 3-year grant by the National Center for Complementary and Integrative Health ([U24AT013504](https://reporter.nih.gov/search/yOAlsMKLCEmIyDzF09sw-g/project-details/11224772)) with funding from 21 National Institutes of Health (NIH) institutes and offices.
 
   - type: section
     tagline: Governance
@@ -49,6 +49,7 @@ content:
         tagline: Scientific leadership
         anchor: scientific-leadership
         level: 3
+
         content:
           - type: markdown
             data: |

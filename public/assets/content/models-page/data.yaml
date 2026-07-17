@@ -21,7 +21,7 @@ content:
           focus on potential personalized use cases.
       - type: image
         src: assets/content/models-page/multiscale-dynamics.png
-        alt: Multiscale dynamics
+        alt: Schematic of multiscale physiological dynamics showing interconnected layers from molecular and cellular processes to tissues, organs, and whole‑body interactions.
   - type: section
     tagline: References
     anchor: references
