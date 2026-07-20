@@ -4,6 +4,7 @@ import {
   computed,
   input,
 } from '@angular/core';
+import { TextLink } from '@atlasng/design-system/text-link';
 
 /** YAML-configurable information shown for one team member. */
 export interface TeamMember {
@@ -17,7 +18,7 @@ export interface TeamMember {
 
 @Component({
   selector: 'wpp-team-grid',
-  imports: [],
+  imports: [TextLink],
   templateUrl: './team-grid.html',
   styleUrl: './team-grid.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

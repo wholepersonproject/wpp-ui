@@ -21,7 +21,7 @@
       <div class="member-details">
         <h4>
           @if (member.url) {
-            <a [href]="member.url">{{ member.name }}</a>
+            <a angTextLink [href]="member.url">{{ member.name }}</a>
           } @else {
             {{ member.name }}
           }
