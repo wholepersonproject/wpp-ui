@@ -30,7 +30,7 @@ content:
       - type: markdown
         data: |
           Learn how the Whole Person Physiome is organized, governed, and guided through collaborative leadership.
-          
+
       - type: button
         text: View governance structure
         icon: open_in_new
@@ -55,18 +55,37 @@ content:
         data: |
           Provides strategic direction for the Whole Person Physiome Research and Coordination Center, coordinates work across its four core areas, and oversees the program and its public resources.
 
-          * **[Michael Snyder](https://snyderlab.stanford.edu)**
-            * Stanford W. Ascherman Professor Director, Center for Genomics and Personalized Medicine, Stanford University
-          * **[Katy Börner](https://cns-iu.github.io/katy)**
-            * Victor H. Yngve Distinguished Professor, Department of Intelligent Systems Engineering, Indiana University
-            * Director, Cyberinfrastructure for Network Science Center, Luddy School, Indiana University
-          * **[Katalin Susztak](https://www.med.upenn.edu/susztaklab)**
-            * Professor of Medicine and Genetics, University of Pennsylvania
-          * **[Liming Pei](https://www.research.chop.edu/pei-laboratory)**
-            * Associate Professor of Pathology and Laboratory Medicine, Children’s Hospital of Philadelphia
-          * **[Griffin Weber](https://dbmi.hms.harvard.edu/people/griffin-weber)**
-            * Associate Professor of Medicine, Beth Israel Deaconess Medical Center
-            * Associate Professor of Biomedical Informatics, Harvard Medical School
+      # Members render in this order. Optional fields: url, details, alt, and imagePosition.
+      - type: team-grid
+        columns: 3
+        members:
+          - name: Michael Snyder
+            image: assets/content/about-page/team/michael-snyder.jpg
+            url: https://snyderlab.stanford.edu
+            details:
+              - Stanford W. Ascherman Professor Director, Center for Genomics and Personalized Medicine, Stanford University
+          - name: Katy Börner
+            image: assets/content/about-page/team/katy-borner.jpg
+            url: https://cns-iu.github.io/katy
+            details:
+              - Victor H. Yngve Distinguished Professor, Department of Intelligent Systems Engineering, Indiana University
+              - Director, Cyberinfrastructure for Network Science Center, Luddy School, Indiana University
+          - name: Katalin Susztak
+            image: assets/content/about-page/team/katalin-susztak.jpg
+            url: https://www.med.upenn.edu/susztaklab
+            details:
+              - Professor of Medicine and Genetics, University of Pennsylvania
+          - name: Liming Pei
+            image: assets/content/about-page/team/liming-pei.jpg
+            url: https://www.research.chop.edu/pei-laboratory
+            details:
+              - Associate Professor of Pathology and Laboratory Medicine, Children’s Hospital of Philadelphia
+          - name: Griffin Weber
+            image: assets/content/about-page/team/griffin-weber.jpg
+            url: https://dbmi.hms.harvard.edu/people/griffin-weber
+            details:
+              - Associate Professor of Medicine, Beth Israel Deaconess Medical Center
+              - Associate Professor of Biomedical Informatics, Harvard Medical School
 
   - type: section
     tagline: Organ domain experts
@@ -78,29 +97,54 @@ content:
         data: |
           Clinician-scientists representing major organ systems who help recruit additional experts and guide development of accurate, connected maps of human physiology.
 
-          * **Anne Cappola**
-            * Professor of Medicine, University of Pennsylvania
-            * Director, Penn Medical Communication Research Institute
-          * **Brian Capell**
-            * Assistant Professor of Dermatology and Genetics, University of Pennsylvania
-          * **David Hill**
-            * Assistant Professor of Pediatrics, Children’s Hospital of Philadelphia
-          * **Rajan Jain**
-            * Associate Professor of Medicine, University of Pennsylvania
-          * **Rebecca Wells**
-            * Professor of Medicine, Pathology and Laboratory Medicine, and Bioengineering, University of Pennsylvania
-          * **Richard Phillips**
-            * Presidential Assistant Professor in Neuro-Oncology, University of Pennsylvania
-          * **Kotaro Sasaki**
-            * Associate Professor of Biomedical Sciences, University of Pennsylvania
-          * **Kathleen O'Neill**
-            * Assistant Professor of Obstetrics and Gynecology, University of Pennsylvania
-          * **Maria Basil**
-            * Assistant Professor of Medicine, University of Pennsylvania
-          * **Ernestina Schipani**
-            * Professor of Orthopaedic Surgery, University of Pennsylvania
-          * **Hansell Stedman**
-            * Professor of Surgery, University of Pennsylvania
+      - type: team-grid
+        columns: 3
+        members:
+          - name: Anne Cappola
+            image: assets/content/about-page/team/anne-cappola.jpg
+            details:
+              - Professor of Medicine, University of Pennsylvania
+              - Director, Penn Medical Communication Research Institute
+          - name: Brian Capell
+            image: assets/content/about-page/team/brian-capell.jpg
+            details:
+              - Assistant Professor of Dermatology and Genetics, University of Pennsylvania
+          - name: David Hill
+            image: assets/content/about-page/team/david-hill.jpg
+            details:
+              - Assistant Professor of Pediatrics, Children’s Hospital of Philadelphia
+          - name: Rajan Jain
+            image: assets/content/about-page/team/rajan-jain.jpg
+            details:
+              - Associate Professor of Medicine, University of Pennsylvania
+          - name: Rebecca Wells
+            image: assets/content/about-page/team/rebecca-wells.jpg
+            details:
+              - Professor of Medicine, Pathology and Laboratory Medicine, and Bioengineering, University of Pennsylvania
+          - name: Richard Phillips
+            image: assets/content/about-page/team/richard-phillips.jpg
+            details:
+              - Presidential Assistant Professor in Neuro-Oncology, University of Pennsylvania
+          - name: Kotaro Sasaki
+            image: assets/content/about-page/team/kotaro-sasaki.jpg
+            details:
+              - Associate Professor of Biomedical Sciences, University of Pennsylvania
+          - name: Kathleen O'Neill
+            image: assets/content/about-page/team/kathleen-oneill.jpg
+            details:
+              - Assistant Professor of Obstetrics and Gynecology, University of Pennsylvania
+          - name: Maria Basil
+            image: assets/content/about-page/team/maria-basil.jpg
+            details:
+              - Assistant Professor of Medicine, University of Pennsylvania
+          - name: Ernestina Schipani
+            image: assets/content/about-page/team/ernestina-schipani.jpg
+            details:
+              - Professor of Orthopaedic Surgery, University of Pennsylvania
+          - name: Hansell Stedman
+            image: assets/content/about-page/team/hansell-stedman.jpg
+            details:
+              - Professor of Surgery, University of Pennsylvania
 
   - type: section
     tagline: Collaborators
@@ -112,8 +156,14 @@ content:
         data: |
           Contributes specialized expertise and works with the Whole Person Physiome Research and Coordination Center to advance its maps, models, and public resources.
 
-          * **[Gary Bader](https://baderlab.org)**
-            * Professor of Molecular Genetics, University of Toronto
+      - type: team-grid
+        columns: 3
+        members:
+          - name: Gary Bader
+            image: assets/content/about-page/team/gary-bader.jpg
+            url: https://baderlab.org
+            details:
+              - Professor of Molecular Genetics, University of Toronto
 
   - type: section
     tagline: External advisory board
@@ -125,20 +175,33 @@ content:
         data: |
           A group of independent experts in modeling, physiology, ontology, and ethics who advise NIH leadership and help guide major program decisions.
 
-          * **Shaista Malik**
-            * Medical Director, Integrative Cardiology and Cardiac Rehab
-            * Associate Vice Chancellor for Integrative Health
-            * Executive Director, Susan Samueli Integrative Health Institute
-            * Susan Samueli Endowed Chair of Integrative Medicine
-            * University of California, Irvine
-          * **Walter Boron**
-            * Distinguished University Professor
-            * David N. and Inez Myers/Antonio Scarpa Professor, Department of Physiology and Biophysics
-            * Case Western Reserve University School of Medicine
-          * **Helene Langevin**
-            * Research Director, Osher Center for Integrative Health, University of Vermont
-          * **Ary Goldberger**
-            * Chief, Division of Interdisciplinary Medicine and Biotechnology, Beth Israel Deaconess Medical Center
-            * Professor of Medicine, Beth Israel Deaconess Medical Center
-          * **Melissa Haendel**
-            * Director, Translational and Integrative Sciences Laboratory, University of North Carolina at Chapel Hill
+      - type: team-grid
+        columns: 3
+        members:
+          - name: Shaista Malik
+            image: assets/content/about-page/team/shaista-malik.jpg
+            details:
+              - Medical Director, Integrative Cardiology and Cardiac Rehab
+              - Associate Vice Chancellor for Integrative Health
+              - Executive Director, Susan Samueli Integrative Health Institute
+              - Susan Samueli Endowed Chair of Integrative Medicine
+              - University of California, Irvine
+          - name: Walter Boron
+            image: assets/content/about-page/team/walter-boron.jpg
+            details:
+              - Distinguished University Professor
+              - David N. and Inez Myers/Antonio Scarpa Professor, Department of Physiology and Biophysics
+              - Case Western Reserve University School of Medicine
+          - name: Helene Langevin
+            image: assets/content/about-page/team/helene-langevin.jpg
+            details:
+              - Research Director, Osher Center for Integrative Health, University of Vermont
+          - name: Ary Goldberger
+            image: assets/content/about-page/team/ary-goldberger.jpg
+            details:
+              - Chief, Division of Interdisciplinary Medicine and Biotechnology, Beth Israel Deaconess Medical Center
+              - Professor of Medicine, Beth Israel Deaconess Medical Center
+          - name: Melissa Haendel
+            image: assets/content/about-page/team/melissa-haendel.jpg
+            details:
+              - Director, Translational and Integrative Sciences Laboratory, University of North Carolina at Chapel Hill

@@ -160,6 +160,13 @@
               <wpp-visualization [url]="subsection.url"></wpp-visualization>
             }
 
+            @if (subsection.type === 'team-grid') {
+              <wpp-team-grid
+                [members]="subsection.members"
+                [columns]="subsection.columns ?? 3"
+              ></wpp-team-grid>
+            }
+
             @if (subsection.type === 'youtube') {
               <div class="content-page-youtube-container">
                 <ang-youtube-player

@@ -1,0 +1,40 @@
+<ul
+  class="team-grid"
+  [style.--team-grid-columns]="columnCount()"
+  aria-label="Team members"
+>
+  @for (member of members(); track member.name) {
+    <li class="team-member">
+      <div class="portrait-frame">
+        <img
+          class="portrait"
+          [src]="member.image"
+          [alt]="member.alt ?? 'Portrait of ' + member.name"
+          [style.object-position]="member.imagePosition ?? 'center 25%'"
+          width="640"
+          height="800"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <div class="member-details">
+        <h4>
+          @if (member.url) {
+            <a [href]="member.url">{{ member.name }}</a>
+          } @else {
+            {{ member.name }}
+          }
+        </h4>
+
+        @if (member.details?.length) {
+          <ul class="member-roles">
+            @for (detail of member.details; track detail) {
+              <li>{{ detail }}</li>
+            }
+          </ul>
+        }
+      </div>
+    </li>
+  }
+</ul>

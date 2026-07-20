@@ -12,6 +12,7 @@ import { Visualization } from '../visualization/visualization';
 import { YoutubePlayer } from '@atlasng/labs/youtube-player';
 import { AnalyticsEventCategory } from '@atlasng/analytics/events';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
+import { TeamGrid, type TeamMember } from '../team-grid/team-grid';
 
 interface MarkdownContent {
   type: 'markdown';
@@ -42,6 +43,12 @@ interface VisualizationContent {
   url: string;
 }
 
+interface TeamGridContent {
+  type: 'team-grid';
+  members: TeamMember[];
+  columns?: number;
+}
+
 type Content =
   | PageSection
   | MarkdownContent
@@ -49,7 +56,8 @@ type Content =
   | TableContent
   | ImageContent
   | YoutubeContent
-  | VisualizationContent;
+  | VisualizationContent
+  | TeamGridContent;
 
 interface PageSection {
   type: 'section';
@@ -80,6 +88,7 @@ interface ContentPageData {
     MarkdownModule,
     Visualization,
     YoutubePlayer,
+    TeamGrid,
   ],
   providers: [ActiveSectionService],
   templateUrl: './content-page.html',
