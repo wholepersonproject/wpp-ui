@@ -8,24 +8,6 @@ headerContent:
     - name: Resources
 content:
   - type: section
-    tagline: Visual assets
-    anchor: visual-assets
-    level: 2
-    content:
-      - type: markdown
-        data: |
-          Download a ZIP file containing Whole Person Physiome logos to support your presentations, publications, and other communications about the effort. File formats included are SVG, PNG, and PDF.
-
-      - type: button
-        text: Download logos
-        icon: download
-        route: assets/content/resources-page/wpp-logos.zip
-
-      - type: image
-        src: assets\content\resources-page\wpp-visuals.png
-        alt: Whole Person Physiome brandmark and logo.
-
-  - type: section
     tagline: Upcoming official events
     anchor: upcoming-official-events
     level: 2
@@ -257,4 +239,23 @@ content:
 
       - type: youtube
         videoId: 3zHnzUMo_vw
+
+  - type: section
+    tagline: Visual assets
+    anchor: visual-assets
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Download a ZIP file containing Whole Person Physiome logos to support your presentations, publications, and other communications about the effort. File formats included are SVG, PNG, and PDF.
+
+      - type: button
+        text: Download logos
+        icon: download
+        route: assets/content/resources-page/wpp-logos.zip
+
+      - type: image
+        src: assets\content\resources-page\wpp-visuals.png
+        alt: Whole Person Physiome brandmark and logo.
+
 
