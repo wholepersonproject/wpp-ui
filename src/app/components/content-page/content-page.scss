@@ -141,6 +141,14 @@
   }
 }
 
+ang-grid-container {
+  justify-items: unset;
+}
+
+::ng-deep ang-profile-card .description {
+  white-space: pre-line;
+}
+
 ::ng-deep .ang-section-header-content {
   font-weight: 500;
 }

@@ -170,6 +170,27 @@
                 ></ang-youtube-player>
               </div>
             }
+
+            @if (subsection.type === 'grid') {
+              <ang-grid-container>
+                @for (card of subsection.content; track $index) {
+                  <ang-profile-card
+                    [pictureUrl]="card.pictureUrl"
+                    [name]="card.name"
+                    [description]="card.description"
+                  >
+                    <a
+                      angTextLink
+                      [angAnyLink]="card.actions.url"
+                      class="action-link"
+                    >
+                      {{ card.actions.text }}
+                      <mat-icon [fontIcon]="card.actions.icon" />
+                    </a>
+                  </ang-profile-card>
+                }
+              </ang-grid-container>
+            }
           </div>
         }
       </div>

@@ -12,6 +12,10 @@ import { Visualization } from '../visualization/visualization';
 import { YoutubePlayer } from '@atlasng/labs/youtube-player';
 import { AnalyticsEventCategory } from '@atlasng/analytics/events';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
+import { GridContainer } from '@atlasng/labs/grid-container';
+import { ProfileCard } from '@atlasng/labs/profile-card';
+import { TextLink } from '@atlasng/design-system/text-link';
+import { AnyLink } from '@atlasng/common';
 
 interface MarkdownContent {
   type: 'markdown';
@@ -42,6 +46,24 @@ interface VisualizationContent {
   url: string;
 }
 
+interface GridContent {
+  type: 'grid';
+  content: Card[];
+}
+
+interface Card {
+  type: 'profile-card';
+  name: string;
+  description: string;
+  pictureUrl: string;
+  actions: {
+    type: 'text-hyperlink';
+    text: string;
+    url: string;
+    icon: string;
+  };
+}
+
 type Content =
   | PageSection
   | MarkdownContent
@@ -49,7 +71,8 @@ type Content =
   | TableContent
   | ImageContent
   | YoutubeContent
-  | VisualizationContent;
+  | VisualizationContent
+  | GridContent;
 
 interface PageSection {
   type: 'section';
@@ -72,6 +95,8 @@ interface ContentPageData {
 @Component({
   selector: 'wpp-content-page',
   imports: [
+    AnyLink,
+    TextLink,
     Breadcrumbs,
     SectionHeader,
     MatButtonModule,
@@ -80,6 +105,8 @@ interface ContentPageData {
     MarkdownModule,
     Visualization,
     YoutubePlayer,
+    GridContainer,
+    ProfileCard,
   ],
   providers: [ActiveSectionService],
   templateUrl: './content-page.html',
