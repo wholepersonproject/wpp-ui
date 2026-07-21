@@ -6,6 +6,10 @@ $config: (
   tokens: (
     outline-radius: token-utils.sys-token(corner-extra-large),
     card-background: token-utils.sys-token(surface-bright),
+    // Maintains AAA contrast over the darkest possible image pixels.
+    card-background-opacity: 86%,
+    card-background-dark: rgba(28, 31, 34, 0.8),
+    card-backdrop-filter: blur(0.5rem),
     card-color: token-utils.sys-token(on-surface-variant),
     card-header-color: token-utils.sys-token(on-surface),
     card-header-font: token-utils.sys-token(display-medium-font),

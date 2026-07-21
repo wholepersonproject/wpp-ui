@@ -1,0 +1,37 @@
+@use '@atlasng/design-system/sass/internal/token-utils';
+
+$config: (
+  namespace: 'news-and-events',
+  tokens: (
+    section-background: token-utils.sys-token(surface),
+    section-color: token-utils.sys-token(on-surface),
+    card-background: token-utils.sys-token(primary-container),
+    card-border: token-utils.sys-token(outline),
+    card-interaction-border: token-utils.sys-token(primary),
+    card-interaction-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 12%),
+    card-color: token-utils.sys-token(on-surface),
+    card-title-color: token-utils.sys-token(on-primary-container),
+    secondary-color: token-utils.sys-token(on-surface-variant),
+    focus-color: token-utils.sys-token(on-surface),
+    heading-font: token-utils.sys-token(display-medium-font),
+    heading-line-height: token-utils.sys-token(display-medium-line-height),
+    heading-size: token-utils.sys-token(display-medium-size),
+    heading-weight: 500,
+    date-font: token-utils.sys-token(label-large),
+    date-tracking: token-utils.sys-token(label-large-tracking),
+    card-title-font: token-utils.sys-token(title-medium),
+    card-title-tracking: token-utils.sys-token(title-medium-tracking),
+    summary-font: token-utils.sys-token(body-medium),
+    summary-tracking: token-utils.sys-token(body-medium-tracking),
+    tag-font: token-utils.sys-token(label-medium),
+    // Figma uses the label-medium metrics with its smaller tracking token.
+    tag-tracking: 0.00625rem,
+    // Figma's event-card component uses a 20px corner radius.
+    card-radius: 1.25rem,
+    interaction-duration: 160ms,
+  ),
+);
+
+@mixin overrides($overrides) {
+  @include token-utils.apply-overrides($overrides, $config);
+}

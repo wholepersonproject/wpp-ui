@@ -12,7 +12,9 @@
   [socialMediaIds]="socialMediaIds()"
   #navigation
 >
-  <router-outlet />
+  <main class="page-content">
+    <router-outlet />
+  </main>
   <ang-footer
     orgName="Whole Person Physiome"
     [logoUrl]="footerLogo()"

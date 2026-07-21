@@ -1,0 +1,46 @@
+# All landing-page content is managed here. Keep item IDs unique and stable when
+# editing titles. URLs may be internal paths or fully qualified links.
+splash:
+  backgroundImageUrl: ./home-splash.png
+  title: Let’s map and model human physiology
+  description: The Whole Person Physiome (WPP) project brings experts together to map how the healthy human body works and share it through an easy-to-use online hub with data, models, and tools for research.
+  funder: Funded by the National Institutes of Health
+
+newsAndEvents:
+  title: News and events
+  items:
+    - date: August 3-5, 2026
+      id: hra-wpp-hackathon-2026-08-03
+      title: Human Reference Atlas & Whole Person Physiome Hackathon
+      summary: Organized by the Cyberinfrastructure for Network Science Center at Indiana University
+      tag:
+        label: Bloomington, Indiana, USA
+        icon: location_on
+      url: https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon
+
+    - date: August 24-25, 2026
+      id: wpp-hackathon-2026-08-24
+      title: Whole Person Physiome Hackathon
+      summary: Organized by the Whole Person Physiome Research and Coordination Center
+      tag:
+        label: Virtual & open to the public
+        icon: public
+      url: /events#wpp-hackathon-2026-08-24
+
+    - date: August 27-28, 2026
+      id: berlin-hackathon-2026-08-27
+      title: Berlin Hackathon
+      summary: Organized by the Cyberinfrastructure for Network Science Center at Indiana University
+      tag:
+        label: Berlin, Germany
+        icon: location_on
+      url: https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon
+
+    - date: December 12-13, 2026
+      id: 24-hour-physiology-2026-12-12
+      title: 24-Hour Human Physiology Event
+      summary: Organized by the Cyberinfrastructure for Network Science Center at Indiana University
+      tag:
+        label: Virtual & open to the public
+        icon: public
+      url: https://cns-iu.github.io/workshops/2026-24hr
