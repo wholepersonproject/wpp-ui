@@ -1,7 +1,8 @@
-import { Component, computed, inject, model } from '@angular/core';
+import { Component, computed, inject, model, signal } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, RouterModule } from '@angular/router';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
+import { CookieBanner } from '@atlasng/design-system/cookie-banner';
 import { CookieModal, CookieModalData } from '@atlasng/labs/cookie-modal';
 import { Footer } from '@atlasng/labs/footer';
 import {
@@ -11,7 +12,13 @@ import {
 } from '@atlasng/labs/header-shell';
 
 @Component({
-  imports: [RouterModule, Footer, HeaderShell, NavigationContainer],
+  imports: [
+    RouterModule,
+    Footer,
+    HeaderShell,
+    NavigationContainer,
+    CookieBanner,
+  ],
   selector: 'wpp-website',
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -21,6 +28,8 @@ export class App {
   private readonly router = inject(Router);
   private readonly permissionsManager = inject(AnalyticsPermissionsManager);
   private ref?: MatDialogRef<CookieModal>;
+
+  readonly preferencesSet = signal(this.permissionsManager.syncFromStorage());
 
   readonly navigationItems = model<HeaderShellNavigationItem[]>([
     { id: 'home', label: 'Home', link: '/', icon: 'home' },
@@ -101,5 +110,13 @@ export class App {
         this.permissionsManager.setPermissions(value);
       }
     });
+  }
+
+  allowAllCookies() {
+    this.permissionsManager.setFullPermissions();
+  }
+
+  allowNecessaryCookies() {
+    this.permissionsManager.setDefaultPermissions();
   }
 }

@@ -21,3 +21,12 @@
     (openPrivacyPreferences)="openPrivacyPreferences()"
   ></ang-footer>
 </ang-navigation-container>
+
+@if (!preferencesSet()) {
+  <ang-cookie-banner
+    privacyPolicy="/privacy-policy"
+    (allowAll)="allowAllCookies()"
+    (allowNecessary)="allowNecessaryCookies()"
+    (customize)="openPrivacyPreferences()"
+  />
+}
