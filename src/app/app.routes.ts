@@ -90,7 +90,7 @@ export const appRoutes: Route[] = [
     },
   },
   {
-    path: '404',
+    path: '**',
     component: NotFoundPage,
   },
 ];
