@@ -15,10 +15,10 @@ content:
       - type: markdown
         data: |
           Upcoming events organized by the Whole Person Physiome Research and Coordination Center.
- 
+
   - type: section
-    tagline: "Whole Person Physiome Virtual Hackathon: August 24-25, 2026"
-    anchor: wpp-hackathon-2026-08-24
+    tagline: 'Whole Person Physiome Jamboree: August 24-25, 2026'
+    anchor: wpp-jamboree-2026-08-24
     level: 3
     underline: false
     content:
@@ -33,9 +33,9 @@ content:
         text: Register
         icon: edit_calendar
         route: https://docs.google.com/forms/d/e/1FAIpQLSdtlSiGxb6GlXXpDDZMsjO5srpx-3xzKhGIYY1xiS6Ig0YFIA/viewform
- 
+
   - type: section
-    tagline: "Tentative agenda"
+    tagline: 'Tentative agenda'
     anchor: wpp-hackathon-2026-agenda
     level: 4
     underline: false
@@ -67,7 +67,7 @@ content:
           Upcoming events organized by external organizations that are relevant to Whole Person Physiome research.
 
   - type: section
-    tagline: "Human Reference Atlas & Whole Person Physiome Hackathon: August 3-5, 2026"
+    tagline: 'Human Reference Atlas & Whole Person Physiome Hackathon: August 3-5, 2026'
     anchor: hackathon-2026-08-03
     level: 3
     underline: false
@@ -81,7 +81,7 @@ content:
           * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon)
 
   - type: section
-    tagline: "Berlin Hackathon: August 27-28, 2026"
+    tagline: 'Berlin Hackathon: August 27-28, 2026'
     anchor: berlin-hackathon
     level: 3
     underline: false
@@ -96,7 +96,7 @@ content:
           * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon)
 
   - type: section
-    tagline: "24-Hour Human Physiology Event: December 12-13, 2026"
+    tagline: '24-Hour Human Physiology Event: December 12-13, 2026'
     anchor: 24-hour-human-physiology-event
     level: 3
     underline: false
@@ -107,7 +107,7 @@ content:
           * When: December 12-13, 2026
           * Where: Virtual via Zoom
           * Organizer: Cyberinfrastructure for Network Science Center (CNS)
-          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-24hr)
 
   - type: section
     tagline: Past events
@@ -116,7 +116,7 @@ content:
     content:
       - type: markdown
         data: |
-           Past events relevant to the Whole Person Physiome Project.
+          Past events relevant to the Whole Person Physiome Project.
 
   - type: section
     tagline: Annual Meeting 2026
@@ -131,4 +131,4 @@ content:
           * When: June 17-18, 2026
           * Where: Rockville, Maryland, USA
           * Organizer: Whole Person Physiome Research and Coordination Center
-          * Learn more: [View agenda](/assets/content/events-page/wpp-annual-meeting-agenda-2026.pdf) | [View event poster](/assets/content/events-page/wpp-annual-meeting-2026-poster.png)
+          * Learn more: [View agenda](https://wholepersonproject.github.io/wpp-ui/assets/content/events-page/wpp-annual-meeting-agenda-2026.pdf) | [View event poster](https://wholepersonproject.github.io/wpp-ui/assets/content/events-page/wpp-annual-meeting-2026-poster.png)
