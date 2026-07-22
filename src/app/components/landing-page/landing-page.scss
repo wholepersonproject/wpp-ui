@@ -3,8 +3,6 @@
 @use './tokens' as *;
 
 :host {
-  height: 100%;
-
   .landing-page {
     display: flex;
     flex-direction: column;
