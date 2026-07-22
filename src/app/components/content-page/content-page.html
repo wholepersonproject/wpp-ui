@@ -178,15 +178,9 @@
                     [pictureUrl]="card.pictureUrl"
                     [name]="card.name"
                     [description]="card.description"
+                    [nameLink]="card.nameLink"
+                    variant="large"
                   >
-                    <a
-                      angTextLink
-                      [angAnyLink]="card.actions.url"
-                      class="action-link"
-                    >
-                      {{ card.actions.text }}
-                      <mat-icon [fontIcon]="card.actions.icon" />
-                    </a>
                   </ang-profile-card>
                 }
               </ang-grid-container>

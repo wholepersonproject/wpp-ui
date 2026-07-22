@@ -141,6 +141,30 @@
   }
 }
 
+ang-grid-container {
+  gap: 3rem;
+
+  @media (min-width: 32rem) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 50rem) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+ang-profile-card {
+  height: fit-content;
+
+  ::ng-deep img {
+    transform: scale(1.04);
+  }
+
+  ::ng-deep .description {
+    white-space: pre-line;
+  }
+}
+
 ::ng-deep .ang-section-header-content {
   font-weight: 500;
 }

@@ -59,7 +59,7 @@ content:
           Atlas Working Group #65 on August 6, 2025.
 
           Learn more at [CompuCell3D](https://compucell3d.org).
-        
+
       - type: youtube
         videoId: WYKv-yB_j2M
 
@@ -91,7 +91,7 @@ content:
 
       - type: youtube
         videoId: STdfWChns5w
-    
+
   - type: section
     tagline: MoTrPAC Data Hub Tutorial
     anchor: motrpac-tutorial
@@ -123,5 +123,3 @@ content:
       - type: image
         src: assets\content\resources-page\wpp-visuals.png
         alt: Whole Person Physiome brandmark and logo.
-
-

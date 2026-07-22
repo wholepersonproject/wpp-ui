@@ -50,7 +50,7 @@ export const appRoutes: Route[] = [
       data: createYamlSpecResolver('assets/content/data-page/data.yaml'),
     },
   },
-    {
+  {
     path: 'events',
     component: ContentPage,
     resolve: {

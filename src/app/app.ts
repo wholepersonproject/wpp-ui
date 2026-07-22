@@ -35,9 +35,19 @@ export class App {
     { id: 'home', label: 'Home', link: '/', icon: 'home' },
     { id: 'about', label: 'About', link: '/about', icon: 'info' },
     { id: 'data', label: 'Data', link: '/data', icon: 'database' },
-    { id: 'visualizations', label: 'Visualizations', link: '/visualizations', icon: 'bar_chart' },
+    {
+      id: 'visualizations',
+      label: 'Visualizations',
+      link: '/visualizations',
+      icon: 'bar_chart',
+    },
     { id: 'models', label: 'Models', link: '/models', icon: 'timeline' },
-    { id: 'resources', label: 'Resources', link: '/resources', icon: 'quick_reference'},
+    {
+      id: 'resources',
+      label: 'Resources',
+      link: '/resources',
+      icon: 'quick_reference',
+    },
     { id: 'events', label: 'Events', link: '/events', icon: 'event' },
   ]);
 
