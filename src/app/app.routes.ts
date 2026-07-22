@@ -50,6 +50,13 @@ export const appRoutes: Route[] = [
       data: createYamlSpecResolver('assets/content/data-page/data.yaml'),
     },
   },
+    {
+    path: 'events',
+    component: ContentPage,
+    resolve: {
+      data: createYamlSpecResolver('assets/content/events-page/data.yaml'),
+    },
+  },
   {
     path: 'events',
     component: ContentPage,
@@ -100,7 +107,7 @@ export const appRoutes: Route[] = [
     },
   },
   {
-    path: '404',
+    path: '**',
     component: NotFoundPage,
   },
 ];
