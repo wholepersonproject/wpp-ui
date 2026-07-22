@@ -62,6 +62,7 @@ content:
               Stanford W. Ascherman Professor 
               Director, Center for Genomics and Personalized Medicine, Stanford University
             pictureUrl: assets/content/about-page/images/snyder-m.jpg
+            # Optional: omit actions or its url to render this card without a link.
             actions:
               type: text-hyperlink
               text: Learn more
@@ -127,111 +128,56 @@ content:
               Professor of Medicine, University of Pennsylvania
               Director, Penn Medical Communication Research Institute
             pictureUrl: assets/content/about-page/images/cappola-a.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p10119
-              icon: arrow_right_alt
           - type: profile-card
             name: Brian Capell
             description: |
               Assistant Professor of Dermatology and Genetics, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/capell-b.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p10119
-              icon: arrow_right_alt
           - type: profile-card
             name: David Hill
             description: |
               Assistant Professor of Pediatrics, Children’s Hospital of Philadelphia
             pictureUrl: assets/content/about-page/images/hill-d.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.chop.edu/doctors/hill-david
-              icon: arrow_right_alt
           - type: profile-card
             name: Rajan Jain
             description: |
               Associate Professor of Medicine, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/jain-r.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p10119
-              icon: arrow_right_alt
           - type: profile-card
             name: Rebecca Wells
             description: |
               Professor of Medicine, Pathology and Laboratory Medicine, and Bioengineering, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/wells-r.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p10119
-              icon: arrow_right_alt
           - type: profile-card
             name: Richard Phillips
             description: |
               Presidential Assistant Professor in Neuro-Oncology, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/phillips-r.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p10119
-              icon: arrow_right_alt
           - type: profile-card
             name: Kotaro Sasaki
             description: |
               Associate Professor of Biomedical Sciences, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/sasaki-k.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p10119
-              icon: arrow_right_alt
           - type: profile-card
             name: Kathleen O'Neill
             description: |
               Assistant Professor of Obstetrics and Gynecology, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/oneill-k.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p10119
-              icon: arrow_right_alt
           - type: profile-card
             name: Maria Basil
             description: |
               Assistant Professor of Medicine, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/basil-m.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p10119
-              icon: arrow_right_alt
           - type: profile-card
             name: Ernestina Schipani
             description: |
               Professor of Orthopaedic Surgery, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/schipani-e.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p10119
-              icon: arrow_right_alt
           - type: profile-card
             name: Hansell Stedman
             description: |
               Professor of Surgery, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/stedman-h.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/apps/faculty/index.php/g275/p0119
-              icon: arrow_right_alt
 
   - type: section
     tagline: Collaborators
@@ -275,11 +221,6 @@ content:
               Susan Samueli Endowed Chair of Integrative Medicine
               University of California, Irvine
             pictureUrl: assets/content/about-page/images/malik-s.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.ucihealth.org/medical-services/integrative-medicine/shaista-malik-md
-              icon: arrow_right_alt
           - type: profile-card
             name: Walter Boron
             description: |
@@ -287,39 +228,19 @@ content:
               David N. and Inez Myers/Antonio Scarpa Professor, Department of Physiology and Biophysics
               Case Western Reserve University School of Medicine
             pictureUrl: assets/content/about-page/images/boron-w.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://case.edu/medicine/physiology/faculty/walter-boron-md-phd
-              icon: arrow_right_alt
           - type: profile-card
             name: Helene Langevin
             description: |
               Research Director, Osher Center for Integrative Health, University of Vermont
             pictureUrl: assets/content/about-page/images/langevin-h.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.uvm.edu/medicine/osher-center/helene-langevin-md
-              icon: arrow_right_alt
           - type: profile-card
             name: Ary Goldberger
             description: |
               Chief, Division of Interdisciplinary Medicine and Biotechnology, Beth Israel Deaconess Medical Center
               Professor of Medicine, Beth Israel Deaconess Medical Center
             pictureUrl: assets/content/about-page/images/goldberger-a.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.bidmc.org/research/centers-and-labs/center-for-complex-systems-medicine/ary-goldberger-md
-              icon: arrow_right_alt
           - type: profile-card
             name: Melissa Haendel
             description: |
               Director, Translational and Integrative Sciences Laboratory, University of North Carolina at Chapel Hill
             pictureUrl: assets/content/about-page/images/haendel-m.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.melissahaendel.com
-              icon: arrow_right_alt
