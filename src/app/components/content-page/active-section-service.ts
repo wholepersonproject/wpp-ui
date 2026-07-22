@@ -1,5 +1,12 @@
 import { DOCUMENT, Location } from '@angular/common';
-import { DestroyRef, ElementRef, Injectable, computed, inject, signal } from '@angular/core';
+import {
+  DestroyRef,
+  ElementRef,
+  Injectable,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 
 export interface ActiveSection {
   anchor: string;
@@ -19,13 +26,18 @@ export class ActiveSectionService {
   private pendingActiveSectionAnchor: string | undefined;
   private pendingActiveSectionExpiresAt = 0;
 
-  private readonly selectedSectionAnchor = signal<string | undefined>(undefined);
+  private readonly selectedSectionAnchor = signal<string | undefined>(
+    undefined,
+  );
 
   readonly activeSectionAnchor = computed(() => {
     const sections = this.sections();
     const selectedAnchor = this.selectedSectionAnchor();
 
-    if (selectedAnchor && sections.some((section) => section.anchor === selectedAnchor)) {
+    if (
+      selectedAnchor &&
+      sections.some((section) => section.anchor === selectedAnchor)
+    ) {
       return selectedAnchor;
     }
 
@@ -41,17 +53,31 @@ export class ActiveSectionService {
     this.initialized = true;
 
     const host = this.elementRef.nativeElement;
-    const scrollContainer = host.closest('mat-drawer-content') as HTMLElement | null;
+    const scrollContainer = host.closest(
+      'mat-drawer-content',
+    ) as HTMLElement | null;
     this.scrollContainer = scrollContainer ?? undefined;
 
     const scrollTarget = this.scrollContainer ?? this.document.defaultView;
-    scrollTarget?.addEventListener('scroll', this.syncActiveSectionWithScroll, { passive: true });
-    this.document.defaultView?.addEventListener('resize', this.syncActiveSectionWithScroll, { passive: true });
+    scrollTarget?.addEventListener('scroll', this.syncActiveSectionWithScroll, {
+      passive: true,
+    });
+    this.document.defaultView?.addEventListener(
+      'resize',
+      this.syncActiveSectionWithScroll,
+      { passive: true },
+    );
     host.addEventListener('click', this.scrollToLocalAnchor);
 
     this.destroyRef.onDestroy(() => {
-      scrollTarget?.removeEventListener('scroll', this.syncActiveSectionWithScroll);
-      this.document.defaultView?.removeEventListener('resize', this.syncActiveSectionWithScroll);
+      scrollTarget?.removeEventListener(
+        'scroll',
+        this.syncActiveSectionWithScroll,
+      );
+      this.document.defaultView?.removeEventListener(
+        'resize',
+        this.syncActiveSectionWithScroll,
+      );
       host.removeEventListener('click', this.scrollToLocalAnchor);
     });
 
@@ -63,7 +89,10 @@ export class ActiveSectionService {
 
     const selectedAnchor = this.selectedSectionAnchor();
 
-    if (!selectedAnchor || !sections.some((section) => section.anchor === selectedAnchor)) {
+    if (
+      !selectedAnchor ||
+      !sections.some((section) => section.anchor === selectedAnchor)
+    ) {
       this.selectedSectionAnchor.set(sections[0]?.anchor);
     }
 
@@ -109,8 +138,11 @@ export class ActiveSectionService {
     event.preventDefault();
     this.selectedSectionAnchor.set(anchor);
     this.pendingActiveSectionAnchor = anchor;
-    this.pendingActiveSectionExpiresAt = Date.now() + this.pendingActiveSectionDuration;
-    this.location.go(`${this.location.path().split('#')[0]}#${encodeURIComponent(anchor)}`);
+    this.pendingActiveSectionExpiresAt =
+      Date.now() + this.pendingActiveSectionDuration;
+    this.location.go(
+      `${this.location.path().split('#')[0]}#${encodeURIComponent(anchor)}`,
+    );
     section.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
@@ -159,18 +191,26 @@ export class ActiveSectionService {
   }
 
   private shouldKeepPendingSectionActive(): boolean {
-    if (!this.pendingActiveSectionAnchor || Date.now() > this.pendingActiveSectionExpiresAt) {
+    if (
+      !this.pendingActiveSectionAnchor ||
+      Date.now() > this.pendingActiveSectionExpiresAt
+    ) {
       return false;
     }
 
-    const sectionElement = this.document.getElementById(this.pendingActiveSectionAnchor);
+    const sectionElement = this.document.getElementById(
+      this.pendingActiveSectionAnchor,
+    );
 
     if (!sectionElement) {
       return false;
     }
 
     const sectionTop = sectionElement.getBoundingClientRect().top;
-    return sectionTop < this.getScrollViewportTop() || sectionTop > this.getActivationLine();
+    return (
+      sectionTop < this.getScrollViewportTop() ||
+      sectionTop > this.getActivationLine()
+    );
   }
 
   private getActivationLine(): number {
@@ -184,7 +224,9 @@ export class ActiveSectionService {
   private isScrolledToBottom(): boolean {
     if (this.scrollContainer) {
       return (
-        Math.ceil(this.scrollContainer.scrollTop + this.scrollContainer.clientHeight) >=
+        Math.ceil(
+          this.scrollContainer.scrollTop + this.scrollContainer.clientHeight,
+        ) >=
         this.scrollContainer.scrollHeight - 1
       );
     }
@@ -195,7 +237,10 @@ export class ActiveSectionService {
       return false;
     }
 
-    return Math.ceil(windowRef.scrollY + windowRef.innerHeight) >= this.document.documentElement.scrollHeight - 1;
+    return (
+      Math.ceil(windowRef.scrollY + windowRef.innerHeight) >=
+      this.document.documentElement.scrollHeight - 1
+    );
   }
 
   private getAnchorFromHref(href: string): string | undefined {
@@ -213,6 +258,8 @@ export class ActiveSectionService {
   }
 
   private syncActiveSectionOnNextFrame(): void {
-    this.document.defaultView?.requestAnimationFrame(() => this.syncActiveSectionWithScroll());
+    this.document.defaultView?.requestAnimationFrame(() =>
+      this.syncActiveSectionWithScroll(),
+    );
   }
 }
