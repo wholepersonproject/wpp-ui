@@ -56,11 +56,10 @@ interface Card {
   name: string;
   description: string;
   pictureUrl: string;
-  /** Optional action; omit it or its URL to render the card without a link. */
-  actions?: {
+  actions: {
     type: 'text-hyperlink';
     text: string;
-    url?: string;
+    url: string;
     icon: string;
   };
 }

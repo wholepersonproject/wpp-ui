@@ -179,18 +179,14 @@
                     [name]="card.name"
                     [description]="card.description"
                   >
-                    @if (card.actions; as action) {
-                      @if (action.url) {
-                        <a
-                          angTextLink
-                          [angAnyLink]="action.url"
-                          class="action-link"
-                        >
-                          {{ action.text }}
-                          <mat-icon [fontIcon]="action.icon" />
-                        </a>
-                      }
-                    }
+                    <a
+                      angTextLink
+                      [angAnyLink]="card.actions.url"
+                      class="action-link"
+                    >
+                      {{ card.actions.text }}
+                      <mat-icon [fontIcon]="card.actions.icon" />
+                    </a>
                   </ang-profile-card>
                 }
               </ang-grid-container>

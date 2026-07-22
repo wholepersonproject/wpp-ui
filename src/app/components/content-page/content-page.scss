@@ -141,22 +141,6 @@
   }
 }
 
-ang-grid-container {
-  justify-items: unset;
-}
-
-::ng-deep ang-profile-card {
-  // AtlasNG currently hard-codes the HRA accent on profile images. Keep this
-  // override scoped to WPP content until the component exposes an accent token.
-  .picture {
-    border-left-color: var(--mat-sys-primary) !important;
-  }
-
-  .description {
-    white-space: pre-line;
-  }
-}
-
 ::ng-deep .ang-section-header-content {
   font-weight: 500;
 }
