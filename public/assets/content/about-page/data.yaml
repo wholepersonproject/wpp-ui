@@ -61,53 +61,33 @@ content:
               Stanford W. Ascherman Professor 
               Director, Center for Genomics and Personalized Medicine, Stanford University
             pictureUrl: assets/content/about-page/images/snyder-m.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://snyderlab.stanford.edu
-              icon: arrow_right_alt
+            nameLink: https://snyderlab.stanford.edu
           - type: profile-card
             name: Katy Börner
             description: |
               Professor of Intelligent Systems Engineering, Director
               Cyberinfrastructure for Network Science Center, Luddy School, Indiana University
             pictureUrl: assets/content/about-page/images/borner-k.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://cns-iu.github.io/katy
-              icon: arrow_right_alt
+            nameLink: https://cns-iu.github.io/katy
           - type: profile-card
             name: Katalin Susztak
             description: |
               Professor of Medicine and Genetics, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/susztak-k.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.med.upenn.edu/susztaklab
-              icon: arrow_right_alt
+            nameLink: https://www.med.upenn.edu/susztaklab
           - type: profile-card
             name: Liming Pei
             description: |
               Associate Professor of Pathology and Laboratory Medicine, Children’s Hospital of Philadelphia
             pictureUrl: assets/content/about-page/images/pei-l.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://www.research.chop.edu/pei-laboratory
-              icon: arrow_right_alt
+            nameLink: https://www.research.chop.edu/pei-laboratory
           - type: profile-card
             name: Griffin Weber
             description: |
               Associate Professor of Medicine, Beth Israel Deaconess Medical Center
               Associate Professor of Biomedical Informatics, Harvard Medical School
             pictureUrl: assets/content/about-page/images/weber-g.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://dbmi.hms.harvard.edu/people/griffin-weber
-              icon: arrow_right_alt
+            nameLink: https://dbmi.hms.harvard.edu/people/griffin-weber
 
   - type: section
     tagline: Organ domain experts
@@ -193,11 +173,7 @@ content:
             description: |
               Professor of Molecular Genetics, University of Toronto
             pictureUrl: assets/content/about-page/images/bader-g.jpg
-            actions:
-              type: text-hyperlink
-              text: Learn more
-              url: https://baderlab.org
-              icon: arrow_right_alt
+            nameLink: https://baderlab.org
 
   - type: section
     tagline: External advisory board
