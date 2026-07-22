@@ -3,14 +3,14 @@
 @use './tokens' as *;
 
 :host {
-  height: 100%;
+  display: block;
 
   .landing-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height: 100svh;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -34,12 +34,21 @@
     max-width: 31rem;
     padding: 2.5rem;
     background: rgb(
-      from token-utils.slot(card-background, $config) r g b / 0.8
+      from token-utils.slot(card-background, $config) r g b /
+        token-utils.slot(card-background-opacity, $config)
     );
+    -webkit-backdrop-filter: token-utils.slot(card-backdrop-filter, $config);
+    backdrop-filter: token-utils.slot(card-backdrop-filter, $config);
     color: token-utils.slot(card-color, $config);
     border-radius: token-utils.slot(outline-radius, $config);
 
+    @media (prefers-color-scheme: dark) {
+      // Match Figma's cosmetic surface while preserving a legible light theme.
+      background: token-utils.slot(card-background-dark, $config);
+    }
+
     .header {
+      margin: 0;
       color: token-utils.slot(card-header-color, $config);
       font-family: token-utils.slot(card-header-font, $config);
       line-height: token-utils.slot(card-header-line-height, $config);

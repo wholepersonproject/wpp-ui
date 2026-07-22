@@ -20,6 +20,26 @@ body {
   min-width: 20rem;
 }
 
+wpp-news-and-events {
+  --wpp-news-events-mesh:
+    radial-gradient(ellipse at 5% 15%, rgb(78 102 255 / 14%), transparent 36%),
+    radial-gradient(ellipse at 22% 0%, rgb(50 173 255 / 12%), transparent 34%),
+    radial-gradient(ellipse at 36% 28%, rgb(4 224 227 / 11%), transparent 34%),
+    radial-gradient(ellipse at 52% 4%, rgb(0 223 156 / 11%), transparent 35%),
+    radial-gradient(ellipse at 70% 22%, rgb(124 236 43 / 10%), transparent 34%),
+    radial-gradient(ellipse at 94% 4%, rgb(255 251 0 / 11%), transparent 34%),
+    radial-gradient(ellipse at 100% 48%, rgb(255 183 0 / 12%), transparent 36%),
+    radial-gradient(ellipse at 88% 88%, rgb(252 105 6 / 11%), transparent 36%),
+    radial-gradient(ellipse at 64% 100%, rgb(255 0 98 / 10%), transparent 36%),
+    radial-gradient(ellipse at 40% 86%, rgb(255 50 245 / 10%), transparent 34%),
+    radial-gradient(
+      ellipse at 14% 100%,
+      rgb(115 72 255 / 13%),
+      transparent 38%
+    ),
+    radial-gradient(ellipse at 0% 62%, rgb(194 89 255 / 11%), transparent 34%);
+}
+
 markdown {
   :first-child {
     margin-top: 0;

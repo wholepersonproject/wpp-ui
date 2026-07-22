@@ -1,16 +1,14 @@
 <div
   class="landing-page"
-  [style.background-image]="`url(${backgroundImageUrl()})`"
+  [style.background-image]="`url(${data().splash.backgroundImageUrl})`"
 >
   <div class="landing-page-content-container">
     <div class="landing-page-content">
-      <div class="header">Let’s map and model human physiology</div>
-      <div class="description">
-        The Whole Person Physiome (WPP) project brings experts together to map
-        how the healthy human body works and share it through an easy-to-use
-        online hub with data, models, and tools for research.
-      </div>
-      <div class="funder">Funded by the National Institutes of Health</div>
+      <h1 class="header">{{ data().splash.title }}</h1>
+      <div class="description">{{ data().splash.description }}</div>
+      <div class="funder">{{ data().splash.funder }}</div>
     </div>
   </div>
 </div>
+
+<wpp-news-and-events [content]="data().newsAndEvents" />

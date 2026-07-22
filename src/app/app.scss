@@ -1,3 +1,12 @@
 :host {
   display: block;
 }
+
+.page-content {
+  display: block;
+  flex: 1 1 0;
+}
+
+ang-footer {
+  flex: 0 0 auto;
+}
