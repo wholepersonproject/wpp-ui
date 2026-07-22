@@ -5,22 +5,22 @@ import { HttpClient } from '@angular/common/http';
 import * as yaml from 'js-yaml';
 import { map } from 'rxjs';
 import { LandingPage } from './components/landing-page/landing-page';
+import { validateLandingPageContent } from './components/landing-page/landing-page-content';
 import { NotFoundPage } from './components/not-found-page/not found page';
 import { ServerErrorPage } from './components/server-error-page/server error page';
 
-function createYamlSpecResolver(
+function createYamlSpecResolver<T = Record<string, unknown>>(
   url: string,
-): ResolveFn<Record<string, unknown>> {
+  validate?: (value: unknown) => T,
+): ResolveFn<T> {
   return () => {
     const http = inject(HttpClient);
-    return http
-      .get(url, { responseType: 'text' })
-      .pipe(
-        map(
-          (data) =>
-            yaml.load(data, { filename: url }) as Record<string, unknown>,
-        ),
-      );
+    return http.get(url, { responseType: 'text' }).pipe(
+      map((data) => {
+        const value: unknown = yaml.load(data, { filename: url });
+        return validate ? validate(value) : (value as T);
+      }),
+    );
   };
 }
 
@@ -29,8 +29,11 @@ export const appRoutes: Route[] = [
     path: '',
     pathMatch: 'full',
     component: LandingPage,
-    data: {
-      backgroundImageUrl: './home-splash.png',
+    resolve: {
+      data: createYamlSpecResolver(
+        'assets/content/landing-page/data.yaml',
+        validateLandingPageContent,
+      ),
     },
   },
   {
@@ -48,6 +51,13 @@ export const appRoutes: Route[] = [
     },
   },
     {
+    path: 'events',
+    component: ContentPage,
+    resolve: {
+      data: createYamlSpecResolver('assets/content/events-page/data.yaml'),
+    },
+  },
+  {
     path: 'events',
     component: ContentPage,
     resolve: {

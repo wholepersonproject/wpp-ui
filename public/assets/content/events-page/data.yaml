@@ -17,8 +17,8 @@ content:
           Upcoming events organized by the Whole Person Physiome Research and Coordination Center.
  
   - type: section
-    tagline: "Whole Person Physiome Virtual Hackathon: August 24-25, 2026"
-    anchor: wpp-hackathon-2026-08-24
+    tagline: "Whole Person Physiome Jamboree: August 24-25, 2026"
+    anchor: wpp-jamboree-2026-08-24
     level: 3
     underline: false
     content:
@@ -131,4 +131,4 @@ content:
           * When: June 17-18, 2026
           * Where: Rockville, Maryland, USA
           * Organizer: Whole Person Physiome Research and Coordination Center
-          * Learn more: [View agenda](/assets/content/events-page/wpp-annual-meeting-agenda-2026.pdf) | [View event poster](/assets/content/events-page/wpp-annual-meeting-2026-poster.png)
+          * Learn more: [View agenda](https://wholepersonproject.github.io/wpp-ui/assets/content/events-page/wpp-annual-meeting-agenda-2026.pdf) | [View event poster](https://wholepersonproject.github.io/wpp-ui/assets/content/events-page/wpp-annual-meeting-2026-poster.png)

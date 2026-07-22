@@ -1,0 +1,28 @@
+<section class="news-and-events" aria-labelledby="news-and-events-title">
+  <div class="section-content">
+    <header class="section-header">
+      <h2 id="news-and-events-title">{{ content().title }}</h2>
+    </header>
+
+    <div class="card-grid">
+      @for (item of content().items; track item.id) {
+        <article class="event-card">
+          <p class="event-date">{{ item.date }}</p>
+          <h3>
+            <a
+              angTextLink
+              [angAnyLink]="linkCommand(item.url)"
+              [fragment]="linkFragment(item.url)"
+              >{{ item.title }}</a
+            >
+          </h3>
+          <p class="event-summary">{{ item.summary }}</p>
+          <p class="event-tag" [attr.aria-label]="'Tag: ' + item.tag.label">
+            <mat-icon [fontIcon]="item.tag.icon" aria-hidden="true" />
+            <span>{{ item.tag.label }}</span>
+          </p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
