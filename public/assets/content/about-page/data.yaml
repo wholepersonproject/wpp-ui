@@ -33,7 +33,6 @@ content:
 
       - type: button
         text: View governance structure
-        icon: open_in_new
         route: assets/content/about-page/wpp-governance-structure.pdf
 
   - type: section
