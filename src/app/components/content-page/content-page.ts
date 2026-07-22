@@ -56,7 +56,7 @@ interface Card {
   name: string;
   description: string;
   pictureUrl: string;
-  actions: {
+  actions?: {
     type: 'text-hyperlink';
     text: string;
     url: string;
