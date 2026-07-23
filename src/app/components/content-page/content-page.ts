@@ -2,20 +2,18 @@ import { coerceArray } from '@angular/cdk/coercion';
 import { Component, computed, effect, inject, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Breadcrumbs } from '@atlasng/design-system/buttons/breadcrumbs';
-import { SectionHeader } from '@atlasng/labs/section-header';
-import { Table } from '@atlasng/labs/table';
-import { MarkdownModule } from 'ngx-markdown';
-import { ActiveSectionService } from './active-section-service';
-import { TableContent, TableService } from './table-service';
-import { Visualization } from '../visualization/visualization';
-import { YoutubePlayer } from '@atlasng/labs/youtube-player';
 import { AnalyticsEventCategory } from '@atlasng/analytics/events';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
+import { Breadcrumbs } from '@atlasng/design-system/buttons/breadcrumbs';
 import { GridContainer } from '@atlasng/labs/grid-container';
 import { ProfileCard } from '@atlasng/labs/profile-card';
-import { TextLink } from '@atlasng/design-system/text-link';
-import { AnyLink } from '@atlasng/common';
+import { SectionHeader } from '@atlasng/labs/section-header';
+import { Table } from '@atlasng/labs/table';
+import { YoutubePlayer } from '@atlasng/labs/youtube-player';
+import { MarkdownModule } from 'ngx-markdown';
+import { Visualization } from '../visualization/visualization';
+import { ActiveSectionService } from './active-section-service';
+import { TableContent, TableService } from './table-service';
 
 interface MarkdownContent {
   type: 'markdown';
@@ -90,8 +88,6 @@ interface ContentPageData {
 @Component({
   selector: 'wpp-content-page',
   imports: [
-    AnyLink,
-    TextLink,
     Breadcrumbs,
     SectionHeader,
     MatButtonModule,

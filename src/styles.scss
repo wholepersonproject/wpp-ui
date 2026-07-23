@@ -62,14 +62,9 @@ markdown {
   }
 }
 
-// mat-drawer-container {
-//   height: 100%;
-// }
-
 mat-drawer-content {
   --mat-sidenav-content-text-color: var(--mat-sys-on-surface-variant);
-  // height: 100% !important;
-  // display: block !important;
+  height: calc(100dvh - 3.5rem) !important;
 }
 
 ang-navigation-menu {

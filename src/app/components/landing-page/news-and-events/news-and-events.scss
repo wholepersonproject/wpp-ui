@@ -8,7 +8,7 @@
 
 .news-and-events {
   display: flex;
-  min-height: 100svh;
+  min-height: 100dvh;
   color: token-utils.slot(section-color, $config);
   background:
     var(--wpp-news-events-mesh), token-utils.slot(section-background, $config);
