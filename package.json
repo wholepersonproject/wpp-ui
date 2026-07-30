@@ -9,10 +9,12 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "~21.2.0",
     "@angular/common": "~21.2.0",
     "@angular/compiler": "~21.2.0",
     "@angular/core": "~21.2.0",
     "@angular/forms": "~21.2.0",
+    "@angular/material": "~21.2.0",
     "@angular/platform-browser": "~21.2.0",
     "@angular/router": "~21.2.0",
     "@atlasng/design-system": "^0.0.6",
@@ -61,5 +63,11 @@
   },
   "nx": {
     "includedScripts": []
+  },
+  "allowScripts": {
+    "@parcel/watcher": true,
+    "@swc/core": true,
+    "esbuild": true,
+    "nx": true
   }
 }
