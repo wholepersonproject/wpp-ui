@@ -60,7 +60,9 @@ export const appConfig: ApplicationConfig = {
     provideAnalytics(
       {},
       withDefaultBackend({
-        endpoint: 'https://api.atlasng.dev/t',
+        endpoint:
+          'https://www.wholepersonphysiome.org/tr' +
+          (typeof ngDevMode === 'undefined' || ngDevMode ? '-dev' : ''),
       }),
     ),
   ],
