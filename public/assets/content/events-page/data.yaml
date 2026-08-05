@@ -67,20 +67,6 @@ content:
           Upcoming events organized by external organizations that are relevant to Whole Person Physiome research.
 
   - type: section
-    tagline: 'Human Reference Atlas & Whole Person Physiome Hackathon: August 3-5, 2026'
-    anchor: hackathon-2026-08-03
-    level: 3
-    underline: false
-    content:
-      - type: markdown
-        data: |
-          This hackathon brings experts together to build new connections across human anatomy, biology, and data.
-          * When: August 3-5, 2026
-          * Where: Indiana University, Bloomington, Indiana, USA
-          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
-          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon)
-
-  - type: section
     tagline: 'Berlin Hackathon: August 27-28, 2026'
     anchor: berlin-hackathon
     level: 3
@@ -117,6 +103,20 @@ content:
       - type: markdown
         data: |
           Past events relevant to the Whole Person Physiome Project.
+
+  - type: section
+    tagline: 'Human Reference Atlas & Whole Person Physiome Hackathon: August 3-5, 2026'
+    anchor: hackathon-2026-08-03
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          This hackathon brings experts together to build new connections across human anatomy, biology, and data.
+          * When: August 3-5, 2026
+          * Where: Indiana University, Bloomington, Indiana, USA
+          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon)
 
   - type: section
     tagline: Annual Meeting 2026
