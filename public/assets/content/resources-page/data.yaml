@@ -31,6 +31,32 @@ content:
         videoId: HLs_Tmjiz8U
 
   - type: section
+    tagline: Whole Person Physiome Knowledge Graph
+    anchor: wpp-knowledge-graph
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          Bruce W. Herr II (Indiana University) presents the working knowledge graph developed for the Whole Person Physiome, which models the function of 14 organ systems.
+
+      - type: youtube
+        videoId: xIYQwJtK3YU
+
+  - type: section
+    tagline: Whole Person Physiome Initial Visualization
+    anchor: wpp-initial-visualization
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          Katy Börner (Indiana University) introduces data visualizations developed for the Whole Person Physiome that provide objective, reproducible depictions of WPP data to support researchers' actionable insights.
+
+      - type: youtube
+        videoId: kNphiKTBIPU
+
+  - type: section
     tagline: Standards for Multiscale Cellular Modeling
     anchor: standards-for-multiscale-cellular-modeling
     level: 3
