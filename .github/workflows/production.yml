@@ -1,0 +1,63 @@
+name: Production Deployment
+
+on:
+  workflow_run:
+    workflows: ['CI']
+    branches: ['main']
+    types:
+      - completed
+
+permissions:
+  actions: read
+  contents: write
+
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  HUSKY: 0
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: tree:0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --no-audit
+
+      - name: Build apps
+        timeout-minutes: 30
+        run: npx nx run-many -t build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to S3
+        run: |
+          aws s3 sync --delete dist/wpp-ui/browser s3://${{ secrets.AWS_S3_BUCKET_NAME }}/ui/wpp-ui/
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/*"
+
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/wpp-ui/browser
+          commit_message: 'Production deploy -- ${{ github.event.workflow_run.head_commit.message }}'
