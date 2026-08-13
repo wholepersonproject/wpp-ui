@@ -39,9 +39,8 @@
       "style": "scss",
       "unitTestRunner": "vitest-angular"
     },
-    "@nx/angular:component": {
-      "style": "css"
-    }
+    "@nx/angular:component": { "style": "css" }
   },
-  "defaultProject": "wpp-ui"
+  "defaultProject": "wpp-ui",
+  "nxCloudId": "6a7de02052165e7100624919"
 }
