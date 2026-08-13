@@ -61,5 +61,11 @@
   },
   "nx": {
     "includedScripts": []
+  },
+  "allowScripts": {
+    "@parcel/watcher": true,
+    "@swc/core": true,
+    "esbuild": true,
+    "nx": true
   }
 }
