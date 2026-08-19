@@ -1,0 +1,42 @@
+name: Feature request
+description: "Tell us about your feature request and how we can improve the website."
+title: "Feature request: "
+labels:
+  - "🔍 Needs triage"
+
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Where should this feature be added? (Optional)
+      description: Share the page URL or location for this feature or leave blank if there is no page yet for this feature
+      placeholder: |
+        Examples:
+
+        https://wholepersonphysiome.org/...
+    validations:
+      required: false
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Describe your feature request
+      description: Describe what you would like to see or experience.
+      placeholder: |
+        Examples:
+        - Update the text in the Upcoming Events section
+        - Update [name's] profile picture on the About page
+        - Add a button that does [functionality]
+        - A new app for [functionality]
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting information (optional)
+      description: Add screenshots, recordings, links, or anything else that may help.
+      placeholder: |
+        Drag and drop screenshots here, paste a link, or add any additional notes.
+    validations:
+      required: false
