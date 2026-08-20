@@ -9,15 +9,6 @@ splash:
 newsAndEvents:
   title: News and events
   items:
-    - date: August 3-5, 2026
-      id: hra-wpp-hackathon-2026-08-03
-      title: Human Reference Atlas & Whole Person Physiome Hackathon
-      summary: Organized by the Cyberinfrastructure for Network Science Center at Indiana University
-      tag:
-        label: Bloomington, Indiana, USA
-        icon: location_on
-      url: https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon
-
     - date: August 24-25, 2026
       id: wpp-hackathon-2026-08-24
       title: Whole Person Physiome Jamboree

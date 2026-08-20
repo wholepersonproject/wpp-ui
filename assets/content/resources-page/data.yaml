@@ -95,6 +95,10 @@ content:
     level: 3
     underline: false
     content:
+      - type: markdown
+        data: |
+          Muzlifah Haniffa (Sanger Institute, UK), Hirokai Kitano (Sony, Japan), and Katy Börner (Indiana University) introduce the [CIFAR MacMillan Multiscale Human](https://cifar.ca/research-programs/cifar-macmillan-multiscale-human) project that aims to (1) catalyze medically relevant discoveries about how the human body works, from development to disease and aging; (2) work with large biobank consortia to explore ways of incorporating global health and genetic data into multiscale maps and models of the human body, and (3) bring together biologists with imaging, computational and digital cartography specialists to spur the development of new tools, both in hardware and software.
+
       - type: youtube
         videoId: -F6i5KOVGx8
 
