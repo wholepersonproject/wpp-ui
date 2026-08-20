@@ -1,8 +1,8 @@
 <div class="content-page-header">
-  <ang-breadcrumbs [items]="data().headerContent.breadcrumbs"></ang-breadcrumbs>
+  <ang-breadcrumbs [items]="data().headerContent.breadcrumbs" />
   <div>
     <h1 angSectionHeader>{{ data().headerContent.title }}</h1>
-    <markdown [data]="data().headerContent.subtitle"></markdown>
+    <markdown [data]="data().headerContent.subtitle" />
   </div>
 </div>
 
@@ -14,12 +14,8 @@
         matButton
         class="link"
         [class.active]="activeSectionService.isSectionActive(section.anchor)"
-        [attr.aria-current]="
-          activeSectionService.isSectionActive(section.anchor)
-            ? 'location'
-            : null
-        "
-        [href]="'#' + section.anchor"
+        [attr.aria-current]="activeSectionService.isSectionActive(section.anchor) ? 'location' : null"
+        [href]="`#${section.anchor}`"
         [style.--indentation-level]="section.level"
       >
         {{ section.tagline }}
@@ -33,62 +29,32 @@
     <div class="content-page-section" [id]="section.anchor">
       @switch (section.level) {
         @case (1) {
-          <h1
-            angSectionHeader
-            [anchor]="section.anchor"
-            [underlined]="section.underline ?? true"
-            [id]="section.anchor"
-          >
+          <h1 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
             {{ section.tagline }}
           </h1>
         }
         @case (2) {
-          <h2
-            angSectionHeader
-            [anchor]="section.anchor"
-            [underlined]="section.underline ?? true"
-            [id]="section.anchor"
-          >
+          <h2 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
             {{ section.tagline }}
           </h2>
         }
         @case (3) {
-          <h3
-            angSectionHeader
-            [anchor]="section.anchor"
-            [underlined]="section.underline ?? true"
-            [id]="section.anchor"
-          >
+          <h3 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
             {{ section.tagline }}
           </h3>
         }
         @case (4) {
-          <h4
-            angSectionHeader
-            [anchor]="section.anchor"
-            [underlined]="section.underline ?? true"
-            [id]="section.anchor"
-          >
+          <h4 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
             {{ section.tagline }}
           </h4>
         }
         @case (5) {
-          <h5
-            angSectionHeader
-            [anchor]="section.anchor"
-            [underlined]="section.underline ?? true"
-            [id]="section.anchor"
-          >
+          <h5 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
             {{ section.tagline }}
           </h5>
         }
         @default {
-          <h2
-            angSectionHeader
-            [anchor]="section.anchor"
-            [underlined]="section.underline ?? true"
-            [id]="section.anchor"
-          >
+          <h2 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
             {{ section.tagline }}
           </h2>
         }
@@ -110,7 +76,7 @@
               @if (subsection.content) {
                 @for (subsubsection of subsection.content; track $index) {
                   @if (subsubsection.type === 'markdown') {
-                    <markdown [data]="subsubsection.data"></markdown>
+                    <markdown [data]="subsubsection.data" />
                   }
                   @if (subsubsection.type === 'table') {
                     <ang-table
@@ -118,14 +84,13 @@
                       [columns]="subsubsection.columns"
                       [enableSort]="true"
                       [totalsFooter]="subsubsection.footer || false"
-                    >
-                    </ang-table>
+                    />
                   }
                 }
               }
             }
             @if (subsection.type === 'markdown') {
-              <markdown [data]="subsection.data"></markdown>
+              <markdown [data]="subsection.data" />
             }
             @if (subsection.type === 'table') {
               <ang-table
@@ -133,31 +98,22 @@
                 [columns]="subsection.columns"
                 [enableSort]="true"
                 [totalsFooter]="subsection.footer || false"
-              >
-              </ang-table>
-            }
-            @if (subsection.type === 'image') {
-              <img
-                class="content-page-image"
-                [src]="subsection.src"
-                [alt]="subsection.alt"
               />
             }
+            @if (subsection.type === 'image') {
+              <img class="content-page-image" [src]="subsection.src" [alt]="subsection.alt" />
+            }
             @if (subsection.type === 'button') {
-              <a
-                matButton="filled"
-                [attr.href]="subsection.route"
-                [attr.download]="subsection.download ? '' : null"
-              >
+              <a matButton="filled" [attr.href]="subsection.route" [attr.download]="subsection.download ? '' : null">
                 @if (subsection.icon) {
-                  <mat-icon [fontIcon]="subsection.icon"></mat-icon>
+                  <mat-icon [fontIcon]="subsection.icon" />
                 }
                 {{ subsection.text }}
               </a>
             }
 
             @if (subsection.type === 'visualization') {
-              <wpp-visualization [url]="subsection.url"></wpp-visualization>
+              <wpp-visualization [url]="subsection.url" />
             }
 
             @if (subsection.type === 'youtube') {
@@ -167,7 +123,7 @@
                   [label]="section.tagline"
                   [hasCookiesEnabled]="hasMarketingPermissions()"
                   (enableCookies)="enableMarketingPermissions()"
-                ></ang-youtube-player>
+                />
               </div>
             }
 
@@ -175,13 +131,12 @@
               <ang-grid-container>
                 @for (card of subsection.content; track $index) {
                   <ang-profile-card
+                    variant="large"
                     [pictureUrl]="card.pictureUrl"
                     [name]="card.name"
                     [description]="card.description"
                     [nameLink]="card.nameLink"
-                    variant="large"
-                  >
-                  </ang-profile-card>
+                  />
                 }
               </ang-grid-container>
             }

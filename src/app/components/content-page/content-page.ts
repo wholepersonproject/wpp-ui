@@ -99,9 +99,9 @@ interface ContentPageData {
     GridContainer,
     ProfileCard,
   ],
-  providers: [ActiveSectionService],
   templateUrl: './content-page.html',
   styleUrl: './content-page.scss',
+  providers: [ActiveSectionService],
 })
 export class ContentPage {
   /** Input data for content page */
@@ -115,14 +115,10 @@ export class ContentPage {
   protected readonly content = computed(() => coerceArray(this.data().content));
 
   /** All nested sections flattened into a single list */
-  protected readonly flattenedSections = computed(() =>
-    this.flattenSectionContent(this.content()),
-  );
+  protected readonly flattenedSections = computed(() => this.flattenSectionContent(this.content()));
 
   protected readonly hasMarketingPermissions = computed(() =>
-    this.permissionsManager
-      .permissions()
-      .isCategoryEnabled(AnalyticsEventCategory.Marketing),
+    this.permissionsManager.permissions().isCategoryEnabled(AnalyticsEventCategory.Marketing),
   );
 
   constructor() {
@@ -153,9 +149,7 @@ export class ContentPage {
 
   protected enableMarketingPermissions(): void {
     this.permissionsManager.setPermissions(
-      this.permissionsManager
-        .permissions()
-        .enableCategory(AnalyticsEventCategory.Marketing),
+      this.permissionsManager.permissions().enableCategory(AnalyticsEventCategory.Marketing),
     );
   }
 

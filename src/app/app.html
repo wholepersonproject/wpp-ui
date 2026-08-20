@@ -2,10 +2,10 @@
   [logoUrl]="headerLogo()"
   [hasLocalNavigation]="true"
   [localNavigationExpanded]="navigation.leftMenuOpen()"
+  [navigationItems]="navigationItems().filter((item) => item.id !== 'home')"
   (localNavigationToggle)="navigation.localNavigationToggle()"
   (appsMenuToggle)="navigation.appsMenuToggle()"
-  [navigationItems]="navigationItems().filter((item) => item.id !== 'home')"
-></ang-header-shell>
+/>
 <ang-navigation-container
   [navigationItems]="navigationItems()"
   [navRight]="appMenuItems()"
@@ -21,7 +21,7 @@
     [socials]="socialMediaIds()"
     (openPrivacyPolicy)="openPrivacyPolicy()"
     (openPrivacyPreferences)="openPrivacyPreferences()"
-  ></ang-footer>
+  />
 </ang-navigation-container>
 
 @if (!preferencesSet()) {

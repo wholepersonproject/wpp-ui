@@ -9,16 +9,11 @@
         <article class="event-card">
           <p class="event-date">{{ item.date }}</p>
           <h3>
-            <a
-              angTextLink
-              [angAnyLink]="linkCommand(item.url)"
-              [fragment]="linkFragment(item.url)"
-              >{{ item.title }}</a
-            >
+            <a angTextLink [angAnyLink]="linkCommand(item.url)" [fragment]="linkFragment(item.url)">{{ item.title }}</a>
           </h3>
           <p class="event-summary">{{ item.summary }}</p>
-          <p class="event-tag" [attr.aria-label]="'Tag: ' + item.tag.label">
-            <mat-icon [fontIcon]="item.tag.icon" aria-hidden="true" />
+          <p class="event-tag" [attr.aria-label]="`Tag: ${item.tag.label}`">
+            <mat-icon aria-hidden="true" [fontIcon]="item.tag.icon" />
             <span>{{ item.tag.label }}</span>
           </p>
         </article>
