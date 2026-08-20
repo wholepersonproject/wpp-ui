@@ -1,0 +1,46 @@
+name: Update an existing page
+description: "Request a change to text, links, images, or files on a page that already exists."
+title: "[Page update]: "
+type: "Feature"
+labels: ["🔍 Needs triage"]
+
+body:
+  - type: input
+    id: page-url
+    attributes:
+      label: Which page needs to change?
+      description: Paste the full web address of the page.
+      placeholder: "https://wholepersonphysiome.org/example-page"
+    validations:
+      required: true
+
+  - type: textarea
+    id: requested-change
+    attributes:
+      label: What needs to change?
+      description: Tell us where it appears on the page and include the current text, link, image, or file so we can find it.
+      placeholder: |
+        Under the heading “Upcoming events,” change:
+        “Registration opens in May”
+    validations:
+      required: true
+
+  - type: textarea
+    id: replacement-content
+    attributes:
+      label: What should appear instead?
+      description: Provide the exact new wording or link. You can drag and drop final images or files here.
+      placeholder: |
+        Replace it with:
+        “Registration is now open through August 30.”
+    validations:
+      required: true
+
+  - type: textarea
+    id: related-pages
+    attributes:
+      label: Does this change apply anywhere else?
+      description: List any other page URLs that should receive the same update.
+      placeholder: "Optional: Paste each additional page URL on a separate line."
+    validations:
+      required: false
