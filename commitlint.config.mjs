@@ -2,7 +2,7 @@ import nxScopes from '@commitlint/config-nx-scopes';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const ADDITIONAL_SCOPES = [];
+const ADDITIONAL_SCOPES = ['landing-page', 'resources', 'navigation', 'github'];
 const NO_SCOPES_RESULT = [2, 'always', []];
 const NX_SELF_HEALING_RERUN_PATTERN = /\[Self-Healing CI Rerun\]/iu;
 
