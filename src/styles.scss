@@ -68,6 +68,23 @@ mat-drawer-content {
 }
 
 ang-navigation-menu {
+  // AtlasNG's flat menu API does not expose a divider or item class hook.
+  .ang-navigation-menu-link[href*='/issues/new/choose'] {
+    position: relative;
+    margin-top: 1rem;
+
+    &::before {
+      position: absolute;
+      top: -0.625rem;
+      right: 0;
+      left: 0;
+      border-top: 1px solid
+        var(--ang-header-shell-divider-color, var(--mat-sys-outline));
+      content: '';
+      pointer-events: none;
+    }
+  }
+
   .ang-navigation-menu-social {
     width: 100%;
     gap: 0.5rem;

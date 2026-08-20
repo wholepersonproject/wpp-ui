@@ -10,6 +10,11 @@ import {
   HeaderShellNavigationItem,
   NavigationContainer,
 } from '@atlasng/labs/header-shell';
+import {
+  APP_MENU_ITEMS,
+  createLocalNavigationItems,
+  PRIMARY_NAVIGATION_ITEMS,
+} from './navigation';
 
 @Component({
   imports: [
@@ -32,37 +37,15 @@ export class App {
   readonly preferencesSet = signal(this.permissionsManager.syncFromStorage());
 
   readonly navigationItems = model<HeaderShellNavigationItem[]>([
-    { id: 'home', label: 'Home', link: '/', icon: 'home' },
-    { id: 'about', label: 'About', link: '/about', icon: 'info' },
-    { id: 'data', label: 'Data', link: '/data', icon: 'database' },
-    {
-      id: 'visualizations',
-      label: 'Visualizations',
-      link: '/visualizations',
-      icon: 'bar_chart',
-    },
-    { id: 'models', label: 'Models', link: '/models', icon: 'timeline' },
-    {
-      id: 'resources',
-      label: 'Resources',
-      link: '/resources',
-      icon: 'quick_reference',
-    },
-    { id: 'events', label: 'Events', link: '/events', icon: 'event' },
+    ...PRIMARY_NAVIGATION_ITEMS,
   ]);
 
+  readonly localNavigationItems = computed<HeaderShellNavigationItem[]>(() =>
+    createLocalNavigationItems(this.navigationItems()),
+  );
+
   readonly appMenuItems = model<HeaderShellNavigationItem[]>([
-    { id: 'home', label: 'Home', link: '/' },
-    {
-      id: 'multiscale-model-explorer',
-      label: 'Multiscale Model Explorer',
-      link: 'https://wholepersonproject.github.io/wpp-eui-experiment/',
-    },
-    {
-      id: 'kg-explorer',
-      label: 'Knowledge Graph Explorer',
-      link: 'https://kg.wholepersonphysiome.org',
-    },
+    ...APP_MENU_ITEMS,
   ]);
 
   readonly socialMediaIds = model<string[]>([

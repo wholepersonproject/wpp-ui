@@ -7,7 +7,7 @@
   [navigationItems]="navigationItems().filter((item) => item.id !== 'home')"
 ></ang-header-shell>
 <ang-navigation-container
-  [navigationItems]="navigationItems()"
+  [navigationItems]="localNavigationItems()"
   [navRight]="appMenuItems()"
   [socialMediaIds]="socialMediaIds()"
   #navigation
