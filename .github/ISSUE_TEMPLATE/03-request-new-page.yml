@@ -1,8 +1,8 @@
 name: Request a new page
-description: "Request a website page that does not exist yet."
-title: "[New page]: "
-type: "Feature"
-labels: ["🔍 Needs triage"]
+description: 'Request a website page that does not exist yet.'
+title: '[New page]: '
+type: 'Feature'
+labels: ['🔍 Needs triage']
 
 body:
   - type: textarea
@@ -10,7 +10,7 @@ body:
     attributes:
       label: Who is this page for, and what should it help them do?
       description: Describe the people who will use the page and what they should be able to understand or accomplish.
-      placeholder: "This page is for researchers who need to find and download approved project data."
+      placeholder: 'This page is for researchers who need to find and download approved project data.'
     validations:
       required: true
 
@@ -29,7 +29,7 @@ body:
     attributes:
       label: How should people find and use this page?
       description: Tell us where people should find a link to the page and what you want them to do next.
-      placeholder: "Link to it from the Research menu. The main action should be “Browse available data.”"
+      placeholder: 'Link to it from the Research menu. The main action should be “Browse available data.”'
     validations:
       required: true
 
@@ -38,6 +38,6 @@ body:
     attributes:
       label: Is there anything we should know before publishing?
       description: Tell us if the content is still a draft, needs someone’s approval, or must be live by a specific date.
-      placeholder: "Optional: Priya owns the content and needs to approve it before the September 15 launch."
+      placeholder: 'Optional: Priya owns the content and needs to approve it before the September 15 launch.'
     validations:
       required: false

@@ -1,18 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import {
-  APP_MENU_ITEMS,
-  createLocalNavigationItems,
-  PRIMARY_NAVIGATION_ITEMS,
-} from './navigation';
+import { APP_MENU_ITEMS, createLocalNavigationItems, PRIMARY_NAVIGATION_ITEMS } from './navigation';
 
-const WEBSITE_FEEDBACK_URL =
-  'https://github.com/wholepersonproject/wpp-ui/issues/new/choose';
+const WEBSITE_FEEDBACK_URL = 'https://github.com/wholepersonproject/wpp-ui/issues/new/choose';
 
 describe('navigation', () => {
   it('adds website feedback last in local navigation in the current tab', () => {
-    const navigationItems = createLocalNavigationItems(
-      PRIMARY_NAVIGATION_ITEMS,
-    );
+    const navigationItems = createLocalNavigationItems(PRIMARY_NAVIGATION_ITEMS);
     const feedbackItem = navigationItems[navigationItems.length - 1];
 
     expect(feedbackItem).toEqual(
@@ -41,8 +34,6 @@ describe('navigation', () => {
   });
 
   it('keeps website feedback out of the desktop header navigation', () => {
-    expect(PRIMARY_NAVIGATION_ITEMS).not.toContainEqual(
-      expect.objectContaining({ id: 'website-feedback' }),
-    );
+    expect(PRIMARY_NAVIGATION_ITEMS).not.toContainEqual(expect.objectContaining({ id: 'website-feedback' }));
   });
 });

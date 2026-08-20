@@ -22,17 +22,13 @@ export class App {
 
   readonly preferencesSet = signal(this.permissionsManager.syncFromStorage());
 
-  readonly navigationItems = model<HeaderShellNavigationItem[]>([
-    ...PRIMARY_NAVIGATION_ITEMS,
-  ]);
+  readonly navigationItems = model<HeaderShellNavigationItem[]>([...PRIMARY_NAVIGATION_ITEMS]);
 
   readonly localNavigationItems = computed<HeaderShellNavigationItem[]>(() =>
     createLocalNavigationItems(this.navigationItems()),
   );
 
-  readonly appMenuItems = model<HeaderShellNavigationItem[]>([
-    ...APP_MENU_ITEMS,
-  ]);
+  readonly appMenuItems = model<HeaderShellNavigationItem[]>([...APP_MENU_ITEMS]);
 
   readonly socialMediaIds = model<string[]>(['youtube', 'github', 'bluesky', 'x']);
 

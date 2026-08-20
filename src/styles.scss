@@ -32,11 +32,7 @@ wpp-news-and-events {
     radial-gradient(ellipse at 88% 88%, rgb(252 105 6 / 11%), transparent 36%),
     radial-gradient(ellipse at 64% 100%, rgb(255 0 98 / 10%), transparent 36%),
     radial-gradient(ellipse at 40% 86%, rgb(255 50 245 / 10%), transparent 34%),
-    radial-gradient(
-      ellipse at 14% 100%,
-      rgb(115 72 255 / 13%),
-      transparent 38%
-    ),
+    radial-gradient(ellipse at 14% 100%, rgb(115 72 255 / 13%), transparent 38%),
     radial-gradient(ellipse at 0% 62%, rgb(194 89 255 / 11%), transparent 34%);
 }
 
@@ -78,8 +74,7 @@ ang-navigation-menu {
       top: -0.625rem;
       right: 0;
       left: 0;
-      border-top: 1px solid
-        var(--ang-header-shell-divider-color, var(--mat-sys-outline));
+      border-top: 1px solid var(--ang-header-shell-divider-color, var(--mat-sys-outline));
       content: '';
       pointer-events: none;
     }

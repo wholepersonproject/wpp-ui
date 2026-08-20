@@ -1,8 +1,8 @@
 name: Update an existing page
-description: "Request a change to text, links, images, or files on a page that already exists."
-title: "[Page update]: "
-type: "Feature"
-labels: ["🔍 Needs triage"]
+description: 'Request a change to text, links, images, or files on a page that already exists.'
+title: '[Page update]: '
+type: 'Feature'
+labels: ['🔍 Needs triage']
 
 body:
   - type: input
@@ -10,7 +10,7 @@ body:
     attributes:
       label: Which page needs to change?
       description: Paste the full web address of the page.
-      placeholder: "https://wholepersonphysiome.org/example-page"
+      placeholder: 'https://wholepersonphysiome.org/example-page'
     validations:
       required: true
 
@@ -41,6 +41,6 @@ body:
     attributes:
       label: Does this change apply anywhere else?
       description: List any other page URLs that should receive the same update.
-      placeholder: "Optional: Paste each additional page URL on a separate line."
+      placeholder: 'Optional: Paste each additional page URL on a separate line.'
     validations:
       required: false
