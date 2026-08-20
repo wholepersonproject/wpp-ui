@@ -1,7 +1,7 @@
 headerContent:
   title: Resources
   subtitle: |
-    Videos and visual assets supporting the Whole Person Physiome Project.
+    Browse videos, download Whole Person Physiome assets, and share feedback about the website.
   breadcrumbs:
     - name: Home
       command: /
@@ -24,7 +24,7 @@ content:
     content:
       - type: markdown
         data: |
-          Jacob Scherba (University of Pennsylvania) presents a brief introduction to the Whole 
+          Jacob Scherba (University of Pennsylvania) presents a brief introduction to the Whole
           Person Physiome (WPP) tables on December 3, 2025.
 
       - type: youtube
@@ -64,8 +64,8 @@ content:
     content:
       - type: markdown
         data: |
-          Katy Börner (Indiana University) introduces Eran Agmon (UConn Health), who presents his 
-          research on standards for multiscale cellular modeling at Human Reference Atlas Working 
+          Katy Börner (Indiana University) introduces Eran Agmon (UConn Health), who presents his
+          research on standards for multiscale cellular modeling at Human Reference Atlas Working
           Group #68 on November 5, 2025.
 
           Learn more at [Vivarium Lab](https://vivariumlab.com).
@@ -80,8 +80,8 @@ content:
     content:
       - type: markdown
         data: |
-          James Glazier (Indiana University) presents CompuCell3D, an open-source software 
-          environment for building agent-based models of multicellular biology, at Human Reference 
+          James Glazier (Indiana University) presents CompuCell3D, an open-source software
+          environment for building agent-based models of multicellular biology, at Human Reference
           Atlas Working Group #65 on August 6, 2025.
 
           Learn more at [CompuCell3D](https://compucell3d.org).
@@ -111,11 +111,11 @@ content:
     content:
       - type: markdown
         data: |
-          Watch Astronaut Dr. Peggy Whitson explain the importance of understanding exercise and 
-          The NIH Common Fund’s Molecular Transducers of Physical Activity in Humans Consortium 
-          (MoTrPAC). The MoTrPAC program is a trans-NIH effort managed by the NIH Common Fund in 
-          the Office of the Director and supported by several Institutes & Centers including, 
-          NIAMS, NIA and NIDDK. 
+          Watch Astronaut Dr. Peggy Whitson explain the importance of understanding exercise and
+          The NIH Common Fund’s Molecular Transducers of Physical Activity in Humans Consortium
+          (MoTrPAC). The MoTrPAC program is a trans-NIH effort managed by the NIH Common Fund in
+          the Office of the Director and supported by several Institutes & Centers including,
+          NIAMS, NIA and NIDDK.
 
           Learn more about the [MoTrPAC program and recruitment](https://commonfund.nih.gov/MolecularTransducers/PublicHealthRelevance).
 
@@ -130,7 +130,7 @@ content:
     content:
       - type: markdown
         data: |
-          Learn about how to navigate the MoTrPAC Data Hub and explore the multi-omics multi-tissue 
+          Learn about how to navigate the MoTrPAC Data Hub and explore the multi-omics multi-tissue
           exercise data.
 
       - type: youtube
@@ -153,3 +153,38 @@ content:
       - type: image
         src: assets\content\resources-page\wpp-visuals.png
         alt: Whole Person Physiome brandmark and logo.
+
+  - type: section
+    tagline: Website feedback
+    anchor: website-feedback
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Please use the forms below to share feedback about the website. A GitHub account is required to submit feedback.
+
+      - type: card-grid
+        items:
+          - id: report-problem
+            title: Report a problem
+            description: Tell us when something is broken, confusing, or preventing you from completing a task.
+            actions:
+              - text: Report issue on GitHub
+                url: https://github.com/wholepersonproject/wpp-ui/issues/new?template=01-report-a-problem.yml
+                icon: bug_report
+
+          - id: update-existing-page
+            title: Update an existing page
+            description: Request a change to text, links, images, or files on a page that already exists.
+            actions:
+              - text: Request update on GitHub
+                url: https://github.com/wholepersonproject/wpp-ui/issues/new?template=02-update-existing-page.yml
+                icon: edit_document
+
+          - id: request-new-page
+            title: Request a new page
+            description: Request a website page that does not exist yet.
+            actions:
+              - text: Request page on GitHub
+                url: https://github.com/wholepersonproject/wpp-ui/issues/new?template=03-request-new-page.yml
+                icon: add_circle

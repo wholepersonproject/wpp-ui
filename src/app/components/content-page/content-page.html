@@ -140,6 +140,13 @@
                 }
               </ang-grid-container>
             }
+
+            @if (subsection.type === 'card-grid') {
+              <wpp-content-card-grid
+                [items]="subsection.items"
+                [headingLevel]="section.level < 6 ? section.level + 1 : 6"
+              />
+            }
           </div>
         }
       </div>
