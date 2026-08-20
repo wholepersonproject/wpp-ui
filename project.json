@@ -25,6 +25,7 @@
       },
       "configurations": {
         "production": {
+          "baseHref": "/",
           "budgets": [
             {
               "type": "initial",
@@ -40,6 +41,13 @@
           "outputHashing": "all"
         },
         "development": {
+          "baseHref": "/",
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        },
+        "preview": {
+          "baseHref": "/apps/wpp-ui/",
           "optimization": false,
           "extractLicenses": false,
           "sourceMap": true
@@ -60,16 +68,27 @@
       },
       "defaultConfiguration": "development"
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["./src"]
-      }
-    },
     "test": {
       "executor": "@angular/build:unit-test",
       "options": {
+        "include": ["src/**/*.spec.ts"],
+        "setupFiles": ["src/test-setup.ts"],
+        "coverage": true,
+        "coverageInclude": ["src/**/*.ts"],
+        "coverageExclude": ["src/**/index.ts", "src/**/main.ts", "src/**/test-setup.ts"],
+        "coverageReporters": ["html", "lcovonly", "json-summary", "text-summary"],
+        "coverageThresholds": {
+          "branches": 10,
+          "functions": 10,
+          "lines": 10,
+          "statements": 10
+        },
         "watch": false
+      },
+      "configurations": {
+        "watch": {
+          "watch": true
+        }
       }
     },
     "serve-static": {

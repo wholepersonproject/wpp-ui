@@ -5,26 +5,12 @@ import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
 import { CookieBanner } from '@atlasng/design-system/cookie-banner';
 import { CookieModal, CookieModalData } from '@atlasng/labs/cookie-modal';
 import { Footer } from '@atlasng/labs/footer';
-import {
-  HeaderShell,
-  HeaderShellNavigationItem,
-  NavigationContainer,
-} from '@atlasng/labs/header-shell';
-import {
-  APP_MENU_ITEMS,
-  createLocalNavigationItems,
-  PRIMARY_NAVIGATION_ITEMS,
-} from './navigation';
+import { HeaderShell, HeaderShellNavigationItem, NavigationContainer } from '@atlasng/labs/header-shell';
+import { APP_MENU_ITEMS, createLocalNavigationItems, PRIMARY_NAVIGATION_ITEMS } from './navigation';
 
 @Component({
-  imports: [
-    RouterModule,
-    Footer,
-    HeaderShell,
-    NavigationContainer,
-    CookieBanner,
-  ],
   selector: 'wpp-website',
+  imports: [RouterModule, Footer, HeaderShell, NavigationContainer, CookieBanner],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -48,34 +34,19 @@ export class App {
     ...APP_MENU_ITEMS,
   ]);
 
-  readonly socialMediaIds = model<string[]>([
-    'youtube',
-    'github',
-    'bluesky',
-    'x',
-  ]);
+  readonly socialMediaIds = model<string[]>(['youtube', 'github', 'bluesky', 'x']);
 
   readonly currentTheme = model<'light' | 'dark'>();
 
-  readonly headerLogo = computed(() =>
-    this.currentTheme() === 'dark' ? 'wpp-header-dark.svg' : 'wpp-header.svg',
-  );
-  readonly footerLogo = computed(() =>
-    this.currentTheme() === 'dark' ? 'wpp-footer-dark.svg' : 'wpp-footer.svg',
-  );
+  readonly headerLogo = computed(() => (this.currentTheme() === 'dark' ? 'wpp-header-dark.svg' : 'wpp-header.svg'));
+  readonly footerLogo = computed(() => (this.currentTheme() === 'dark' ? 'wpp-footer-dark.svg' : 'wpp-footer.svg'));
 
   constructor() {
-    this.currentTheme.set(
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light',
-    );
+    this.currentTheme.set(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (event) => {
-        this.currentTheme.set(event.matches ? 'dark' : 'light');
-      });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+      this.currentTheme.set(event.matches ? 'dark' : 'light');
+    });
   }
 
   openPrivacyPolicy() {

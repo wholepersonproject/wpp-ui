@@ -66,9 +66,13 @@ jobs:
         run: npx nx record -- nx format:check
 
         # TODO: Add compodoc target (don't forget to add to the --stop-agents-after list above)
-      - name: Run lint, test, and build for affected projects
+      - name: Build, lint, and test affected projects
         timeout-minutes: 30
-        run: npx nx affected -t lint test build
+        env:
+          BUILD_CONFIGURATION: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+        run: |
+          npx nx affected -t build --configuration="$BUILD_CONFIGURATION"
+          npx nx affected -t lint test
 
       - name: Fix CI issues
         if: failure()
