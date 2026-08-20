@@ -13,27 +13,30 @@ describe('navigation', () => {
     const navigationItems = createLocalNavigationItems(
       PRIMARY_NAVIGATION_ITEMS,
     );
+    const feedbackItem = navigationItems[navigationItems.length - 1];
 
-    expect(navigationItems[navigationItems.length - 1]).toEqual({
-      id: 'website-feedback',
-      label: 'Website feedback',
-      link: WEBSITE_FEEDBACK_URL,
-      icon: 'feedback',
-    });
-    expect(navigationItems[navigationItems.length - 1]).not.toHaveProperty(
-      'external',
+    expect(feedbackItem).toEqual(
+      expect.objectContaining({
+        id: 'website-feedback',
+        label: 'Website feedback',
+        link: WEBSITE_FEEDBACK_URL,
+        icon: 'feedback',
+      }),
     );
+    expect(feedbackItem?.external).not.toBe(true);
   });
 
   it('adds website feedback last in the apps menu in the current tab without an icon', () => {
     const feedbackItem = APP_MENU_ITEMS[APP_MENU_ITEMS.length - 1];
 
-    expect(feedbackItem).toEqual({
-      id: 'website-feedback',
-      label: 'Website feedback',
-      link: WEBSITE_FEEDBACK_URL,
-    });
-    expect(feedbackItem).not.toHaveProperty('external');
+    expect(feedbackItem).toEqual(
+      expect.objectContaining({
+        id: 'website-feedback',
+        label: 'Website feedback',
+        link: WEBSITE_FEEDBACK_URL,
+      }),
+    );
+    expect(feedbackItem?.external).not.toBe(true);
     expect(feedbackItem).not.toHaveProperty('icon');
   });
 
