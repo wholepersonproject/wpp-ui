@@ -1,0 +1,50 @@
+name: Deploy Preview
+description: Deploy a preview of the applications, storybooks, and documentation for a pull request.
+inputs:
+  issue-number:
+    description: The pull request number for which to deploy the preview
+    required: true
+  netlify-auth-token:
+    description: The authentication token for Netlify
+    required: true
+  netlify-site-id:
+    description: The site ID for the Netlify site to deploy to
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Prepare deploy directory
+      shell: bash
+      run: ${{ github.action_path }}/prepare-deploy.sh
+      env:
+        ACTION_PATH: ${{ github.action_path }}
+        ISSUE_NUMBER: ${{ inputs.issue-number }}
+
+    - name: Deploy to Netlify
+      id: netlify
+      shell: bash
+      run: ${{ github.action_path }}/deploy.sh
+      env:
+        ISSUE_NUMBER: ${{ inputs.issue-number }}
+        NETLIFY_AUTH_TOKEN: ${{ inputs.netlify-auth-token }}
+        NETLIFY_SITE_ID: ${{ inputs.netlify-site-id }}
+
+    - name: Find existing deployment comment
+      id: deployment-comment
+      uses: peter-evans/find-comment@v4
+      with:
+        issue-number: ${{ inputs.issue-number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: 'Preview Deploy Report'
+
+    - name: Create or update deployment comment
+      uses: peter-evans/create-or-update-comment@v5
+      with:
+        comment-id: ${{ steps.deployment-comment.outputs.comment-id }}
+        issue-number: ${{ inputs.issue-number }}
+        edit-mode: replace
+        body: |
+          # :rocket: Preview Deploy Report
+
+          ✅ Successfully deployed preview [here](${{ steps.netlify.outputs.url }})

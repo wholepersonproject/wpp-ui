@@ -6,6 +6,7 @@ on:
     branches: ['main']
     types:
       - completed
+  workflow_dispatch:
 
 permissions:
   actions: read
@@ -16,16 +17,16 @@ env:
   HUSKY: 0
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.workflow_run.head_branch }}
+  group: ${{ github.workflow }}-${{ github.event.workflow_run.head_branch || github.ref_name }}
   cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           filter: tree:0
@@ -60,4 +61,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: dist/wpp-ui/browser
-          commit_message: 'Production deploy -- ${{ github.event.workflow_run.head_commit.message }}'
+          commit_message: 'Production deploy -- ${{ github.event.workflow_run.head_commit.message || github.sha }}'
