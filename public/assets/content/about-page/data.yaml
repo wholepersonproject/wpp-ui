@@ -225,7 +225,7 @@ content:
     level: 2
     content:
       - type: email-contact
-        description: 'Have a question or want to learn more? Get in touch with Whole Person Physiome Research and Coordination Center:'
+        description: 'Have a question or want to learn more? Get in touch with the Whole Person Physiome Research and Coordination Center:'
         email: connect@wholepersonphysiome.org
         copyButtonLabel: Copy email address
         copiedMessage: Email address copied
