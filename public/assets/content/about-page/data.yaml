@@ -14,7 +14,7 @@ content:
     content:
       - type: markdown
         data: |
-          To construct a digital human physiome resource that integrates the multiscale interactions and processes of all major organs into a singular framework. 
+          To construct a digital human physiome resource that integrates the multiscale interactions and processes of all major organs into a singular framework.
 
           We are building a comprehensive, multi-organ, digital map of human physiology designed to unify how we understand the body across scales—from molecular interactions to cross-organ function. The whole person physiome map organizes expert medical knowledge of how the body works into a detailed breakdown of individual, interconnected processes, each linked to clinical measurements and standard ontologies in a computer-readable format. On top of this, we are building and publishing knowledge graphs, visualization tools, and models. Our goal is to build a resource for researchers and clinicians that work on the next generation of biomedical models.
 
@@ -58,7 +58,7 @@ content:
           - type: profile-card
             name: Michael Snyder
             description: |
-              Stanford W. Ascherman Professor 
+              Stanford W. Ascherman Professor
               Director, Center for Genomics and Personalized Medicine, Stanford University
             pictureUrl: assets/content/about-page/images/snyder-m.jpg
             nameLink: https://snyderlab.stanford.edu
@@ -218,3 +218,14 @@ content:
             description: |
               Director, Translational and Integrative Sciences Laboratory, University of North Carolina at Chapel Hill
             pictureUrl: assets/content/about-page/images/haendel-m.jpg
+
+  - type: section
+    tagline: Contact us
+    anchor: contact-us
+    level: 2
+    content:
+      - type: email-contact
+        description: 'Have a question or want to learn more? Get in touch with the Whole Person Physiome Research and Coordination Center:'
+        email: connect@wholepersonphysiome.org
+        copyButtonLabel: Copy email address
+        copiedMessage: Email address copied

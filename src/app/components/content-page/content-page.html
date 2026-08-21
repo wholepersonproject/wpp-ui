@@ -147,6 +147,10 @@
                 [headingLevel]="section.level < 6 ? section.level + 1 : 6"
               />
             }
+
+            @if (subsection.type === 'email-contact') {
+              <wpp-email-contact [content]="subsection" />
+            }
           </div>
         }
       </div>

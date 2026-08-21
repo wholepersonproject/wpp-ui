@@ -40,6 +40,10 @@
 - Fix lint violations: `npx nx lint wpp-ui --configuration=fix`
 - Format the workspace: `npx nx format:write`
 
+## Commit Messages
+
+- When suggesting Conventional Commit messages for this repository, omit the optional scope; use `feat: ...`, not `feat(wpp-ui): ...` or `feat(resources): ...`
+
 ## Application Styling
 
 - Follow nearby WPP components for class naming, component structure, and token usage.

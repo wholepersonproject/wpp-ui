@@ -135,56 +135,55 @@ content:
 
       - type: youtube
         videoId: 3zHnzUMo_vw
+#   - type: section
+#     tagline: Visual assets
+#     anchor: visual-assets
+#     level: 2
+#     content:
+#       - type: markdown
+#         data: |
+#           Download a ZIP file containing Whole Person Physiome logos to support your presentations, publications, and other communications about the effort. File formats included are SVG, PNG, and PDF.
 
-  - type: section
-    tagline: Visual assets
-    anchor: visual-assets
-    level: 2
-    content:
-      - type: markdown
-        data: |
-          Download a ZIP file containing Whole Person Physiome logos to support your presentations, publications, and other communications about the effort. File formats included are SVG, PNG, and PDF.
+#       - type: button
+#         text: Download logos
+#         icon: download
+#         route: assets/content/resources-page/wpp-logos.zip
 
-      - type: button
-        text: Download logos
-        icon: download
-        route: assets/content/resources-page/wpp-logos.zip
+#       - type: image
+#         src: assets\content\resources-page\wpp-visuals.png
+#         alt: Whole Person Physiome brandmark and logo.
 
-      - type: image
-        src: assets\content\resources-page\wpp-visuals.png
-        alt: Whole Person Physiome brandmark and logo.
+#   - type: section
+#     tagline: Website feedback
+#     anchor: website-feedback
+#     level: 2
+#     content:
+#       - type: markdown
+#         data: |
+#           Please use the forms below to share feedback about the website. A GitHub account is required to submit feedback.
 
-  - type: section
-    tagline: Website feedback
-    anchor: website-feedback
-    level: 2
-    content:
-      - type: markdown
-        data: |
-          Please use the forms below to share feedback about the website. A GitHub account is required to submit feedback.
+#       - type: card-grid
+#         items:
+#           - id: report-problem
+#             title: Report a problem
+#             description: Tell us when something is broken, confusing, or preventing you from completing a task.
+#             actions:
+#               - text: Report issue on GitHub
+#                 url: https://github.com/wholepersonproject/wpp-ui/issues/new?template=01-report-a-problem.yml
+#                 icon: bug_report
 
-      - type: card-grid
-        items:
-          - id: report-problem
-            title: Report a problem
-            description: Tell us when something is broken, confusing, or preventing you from completing a task.
-            actions:
-              - text: Report issue on GitHub
-                url: https://github.com/wholepersonproject/wpp-ui/issues/new?template=01-report-a-problem.yml
-                icon: bug_report
+#           - id: update-existing-page
+#             title: Update an existing page
+#             description: Request a change to text, links, images, or files on a page that already exists.
+#             actions:
+#               - text: Request update on GitHub
+#                 url: https://github.com/wholepersonproject/wpp-ui/issues/new?template=02-update-existing-page.yml
+#                 icon: edit_document
 
-          - id: update-existing-page
-            title: Update an existing page
-            description: Request a change to text, links, images, or files on a page that already exists.
-            actions:
-              - text: Request update on GitHub
-                url: https://github.com/wholepersonproject/wpp-ui/issues/new?template=02-update-existing-page.yml
-                icon: edit_document
-
-          - id: request-new-page
-            title: Request a new page
-            description: Request a website page that does not exist yet.
-            actions:
-              - text: Request page on GitHub
-                url: https://github.com/wholepersonproject/wpp-ui/issues/new?template=03-request-new-page.yml
-                icon: add_circle
+#           - id: request-new-page
+#             title: Request a new page
+#             description: Request a website page that does not exist yet.
+#             actions:
+#               - text: Request page on GitHub
+#                 url: https://github.com/wholepersonproject/wpp-ui/issues/new?template=03-request-new-page.yml
+#                 icon: add_circle

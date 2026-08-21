@@ -129,3 +129,8 @@ ang-cookie-modal {
     margin-right: auto;
   }
 }
+
+// Snackbar overlays render outside their originating component.
+mat-snack-bar-container.wpp-email-copied-snackbar {
+  --mat-snack-bar-container-shape: var(--mat-sys-corner-small);
+}

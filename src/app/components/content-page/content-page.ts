@@ -14,6 +14,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { Visualization } from '../visualization/visualization';
 import { ActiveSectionService } from './active-section-service';
 import { ContentCardGrid, ContentCardGridContent } from './content-card-grid/content-card-grid';
+import { EmailContact, EmailContactContent } from './email-contact/email-contact';
 import { TableContent, TableService } from './table-service';
 
 interface MarkdownContent {
@@ -67,6 +68,7 @@ type Content =
   | YoutubeContent
   | VisualizationContent
   | GridContent
+  | EmailContactContent
   | ContentCardGridContent;
 
 interface PageSection {
@@ -101,6 +103,7 @@ interface ContentPageData {
     GridContainer,
     ProfileCard,
     ContentCardGrid,
+    EmailContact,
   ],
   templateUrl: './content-page.html',
   styleUrl: './content-page.scss',

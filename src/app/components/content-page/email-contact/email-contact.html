@@ -1,0 +1,10 @@
+<div class="email-contact">
+  <p>
+    {{ content().description }}
+    <a class="email-contact-address" [href]="`mailto:${content().email}`">{{ content().email }}</a>
+  </p>
+  <button matButton="filled" type="button" (click)="copyEmail()">
+    <mat-icon aria-hidden="true" fontIcon="content_copy" />
+    {{ content().copyButtonLabel }}
+  </button>
+</div>
