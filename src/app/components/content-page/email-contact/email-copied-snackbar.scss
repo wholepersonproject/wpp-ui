@@ -1,0 +1,13 @@
+:host,
+.email-copied-snackbar-message {
+  display: flex;
+  align-items: center;
+}
+
+.email-copied-snackbar-message {
+  gap: 0.5rem;
+}
+
+mat-icon {
+  flex: 0 0 auto;
+}
