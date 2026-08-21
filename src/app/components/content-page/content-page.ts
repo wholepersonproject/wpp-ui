@@ -13,6 +13,7 @@ import { YoutubePlayer } from '@atlasng/labs/youtube-player';
 import { MarkdownModule } from 'ngx-markdown';
 import { Visualization } from '../visualization/visualization';
 import { ActiveSectionService } from './active-section-service';
+import { ContentCardGrid, ContentCardGridContent } from './content-card-grid/content-card-grid';
 import { TableContent, TableService } from './table-service';
 
 interface MarkdownContent {
@@ -65,7 +66,8 @@ type Content =
   | ImageContent
   | YoutubeContent
   | VisualizationContent
-  | GridContent;
+  | GridContent
+  | ContentCardGridContent;
 
 interface PageSection {
   type: 'section';
@@ -98,6 +100,7 @@ interface ContentPageData {
     YoutubePlayer,
     GridContainer,
     ProfileCard,
+    ContentCardGrid,
   ],
   templateUrl: './content-page.html',
   styleUrl: './content-page.scss',

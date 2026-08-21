@@ -10,8 +10,7 @@
   display: flex;
   min-height: 100dvh;
   color: token-utils.slot(section-color, $config);
-  background:
-    var(--wpp-news-events-mesh), token-utils.slot(section-background, $config);
+  background: var(--wpp-news-events-mesh), token-utils.slot(section-background, $config);
 }
 
 .section-content {
@@ -43,7 +42,7 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, token-utils.slot(card-min-width, $config)), 1fr));
   grid-auto-rows: 1fr;
   gap: 1.5rem;
 }

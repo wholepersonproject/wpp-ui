@@ -10,6 +10,7 @@ $config: (
     card-interaction-border: token-utils.sys-token(primary),
     card-interaction-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 12%),
     card-color: token-utils.sys-token(on-surface),
+    card-min-width: 20rem,
     card-title-color: token-utils.sys-token(on-primary-container),
     secondary-color: token-utils.sys-token(on-surface-variant),
     focus-color: token-utils.sys-token(on-surface),

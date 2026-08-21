@@ -35,7 +35,7 @@ content:
         route: https://docs.google.com/forms/d/e/1FAIpQLSdtlSiGxb6GlXXpDDZMsjO5srpx-3xzKhGIYY1xiS6Ig0YFIA/viewform
 
   - type: section
-    tagline: 'Tentative agenda'
+    tagline: 'Agenda'
     anchor: wpp-hackathon-2026-agenda
     level: 4
     underline: false

@@ -1,0 +1,42 @@
+<ul class="content-card-list">
+  @for (item of items(); track item.id) {
+    <li>
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          @switch (normalizedHeadingLevel()) {
+            @case (2) {
+              <h2 mat-card-title>{{ item.title }}</h2>
+            }
+            @case (4) {
+              <h4 mat-card-title>{{ item.title }}</h4>
+            }
+            @case (5) {
+              <h5 mat-card-title>{{ item.title }}</h5>
+            }
+            @case (6) {
+              <h6 mat-card-title>{{ item.title }}</h6>
+            }
+            @default {
+              <h3 mat-card-title>{{ item.title }}</h3>
+            }
+          }
+        </mat-card-header>
+
+        <mat-card-content>
+          <markdown [data]="item.description" />
+        </mat-card-content>
+
+        <mat-card-actions align="start">
+          @for (action of item.actions; track $index) {
+            <a class="content-card-action" [matButton]="action.appearance ?? 'filled'" [href]="action.url">
+              @if (action.icon) {
+                <mat-icon aria-hidden="true" [fontIcon]="action.icon" />
+              }
+              {{ action.text }}
+            </a>
+          }
+        </mat-card-actions>
+      </mat-card>
+    </li>
+  }
+</ul>

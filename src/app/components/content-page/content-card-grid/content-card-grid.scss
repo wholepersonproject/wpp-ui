@@ -1,0 +1,75 @@
+@use '@angular/material' as mat;
+@use '@atlasng/design-system/sass/internal/token-utils';
+@use './tokens' as *;
+
+:host {
+  @include mat.card-overrides(
+    (
+      outlined-container-color: token-utils.slot(card-background, $config),
+      outlined-container-shape: token-utils.slot(card-radius, $config),
+      outlined-outline-color: token-utils.slot(card-border, $config),
+      title-text-font: token-utils.slot(title-font, $config),
+      title-text-line-height: token-utils.slot(title-line-height, $config),
+      title-text-size: token-utils.slot(title-size, $config),
+      title-text-tracking: token-utils.slot(title-tracking, $config),
+      title-text-weight: token-utils.slot(title-weight, $config),
+    )
+  );
+
+  display: block;
+}
+
+.content-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, token-utils.slot(card-min-width, $config)), 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  > li {
+    min-width: 0;
+  }
+}
+
+mat-card {
+  height: 100%;
+  color: token-utils.slot(card-color, $config);
+}
+
+[mat-card-title] {
+  color: token-utils.slot(title-color, $config);
+}
+
+mat-card-header {
+  padding: token-utils.slot(card-top-padding, $config) token-utils.slot(card-padding, $config) 0;
+  margin-bottom: token-utils.slot(title-description-gap, $config);
+}
+
+mat-card-content {
+  flex: 1;
+  padding: 0 token-utils.slot(card-padding, $config);
+  color: token-utils.slot(description-color, $config);
+  font: token-utils.slot(description-font, $config);
+  letter-spacing: token-utils.slot(description-tracking, $config);
+}
+
+mat-card-actions {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0 token-utils.slot(card-padding, $config) token-utils.slot(card-padding, $config);
+  margin-top: token-utils.slot(description-actions-gap, $config);
+}
+
+.content-card-action {
+  height: auto;
+  min-height: 2.5rem;
+  white-space: nowrap;
+  text-align: center;
+}
+
+@media (forced-colors: active) {
+  mat-card {
+    border-color: CanvasText;
+  }
+}
