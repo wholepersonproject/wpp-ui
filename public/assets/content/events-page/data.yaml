@@ -7,14 +7,14 @@ headerContent:
       command: /
     - name: Events
 content:
-#  - type: section
-#    tagline: Upcoming official events
-#    anchor: upcoming-official-events
-#    level: 2
-#    content:
-#      - type: markdown
-#        data: |
-#          Upcoming events organized by the Whole Person Physiome Research and Coordination Center.
+  #  - type: section
+  #    tagline: Upcoming official events
+  #    anchor: upcoming-official-events
+  #    level: 2
+  #    content:
+  #      - type: markdown
+  #        data: |
+  #          Upcoming events organized by the Whole Person Physiome Research and Coordination Center.
   - type: section
     tagline: Upcoming external events
     anchor: upcoming-external-events
@@ -23,21 +23,6 @@ content:
       - type: markdown
         data: |
           Upcoming events organized by external organizations that are relevant to Whole Person Physiome research.
-
-  - type: section
-    tagline: 'Berlin Hackathon: August 27-28, 2026'
-    anchor: berlin-hackathon
-    level: 3
-    underline: false
-    content:
-      - type: markdown
-        data: |
-          This two-day hackathon brings researchers and developers together to connect human anatomy, cell types, physical traits, and other biomedical data. Participants will explore new shared resources and build tools that support disease research, precision health, and whole-person modeling.
-          * When: August 27-28, 2026
-          * Where: Berlin Institute of Health at Charité, Berlin, Germany
-          * Participating efforts: Human Reference Atlas, Human Phenotype Ontology, Whole Person Physiome, and other European Union efforts
-          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
-          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon)
 
   - type: section
     tagline: '24-Hour Human Physiology Event: December 12-13, 2026'
@@ -61,6 +46,21 @@ content:
       - type: markdown
         data: |
           Past events relevant to the Whole Person Physiome Project.
+
+  - type: section
+    tagline: 'Berlin Hackathon: August 27-28, 2026'
+    anchor: berlin-hackathon
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          This two-day hackathon brings researchers and developers together to connect human anatomy, cell types, physical traits, and other biomedical data. Participants will explore new shared resources and build tools that support disease research, precision health, and whole-person modeling.
+          * When: August 27-28, 2026
+          * Where: Berlin Institute of Health at Charité, Berlin, Germany
+          * Participating efforts: Human Reference Atlas, Human Phenotype Ontology, Whole Person Physiome, and other European Union efforts
+          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-08-27_hra_hackathon)
 
   - type: section
     tagline: 'Whole Person Physiome Jamboree: August 24-25, 2026'
