@@ -14,10 +14,25 @@
 }
 
 body {
+  // All hyperlinks use the primary color role. AtlasNG text-link tokens map to it here,
+  // and component-specific link tokens are mapped in their component blocks below.
+  --wpp-link-color: var(--mat-sys-primary);
+  --ang-text-link-button-color: var(--wpp-link-color);
+  --ang-cookie-banner-privacy-policy-color: var(--wpp-link-color);
   --ang-header-shell-logo-background-color: transparent;
   --ang-cookie-banner-spacing: 0px !important;
   margin: 0;
   min-width: 20rem;
+}
+
+// Every text hyperlink shares one underline and matches the weight of its surrounding text.
+// `a.ang-text-link` outranks AtlasNG's own `.ang-text-link` rule, which sets a fixed weight
+// and uses a `text-decoration` shorthand that would otherwise reset the thickness.
+a.ang-text-link,
+markdown a {
+  font-weight: inherit;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
 }
 
 wpp-news-and-events {
@@ -50,11 +65,8 @@ markdown {
 
   a {
     display: inline-flex;
-    color: var(--mat-sys-on-surface-variant);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 2px;
-    font-weight: 600;
+    color: var(--wpp-link-color);
+    text-decoration-line: underline;
   }
 }
 
@@ -121,6 +133,18 @@ ang-providers-list {
   .ang-provider-list--card {
     display: flex;
     flex-direction: column;
+  }
+
+  // This token also colors empty-state text, so map it on provider links only.
+  .ang-provider-list--link {
+    --ang-ang-cookie-modal-description-color: var(--wpp-link-color);
+  }
+}
+
+ang-profile-card {
+  // This token also colors unlinked names, so map it on linked names only.
+  a.name {
+    --ang-ang-profile-card-name-color: var(--wpp-link-color);
   }
 }
 

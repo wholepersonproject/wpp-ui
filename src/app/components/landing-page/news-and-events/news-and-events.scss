@@ -81,20 +81,10 @@
     letter-spacing: token-utils.slot(card-title-tracking, $config);
   }
 
-  a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: auto;
-    text-decoration-thickness: 0.0625rem;
-    text-underline-offset: 0.125rem;
-    text-underline-position: from-font;
-
-    &:focus-visible {
-      border-radius: 0.125rem;
-      outline: 0.1875rem solid token-utils.slot(focus-color, $config);
-      outline-offset: 0.25rem;
-    }
+  a:focus-visible {
+    border-radius: 0.125rem;
+    outline: 0.1875rem solid token-utils.slot(focus-color, $config);
+    outline-offset: 0.25rem;
   }
 }
 
