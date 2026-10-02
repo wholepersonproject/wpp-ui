@@ -15,8 +15,10 @@ content:
     content:
       - type: markdown
         data: |
-          Track how the number of anatomical structures, functional tissue units, and cell types 
+          Track how the number of anatomical structures, functional tissue units, and cell types
           included in the Whole Person Physiome tables expands quality and coverage over time.
+
+          Notice: In early August 2026, a number of erroneous entries were identified that brought the project outside of its original scope. The WPP tables were subsequently culled and are in the process of being steadily re-populated with rigorously curated information to capture human physiology at the level of cellular abstraction.
 
       - type: visualization
         url: assets/content/visualizations-page/wpp-growth.vl.json
@@ -28,7 +30,7 @@ content:
     content:
       - type: markdown
         data: |
-          See which entities are represented in the Whole Person Physiome (WPP) and Human Reference 
+          See which entities are represented in the Whole Person Physiome (WPP) and Human Reference
           Atlas (HRA) to understand shared coverage.
 
       - type: table
@@ -128,7 +130,7 @@ content:
     content:
       - type: markdown
         data: |
-          Explore how major physiological systems connect to anatomical structures, functional 
+          Explore how major physiological systems connect to anatomical structures, functional
           tissue units (FTUs), and resources across biological scales.
       - type: image
         src: assets/content/visualizations-page/bimodal-network.png
@@ -157,7 +159,7 @@ content:
       - type: markdown
         data: |
           Examine how entities and relationships are organized within the Whole Person Physiome
-          Knowledge Graph. Identify missing terms, inconsistencies, and opportunities to improve 
+          Knowledge Graph. Identify missing terms, inconsistencies, and opportunities to improve
           and harmonize WPP tables.
       - type: image
         src: assets/content/visualizations-page/knowledge-graph-schema.png
