@@ -9,34 +9,120 @@
   ],
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "production": ["default", "!{projectRoot}/.eslintrc.json", "!{projectRoot}/eslint.config.mjs"],
-    "sharedGlobals": []
+    "production": [
+      "default",
+      "!{projectRoot}/AGENTS.md",
+      "!{projectRoot}/CLAUDE.md",
+      "!{projectRoot}/README.md",
+      "!{projectRoot}/eslint.config.mjs",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/**/test-setup.[jt]s",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)"
+    ],
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
   "targetDefaults": {
-    "@angular/build:application": {
+    "@nx/angular:application": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "{workspaceRoot}/dist/{projectName}",
+        "browser": "{projectRoot}/src/main.ts",
+        "tsConfig": "{projectRoot}/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "styles": ["{projectRoot}/src/styles.scss"],
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "{projectRoot}/public"
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true
+        }
+      }
     },
     "lint": {
       "cache": true,
-      "inputs": [
-        "default",
-        "^default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.mjs",
-        "{workspaceRoot}/tools/eslint-rules/**/*"
-      ],
+      "inputs": ["default", "{workspaceRoot}/eslint.config.mjs"],
       "configurations": {
         "fix": {
           "fix": true
         }
       }
     },
-    "@angular/build:unit-test": {
+    "serve": {
+      "executor": "@angular/build:dev-server",
+      "continuous": true,
+      "defaultConfiguration": "development",
+      "configurations": {
+        "production": {
+          "buildTarget": "{projectName}:build:production"
+        },
+        "development": {
+          "buildTarget": "{projectName}:build:development"
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "continuous": true,
+      "options": {
+        "buildTarget": "{projectName}:build",
+        "staticFilePath": "{workspaceRoot}/dist/{projectName}/browser",
+        "spa": true
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:unit-test",
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "options": {
+        "include": ["**/*.spec.ts"],
+        "setupFiles": ["{projectRoot}/src/test-setup.ts"],
+        "coverage": true,
+        "coverageInclude": ["{projectRoot}/src/**/*.ts"],
+        "coverageExclude": [
+          "{projectRoot}/src/**/index.ts",
+          "{projectRoot}/src/**/main.ts",
+          "{projectRoot}/src/**/test-setup.ts"
+        ],
+        "coverageReporters": ["html", "lcovonly", "json-summary", "text-summary"],
+        "coverageThresholds": {
+          "branches": 85,
+          "functions": 85,
+          "lines": 85,
+          "statements": 85
+        },
+        "watch": false
+      },
+      "configurations": {
+        "watch": {
+          "watch": true
+        }
+      }
     }
   },
   "generators": {
@@ -48,7 +134,9 @@
     },
     "@nx/angular:component": {
       "style": "scss",
-      "displayBlock": true
+      "changeDetection": "OnPush",
+      "displayBlock": true,
+      "prefix": "wpp"
     }
   },
   "defaultProject": "wpp-ui",

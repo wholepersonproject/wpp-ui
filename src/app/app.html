@@ -16,8 +16,8 @@
     <router-outlet />
   </main>
   <ang-footer
-    orgName="Whole Person Physiome"
-    [logoUrl]="footerLogo()"
+    organization="Whole Person Physiome"
+    [logoImage]="footerLogo()"
     [socials]="socialMediaIds()"
     (openPrivacyPolicy)="openPrivacyPolicy()"
     (openPrivacyPreferences)="openPrivacyPreferences()"
@@ -26,9 +26,10 @@
 
 @if (!preferencesSet()) {
   <ang-cookie-banner
-    privacyPolicy="/privacy-policy"
     (allowAll)="allowAllCookies()"
     (allowNecessary)="allowNecessaryCookies()"
     (customize)="openPrivacyPreferences()"
-  />
+  >
+    <a angCookieBannerPrivacyPolicy angTextLink angAnyLink="/privacy-policy" target="_blank">Privacy policy</a>
+  </ang-cookie-banner>
 }

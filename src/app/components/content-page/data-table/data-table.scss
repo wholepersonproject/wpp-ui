@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+ang-table {
+  max-height: none;
+}
+
+::ng-deep .wpp-data-table-totals-cell,
+::ng-deep .wpp-data-table-totals-cell * {
+  font-weight: 600;
+}

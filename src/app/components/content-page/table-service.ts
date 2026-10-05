@@ -1,38 +1,37 @@
-import { Injectable, signal } from '@angular/core';
+import { Service, signal } from '@angular/core';
 import { parse } from 'papaparse';
 
 type CsvRow = Record<string, string>;
 
-type TableColumn = {
+/** Column configuration for a table loaded from a page's YAML file */
+export interface TableColumnConfig {
+  /** CSV column holding the cell value */
   column: string;
+  /** Header label */
   label: string;
+  /** CSV column holding a link for the cell; cells without a link render as plain text */
   urlColumn?: string;
+  /** Keeps the column visible while scrolling horizontally */
   sticky?: boolean;
+  /** Parses values as numbers, right-aligns them, and includes them in the totals row */
   numeric?: boolean;
-};
+}
 
-type TableRow = Record<string, string | number | TableCell>;
-
-type TableCell = {
-  label: string | number;
-  link?: string;
-};
+/** Table row keyed by CSV column name */
+export type TableRow = Record<string, string | number>;
 
 export interface TableContent {
   type: 'table';
   url: string;
-  columns: TableColumn[];
+  columns: TableColumnConfig[];
+  /** Appends a totals row summing every numeric column */
   footer?: boolean;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class TableService {
   /** Loaded table rows keyed by CSV URL */
-  protected readonly tableRowsByUrl = signal<
-    Partial<Record<string, TableRow[]>>
-  >({});
+  protected readonly tableRowsByUrl = signal<Partial<Record<string, TableRow[]>>>({});
 
   private readonly tableRowRequests = new Map<string, Promise<TableRow[]>>();
 
@@ -73,27 +72,20 @@ export class TableService {
         header: true,
         skipEmptyLines: 'greedy',
         complete: (result) => {
-          resolve(
-            result.data.map((row) =>
-              this.toTableRow(row, tableContent.columns),
-            ),
-          );
+          resolve(result.data.map((row) => this.toTableRow(row, tableContent.columns)));
         },
       });
     });
   }
 
-  private toTableRow(csvRow: CsvRow, columns: TableColumn[]): TableRow {
+  private toTableRow(csvRow: CsvRow, columns: TableColumnConfig[]): TableRow {
     const tableRow: TableRow = {};
     for (const column of columns) {
       const rawValue = this.getCsvValue(csvRow, column.column);
-      const value = this.coerceCsvValue(rawValue, column.numeric);
+      tableRow[column.column] = this.coerceCsvValue(rawValue, column.numeric);
       if (column.urlColumn) {
-        const link = this.getCsvValue(csvRow, column.urlColumn);
-        tableRow[column.column] = link ? { label: value, link } : value;
-        continue;
+        tableRow[column.urlColumn] = this.getCsvValue(csvRow, column.urlColumn);
       }
-      tableRow[column.column] = value;
     }
 
     return tableRow;
