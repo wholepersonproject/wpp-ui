@@ -1,61 +1,14 @@
-import { Component, computed, inject, Injector, model, Service, Signal, signal } from '@angular/core';
+import { Component, computed, inject, model, signal } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute, IsActiveMatchOptions, NavigationBehaviorOptions, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
-import { AnyLink, LinkAttributes, LinkCommand, LinkHandler, PreparedLink } from '@atlasng/common';
+import { AnyLink } from '@atlasng/common';
 import { CookieBanner, CookieBannerPrivacyPolicy } from '@atlasng/design-system/cookie-banner';
 import { Footer } from '@atlasng/design-system/footer';
 import { TextLink } from '@atlasng/design-system/links/text-link';
 import { CookieModal, CookieModalData } from '@atlasng/labs/cookie-modal';
 import { HeaderShell, HeaderShellNavigationItem, NavigationContainer } from '@atlasng/labs/header-shell';
 import { APP_MENU_ITEMS, createLocalNavigationItems, PRIMARY_NAVIGATION_ITEMS } from './navigation';
-
-/**
- * Link handler that works around AtlasNG link issues before delegating to the router handler.
- *
- * - Opens the header shell logo link in the same tab.
- *   TODO: Remove once the logo link target issue is fixed in `@atlasng/labs/header-shell`.
- * - Resolves `'.'` commands (used by content header self-links) against the active route instead of the
- *   router root, so fragment links stay on the current page.
- *   TODO: Remove once `RouterLinkHandler` resolves relative commands against the active route.
- */
-@Service({ autoProvided: false })
-class AppLinkHandler implements LinkHandler {
-  private readonly parentHandler = inject(LinkHandler, { skipSelf: true });
-  private readonly router = inject(Router);
-
-  prepareLink(command: LinkCommand, element?: Element, attributes?: LinkAttributes, injector?: Injector): PreparedLink {
-    if (command.command === '.' && !command.relativeTo) {
-      command = { ...command, relativeTo: this.getActiveRoute() };
-    }
-
-    const link = this.parentHandler.prepareLink(command, element, attributes, injector);
-    if (command.command === '/') {
-      // A null attribute overrides the `target` input on the host element; undefined falls back to it
-      return { ...link, attributes: { ...link.attributes, target: null } };
-    }
-
-    return link;
-  }
-
-  navigateTo(link: PreparedLink, event: Event, options: NavigationBehaviorOptions): boolean | void {
-    return this.parentHandler.navigateTo(link, event, options);
-  }
-
-  isActive(link: PreparedLink, matchOptions?: Partial<IsActiveMatchOptions>): Signal<boolean> {
-    return this.parentHandler.isActive(link, matchOptions);
-  }
-
-  /** Returns the deepest activated route, which owns the current page URL. */
-  private getActiveRoute(): ActivatedRoute {
-    let route = this.router.routerState.root;
-    while (route.firstChild) {
-      route = route.firstChild;
-    }
-
-    return route;
-  }
-}
 
 @Component({
   selector: 'wpp-website',
@@ -71,12 +24,6 @@ class AppLinkHandler implements LinkHandler {
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
-  providers: [
-    {
-      provide: LinkHandler,
-      useClass: AppLinkHandler,
-    },
-  ],
 })
 export class App {
   private readonly dialog = inject(MatDialog);
