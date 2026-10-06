@@ -1,4 +1,4 @@
-@use '@atlasng/design-system/sass/internal/breakpoints';
+@use '@atlasng/design-system/sass/breakpoints';
 @use '@atlasng/design-system/sass/internal/token-utils';
 @use './tokens' as *;
 
@@ -21,7 +21,7 @@
   margin: 0 auto;
   padding: 4rem 1.25rem;
 
-  @include breakpoints.breakpoint(medium, large, x-large) {
+  @include breakpoints.breakpoint(medium) {
     padding: 6rem 2.5rem;
   }
 }

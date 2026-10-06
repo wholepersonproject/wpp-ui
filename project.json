@@ -8,24 +8,13 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular/build:application",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/angular:application",
       "options": {
-        "outputPath": "dist/wpp-ui",
-        "browser": "./src/main.ts",
-        "tsConfig": "tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "public"
-          }
-        ],
-        "styles": ["./src/styles.scss"]
+        "baseHref": "/",
+        "externalDependencies": ["marked-katex-extension"]
       },
       "configurations": {
         "production": {
-          "baseHref": "/",
           "budgets": [
             {
               "type": "initial",
@@ -37,67 +26,26 @@
               "maximumWarning": "4kb",
               "maximumError": "8kb"
             }
-          ],
-          "outputHashing": "all"
-        },
-        "development": {
-          "baseHref": "/",
-          "optimization": false,
-          "extractLicenses": false,
-          "sourceMap": true
+          ]
         },
         "preview": {
           "baseHref": "/apps/wpp-ui/",
-          "optimization": false,
           "extractLicenses": false,
+          "optimization": false,
           "sourceMap": true
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
-    "serve": {
-      "continuous": true,
-      "executor": "@angular/build:dev-server",
-      "configurations": {
-        "production": {
-          "buildTarget": "wpp-ui:build:production"
-        },
-        "development": {
-          "buildTarget": "wpp-ui:build:development"
-        }
-      },
-      "defaultConfiguration": "development"
-    },
+    "serve": {},
+    "serve-static": {},
     "test": {
-      "executor": "@angular/build:unit-test",
       "options": {
-        "include": ["src/**/*.spec.ts"],
-        "setupFiles": ["src/test-setup.ts"],
-        "coverage": true,
-        "coverageInclude": ["src/**/*.ts"],
-        "coverageExclude": ["src/**/index.ts", "src/**/main.ts", "src/**/test-setup.ts"],
-        "coverageReporters": ["html", "lcovonly", "json-summary", "text-summary"],
         "coverageThresholds": {
           "branches": 10,
           "functions": 10,
           "lines": 10,
           "statements": 10
-        },
-        "watch": false
-      },
-      "configurations": {
-        "watch": {
-          "watch": true
         }
-      }
-    },
-    "serve-static": {
-      "continuous": true,
-      "executor": "@nx/web:file-server",
-      "options": {
-        "buildTarget": "wpp-ui:build",
-        "staticFilePath": "dist/wpp-ui/browser",
-        "spa": true
       }
     },
     "format": {

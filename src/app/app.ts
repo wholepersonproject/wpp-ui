@@ -1,48 +1,29 @@
-import { Component, computed, inject, Injectable, Injector, model, signal } from '@angular/core';
+import { Component, computed, inject, model, signal } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { NavigationBehaviorOptions, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
-import { LinkAttributes, LinkCommand, LinkHandler, PreparedLink } from '@atlasng/common';
-import { CookieBanner } from '@atlasng/design-system/cookie-banner';
+import { AnyLink } from '@atlasng/common';
+import { CookieBanner, CookieBannerPrivacyPolicy } from '@atlasng/design-system/cookie-banner';
+import { Footer } from '@atlasng/design-system/footer';
+import { TextLink } from '@atlasng/design-system/links/text-link';
 import { CookieModal, CookieModalData } from '@atlasng/labs/cookie-modal';
-import { Footer } from '@atlasng/labs/footer';
 import { HeaderShell, HeaderShellNavigationItem, NavigationContainer } from '@atlasng/labs/header-shell';
 import { APP_MENU_ITEMS, createLocalNavigationItems, PRIMARY_NAVIGATION_ITEMS } from './navigation';
 
-// TODO: Remove this class once the logo link target issue is fixed in @atlasng/labs/header-shell
-@Injectable()
-class FixLogoTargetLinkHandler implements LinkHandler {
-  readonly parentHandler = inject(LinkHandler, { skipSelf: true });
-
-  prepareLink(
-    command: LinkCommand,
-    element?: Element,
-    attributes?: LinkAttributes,
-    injector?: Injector,
-  ): PreparedLink<unknown> {
-    if (command.command === '/') {
-      attributes = { ...attributes, target: undefined };
-    }
-
-    return this.parentHandler.prepareLink(command, element, attributes, injector);
-  }
-
-  navigateTo(link: PreparedLink<unknown>, event: Event, options: NavigationBehaviorOptions): boolean | void {
-    return this.parentHandler.navigateTo(link, event, options);
-  }
-}
-
 @Component({
   selector: 'wpp-website',
-  imports: [RouterModule, Footer, HeaderShell, NavigationContainer, CookieBanner],
+  imports: [
+    RouterModule,
+    AnyLink,
+    CookieBanner,
+    CookieBannerPrivacyPolicy,
+    Footer,
+    HeaderShell,
+    NavigationContainer,
+    TextLink,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
-  providers: [
-    {
-      provide: LinkHandler,
-      useClass: FixLogoTargetLinkHandler,
-    },
-  ],
 })
 export class App {
   private readonly dialog = inject(MatDialog);

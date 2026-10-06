@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "target": "es2022",
+    "target": "es2023",
     "module": "preserve",
     "moduleResolution": "bundler",
     "lib": ["ES2023", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
     "declaration": false,
-    "emitDecoratorMetadata": false,
     "experimentalDecorators": true,
     "importHelpers": true,
     "isolatedModules": true,
@@ -20,7 +19,8 @@
     "strict": true,
     "useDefineForClassFields": true,
     "useUnknownInCatchVariables": true,
-    "paths": {}
+    "paths": {},
+    "types": ["*"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

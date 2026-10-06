@@ -1,7 +1,7 @@
 <div class="content-page-header">
   <ang-breadcrumbs [items]="data().headerContent.breadcrumbs" />
   <div>
-    <h1 angSectionHeader>{{ data().headerContent.title }}</h1>
+    <ang-content-header level="1" [tagline]="data().headerContent.title" />
     <markdown [data]="data().headerContent.subtitle" />
   </div>
 </div>
@@ -26,52 +26,24 @@
 
 <div class="content-page-sections">
   @for (section of data().content; track $index) {
-    <div class="content-page-section" [id]="section.anchor">
-      @switch (section.level) {
-        @case (1) {
-          <h1 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
-            {{ section.tagline }}
-          </h1>
-        }
-        @case (2) {
-          <h2 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
-            {{ section.tagline }}
-          </h2>
-        }
-        @case (3) {
-          <h3 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
-            {{ section.tagline }}
-          </h3>
-        }
-        @case (4) {
-          <h4 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
-            {{ section.tagline }}
-          </h4>
-        }
-        @case (5) {
-          <h5 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
-            {{ section.tagline }}
-          </h5>
-        }
-        @default {
-          <h2 angSectionHeader [anchor]="section.anchor" [underlined]="section.underline ?? true" [id]="section.anchor">
-            {{ section.tagline }}
-          </h2>
-        }
-      }
+    <div class="content-page-section">
+      <ang-content-header
+        [tagline]="section.tagline"
+        [level]="section.level"
+        [id]="section.anchor"
+        [underlined]="section.underline ?? true"
+      />
 
       <div class="content-page-subsections">
         @for (subsection of section.content; track $index) {
           <div class="content-page-subsection">
             @if (subsection.type === 'section') {
-              <h3
-                angSectionHeader
-                [anchor]="subsection.anchor"
-                [underlined]="subsection.underline ?? true"
+              <ang-content-header
+                level="3"
+                [tagline]="subsection.tagline"
                 [id]="subsection.anchor"
-              >
-                {{ subsection.tagline }}
-              </h3>
+                [underlined]="subsection.underline ?? true"
+              />
 
               @if (subsection.content) {
                 @for (subsubsection of subsection.content; track $index) {
@@ -79,12 +51,7 @@
                     <markdown [data]="subsubsection.data" />
                   }
                   @if (subsubsection.type === 'table') {
-                    <ang-table
-                      [rows]="tableService.getTableRows(subsubsection)"
-                      [columns]="subsubsection.columns"
-                      [enableSort]="true"
-                      [totalsFooter]="subsubsection.footer || false"
-                    />
+                    <wpp-data-table [content]="subsubsection" />
                   }
                 }
               }
@@ -93,12 +60,7 @@
               <markdown [data]="subsection.data" />
             }
             @if (subsection.type === 'table') {
-              <ang-table
-                [rows]="tableService.getTableRows(subsection)"
-                [columns]="subsection.columns"
-                [enableSort]="true"
-                [totalsFooter]="subsection.footer || false"
-              />
+              <wpp-data-table [content]="subsection" />
             }
             @if (subsection.type === 'image') {
               <img class="content-page-image" [src]="subsection.src" [alt]="subsection.alt" />
@@ -118,24 +80,18 @@
 
             @if (subsection.type === 'youtube') {
               <div class="content-page-youtube-container">
-                <ang-youtube-player
-                  [videoId]="subsection.videoId"
-                  [label]="section.tagline"
-                  [hasCookiesEnabled]="hasMarketingPermissions()"
-                  (enableCookies)="enableMarketingPermissions()"
-                />
+                <ang-youtube-player [videoId]="subsection.videoId" (enableRequest)="enableMarketingPermissions()" />
               </div>
             }
 
             @if (subsection.type === 'grid') {
               <ang-grid-container>
                 @for (card of subsection.content; track $index) {
-                  <ang-profile-card
-                    variant="large"
-                    [pictureUrl]="card.pictureUrl"
+                  <ang-basic-profile-card
+                    [image]="card.pictureUrl"
                     [name]="card.name"
                     [description]="card.description"
-                    [nameLink]="card.nameLink"
+                    [link]="card.nameLink"
                   />
                 }
               </ang-grid-container>

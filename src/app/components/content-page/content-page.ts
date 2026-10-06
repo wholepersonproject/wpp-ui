@@ -5,15 +5,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { AnalyticsEventCategory } from '@atlasng/analytics/events';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
 import { Breadcrumbs } from '@atlasng/design-system/buttons/breadcrumbs';
+import { BasicProfileCard } from '@atlasng/design-system/cards/basic-profile-card';
+import { ContentHeader } from '@atlasng/design-system/content/content-header';
+import { YouTubePlayer } from '@atlasng/design-system/youtube-player';
 import { GridContainer } from '@atlasng/labs/grid-container';
-import { ProfileCard } from '@atlasng/labs/profile-card';
-import { SectionHeader } from '@atlasng/labs/section-header';
-import { Table } from '@atlasng/labs/table';
-import { YoutubePlayer } from '@atlasng/labs/youtube-player';
 import { MarkdownModule } from 'ngx-markdown';
 import { Visualization } from '../visualization/visualization';
 import { ActiveSectionService } from './active-section-service';
 import { ContentCardGrid, ContentCardGridContent } from './content-card-grid/content-card-grid';
+import { DataTable } from './data-table/data-table';
 import { EmailContact, EmailContactContent } from './email-contact/email-contact';
 import { TableContent, TableService } from './table-service';
 
@@ -93,15 +93,15 @@ interface ContentPageData {
   selector: 'wpp-content-page',
   imports: [
     Breadcrumbs,
-    SectionHeader,
+    ContentHeader,
     MatButtonModule,
     MatIconModule,
-    Table,
+    DataTable,
     MarkdownModule,
     Visualization,
-    YoutubePlayer,
+    YouTubePlayer,
     GridContainer,
-    ProfileCard,
+    BasicProfileCard,
     ContentCardGrid,
     EmailContact,
   ],
@@ -122,10 +122,6 @@ export class ContentPage {
 
   /** All nested sections flattened into a single list */
   protected readonly flattenedSections = computed(() => this.flattenSectionContent(this.content()));
-
-  protected readonly hasMarketingPermissions = computed(() =>
-    this.permissionsManager.permissions().isCategoryEnabled(AnalyticsEventCategory.Marketing),
-  );
 
   constructor() {
     effect(() => {
@@ -154,8 +150,8 @@ export class ContentPage {
   }
 
   protected enableMarketingPermissions(): void {
-    this.permissionsManager.setPermissions(
-      this.permissionsManager.permissions().enableCategory(AnalyticsEventCategory.Marketing),
+    this.permissionsManager.updatePermissions((permissions) =>
+      permissions.enableCategory(AnalyticsEventCategory.Marketing),
     );
   }
 
