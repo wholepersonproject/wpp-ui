@@ -7,6 +7,7 @@ import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
 import { Breadcrumbs } from '@atlasng/design-system/buttons/breadcrumbs';
 import { BasicProfileCard } from '@atlasng/design-system/cards/basic-profile-card';
 import { ContentHeader } from '@atlasng/design-system/content/content-header';
+import { Notice, NoticeVariant } from '@atlasng/design-system/indicators/notice';
 import { YouTubePlayer } from '@atlasng/design-system/youtube-player';
 import { GridContainer } from '@atlasng/labs/grid-container';
 import { MarkdownModule } from 'ngx-markdown';
@@ -20,6 +21,16 @@ import { TableContent, TableService } from './table-service';
 interface MarkdownContent {
   type: 'markdown';
   data: string;
+}
+
+/** Highlighted message box whose body is rendered as markdown */
+interface NoticeContent {
+  type: 'notice';
+  data: string;
+  /** Tone of the notice; defaults to `info` */
+  variant?: NoticeVariant;
+  /** Optional title shown above the body */
+  tagline?: string;
 }
 
 interface ButtonContent {
@@ -62,6 +73,7 @@ interface Card {
 type Content =
   | PageSection
   | MarkdownContent
+  | NoticeContent
   | ButtonContent
   | TableContent
   | ImageContent
@@ -98,6 +110,7 @@ interface ContentPageData {
     MatIconModule,
     DataTable,
     MarkdownModule,
+    Notice,
     Visualization,
     YouTubePlayer,
     GridContainer,
