@@ -15,7 +15,7 @@
       ),
       typography: theme.$typography,
     ),
-    $overrides: theme.$typography-overrides
+    $overrides: map.merge(theme.$typography-overrides, theme.$shape-overrides)
   );
 
   @each $name, $palette in theme.$ext-palettes {
