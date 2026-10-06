@@ -1,16 +1,28 @@
-@use '@angular/material' as mat;
 @use 'sass:map';
-@use './styles/theming' as theming;
-@use './styles/palettes' as wpp-theme;
+@use '@angular/material' as mat;
+@use '@atlasng/design-system' as ds;
+@use './styles/fonts' as fonts;
+@use './styles/theme' as theme;
 
 :root {
-  @include theming.theme(wpp-theme.$theme);
-  color-scheme: light;
+  color-scheme: light dark;
+  @include mat.theme(
+    (
+      color: (
+        theme-type: color-scheme,
+        primary: theme.$primary-palette,
+        tertiary: theme.$tertiary-palette,
+      ),
+      typography: theme.$typography,
+    ),
+    $overrides: theme.$typography-overrides
+  );
 
-  @media (prefers-color-scheme: dark) {
-    @include theming.theme(wpp-theme.$theme-dark);
-    color-scheme: dark;
+  @each $name, $palette in theme.$ext-palettes {
+    @include ds.ext-level-colors($name, $palette, color-scheme);
   }
+
+  @include ds.mat-all-defaults;
 }
 
 body {
