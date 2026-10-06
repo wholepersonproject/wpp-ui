@@ -59,6 +59,11 @@
             @if (subsection.type === 'markdown') {
               <markdown [data]="subsection.data" />
             }
+            @if (subsection.type === 'notice') {
+              <ang-notice [variant]="subsection.variant ?? 'info'" [tagline]="subsection.tagline">
+                <markdown [data]="subsection.data" />
+              </ang-notice>
+            }
             @if (subsection.type === 'table') {
               <wpp-data-table [content]="subsection" />
             }

@@ -57,6 +57,19 @@ content:
         videoId: kNphiKTBIPU
 
   - type: section
+    tagline: Whole Person Physiome Annual Meeting 2026
+    anchor: wpp-annual-meeting-2026
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          The Whole Person Physiome leadership team outlines the vision for the project at the 2026 Annual Meeting in Rockville, Maryland.
+
+      - type: youtube
+        videoId: Cb7B_zcHDw8
+
+  - type: section
     tagline: Standards for Multiscale Cellular Modeling
     anchor: standards-for-multiscale-cellular-modeling
     level: 3

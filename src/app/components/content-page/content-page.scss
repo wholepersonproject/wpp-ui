@@ -96,6 +96,16 @@
     max-width: 28rem;
   }
 
+  ang-notice {
+    // Matches the space above, where the preceding paragraph adds its own margin.
+    margin-bottom: 0.75rem;
+
+    // Trailing markdown margin would make the notice's bottom padding uneven.
+    markdown ::ng-deep > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
   @include breakpoints.breakpoint(medium) {
     grid-template-areas:
       'header toc'
