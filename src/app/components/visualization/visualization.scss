@@ -19,7 +19,12 @@
   aspect-ratio: 16 / 9;
 
   ::ng-deep canvas {
+    box-sizing: border-box;
     border-radius: token-utils.slot(border-radius, $config);
     border: 1px solid token-utils.slot(border-color, $config);
+  }
+
+  ::ng-deep &.vega-embed:has(.vega-bindings) {
+    padding-bottom: 24px;
   }
 }
