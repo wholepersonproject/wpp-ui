@@ -3,7 +3,7 @@ import { Component, inject, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { TextLink } from '@atlasng/design-system/text-link';
+import { TextLink } from '@atlasng/design-system/links/text-link';
 import { EmailCopiedSnackbar } from './email-copied-snackbar';
 
 export interface EmailContactContent {
