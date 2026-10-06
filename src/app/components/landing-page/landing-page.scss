@@ -1,4 +1,4 @@
-@use '@atlasng/design-system/sass/internal/breakpoints';
+@use '@atlasng/design-system/sass/breakpoints';
 @use '@atlasng/design-system/sass/internal/token-utils';
 @use './tokens' as *;
 
@@ -22,7 +22,7 @@
     padding: 1.25rem;
     width: calc(100% - 2.5rem);
 
-    @include breakpoints.breakpoint(medium, large, x-large) {
+    @include breakpoints.breakpoint(medium) {
       padding: 2.5rem;
       width: calc(100% - 5rem);
     }
@@ -35,8 +35,7 @@
     max-width: 31rem;
     padding: 2.5rem;
     background: rgb(
-      from token-utils.slot(card-background, $config) r g b /
-        token-utils.slot(card-background-opacity, $config)
+      from token-utils.slot(card-background, $config) r g b / token-utils.slot(card-background-opacity, $config)
     );
     -webkit-backdrop-filter: token-utils.slot(card-backdrop-filter, $config);
     backdrop-filter: token-utils.slot(card-backdrop-filter, $config);

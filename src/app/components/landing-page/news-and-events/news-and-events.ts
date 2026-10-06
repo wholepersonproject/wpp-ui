@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AnyLink } from '@atlasng/common';
-import { TextLink } from '@atlasng/design-system/text-link';
+import { TextLink } from '@atlasng/design-system/links/text-link';
 
 export interface NewsAndEventItem {
   id: string;
