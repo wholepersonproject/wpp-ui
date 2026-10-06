@@ -24,7 +24,7 @@
 
 ## WPP UI Quick Start
 
-- Stack: Nx 22 + Angular 21 single-application workspace; package manager is npm.
+- Stack: Nx 23 + Angular 22 single-application workspace; package manager is npm.
 - Use `npx nx` for local Nx commands to avoid global CLI drift.
 - The workspace contains one project: `wpp-ui` (application, rooted at the repository root).
 
@@ -53,7 +53,7 @@
 ## Testing Expectations
 
 - Unit tests use `@angular/build:unit-test` with coverage enabled by default.
-- Coverage thresholds are enforced at 85% for branches, functions, lines, and statements.
+- Coverage thresholds default to 85% for branches, functions, lines, and statements (`nx.json` target defaults); `project.json` temporarily lowers them to 10% for `wpp-ui` until coverage catches up. Keep new code at 85% or higher.
 - Prefer Testing Library APIs (`@testing-library/angular` and `@testing-library/dom`) over direct DOM access.
 - Prefer `user-event` for interactions and `@testing-library/jest-dom` matchers for rendered DOM assertions.
 - Import `@testing-library/jest-dom/vitest` in `src/test-setup.ts`, not in individual `*.spec.ts` files.

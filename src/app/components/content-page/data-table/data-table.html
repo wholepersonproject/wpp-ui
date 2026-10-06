@@ -1,0 +1,10 @@
+<ang-table summaryPosition="bottom" [rows]="rows()" [columns]="columns()" [summaryRow]="content().footer ?? false" />
+
+<ng-template let-row="row" let-value="value" let-column="column" #linkCell>
+  @let link = getLink(row, column.prop);
+  @if (link) {
+    <a angTextLink class="wpp-data-table-link" target="_blank" [angAnyLink]="link">{{ value }}</a>
+  } @else {
+    <div class="ang-table--text-cell">{{ value }}</div>
+  }
+</ng-template>

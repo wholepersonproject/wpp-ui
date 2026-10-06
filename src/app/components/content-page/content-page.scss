@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@use '@atlasng/design-system/sass/internal/breakpoints';
+@use '@atlasng/design-system/sass/breakpoints';
 @use '@atlasng/design-system/sass/internal/token-utils';
 @use './tokens' as *;
 
@@ -84,20 +84,8 @@
     }
   }
 
-  h1,
-  h2,
-  h3 {
+  ang-content-header {
     margin-bottom: 0.75rem;
-  }
-
-  h1 {
-    letter-spacing: token-utils.slot(h1-tracking, $config);
-  }
-  h2 {
-    letter-spacing: token-utils.slot(h2-tracking, $config);
-  }
-  h3 {
-    letter-spacing: token-utils.slot(h3-tracking, $config);
   }
 
   .content-page-image {
@@ -108,7 +96,7 @@
     max-width: 28rem;
   }
 
-  @include breakpoints.breakpoint(medium, large, x-large) {
+  @include breakpoints.breakpoint(medium) {
     grid-template-areas:
       'header toc'
       'sections toc';
@@ -149,28 +137,20 @@ ang-grid-container {
   }
 }
 
-ang-profile-card {
+ang-basic-profile-card {
   height: fit-content;
 
-  ::ng-deep img {
+  ::ng-deep .ang-basic-profile-card--image {
     transform: scale(1.04);
   }
 
-  ::ng-deep .description {
+  ::ng-deep .ang-basic-profile-card--description {
     white-space: pre-line;
   }
 }
 
-::ng-deep .ang-section-header-content {
-  font-weight: 500;
-}
-
-::ng-deep .ang-section-header-link-container {
-  @media (min-width: 640px) {
-    display: none !important;
-  }
-
-  @media (min-width: 960px) {
-    display: inline-block !important;
+ang-content-header {
+  @for $level from 1 through 6 {
+    --ang-content-header-level-#{$level}-weight: 500;
   }
 }

@@ -1,38 +1,37 @@
-import { Injectable, signal } from '@angular/core';
+import { Service, signal } from '@angular/core';
 import { parse } from 'papaparse';
 
-type CsvRow = Record<string, string>;
-
-type TableColumn = {
+/** Column configuration for a table loaded from a page's YAML file */
+export interface TableColumnConfig {
+  /** CSV column holding the cell value */
   column: string;
+  /** Header label */
   label: string;
+  /** CSV column holding a link for the cell; cells without a link render as plain text */
   urlColumn?: string;
+  /** Keeps the column visible while scrolling horizontally */
   sticky?: boolean;
+  /** Parses values as numbers, right-aligns them, and sums them in the summary row */
   numeric?: boolean;
-};
+  /** Minimum width of the column in pixels */
+  minWidth?: number;
+}
 
-type TableRow = Record<string, string | number | TableCell>;
-
-type TableCell = {
-  label: string | number;
-  link?: string;
-};
+/** Table row keyed by CSV column name; empty numeric cells are `null` */
+export type TableRow = Record<string, string | number | null>;
 
 export interface TableContent {
   type: 'table';
   url: string;
-  columns: TableColumn[];
+  columns: TableColumnConfig[];
+  /** Shows a summary row totaling every numeric column */
   footer?: boolean;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class TableService {
   /** Loaded table rows keyed by CSV URL */
-  protected readonly tableRowsByUrl = signal<
-    Partial<Record<string, TableRow[]>>
-  >({});
+  protected readonly tableRowsByUrl = signal<Partial<Record<string, TableRow[]>>>({});
 
   private readonly tableRowRequests = new Map<string, Promise<TableRow[]>>();
 
@@ -67,48 +66,19 @@ export class TableService {
   }
 
   private fetchCsvTableRows(tableContent: TableContent): Promise<TableRow[]> {
+    const numericColumns = new Set(
+      tableContent.columns.filter((column) => column.numeric).map((column) => column.column),
+    );
+
     return new Promise((resolve) => {
-      parse<CsvRow>(tableContent.url, {
+      parse<TableRow>(tableContent.url, {
         download: true,
         header: true,
         skipEmptyLines: 'greedy',
-        complete: (result) => {
-          resolve(
-            result.data.map((row) =>
-              this.toTableRow(row, tableContent.columns),
-            ),
-          );
-        },
+        transform: (value) => value.trim(),
+        dynamicTyping: (field) => numericColumns.has(String(field)),
+        complete: (result) => resolve(result.data),
       });
     });
-  }
-
-  private toTableRow(csvRow: CsvRow, columns: TableColumn[]): TableRow {
-    const tableRow: TableRow = {};
-    for (const column of columns) {
-      const rawValue = this.getCsvValue(csvRow, column.column);
-      const value = this.coerceCsvValue(rawValue, column.numeric);
-      if (column.urlColumn) {
-        const link = this.getCsvValue(csvRow, column.urlColumn);
-        tableRow[column.column] = link ? { label: value, link } : value;
-        continue;
-      }
-      tableRow[column.column] = value;
-    }
-
-    return tableRow;
-  }
-
-  private getCsvValue(csvRow: CsvRow, column: string): string {
-    return (csvRow[column] ?? '').trim();
-  }
-
-  private coerceCsvValue(value: string, numeric?: boolean): string | number {
-    if (!numeric || value === '') {
-      return value;
-    }
-
-    const numberValue = Number(value);
-    return Number.isFinite(numberValue) ? numberValue : value;
   }
 }

@@ -101,31 +101,9 @@ ang-navigation-menu {
 }
 
 ang-breadcrumbs {
-  span.ang-breadcrumbs-label,
-  .ang-breadcrumbs-separator {
+  .ang-breadcrumbs--label,
+  .ang-breadcrumbs--separator {
     font-weight: 400;
-  }
-}
-
-ang-table {
-  max-height: unset;
-
-  th {
-    padding-top: 0.75rem !important;
-    padding-bottom: 0.5rem !important;
-  }
-
-  .align-right .mat-sort-header-container {
-    justify-content: flex-end;
-  }
-
-  .align-right.mat-sort-header {
-    padding-right: 7.5px;
-  }
-
-  td,
-  .align-right.mat-mdc-footer-cell {
-    padding-right: 1.5rem !important;
   }
 }
 
