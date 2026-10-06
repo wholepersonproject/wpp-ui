@@ -18,7 +18,14 @@ content:
           Track how the number of anatomical structures, functional tissue units, and cell types
           included in the Whole Person Physiome tables expands quality and coverage over time.
 
-          Notice: In early August 2026, a number of erroneous entries were identified that brought the project outside of its original scope. The WPP tables were subsequently culled and are in the process of being steadily re-populated with rigorously curated information to capture human physiology at the level of cellular abstraction.
+      - type: notice
+        variant: warning
+        tagline: Data re-curation in progress
+        data: |
+          In early August 2026, a number of erroneous entries were identified that brought the
+          project outside of its original scope. The WPP tables were subsequently culled and are in
+          the process of being steadily re-populated with rigorously curated information to capture
+          human physiology at the level of cellular abstraction.
 
       - type: visualization
         url: assets/content/visualizations-page/wpp-growth.vl.json
