@@ -1,15 +1,9 @@
-import { Signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { screen } from '@testing-library/dom';
+import { screen, within } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { TableContent, TableRow, TableService } from '../table-service';
 import { DataTable, TOTALS_ROW_LABEL } from './data-table';
-
-/** Protected members of {@link DataTable} inspected by these tests. */
-interface DataTableInternals {
-  rows: Signal<TableRow[]>;
-}
 
 const content: TableContent = {
   type: 'table',
@@ -25,8 +19,29 @@ const content: TableContent = {
 const rows: TableRow[] = [
   { label: 'beta', url: 'https://example.org/beta', count: 2, notes: 'second' },
   { label: 'alpha', url: '', count: 10, notes: 'first' },
-  { label: 'gamma', url: 'https://example.org/gamma', count: '', notes: 'third' },
+  { label: 'gamma', url: 'https://example.org/gamma', count: null, notes: 'third' },
 ];
+
+/** Viewport height reported to the table so its virtualized body renders every row */
+const VIEWPORT_HEIGHT = 1000;
+
+/** Reports a fixed border box for every observed element; jsdom has no layout to measure. */
+class FixedSizeResizeObserver {
+  constructor(private readonly callback: ResizeObserverCallback) {}
+
+  observe(target: Element): void {
+    const entry = { target, borderBoxSize: [{ inlineSize: VIEWPORT_HEIGHT, blockSize: VIEWPORT_HEIGHT }] };
+    this.callback([entry as unknown as ResizeObserverEntry], this as unknown as ResizeObserver);
+  }
+
+  unobserve(): void {
+    // No-op: sizes never change
+  }
+
+  disconnect(): void {
+    // No-op: sizes never change
+  }
+}
 
 async function setup(tableContent: TableContent = content) {
   await TestBed.configureTestingModule({
@@ -38,19 +53,33 @@ async function setup(tableContent: TableContent = content) {
   fixture.componentRef.setInput('content', tableContent);
   fixture.detectChanges();
   await fixture.whenStable();
+  // Let the table's debounced resize handler apply the viewport size
+  await vi.advanceTimersByTimeAsync(10);
+  fixture.detectChanges();
+  await fixture.whenStable();
 
-  const internals = fixture.componentInstance as unknown as DataTableInternals;
-  const getLabels = () => internals.rows().map((row) => row['label']);
+  /** Notes column values in rendered order; notes are unique per row and never part of the summary */
+  const getNotes = () => screen.getAllByText(/^(first|second|third)$/).map((cell) => cell.textContent?.trim());
   const clickHeader = async (name: string) => {
     await userEvent.setup().click(screen.getByText(name));
     fixture.detectChanges();
     await fixture.whenStable();
   };
 
-  return { internals, getLabels, clickHeader };
+  return { fixture, getNotes, clickHeader };
 }
 
 describe('DataTable', () => {
+  beforeEach(() => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    vi.stubGlobal('ResizeObserver', FixedSizeResizeObserver);
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.unstubAllGlobals();
+  });
+
   it('renders trimmed column headers', async () => {
     await setup();
 
@@ -68,54 +97,46 @@ describe('DataTable', () => {
   });
 
   it('renders plain text for rows without a link', async () => {
-    const { clickHeader } = await setup();
-
-    await clickHeader('System');
+    await setup();
 
     expect(screen.getByText('alpha')).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: 'alpha' })).not.toBeInTheDocument();
   });
 
-  it('appends a totals row summing numeric columns', async () => {
-    const { internals, getLabels } = await setup();
+  it('renders a summary row totaling numeric columns', async () => {
+    await setup();
 
-    expect(getLabels()).toEqual(['beta', 'alpha', 'gamma', TOTALS_ROW_LABEL]);
-    expect(internals.rows().at(-1)).toEqual({ label: TOTALS_ROW_LABEL, count: 12, notes: '' });
+    const summaryRow = screen.getByText(TOTALS_ROW_LABEL).closest<HTMLElement>('[role="row"]');
+    expect(summaryRow).not.toBeNull();
+    expect(within(summaryRow as HTMLElement).getByText('12')).toBeInTheDocument();
   });
 
-  it('omits the totals row when the footer is disabled', async () => {
-    const { getLabels } = await setup({ ...content, footer: false });
+  it('omits the summary row when the footer is disabled', async () => {
+    await setup({ ...content, footer: false });
 
-    expect(getLabels()).toEqual(['beta', 'alpha', 'gamma']);
+    expect(screen.queryByText(TOTALS_ROW_LABEL)).not.toBeInTheDocument();
   });
 
-  it('sorts text columns in both directions while keeping the totals row last', async () => {
-    const { getLabels, clickHeader } = await setup();
+  it('sorts text columns in both directions and restores the original order when cleared', async () => {
+    const { getNotes, clickHeader } = await setup();
 
     await clickHeader('System');
-    expect(getLabels()).toEqual(['alpha', 'beta', 'gamma', TOTALS_ROW_LABEL]);
+    expect(getNotes()).toEqual(['first', 'second', 'third']);
 
     await clickHeader('System');
-    expect(getLabels()).toEqual(['gamma', 'beta', 'alpha', TOTALS_ROW_LABEL]);
+    expect(getNotes()).toEqual(['third', 'second', 'first']);
+
+    await clickHeader('System');
+    expect(getNotes()).toEqual(['second', 'first', 'third']);
   });
 
   it('sorts numeric columns numerically with empty values first', async () => {
-    const { getLabels, clickHeader } = await setup();
+    const { getNotes, clickHeader } = await setup();
 
     await clickHeader('Count');
-    expect(getLabels()).toEqual(['gamma', 'beta', 'alpha', TOTALS_ROW_LABEL]);
+    expect(getNotes()).toEqual(['third', 'second', 'first']);
 
     await clickHeader('Count');
-    expect(getLabels()).toEqual(['alpha', 'beta', 'gamma', TOTALS_ROW_LABEL]);
-  });
-
-  it('restores the original order when sorting is cleared', async () => {
-    const { getLabels, clickHeader } = await setup();
-
-    await clickHeader('System');
-    await clickHeader('System');
-    await clickHeader('System');
-
-    expect(getLabels()).toEqual(['beta', 'alpha', 'gamma', TOTALS_ROW_LABEL]);
+    expect(getNotes()).toEqual(['first', 'second', 'third']);
   });
 });

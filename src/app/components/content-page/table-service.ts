@@ -1,8 +1,6 @@
 import { Service, signal } from '@angular/core';
 import { parse } from 'papaparse';
 
-type CsvRow = Record<string, string>;
-
 /** Column configuration for a table loaded from a page's YAML file */
 export interface TableColumnConfig {
   /** CSV column holding the cell value */
@@ -13,18 +11,20 @@ export interface TableColumnConfig {
   urlColumn?: string;
   /** Keeps the column visible while scrolling horizontally */
   sticky?: boolean;
-  /** Parses values as numbers, right-aligns them, and includes them in the totals row */
+  /** Parses values as numbers, right-aligns them, and sums them in the summary row */
   numeric?: boolean;
+  /** Minimum width of the column in pixels */
+  minWidth?: number;
 }
 
-/** Table row keyed by CSV column name */
-export type TableRow = Record<string, string | number>;
+/** Table row keyed by CSV column name; empty numeric cells are `null` */
+export type TableRow = Record<string, string | number | null>;
 
 export interface TableContent {
   type: 'table';
   url: string;
   columns: TableColumnConfig[];
-  /** Appends a totals row summing every numeric column */
+  /** Shows a summary row totaling every numeric column */
   footer?: boolean;
 }
 
@@ -66,41 +66,19 @@ export class TableService {
   }
 
   private fetchCsvTableRows(tableContent: TableContent): Promise<TableRow[]> {
+    const numericColumns = new Set(
+      tableContent.columns.filter((column) => column.numeric).map((column) => column.column),
+    );
+
     return new Promise((resolve) => {
-      parse<CsvRow>(tableContent.url, {
+      parse<TableRow>(tableContent.url, {
         download: true,
         header: true,
         skipEmptyLines: 'greedy',
-        complete: (result) => {
-          resolve(result.data.map((row) => this.toTableRow(row, tableContent.columns)));
-        },
+        transform: (value) => value.trim(),
+        dynamicTyping: (field) => numericColumns.has(String(field)),
+        complete: (result) => resolve(result.data),
       });
     });
-  }
-
-  private toTableRow(csvRow: CsvRow, columns: TableColumnConfig[]): TableRow {
-    const tableRow: TableRow = {};
-    for (const column of columns) {
-      const rawValue = this.getCsvValue(csvRow, column.column);
-      tableRow[column.column] = this.coerceCsvValue(rawValue, column.numeric);
-      if (column.urlColumn) {
-        tableRow[column.urlColumn] = this.getCsvValue(csvRow, column.urlColumn);
-      }
-    }
-
-    return tableRow;
-  }
-
-  private getCsvValue(csvRow: CsvRow, column: string): string {
-    return (csvRow[column] ?? '').trim();
-  }
-
-  private coerceCsvValue(value: string, numeric?: boolean): string | number {
-    if (!numeric || value === '') {
-      return value;
-    }
-
-    const numberValue = Number(value);
-    return Number.isFinite(numberValue) ? numberValue : value;
   }
 }

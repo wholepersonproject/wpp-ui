@@ -6,7 +6,23 @@ ang-table {
   max-height: none;
 }
 
-::ng-deep .wpp-data-table-totals-cell,
-::ng-deep .wpp-data-table-totals-cell * {
-  font-weight: 600;
+// Sticky columns render in their own row group, so atlasng's `:not(:last-child)` column divider skips their last cell,
+// and the group is transparent, so scrolled cells show through it.
+// TODO: Remove once the per-pin-group divider and background fixes ship in an atlasng release
+:host ::ng-deep .ang-table {
+  &:not(.ang-table--appearance-none) .datatable-row-left > :last-child {
+    border-right: 1px solid var(--ang-table-border-color, var(--mat-sys-outline));
+  }
+
+  .datatable-header .datatable-row-left {
+    background-color: var(--ang-table-header-background-color, var(--mat-sys-surface-variant));
+  }
+
+  .datatable-body-row .datatable-row-left {
+    background-color: var(--ang-table-cell-background-color, var(--mat-sys-surface));
+  }
+
+  &.ang-table--appearance-striped .datatable-row-wrapper:nth-child(2n) .datatable-row-left {
+    background-color: var(--ang-table-striped-row-background-color, var(--mat-sys-surface-container-low));
+  }
 }
