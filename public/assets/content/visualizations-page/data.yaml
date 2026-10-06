@@ -20,7 +20,7 @@ content:
 
       - type: notice
         variant: warning
-        tagline: Data re-curation in progress
+        tagline: Data curation in progress
         data: |
           In early August 2026, a number of erroneous entries were identified that brought the
           project outside of its original scope. The WPP tables were subsequently culled and are in
