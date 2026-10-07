@@ -49,6 +49,9 @@
 - Follow nearby WPP components for class naming, component structure, and token usage.
 - Keep application-owned classes in kebab case and update templates, styles, TypeScript references, and tests together when renaming them.
 - Do not rename third-party framework classes or classes supplied by external content solely to match application conventions.
+- Override AtlasNG `--ang-*` tokens with the package's Sass override mixins, not by setting the custom properties directly. For example, use `@include ds.text-link-overrides((color: ...))` from `@atlasng/design-system` or `@include labs.header-shell-overrides((...))` from `@atlasng/labs`. The mixins reject unknown token names, so a token renamed in an AtlasNG upgrade fails the build instead of silently doing nothing.
+- Include the mixin inside the rule that should receive the tokens. Token names are listed in `node_modules/@atlasng/<package>/sass/tokens/`.
+- Set an `--ang-*` property directly only when no mixin defines that token, and add a comment explaining why.
 
 ## Testing Expectations
 
