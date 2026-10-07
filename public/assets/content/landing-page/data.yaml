@@ -62,3 +62,21 @@ newsAndEvents:
         label: Bloomington, Indiana, USA
         icon: location_on
       url: https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon/
+
+    - date: June 17-18, 2026
+      id: wpp-annual-meeting-2026-06-17
+      title: Whole Person Physiome Annual Meeting
+      summary: Organized by the Whole Person Physiome Research and Coordination Center at Stanford University
+      tag:
+        label: Rockville, Maryland, USA
+        icon: location_on
+      url: /events#annual-meeting-2026
+
+    - date: September 17, 2025
+      id: nih-wpp-launch-2025-09-17
+      title: NIH launches landmark project on whole-person health and function
+      summary: News release from the National Institutes of Health
+      tag:
+        label: News & announcements
+        icon: newspaper
+      url: https://www.nih.gov/news-events/news-releases/nih-launches-landmark-project-whole-person-health-function
