@@ -40,6 +40,7 @@ describe('EmailContact', () => {
 
     expect(description).toBeVisible();
     expect(emailLink).toHaveAttribute('href', `mailto:${content.email}`);
+    expect(emailLink).toHaveClass('ang-text-link');
     expect(screen.getByRole('button', { name: content.copyButtonLabel })).toBeVisible();
   });
 
