@@ -160,7 +160,7 @@ ang-providers-list {
   }
 
   // This token also colors empty-state text, so map it on provider links only.
-  // TODO: Use `labs.cookie-modal-overrides` once @atlasng/labs defines it; 0.0.8 forwards the name without a mixin.
+  // TODO: Use `labs.cookie-modal-overrides` once @atlasng/labs defines it (https://github.com/cns-iu/AtlasNG/issues/160).
   .ang-provider-list--link {
     --ang-ang-cookie-modal-description-color: var(--wpp-link-color);
   }
