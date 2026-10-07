@@ -85,7 +85,14 @@
 
             @if (subsection.type === 'youtube') {
               <div class="content-page-youtube-container">
-                <ang-youtube-player [videoId]="subsection.videoId" (enableRequest)="enableMarketingPermissions()" />
+                <ang-youtube-player [videoId]="subsection.videoId">
+                  <p angYouTubePlayerEnableRequest>
+                    <button class="wpp-text-link-button" type="button" (click)="enableMarketingPermissions()">
+                      Enable cookies
+                    </button>
+                    to watch videos
+                  </p>
+                </ang-youtube-player>
               </div>
             }
 

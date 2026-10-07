@@ -8,7 +8,7 @@ import { Breadcrumbs } from '@atlasng/design-system/buttons/breadcrumbs';
 import { BasicProfileCard } from '@atlasng/design-system/cards/basic-profile-card';
 import { ContentHeader } from '@atlasng/design-system/content/content-header';
 import { Notice, NoticeVariant } from '@atlasng/design-system/indicators/notice';
-import { YouTubePlayer } from '@atlasng/design-system/youtube-player';
+import { YouTubePlayer, YouTubePlayerEnableRequest } from '@atlasng/design-system/youtube-player';
 import { GridContainer } from '@atlasng/labs/grid-container';
 import { MarkdownModule } from 'ngx-markdown';
 import { Visualization } from '../visualization/visualization';
@@ -113,6 +113,7 @@ interface ContentPageData {
     Notice,
     Visualization,
     YouTubePlayer,
+    YouTubePlayerEnableRequest,
     GridContainer,
     BasicProfileCard,
     ContentCardGrid,
