@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
 import { screen, within } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
 import { provideMarkdown } from 'ngx-markdown';
 import { describe, expect, it, vi } from 'vitest';
 import { ContentPage } from './content-page';
@@ -13,7 +14,10 @@ async function renderPage(content: Record<string, unknown>[]): Promise<void> {
     providers: [
       provideMarkdown(),
       provideRouter([]),
-      { provide: AnalyticsPermissionsManager, useValue: { updatePermissions: vi.fn() } },
+      {
+        provide: AnalyticsPermissionsManager,
+        useValue: { permissions: () => ({ isCategoryEnabled: () => false }), updatePermissions: vi.fn() },
+      },
     ],
   }).compileComponents();
   const fixture = TestBed.createComponent(ContentPage);
@@ -51,5 +55,18 @@ describe('ContentPage', () => {
 
     expect(notice).toHaveClass('ang-notice--variant-info');
     expect(within(notice).getByText('Values are rounded to two decimal places.')).toBeVisible();
+  });
+
+  it('enables marketing cookies from a link-styled button under a disabled video', async () => {
+    await renderPage([{ type: 'youtube', videoId: 'example-video' }]);
+    const permissionsManager = TestBed.inject(AnalyticsPermissionsManager);
+    const enableButton = screen.getByRole('button', { name: 'Enable cookies' });
+
+    expect(enableButton).toHaveClass('wpp-text-link-button');
+    expect(screen.getByText(/to watch videos/)).toHaveTextContent('Enable cookies to watch videos');
+
+    await userEvent.click(enableButton);
+
+    expect(permissionsManager.updatePermissions).toHaveBeenCalledOnce();
   });
 });

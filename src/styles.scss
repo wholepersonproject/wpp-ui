@@ -1,6 +1,9 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 @use '@atlasng/design-system' as ds;
+@use '@atlasng/design-system/sass/internal/token-utils';
+@use '@atlasng/design-system/sass/tokens/youtube-player';
+@use '@atlasng/labs' as labs;
 @use './styles/fonts' as fonts;
 @use './styles/theme' as theme;
 
@@ -29,9 +32,23 @@ body {
   // All hyperlinks use the primary color role. AtlasNG text-link tokens map to it here,
   // and component-specific link tokens are mapped in their component blocks below.
   --wpp-link-color: var(--mat-sys-primary);
-  --ang-text-link-button-color: var(--wpp-link-color);
-  --ang-cookie-banner-privacy-policy-color: var(--wpp-link-color);
-  --ang-header-shell-logo-background-color: transparent;
+  @include ds.text-link-overrides(
+    (
+      color: var(--wpp-link-color),
+    )
+  );
+  @include ds.cookie-banner-overrides(
+    (
+      privacy-policy-color: var(--wpp-link-color),
+    )
+  );
+  @include labs.header-shell-overrides(
+    (
+      logo-background-color: transparent,
+    )
+  );
+  // Not a Sass token: the banner sets this inline at runtime to reserve space for itself,
+  // and `!important` keeps the page from reserving that space.
   --ang-cookie-banner-spacing: 0px !important;
   margin: 0;
   min-width: 20rem;
@@ -41,10 +58,27 @@ body {
 // `a.ang-text-link` outranks AtlasNG's own `.ang-text-link` rule, which sets a fixed weight
 // and uses a `text-decoration` shorthand that would otherwise reset the thickness.
 a.ang-text-link,
-markdown a {
+markdown a,
+.wpp-text-link-button {
   font-weight: inherit;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 2px;
+}
+
+// Buttons that sit in running text look like text links. AtlasNG's text link supports anchors only.
+.wpp-text-link-button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--wpp-link-color);
+  font: inherit;
+  text-decoration-line: underline;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+  }
 }
 
 wpp-news-and-events {
@@ -126,15 +160,34 @@ ang-providers-list {
   }
 
   // This token also colors empty-state text, so map it on provider links only.
+  // TODO: Use `labs.cookie-modal-overrides` once @atlasng/labs defines it; 0.0.8 forwards the name without a mixin.
   .ang-provider-list--link {
     --ang-ang-cookie-modal-description-color: var(--wpp-link-color);
   }
 }
 
-ang-profile-card {
+ang-basic-profile-card {
   // This token also colors unlinked names, so map it on linked names only.
-  a.name {
-    --ang-ang-profile-card-name-color: var(--wpp-link-color);
+  a.ang-basic-profile-card--name {
+    @include ds.basic-profile-card-overrides(
+      (
+        title-color: var(--wpp-link-color),
+      )
+    );
+  }
+}
+
+ang-youtube-player {
+  // The player's own enable-request styles are encapsulated and skip content projected with
+  // `angYouTubePlayerEnableRequest`, so reapply its tokens here.
+  .ang-youtube-player--enable-request {
+    margin: 0.5rem 0 0;
+    color: token-utils.slot(enable-request-color, youtube-player.$config);
+    font-family: token-utils.slot(enable-request-font, youtube-player.$config);
+    font-size: token-utils.slot(enable-request-size, youtube-player.$config);
+    font-weight: token-utils.slot(enable-request-weight, youtube-player.$config);
+    line-height: token-utils.slot(enable-request-line-height, youtube-player.$config);
+    letter-spacing: token-utils.slot(enable-request-tracking, youtube-player.$config);
   }
 }
 
