@@ -23,19 +23,6 @@ content:
           The Whole Person Physiome Research and Coordination Center (WPP-RCC) is supported under the National Center for Complementary and Integrative Health (NCCIH) Whole Person Initiative. We are funded through a 3-year grant by the National Center for Complementary and Integrative Health ([U24AT013504](https://reporter.nih.gov/search/yOAlsMKLCEmIyDzF09sw-g/project-details/11224772)) with funding from 21 National Institutes of Health (NIH) institutes and offices.
 
   - type: section
-    tagline: Governance
-    anchor: governance
-    level: 2
-    content:
-      - type: markdown
-        data: |
-          Learn how the Whole Person Physiome is organized, governed, and guided through collaborative leadership.
-
-      - type: button
-        text: View governance structure
-        route: assets/content/about-page/wpp-governance-structure.pdf
-
-  - type: section
     tagline: Team
     anchor: team
     level: 2
