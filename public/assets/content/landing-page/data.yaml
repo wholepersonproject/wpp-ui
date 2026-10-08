@@ -9,6 +9,24 @@ splash:
 newsAndEvents:
   title: News and events
   items:
+    - date: June 23-24, 2027
+      id: wpp-data-jamboree-2027-06-23
+      title: Whole Person Physiome 2nd Annual Data Jamboree
+      summary: Organized by the Whole Person Physiome Research and Coordination Center at Stanford University
+      tag:
+        label: Washington, DC, USA
+        icon: location_on
+      url: /events#wpp-data-jamboree-2027-06-23
+
+    - date: May 10-12, 2027
+      id: berlin-hackathon-2027-05-10
+      title: Human Reference Atlas, Human Phenotype Ontology, Whole Person Physiome, and Other EU Efforts Hackathon
+      summary: Organized by the Cyberinfrastructure for Network Science Center at Indiana University
+      tag:
+        label: Berlin, Germany
+        icon: location_on
+      url: https://cns-iu.github.io/workshops/2027-05-10_hra_hackathon/
+
     - date: December 12-13, 2026
       id: 24-hour-physiology-2026-12-12
       title: 24-Hour Human Physiology Event
@@ -44,3 +62,21 @@ newsAndEvents:
         label: Bloomington, Indiana, USA
         icon: location_on
       url: https://cns-iu.github.io/workshops/2026-08-03_hra_hackathon/
+
+    - date: June 17-18, 2026
+      id: wpp-annual-meeting-2026-06-17
+      title: Whole Person Physiome Annual Meeting
+      summary: Organized by the Whole Person Physiome Research and Coordination Center at Stanford University
+      tag:
+        label: Rockville, Maryland, USA
+        icon: location_on
+      url: /events#annual-meeting-2026
+
+    - date: September 17, 2025
+      id: nih-wpp-launch-2025-09-17
+      title: NIH launches landmark project on whole-person health and function
+      summary: News release from the National Institutes of Health
+      tag:
+        label: News & announcements
+        icon: newspaper
+      url: https://www.nih.gov/news-events/news-releases/nih-launches-landmark-project-whole-person-health-function

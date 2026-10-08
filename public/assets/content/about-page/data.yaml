@@ -156,6 +156,19 @@ content:
             description: |
               Professor of Surgery, University of Pennsylvania
             pictureUrl: assets/content/about-page/images/stedman-h.jpg
+          - type: profile-card
+            name: Katalin Susztak
+            description: |
+              Professor of Medicine and Genetics, University of Pennsylvania
+            pictureUrl: assets/content/about-page/images/susztak-k.jpg
+            nameLink: https://www.med.upenn.edu/susztaklab
+          - type: profile-card
+            name: George Hajishengallis
+            description: |
+              Thomas W. Evans Centennial Professor, Basic and Translational Sciences
+              School of Dental Medicine, University of Pennsylvania
+            pictureUrl: assets/content/about-page/images/hajishengallis-g.jpg
+            nameLink: https://www.dental.upenn.edu/faculty/george-hajishengallis/
 
   - type: section
     tagline: Collaborators
