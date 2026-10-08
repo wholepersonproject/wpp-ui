@@ -7,14 +7,27 @@ headerContent:
       command: /
     - name: Events
 content:
-  #  - type: section
-  #    tagline: Upcoming official events
-  #    anchor: upcoming-official-events
-  #    level: 2
-  #    content:
-  #      - type: markdown
-  #        data: |
-  #          Upcoming events organized by the Whole Person Physiome Research and Coordination Center.
+  - type: section
+    tagline: Upcoming official events
+    anchor: upcoming-official-events
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Upcoming events organized by the Whole Person Physiome Research and Coordination Center.
+
+  - type: section
+    tagline: 'Whole Person Physiome 2nd Annual Data Jamboree: June 23-24, 2027'
+    anchor: wpp-data-jamboree-2027-06-23
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          * When: June 23-24, 2027
+          * Where: IU Capital Campus, 1619 Massachusetts Ave NW, Washington, DC 20036
+          * Organizer: Whole Person Physiome Research and Coordination Center
+
   - type: section
     tagline: Upcoming external events
     anchor: upcoming-external-events
@@ -37,6 +50,19 @@ content:
           * Where: Virtual via Zoom
           * Organizer: Cyberinfrastructure for Network Science Center (CNS)
           * Learn more: [Event website](https://cns-iu.github.io/workshops/2026-24hr)
+
+  - type: section
+    tagline: 'Human Reference Atlas, Human Phenotype Ontology, Whole Person Physiome, and Other EU Efforts Hackathon: May 10-12, 2027'
+    anchor: berlin-hackathon-2027-05-10
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          * When: May 10-12, 2027
+          * Where: Berlin Institute of Health, Berlin, Germany
+          * Organizer: Cyberinfrastructure for Network Science Center (CNS)
+          * Learn more: [Event website](https://cns-iu.github.io/workshops/2027-05-10_hra_hackathon/)
 
   - type: section
     tagline: Past events
