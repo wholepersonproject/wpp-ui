@@ -1,8 +1,8 @@
 headerContent:
   title: Data
   subtitle: |
-    Whole Person Physiome (WPP) data aims to support the development and validation of an integrated map 
-    of the "healthy" male and female body; it will serve as a foundation for modeling dynamic, inter-organ 
+    Whole Person Physiome (WPP) data aims to support the development and validation of an integrated map
+    of the "healthy" male and female body; it will serve as a foundation for modeling dynamic, inter-organ
     interactions and analyzing clinical data.
   breadcrumbs:
     - name: Home
@@ -16,52 +16,51 @@ content:
     content:
       - type: markdown
         data: |
-          Initially, 14 physiological systems are modeled. All data is publicly available via CSV files but 
-          users are encouraged to query the [Whole Person Physiome Knowledge Graph](https://kg.wholepersonphysiome.org/) 
+          Initially, 14 physiological systems are modeled. All data is publicly available via CSV files but
+          users are encouraged to query the [Whole Person Physiome Knowledge Graph](https://kg.wholepersonphysiome.org/)
           to access the data.
 
       - type: button
         text: Download summary
         icon: download
-        route: assets/content/data-page/wpp-table-summary.csv
+        route: https://cdn.wholepersonphysiome.org/data-products/reports/portal/table-info.csv
 
       - type: table
-        url: assets/content/data-page/wpp-table.csv
-        footer: true
+        url: https://cdn.wholepersonphysiome.org/data-products/reports/portal/table-info.csv
         columns:
-          - column: label
+          - column: system_table
             label: System table
             urlColumn: url
             sticky: true
-          - column: uniqueOrgans
+          - column: unique_organs
             label: |
               #Unique organs
             numeric: true
-          - column: uniqueAS
+          - column: unique_anatomical_structures
             label: |
               #Unique anatomical structures
             numeric: true
-          - column: uniqueFTU
+          - column: unique_functional_tissue_units
             label: |
               #Unique functional tissue units
             numeric: true
-          - column: uniqueCT
+          - column: unique_cell_types
             label: |
               #Unique cell types
             numeric: true
-          - column: uniqueB
+          - column: unique_biomarkers
             label: |
               #Unique biomarkers
             numeric: true
-          - column: uniqueProcesses
+          - column: unique_processes
             label: |
               #Unique processes
             numeric: true
-          - column: spatialScales
+          - column: spatial_scales
             label: |
               #Spatial scales
             numeric: true
-          - column: temporalScales
+          - column: temporal_scales
             label: |
               #Temporal scales
             numeric: true
@@ -73,5 +72,5 @@ content:
     content:
       - type: markdown
         data: |
-          WPP table design is iterative. We are running interviews with leading experts around the globe 
+          WPP table design is iterative. We are running interviews with leading experts around the globe
           to understand how to best capture the fractal nature and emergent behavior of human physiology.
