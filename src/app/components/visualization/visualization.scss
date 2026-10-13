@@ -17,14 +17,13 @@
   width: 100%;
   min-width: 40rem;
   aspect-ratio: 16 / 9;
+  // Vega sizes the canvas from the rounded clientHeight, so it can be up to 0.5px taller
+  // than this box; reserve 1px so it never overflows the container into a scrollbar
+  padding-bottom: 1px;
 
   ::ng-deep canvas {
     box-sizing: border-box;
     border-radius: token-utils.slot(border-radius, $config);
     border: 1px solid token-utils.slot(border-color, $config);
-  }
-
-  ::ng-deep &.vega-embed:has(.vega-bindings) {
-    padding-bottom: 24px;
   }
 }

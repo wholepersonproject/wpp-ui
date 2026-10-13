@@ -12,14 +12,21 @@ export class Visualization {
   /** Reference to the element where visualization is to be embedded */
   protected readonly visRef = viewChild.required<ElementRef<HTMLDivElement>>('vis');
 
+  /**
+   * Reference to the element where the visualization's input controls are rendered.
+   * Kept outside the aspect-ratio box so controls of any height never overflow it.
+   */
+  protected readonly bindingsRef = viewChild.required<ElementRef<HTMLDivElement>>('bindings');
+
   constructor() {
     effect((onCleanup) => {
       const container = this.visRef().nativeElement;
+      const bindings = this.bindingsRef().nativeElement;
       const url = this.url();
       let isDisposed = false;
       let finalizeCallback: (() => void) | undefined;
 
-      this.embedVisualization(container, url).then((finalize) => {
+      this.embedVisualization(container, bindings, url).then((finalize) => {
         if (isDisposed) {
           finalize();
         } else {
@@ -34,10 +41,11 @@ export class Visualization {
     });
   }
 
-  private async embedVisualization(container: HTMLElement, url: string): Promise<() => void> {
+  private async embedVisualization(container: HTMLElement, bindings: HTMLElement, url: string): Promise<() => void> {
     const { default: embed } = await import('vega-embed');
     const { finalize } = await embed(container, url, {
       renderer: 'canvas',
+      bind: bindings,
     });
 
     return finalize;
