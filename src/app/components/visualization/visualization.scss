@@ -17,6 +17,9 @@
   width: 100%;
   min-width: 40rem;
   aspect-ratio: 16 / 9;
+  // Vega sizes the canvas from the rounded clientHeight, so it can be up to 0.5px taller
+  // than this box; reserve 1px so it never overflows the container into a scrollbar
+  padding-bottom: 1px;
 
   ::ng-deep canvas {
     box-sizing: border-box;
@@ -24,7 +27,19 @@
     border: 1px solid token-utils.slot(border-color, $config);
   }
 
-  ::ng-deep &.vega-embed:has(.vega-bindings) {
-    padding-bottom: 24px;
+  // vega-embed hangs the actions menu 9px past the chart's right edge and scales it in from
+  // its center with an overshoot, both of which scroll the container; keep it inside, grow it
+  // from the corner under the button, and shift its arrow to stay under the button
+  ::ng-deep .vega-actions {
+    right: 0;
+    transform-origin: top right;
+
+    &::before {
+      right: 14px - 9px;
+    }
+
+    &::after {
+      right: 15px - 9px;
+    }
   }
 }
