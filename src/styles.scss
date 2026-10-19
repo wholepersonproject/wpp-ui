@@ -2,6 +2,7 @@
 @use '@angular/material' as mat;
 @use '@atlasng/design-system' as ds;
 @use '@atlasng/design-system/sass/internal/token-utils';
+@use '@atlasng/design-system/sass/tokens/footer';
 @use '@atlasng/design-system/sass/tokens/youtube-player';
 @use '@atlasng/labs' as labs;
 @use './styles/fonts' as fonts;
@@ -52,6 +53,25 @@ body {
   --ang-cookie-banner-spacing: 0px !important;
   margin: 0;
   min-width: 20rem;
+}
+
+ang-footer {
+  @include ds.footer-overrides(
+    (
+      background-color: map.get(theme.$tertiary-palette, 40),
+      copyright-color: map.get(theme.$tertiary-palette, neutral-variant, 80),
+    )
+  );
+  @include ds.social-media-button-overrides(
+    (
+      color: var(--mat-sys-primary-fixed-dim),
+    )
+  );
+  @include mat.button-overrides(
+    (
+      text-label-text-color: var(--mat-sys-tertiary-fixed),
+    )
+  );
 }
 
 // Every text hyperlink shares one underline and matches the weight of its surrounding text.

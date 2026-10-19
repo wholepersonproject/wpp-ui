@@ -46,7 +46,6 @@ export class App {
   readonly currentTheme = model<'light' | 'dark'>();
 
   readonly headerLogo = computed(() => (this.currentTheme() === 'dark' ? 'wpp-header-dark.svg' : 'wpp-header.svg'));
-  readonly footerLogo = computed(() => (this.currentTheme() === 'dark' ? 'wpp-footer-dark.svg' : 'wpp-footer.svg'));
 
   constructor() {
     this.currentTheme.set(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
