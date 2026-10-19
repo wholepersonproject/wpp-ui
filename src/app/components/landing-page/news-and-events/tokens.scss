@@ -27,8 +27,7 @@ $config: (
     tag-font: token-utils.sys-token(label-medium),
     // Figma uses the label-medium metrics with its smaller tracking token.
     tag-tracking: 0.00625rem,
-    // Figma's event-card component uses a 20px corner radius.
-    card-radius: 1.25rem,
+    card-radius: token-utils.sys-token(corner-large),
     interaction-duration: 160ms,
   ),
 );

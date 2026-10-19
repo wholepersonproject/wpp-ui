@@ -46,6 +46,17 @@ body {
   @include labs.header-shell-overrides(
     (
       logo-background-color: transparent,
+      logo-color: red,
+      container-color: map.get(theme.$primary-palette, 40),
+      label-color: var(--mat-sys-primary-fixed),
+      icon-color: var(--mat-sys-primary-fixed-dim),
+      divider-color: map.get(theme.$tertiary-palette, neutral-variant, 60),
+      underline-color: var(--mat-sys-primary-fixed-dim),
+    )
+  );
+  @include mat.sidenav-overrides(
+    (
+      content-background-color: var(--mat-sys-surface-container-lowest),
     )
   );
   // Not a Sass token: the banner sets this inline at runtime to reserve space for itself,
