@@ -6,6 +6,11 @@ $config: (
     font-family: 'Open Sans Variable',
     border-radius: token-utils.sys-token(corner-extra-small),
     border-color: token-utils.sys-token(outline),
+    background-color: token-utils.sys-token(surface-container-lowest),
+    title-color: token-utils.sys-token(on-surface),
+    label-color: token-utils.sys-token(on-surface-variant),
+    axis-color: token-utils.sys-token(outline),
+    grid-color: token-utils.sys-token(outline-variant),
   ),
 );
 

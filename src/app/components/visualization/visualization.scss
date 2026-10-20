@@ -20,11 +20,21 @@
   // Vega sizes the canvas from the rounded clientHeight, so it can be up to 0.5px taller
   // than this box; reserve 1px so it never overflows the container into a scrollbar
   padding-bottom: 1px;
+  // Vega draws on a canvas and can't read CSS variables, so visualization.ts resolves these
+  // to concrete colors and passes them to the chart config
+  --wpp-visualization-background-color: #{token-utils.slot(background-color, $config)};
+  --wpp-visualization-title-color: #{token-utils.slot(title-color, $config)};
+  --wpp-visualization-label-color: #{token-utils.slot(label-color, $config)};
+  --wpp-visualization-axis-color: #{token-utils.slot(axis-color, $config)};
+  --wpp-visualization-grid-color: #{token-utils.slot(grid-color, $config)};
 
   ::ng-deep canvas {
     box-sizing: border-box;
     border-radius: token-utils.slot(border-radius, $config);
     border: 1px solid token-utils.slot(border-color, $config);
+    // Matches the chart background so pixels left semi-transparent by Vega's partial redraws
+    // blend in instead of letting the page show through (#69)
+    background-color: var(--wpp-visualization-background-color);
   }
 
   // vega-embed hangs the actions menu 9px past the chart's right edge and scales it in from
