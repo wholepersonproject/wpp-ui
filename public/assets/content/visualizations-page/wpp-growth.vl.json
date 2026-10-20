@@ -15,8 +15,6 @@
       "labelFontWeight": 400,
       "titleLineHeight": 21,
       "labelLineHeight": 21,
-      "titleColor": "#1C1B1E",
-      "labelColor": "#33404A",
       "labelPadding": 4,
       "titlePadding": 16
     },
@@ -24,8 +22,6 @@
       "labelFontSize": 12,
       "titleFontSize": 14,
       "titleLineHeight": 21,
-      "titleColor": "#1C1B1E",
-      "labelColor": "#33404A",
       "titleFontWeight": 600,
       "labelFontWeight": 400
     }
@@ -70,15 +66,7 @@
           "#Interacting functions",
           "#References"
         ],
-        "range": [
-          "#EE1313",
-          "#E47A10",
-          "#A09500",
-          "#1DAC2B",
-          "#698FDD",
-          "#8C00FF",
-          "#E151C2"
-        ]
+        "range": ["#EE1313", "#E47A10", "#A09500", "#1DAC2B", "#698FDD", "#8C00FF", "#E151C2"]
       }
     },
     "opacity": {

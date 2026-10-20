@@ -15,16 +15,12 @@
       "labelFontWeight": 400,
       "titleLineHeight": 21,
       "labelLineHeight": 21,
-      "titleColor": "#1C1B1E",
-      "labelColor": "#33404A",
       "labelPadding": 4
     },
     "legend": {
       "labelFontSize": 12,
       "titleFontSize": 14,
       "titleLineHeight": 21,
-      "titleColor": "#1C1B1E",
-      "labelColor": "#33404A",
       "titleFontWeight": 600,
       "labelFontWeight": 400
     },
@@ -128,7 +124,6 @@
       "legend": {
         "title": " ",
         "type": "symbol",
-        "symbolFillColor": "white",
         "tickCount": 4,
         "labelOffset": 8,
         "values": [400, 300, 200, 100]
