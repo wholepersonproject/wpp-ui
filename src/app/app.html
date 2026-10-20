@@ -1,5 +1,5 @@
 <ang-header-shell
-  [logoUrl]="headerLogo()"
+  logoUrl="wpp-header-dark.svg"
   [hasLocalNavigation]="true"
   [localNavigationExpanded]="navigation.leftMenuOpen()"
   [navigationItems]="navigationItems().filter((item) => item.id !== 'home')"
@@ -17,7 +17,7 @@
   </main>
   <ang-footer
     organization="Whole Person Physiome"
-    [logoImage]="footerLogo()"
+    logoImage="wpp-footer.svg"
     [socials]="socialMediaIds()"
     (openPrivacyPolicy)="openPrivacyPolicy()"
     (openPrivacyPreferences)="openPrivacyPreferences()"

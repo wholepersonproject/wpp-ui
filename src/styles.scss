@@ -2,6 +2,7 @@
 @use '@angular/material' as mat;
 @use '@atlasng/design-system' as ds;
 @use '@atlasng/design-system/sass/internal/token-utils';
+@use '@atlasng/design-system/sass/tokens/footer';
 @use '@atlasng/design-system/sass/tokens/youtube-player';
 @use '@atlasng/labs' as labs;
 @use './styles/fonts' as fonts;
@@ -45,6 +46,17 @@ body {
   @include labs.header-shell-overrides(
     (
       logo-background-color: transparent,
+      logo-color: red,
+      container-color: map.get(theme.$primary-palette, 40),
+      label-color: var(--mat-sys-primary-fixed),
+      icon-color: var(--mat-sys-primary-fixed-dim),
+      divider-color: map.get(theme.$tertiary-palette, neutral-variant, 60),
+      underline-color: var(--mat-sys-primary-fixed-dim),
+    )
+  );
+  @include mat.sidenav-overrides(
+    (
+      content-background-color: var(--mat-sys-surface-container-lowest),
     )
   );
   // Not a Sass token: the banner sets this inline at runtime to reserve space for itself,
@@ -52,6 +64,25 @@ body {
   --ang-cookie-banner-spacing: 0px !important;
   margin: 0;
   min-width: 20rem;
+}
+
+ang-footer {
+  @include ds.footer-overrides(
+    (
+      background-color: map.get(theme.$tertiary-palette, 40),
+      copyright-color: map.get(theme.$tertiary-palette, neutral-variant, 80),
+    )
+  );
+  @include ds.social-media-button-overrides(
+    (
+      color: var(--mat-sys-primary-fixed-dim),
+    )
+  );
+  @include mat.button-overrides(
+    (
+      text-label-text-color: var(--mat-sys-tertiary-fixed),
+    )
+  );
 }
 
 // Every text hyperlink shares one underline and matches the weight of its surrounding text.
