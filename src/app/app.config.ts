@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
@@ -9,6 +10,7 @@ import {
 } from '@atlasng/design-system/buttons/social-media-button';
 import { provideMarkdown } from 'ngx-markdown';
 import { appRoutes } from './app.routes';
+import { DrawerViewportScroller } from './drawer-viewport-scroller';
 
 // Social media button definitions for the application
 const SOCIAL_MEDIA_DEFS: SocialMediaButtonDefinition[] = [
@@ -50,6 +52,7 @@ export const appConfig: ApplicationConfig = {
         scrollPositionRestoration: 'enabled',
       }),
     ),
+    { provide: ViewportScroller, useClass: DrawerViewportScroller },
     provideSocialMediaButtons(SOCIAL_MEDIA_DEFS),
     provideAnalytics(
       {},
