@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, isDevMode, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 import { provideAnalytics, withDefaultBackend } from '@atlasng/analytics';
 import { provideLinkHandler, withRouterHandler } from '@atlasng/common';
@@ -57,7 +57,7 @@ export const appConfig: ApplicationConfig = {
     provideAnalytics(
       {},
       withDefaultBackend({
-        endpoint: 'https://api.atlasng.dev/t',
+        endpoint: `https://cdn.wholepersonphysiome.org/tr${isDevMode() ? '-dev' : ''}`,
       }),
     ),
     provideLinkHandler(withRouterHandler()),
