@@ -9,6 +9,15 @@ splash:
 newsAndEvents:
   title: News and events
   items:
+    - date: June 25, 2027
+      id: wpp-annual-meeting-2027-06-25
+      title: Whole Person Physiome 2nd Annual Meeting
+      summary: Organized by the Whole Person Physiome Research and Coordination Center at Stanford University
+      tag:
+        label: Washington, DC, USA
+        icon: location_on
+      url: /events#annual-meeting-2027
+
     - date: June 23-24, 2027
       id: wpp-data-jamboree-2027-06-23
       title: Whole Person Physiome 2nd Annual Data Jamboree
