@@ -1,9 +1,9 @@
 import type { HeaderShellNavigationItem } from '@atlasng/labs/header-shell';
 
-const WEBSITE_FEEDBACK_ITEM = {
-  id: 'website-feedback',
-  label: 'Website feedback',
-  link: 'https://github.com/wholepersonproject/wpp-ui/issues/new/choose',
+const CONTACT_ITEM = {
+  id: 'contact',
+  label: 'Contact us',
+  link: { command: '/about', fragment: 'contact-us' },
 } satisfies HeaderShellNavigationItem;
 
 export const PRIMARY_NAVIGATION_ITEMS: readonly HeaderShellNavigationItem[] = [
@@ -38,17 +38,17 @@ export const APP_MENU_ITEMS: readonly HeaderShellNavigationItem[] = [
     label: 'Knowledge Graph Explorer',
     link: 'https://kg.wholepersonphysiome.org',
   },
-  WEBSITE_FEEDBACK_ITEM,
+  CONTACT_ITEM,
 ];
 
 /**
- * Adds the website feedback link to the end of local navigation
+ * Adds the contact link to the end of local navigation
  *
  * @param navigationItems Existing local navigation items
- * @returns A new navigation collection with website feedback appended
+ * @returns A new navigation collection with the contact link appended
  */
 export function createLocalNavigationItems(
   navigationItems: readonly HeaderShellNavigationItem[],
 ): HeaderShellNavigationItem[] {
-  return [...navigationItems, { ...WEBSITE_FEEDBACK_ITEM, icon: 'feedback' }];
+  return [...navigationItems, { ...CONTACT_ITEM, icon: 'mail' }];
 }

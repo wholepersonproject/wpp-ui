@@ -153,8 +153,10 @@ mat-drawer-content {
 }
 
 ang-navigation-menu {
-  // AtlasNG's flat menu API does not expose a divider or item class hook.
-  .ang-navigation-menu-link[href*='/issues/new/choose'] {
+  // AtlasNG's flat menu API does not expose a divider or item class hook, so set off
+  // the last item (Contact us) structurally rather than by its URL.
+  // TODO: Use a menu divider once @atlasng/labs supports one (https://github.com/cns-iu/AtlasNG/issues/237).
+  .ang-navigation-menu-link:last-child {
     position: relative;
     margin-top: 1rem;
 
@@ -163,7 +165,7 @@ ang-navigation-menu {
       top: -0.625rem;
       right: 0;
       left: 0;
-      border-top: 1px solid var(--ang-header-shell-divider-color, var(--mat-sys-outline));
+      border-top: 1px solid var(--mat-sys-outline);
       content: '';
       pointer-events: none;
     }
