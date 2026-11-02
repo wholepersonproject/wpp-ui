@@ -1,12 +1,51 @@
 headerContent:
   title: Resources
   subtitle: |
-    Browse videos, download Whole Person Physiome assets, and share feedback about the website.
+    Browse Whole Person Physiome (WPP) documents and videos.
   breadcrumbs:
     - name: Home
       command: /
     - name: Resources
 content:
+  - type: section
+    tagline: Documents
+    anchor: documents
+    level: 2
+    content:
+      - type: markdown
+        data: |
+          Reference documents for the Whole Person Physiome, openly available through the Stanford Digital Repository.
+
+  - type: section
+    tagline: Whole Person Physiome Glossary
+    anchor: wpp-glossary
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          The WPP Glossary is a library of terms included in Whole Person Physiome Dictionaries and Operating Manual.
+
+      - type: button
+        text: View glossary
+        icon: description
+        route: https://doi.org/10.25740/vx659df9155
+
+  - type: section
+    tagline: Whole Person Physiome Standard Operating Procedure
+    anchor: wpp-sop
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          The WPP Standard Operating Procedure (SOP) is a document to capture the process of creating the WPP as well as a set of timelines and aspirational goals for its ongoing and iterative progress. This is a living document that is updated regularly as the WPP project evolves.
+
+      - type: button
+        text: View SOP
+        icon: description
+        route: https://doi.org/10.25740/nr192hm3217
+
   - type: section
     tagline: Videos
     anchor: videos
