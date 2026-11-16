@@ -2,7 +2,8 @@ import { ViewportScroller } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ApplicationConfig, isDevMode, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
-import { provideAnalytics, withDefaultBackend } from '@atlasng/analytics';
+import { provideAnalytics } from '@atlasng/analytics';
+import { withDefaultBackend } from '@atlasng/analytics/default-backend';
 import { provideLinkHandler, withRouterHandler } from '@atlasng/common';
 import {
   provideSocialMediaButtons,
