@@ -4,8 +4,9 @@ import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as yaml from 'js-yaml';
 import { map } from 'rxjs';
-import { KG_DIGITAL_OBJECTS_URL, parseKgDigitalObjects } from './components/kg-explorer-page/kg-digital-objects';
+import { KgDataService } from './components/kg-explorer-page/kg-data.service';
 import { KgExplorerPage } from './components/kg-explorer-page/kg-explorer-page';
+import { KgMetadataPage, kgMetadataResolver } from './components/kg-metadata-page/kg-metadata-page';
 import { LandingPage } from './components/landing-page/landing-page';
 import { validateLandingPageContent } from './components/landing-page/landing-page-content';
 import { NotFoundPage } from './components/not-found-page/not found page';
@@ -67,7 +68,14 @@ export const appRoutes: Route[] = [
     path: 'kg-explorer',
     component: KgExplorerPage,
     resolve: {
-      data: () => inject(HttpClient).get(KG_DIGITAL_OBJECTS_URL).pipe(map(parseKgDigitalObjects)),
+      data: () => inject(KgDataService).digitalObjects$,
+    },
+  },
+  {
+    path: 'kg-explorer/:type/:name',
+    component: KgMetadataPage,
+    resolve: {
+      data: kgMetadataResolver,
     },
   },
   {

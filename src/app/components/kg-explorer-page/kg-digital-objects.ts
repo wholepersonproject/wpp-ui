@@ -29,8 +29,12 @@ export const KG_GRAPH_FORMATS: KgGraphFormat[] = [
 
 /** A knowledge graph digital object listed in the explorer table */
 export type KgDigitalObject = {
+  /** Digital object IRI (`@id`), the base URL of its versions */
+  id: string;
   /** Display title */
   title: string;
+  /** Route of the digital object's metadata page */
+  path: string;
   /** Persistent URL of the digital object */
   url: string;
   /** Display label of the digital object type */
@@ -39,18 +43,18 @@ export type KgDigitalObject = {
   organs: string[];
   /** Latest version */
   version: string;
+  /** Every published version */
+  versions: string[];
   /** Number of cell types, when known */
   cellCount?: number;
   /** Creation date of the latest version (YYYY-MM-DD) */
   lastUpdated: string;
-  /** URL of the latest version directory, which holds the graph files */
-  latestVersionUrl: string;
 };
 
 const TYPE_LABELS: Record<string, string> = {
   collection: 'Collection',
   schema: 'Schema',
-  wpp: 'WPP Table',
+  wpp: 'WPP table',
 };
 
 function invalid(message: string): never {
@@ -93,16 +97,19 @@ function readDigitalObject(value: unknown, index: number): KgDigitalObject {
   }
 
   const record = value as Record<string, unknown>;
+  const id = readString(record, '@id', path);
   const type = readString(record, 'doType', path);
   return {
+    id,
     title: readString(record, 'title', path),
+    path: getKgMetadataPagePath(id),
     url: readString(record, 'purl', path),
     type: TYPE_LABELS[type] ?? type,
     organs: readStrings(record, 'organs', path),
     version: readString(record, 'doVersion', path),
+    versions: readStrings(record, 'versions', path),
     cellCount: readCount(record, 'cell_count', path),
     lastUpdated: readString(record, 'lastUpdated', path),
-    latestVersionUrl: readString(record, 'lod', path),
   };
 }
 
@@ -121,12 +128,33 @@ export function parseKgDigitalObjects(value: unknown): KgDigitalObject[] {
 }
 
 /**
- * Builds the URL of a digital object's latest graph in a format
+ * Builds the route of a digital object's metadata page from its IRI
+ *
+ * @param id Digital object IRI, e.g. `https://kg.wholepersonphysiome.org/wpp/urinary-system`
+ * @returns Route such as `/kg-explorer/wpp/urinary-system`
+ */
+export function getKgMetadataPagePath(id: string): string {
+  return `/kg-explorer${new URL(id).pathname.replace(/\/$/, '')}`;
+}
+
+/**
+ * Builds the URL of a digital object's metadata for its latest version
  *
  * @param item Digital object
+ * @returns URL of `latest/metadata.json`
+ */
+export function getKgMetadataUrl(item: Pick<KgDigitalObject, 'id'>): string {
+  return `${item.id}/latest/metadata.json`;
+}
+
+/**
+ * Builds the URL of a digital object's graph in a version and format
+ *
+ * @param item Digital object
+ * @param version Version of the graph
  * @param format Graph format
  * @returns URL of the graph file
  */
-export function getKgGraphUrl(item: KgDigitalObject, format: KgGraphFormat): string {
-  return `${item.latestVersionUrl.replace(/\/$/, '')}/graph.${format.extension}`;
+export function getKgGraphUrl(item: Pick<KgDigitalObject, 'id'>, version: string, format: KgGraphFormat): string {
+  return `${item.id}/${version}/graph.${format.extension}`;
 }

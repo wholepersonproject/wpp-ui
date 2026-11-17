@@ -25,7 +25,7 @@ export class KgExplorerPage {
 
   /** Table columns, created once so cell templates stay cached */
   readonly columns = [
-    kgExplorerLinkColumn<KgDigitalObject>('Digital Object', 'url', { labelProp: 'title' }),
+    kgExplorerLinkColumn<KgDigitalObject>('Digital Object', 'path', { labelProp: 'title' }),
     kgExplorerTextColumn<KgDigitalObject>('Type', 'type'),
     kgExplorerChipColumn<KgDigitalObject>('Organs', 'organs'),
     kgExplorerTextColumn<KgDigitalObject>('Version', 'version'),
@@ -47,6 +47,6 @@ export class KgExplorerPage {
 
   /** Opens the latest graph of a digital object in the chosen format */
   download({ item, format }: KgExplorerDownloadRequest<KgDigitalObject, KgGraphFormat>): void {
-    window.open(getKgGraphUrl(item, format), '_blank', 'noopener');
+    window.open(getKgGraphUrl(item, item.version, format), '_blank', 'noopener');
   }
 }

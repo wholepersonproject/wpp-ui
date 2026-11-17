@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { getKgGraphUrl, KG_GRAPH_FORMATS, parseKgDigitalObjects } from './kg-digital-objects';
+import {
+  getKgGraphUrl,
+  getKgMetadataPagePath,
+  getKgMetadataUrl,
+  KG_GRAPH_FORMATS,
+  parseKgDigitalObjects,
+} from './kg-digital-objects';
 
 const URINARY_SYSTEM = {
   '@id': 'https://kg.wholepersonphysiome.org/wpp/urinary-system',
@@ -11,11 +17,14 @@ const URINARY_SYSTEM = {
   doType: 'wpp',
   lastUpdated: '2026-10-28',
   doName: 'urinary-system',
+  versions: ['draft', 'v0.20261028'],
   purl: 'https://purl.wholepersonphysiome.org/wpp/urinary-system',
   lod: 'https://kg.wholepersonphysiome.org/wpp/urinary-system/v0.20261028',
 };
 
 const SCHEMA = {
+  '@id': 'https://kg.wholepersonphysiome.org/schema/wpp',
+  versions: ['draft'],
   doVersion: 'draft',
   title: 'wpp linkml schema',
   doType: 'schema',
@@ -28,14 +37,16 @@ describe('parseKgDigitalObjects', () => {
   it('converts digital objects into table rows', () => {
     expect(parseKgDigitalObjects({ '@graph': [URINARY_SYSTEM] })).toEqual([
       {
+        id: 'https://kg.wholepersonphysiome.org/wpp/urinary-system',
         title: 'Whole Person Physiome (WPP) table for urinary system',
+        path: '/kg-explorer/wpp/urinary-system',
         url: 'https://purl.wholepersonphysiome.org/wpp/urinary-system',
-        type: 'WPP Table',
+        type: 'WPP table',
         organs: ['ureter', 'urinary bladder', 'kidney'],
         version: 'v0.20261028',
+        versions: ['draft', 'v0.20261028'],
         cellCount: 20,
         lastUpdated: '2026-10-28',
-        latestVersionUrl: 'https://kg.wholepersonphysiome.org/wpp/urinary-system/v0.20261028',
       },
     ]);
   });
@@ -65,13 +76,22 @@ describe('parseKgDigitalObjects', () => {
   });
 });
 
-describe('getKgGraphUrl', () => {
-  it('points at the graph file of the latest version', () => {
-    const [row] = parseKgDigitalObjects({ '@graph': [URINARY_SYSTEM] });
+describe('digital object URLs', () => {
+  const item = { id: 'https://kg.wholepersonphysiome.org/wpp/urinary-system' };
+
+  it('builds the metadata page route from the IRI path', () => {
+    expect(getKgMetadataPagePath(item.id)).toBe('/kg-explorer/wpp/urinary-system');
+  });
+
+  it('points at the latest metadata', () => {
+    expect(getKgMetadataUrl(item)).toBe('https://kg.wholepersonphysiome.org/wpp/urinary-system/latest/metadata.json');
+  });
+
+  it('points at the graph file of a version', () => {
     const turtle = KG_GRAPH_FORMATS.find((format) => format.extension === 'ttl');
 
-    expect(row && turtle && getKgGraphUrl(row, turtle)).toBe(
-      'https://kg.wholepersonphysiome.org/wpp/urinary-system/v0.20261028/graph.ttl',
+    expect(turtle && getKgGraphUrl(item, 'draft', turtle)).toBe(
+      'https://kg.wholepersonphysiome.org/wpp/urinary-system/draft/graph.ttl',
     );
   });
 });
