@@ -36,7 +36,7 @@ export const APP_MENU_ITEMS: readonly HeaderShellNavigationItem[] = [
   {
     id: 'kg-explorer',
     label: 'Knowledge Graph Explorer',
-    link: 'https://kg.wholepersonphysiome.org',
+    link: '/kg-explorer',
   },
   CONTACT_ITEM,
 ];

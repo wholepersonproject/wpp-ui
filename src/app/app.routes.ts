@@ -4,6 +4,8 @@ import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as yaml from 'js-yaml';
 import { map } from 'rxjs';
+import { KG_DIGITAL_OBJECTS_URL, parseKgDigitalObjects } from './components/kg-explorer-page/kg-digital-objects';
+import { KgExplorerPage } from './components/kg-explorer-page/kg-explorer-page';
 import { LandingPage } from './components/landing-page/landing-page';
 import { validateLandingPageContent } from './components/landing-page/landing-page-content';
 import { NotFoundPage } from './components/not-found-page/not found page';
@@ -30,10 +32,7 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     component: LandingPage,
     resolve: {
-      data: createYamlSpecResolver(
-        'assets/content/landing-page/data.yaml',
-        validateLandingPageContent,
-      ),
+      data: createYamlSpecResolver('assets/content/landing-page/data.yaml', validateLandingPageContent),
     },
   },
   {
@@ -65,6 +64,13 @@ export const appRoutes: Route[] = [
     },
   },
   {
+    path: 'kg-explorer',
+    component: KgExplorerPage,
+    resolve: {
+      data: () => inject(HttpClient).get(KG_DIGITAL_OBJECTS_URL).pipe(map(parseKgDigitalObjects)),
+    },
+  },
+  {
     path: 'models',
     component: ContentPage,
     resolve: {
@@ -75,9 +81,7 @@ export const appRoutes: Route[] = [
     path: 'privacy-policy',
     component: ContentPage,
     resolve: {
-      data: createYamlSpecResolver(
-        'assets/content/privacy-policy-page/data.yaml',
-      ),
+      data: createYamlSpecResolver('assets/content/privacy-policy-page/data.yaml'),
     },
   },
   {
@@ -91,9 +95,7 @@ export const appRoutes: Route[] = [
     path: 'visualizations',
     component: ContentPage,
     resolve: {
-      data: createYamlSpecResolver(
-        'assets/content/visualizations-page/data.yaml',
-      ),
+      data: createYamlSpecResolver('assets/content/visualizations-page/data.yaml'),
     },
   },
 
@@ -102,8 +104,7 @@ export const appRoutes: Route[] = [
     path: '500',
     component: ServerErrorPage,
     data: {
-      reportIssueLink:
-        'https://github.com/wholepersonproject/wpp-ui/issues/new',
+      reportIssueLink: 'https://github.com/wholepersonproject/wpp-ui/issues/new',
     },
   },
   {
