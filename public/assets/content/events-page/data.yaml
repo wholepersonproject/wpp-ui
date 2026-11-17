@@ -8,34 +8,13 @@ headerContent:
     - name: Events
 content:
   - type: section
-    tagline: Upcoming official events
-    anchor: upcoming-official-events
+    tagline: Upcoming events
+    anchor: upcoming-events
     level: 2
     content:
       - type: markdown
         data: |
-          Upcoming events organized by the Whole Person Physiome Research and Coordination Center.
-
-  - type: section
-    tagline: 'Whole Person Physiome 2nd Annual Data Jamboree: June 23-24, 2027'
-    anchor: wpp-data-jamboree-2027-06-23
-    level: 3
-    underline: false
-    content:
-      - type: markdown
-        data: |
-          * When: June 23-24, 2027
-          * Where: IU Capital Campus, 1619 Massachusetts Ave NW, Washington, DC 20036
-          * Organizer: Whole Person Physiome Research and Coordination Center
-
-  - type: section
-    tagline: Upcoming external events
-    anchor: upcoming-external-events
-    level: 2
-    content:
-      - type: markdown
-        data: |
-          Upcoming events organized by external organizations that are relevant to Whole Person Physiome research.
+          Upcoming events relevant to Whole Person Physiome research.
 
   - type: section
     tagline: '24-Hour Human Physiology Event: December 12-13, 2026'
@@ -63,6 +42,34 @@ content:
           * Where: Berlin Institute of Health, Berlin, Germany
           * Organizer: Cyberinfrastructure for Network Science Center (CNS)
           * Learn more: [Event website](https://cns-iu.github.io/workshops/2027-05-10_hra_hackathon/)
+
+  - type: section
+    tagline: 'Whole Person Physiome 2nd Annual Data Jamboree: June 23-24, 2027'
+    anchor: wpp-data-jamboree-2027-06-23
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          The second annual Whole Person Physiome hackathon is open to the public, and everyone is welcome. It brings together principal investigators (PIs), programmers, scientists, clinicians, and the National Institutes of Health (NIH) to explore the first version of the Whole Person Physiome tables, knowledge graph, and pilot models, and to design ways to expand and improve their utility. The Whole Person Physiome 2nd Annual Meeting follows on June 25.
+          * When: June 23-24, 2027, 8:30 a.m.–4:30 p.m. ET
+          * Where: In person at IU Capital Campus in DC, Room 205, 1619 Massachusetts Ave NW, Washington, DC 20036
+          * Organizer: Whole Person Physiome Research and Coordination Center
+          * Learn more: [Registration, agenda, and details](https://docs.google.com/document/d/1tYsdnu2sFgaFLyrEWNc8oBQfuoScLKHoh4_CJBAHZYE/edit?usp=sharing) (coming soon)
+
+  - type: section
+    tagline: 'Whole Person Physiome 2nd Annual Meeting: June 25, 2027'
+    anchor: annual-meeting-2027
+    level: 3
+    underline: false
+    content:
+      - type: markdown
+        data: |
+          This all-day meeting follows the 2nd Annual Data Jamboree. It is open to the public, and everyone is welcome. PIs, programmers, scientists, clinicians, and the NIH will come together to explore the first version of the Whole Person Physiome tables, knowledge graph, and pilot models, and to design ways to expand and improve their utility.
+          * When: June 25, 2027, 8:30 a.m.–4:30 p.m. ET
+          * Where: In person at IU Capital Campus in DC, 1st Floor Multipurpose Room, 1619 Massachusetts Ave NW, Washington, DC 20036
+          * Organizer: Whole Person Physiome Research and Coordination Center
+          * Learn more: [Registration, agenda, and details](https://docs.google.com/document/d/198lpv6q6wzeDCsJThXp4Zyn88MT2_5rgtzKnTPemaxg/edit?usp=sharing) (coming soon)
 
   - type: section
     tagline: Past events

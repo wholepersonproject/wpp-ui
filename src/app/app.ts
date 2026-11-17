@@ -1,4 +1,4 @@
-import { Component, computed, inject, model, signal } from '@angular/core';
+import { Component, computed, inject, model, signal, viewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, RouterModule } from '@angular/router';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
@@ -8,6 +8,7 @@ import { Footer } from '@atlasng/design-system/footer';
 import { TextLink } from '@atlasng/design-system/links/text-link';
 import { CookieModal, CookieModalData } from '@atlasng/labs/cookie-modal';
 import { HeaderShell, HeaderShellNavigationItem, NavigationContainer } from '@atlasng/labs/header-shell';
+import { closeDrawersOnNavigation } from './close-drawers-on-navigation';
 import { APP_MENU_ITEMS, createLocalNavigationItems, PRIMARY_NAVIGATION_ITEMS } from './navigation';
 
 @Component({
@@ -30,6 +31,7 @@ export class App {
   private readonly router = inject(Router);
   private readonly permissionsManager = inject(AnalyticsPermissionsManager);
   private ref?: MatDialogRef<CookieModal>;
+  private readonly navigationContainer = viewChild(NavigationContainer);
 
   readonly preferencesSet = signal(this.permissionsManager.syncFromStorage());
 
@@ -48,6 +50,8 @@ export class App {
   readonly headerLogo = computed(() => (this.currentTheme() === 'dark' ? 'wpp-header-dark.svg' : 'wpp-header.svg'));
 
   constructor() {
+    closeDrawersOnNavigation(this.navigationContainer);
+
     this.currentTheme.set(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
