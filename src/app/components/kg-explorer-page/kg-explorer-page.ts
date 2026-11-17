@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, DestroyRef, inject, input } from '@angular/core';
 import {
   KgExplorerDownloadRequest,
   KgExplorerFilter,
@@ -10,6 +10,7 @@ import {
   KgExplorerTableView,
   KgExplorerTableViewConfig,
 } from '@atlasng/kg-explorer';
+import { KgExplorerFiltersService } from './kg-explorer-filters.service';
 import { getKgGraphUrl, KG_GRAPH_FORMATS, KgDigitalObject, KgGraphFormat } from './kg-digital-objects';
 
 /** Knowledge graph explorer table view of the WPP digital objects */
@@ -20,6 +21,9 @@ import { getKgGraphUrl, KG_GRAPH_FORMATS, KgDigitalObject, KgGraphFormat } from 
   styleUrl: './kg-explorer-page.scss',
 })
 export class KgExplorerPage {
+  /** Filter menu state, toggled from the app header */
+  protected readonly filtersMenu = inject(KgExplorerFiltersService);
+
   /** Digital objects resolved by the route */
   readonly data = input.required<KgDigitalObject[]>();
 
@@ -44,6 +48,12 @@ export class KgExplorerPage {
     searchSuggestionField: 'title',
     downloadFormats: KG_GRAPH_FORMATS,
   };
+
+  /** Shows the header's filter toggle while the table view is displayed */
+  constructor() {
+    this.filtersMenu.available.set(true);
+    inject(DestroyRef).onDestroy(() => this.filtersMenu.available.set(false));
+  }
 
   /** Opens the latest graph of a digital object in the chosen format */
   download({ item, format }: KgExplorerDownloadRequest<KgDigitalObject, KgGraphFormat>): void {

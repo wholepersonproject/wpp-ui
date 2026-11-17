@@ -5,7 +5,21 @@
   [navigationItems]="navigationItems().filter((item) => item.id !== 'home')"
   (localNavigationToggle)="navigation.localNavigationToggle()"
   (appsMenuToggle)="navigation.appsMenuToggle()"
-/>
+>
+  @if (kgExplorerFilters.available()) {
+    <button
+      matIconButton
+      angHeaderShellAction
+      type="button"
+      [matTooltip]="kgExplorerFilters.open() ? 'Hide filters' : 'Show filters'"
+      [attr.aria-label]="kgExplorerFilters.open() ? 'Hide filters' : 'Show filters'"
+      [attr.aria-pressed]="kgExplorerFilters.open()"
+      (click)="kgExplorerFilters.toggle()"
+    >
+      <mat-icon fontIcon="tune" />
+    </button>
+  }
+</ang-header-shell>
 <ang-navigation-container
   [navigationItems]="localNavigationItems()"
   [navRight]="appMenuItems()"
