@@ -1,6 +1,7 @@
 import type { ContentNode } from '@atlasng/content-blocks/types';
 import type { KgExplorerMetadata, KgExplorerMetadataSection } from '@atlasng/kg-explorer';
 import { KG_GRAPH_FORMATS, KgDigitalObject, KgGraphFormat } from './kg-digital-objects';
+import { getKgMetadataIcons } from './kg-icons';
 
 /** A JSON object of unknown shape */
 type JsonRecord = Record<string, unknown>;
@@ -126,7 +127,7 @@ function tagsSection(item: KgDigitalObject): KgExplorerMetadataSection {
  *
  * @param item Digital object from the listing
  * @param value Parsed `latest/metadata.json` of the digital object
- * @returns Title, sections, URL and versions of the metadata page
+ * @returns Title, icons, sections, URL and versions of the metadata page
  */
 export function buildKgMetadata(item: KgDigitalObject, value: unknown): KgExplorerMetadata<KgGraphFormat> {
   const metadata = asRecord(value);
@@ -149,6 +150,7 @@ export function buildKgMetadata(item: KgDigitalObject, value: unknown): KgExplor
 
   return {
     title: item.title,
+    icons: getKgMetadataIcons(item),
     url: item.url,
     sections,
     versions: versions.map((label) => ({ label, formats: KG_GRAPH_FORMATS })),

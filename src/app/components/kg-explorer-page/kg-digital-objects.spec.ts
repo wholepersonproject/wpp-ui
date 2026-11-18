@@ -43,6 +43,7 @@ describe('parseKgDigitalObjects', () => {
         path: '/kg-explorer/wpp/urinary-system',
         url: 'https://purl.wholepersonphysiome.org/wpp/urinary-system',
         type: 'WPP table',
+        typeId: 'wpp',
         organs: ['ureter', 'urinary bladder', 'kidney'],
         version: 'v0.20261028',
         versions: ['draft', 'v0.20261028'],

@@ -8,6 +8,7 @@ const ITEM: KgDigitalObject = {
   path: '/kg-explorer/wpp/urinary-system',
   url: 'https://purl.wholepersonphysiome.org/wpp/urinary-system',
   type: 'WPP table',
+  typeId: 'wpp',
   organs: ['kidney', 'urinary bladder'],
   version: 'v0.20261028',
   versions: ['draft', 'v0.20261028'],
@@ -54,6 +55,10 @@ describe('buildKgMetadata', () => {
     expect(metadata.url).toBe(ITEM.url);
     expect(metadata.versions?.map((version) => version.label)).toEqual(['v0.20261028', 'draft']);
     expect(metadata.versions?.[0]?.formats.length).toBeGreaterThan(0);
+  });
+
+  it('shows the product and organ icons above the title', () => {
+    expect(buildKgMetadata(ITEM, METADATA).icons?.map(({ name }) => name)).toEqual(['asctb', 'kidneys']);
   });
 
   it('lists the sections in the order of the design', () => {

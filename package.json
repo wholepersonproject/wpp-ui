@@ -28,6 +28,7 @@
     "@atlasng/content-blocks": "^0.0.13",
     "@atlasng/core": "^0.0.13",
     "@atlasng/design-system": "^0.0.13",
+    "@atlasng/icons": "^0.0.1",
     "@atlasng/kg-explorer": "^0.0.3",
     "@atlasng/labs": "^0.0.13",
     "@fontsource-variable/material-symbols-rounded": "^5.3.8",

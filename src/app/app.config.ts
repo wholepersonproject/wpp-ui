@@ -5,6 +5,7 @@ import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from 
 import { provideAnalytics } from '@atlasng/analytics';
 import { withDefaultBackend } from '@atlasng/analytics/default-backend';
 import { provideLinkHandler, withRouterHandler } from '@atlasng/common';
+import { provideAngIcons } from '@atlasng/design-system/icons';
 import {
   provideSocialMediaButtons,
   SocialMediaButtonDefinition,
@@ -62,5 +63,6 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     provideLinkHandler(withRouterHandler()),
+    provideAngIcons(),
   ],
 };

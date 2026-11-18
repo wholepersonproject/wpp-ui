@@ -39,6 +39,8 @@ export type KgDigitalObject = {
   url: string;
   /** Display label of the digital object type */
   type: string;
+  /** Digital object type as published (`doType`), e.g. `wpp` */
+  typeId: string;
   /** Organs covered by the digital object */
   organs: string[];
   /** Latest version */
@@ -147,6 +149,7 @@ function readDigitalObject(value: unknown, index: number): KgDigitalObject {
     path: getKgMetadataPagePath(id),
     url: readString(record, 'purl', path),
     type: TYPE_LABELS[type] ?? type,
+    typeId: type,
     organs: readStrings(record, 'organs', path),
     version: readString(record, 'doVersion', path),
     versions: readStrings(record, 'versions', path),
