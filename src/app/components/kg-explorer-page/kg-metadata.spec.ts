@@ -10,6 +10,7 @@ const ITEM: KgDigitalObject = {
   type: 'WPP table',
   typeId: 'wpp',
   organs: ['kidney', 'urinary bladder'],
+  organLabels: ['Kidney', 'Urinary bladder'],
   version: 'v0.20261028',
   versions: ['draft', 'v0.20261028'],
   cellCount: 20,

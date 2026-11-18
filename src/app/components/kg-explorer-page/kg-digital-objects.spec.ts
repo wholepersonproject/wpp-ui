@@ -12,6 +12,7 @@ const URINARY_SYSTEM = {
   '@id': 'https://kg.wholepersonphysiome.org/wpp/urinary-system',
   '@type': 'dcat:Catalog',
   cell_count: '20',
+  biomarker_count: '3',
   doVersion: 'v0.20261028',
   organs: ['ureter', 'urinary bladder', 'kidney'],
   title: 'Whole Person Physiome (WPP) table for urinary system',
@@ -45,20 +46,30 @@ describe('parseKgDigitalObjects', () => {
         type: 'WPP table',
         typeId: 'wpp',
         organs: ['ureter', 'urinary bladder', 'kidney'],
+        organLabels: ['Ureter', 'Urinary bladder', 'Kidney'],
         version: 'v0.20261028',
         versions: ['draft', 'v0.20261028'],
         cellCount: 20,
+        biomarkerCount: 3,
         lastUpdated: '2026-10-28',
       },
     ]);
   });
 
-  it('defaults missing organs and cell counts', () => {
+  it('defaults missing organs, cell counts, and biomarker counts', () => {
     const [row] = parseKgDigitalObjects({ '@graph': [SCHEMA] });
 
     expect(row?.organs).toEqual([]);
+    expect(row?.organLabels).toEqual(['Multiple organs']);
     expect(row?.cellCount).toBeUndefined();
+    expect(row?.biomarkerCount).toBeUndefined();
     expect(row?.type).toBe('Schema');
+  });
+
+  it('capitalizes organ labels', () => {
+    const [row] = parseKgDigitalObjects({ '@graph': [{ ...SCHEMA, organs: ['large intestine'] }] });
+
+    expect(row?.organLabels).toEqual(['Large intestine']);
   });
 
   it('wraps a single organ in a list', () => {

@@ -43,12 +43,16 @@ export type KgDigitalObject = {
   typeId: string;
   /** Organs covered by the digital object */
   organs: string[];
+  /** Organs as shown in the table: capitalized, or `Multiple organs` when none are listed */
+  organLabels: string[];
   /** Latest version */
   version: string;
   /** Every published version */
   versions: string[];
   /** Number of cell types, when known */
   cellCount?: number;
+  /** Number of biomarker types, when known */
+  biomarkerCount?: number;
   /** Creation date of the latest version (YYYY-MM-DD) */
   lastUpdated: string;
 };
@@ -126,6 +130,11 @@ function readCount(record: Record<string, unknown>, key: string, path: string): 
   return count;
 }
 
+/** Capitalizes the first letter of a text, e.g. `large intestine` to `Large intestine` */
+function capitalize(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 /**
  * Converts one `@graph` entry into a table row
  *
@@ -142,6 +151,7 @@ function readDigitalObject(value: unknown, index: number): KgDigitalObject {
 
   const record = value as Record<string, unknown>;
   const id = readString(record, '@id', path);
+  const organs = readStrings(record, 'organs', path);
   const type = readString(record, 'doType', path);
   return {
     id,
@@ -150,10 +160,12 @@ function readDigitalObject(value: unknown, index: number): KgDigitalObject {
     url: readString(record, 'purl', path),
     type: TYPE_LABELS[type] ?? type,
     typeId: type,
-    organs: readStrings(record, 'organs', path),
+    organs,
+    organLabels: organs.length > 0 ? organs.map(capitalize) : ['Multiple organs'],
     version: readString(record, 'doVersion', path),
     versions: readStrings(record, 'versions', path),
     cellCount: readCount(record, 'cell_count', path),
+    biomarkerCount: readCount(record, 'biomarker_count', path),
     lastUpdated: readString(record, 'lastUpdated', path),
   };
 }

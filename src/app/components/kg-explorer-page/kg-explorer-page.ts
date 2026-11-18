@@ -1,4 +1,5 @@
-import { Component, DestroyRef, inject, input } from '@angular/core';
+import { Component, DestroyRef, inject, input, signal } from '@angular/core';
+import type { SortPropDir } from '@atlasng/design-system/table';
 import {
   KgExplorerDownloadRequest,
   KgExplorerFilter,
@@ -39,13 +40,16 @@ export class KgExplorerPage {
 
   /** Table columns, created once so cell templates stay cached */
   readonly columns = [
-    kgExplorerLinkColumn<KgDigitalObject>('Digital Object', 'path', { labelProp: 'title' }),
-    kgExplorerTextColumn<KgDigitalObject>('Type', 'type'),
-    kgExplorerChipColumn<KgDigitalObject>('Organs', 'organs'),
-    kgExplorerTextColumn<KgDigitalObject>('Version', 'version'),
-    kgExplorerNumberColumn<KgDigitalObject>('#Cell Types', 'cellCount'),
-    kgExplorerDateColumn<KgDigitalObject>('Last Updated', 'lastUpdated'),
+    kgExplorerLinkColumn<KgDigitalObject>('Digital objects', 'path', { labelProp: 'title' }),
+    kgExplorerTextColumn<KgDigitalObject>('Digital object types', 'type'),
+    kgExplorerChipColumn<KgDigitalObject>('Organs', 'organLabels'),
+    kgExplorerNumberColumn<KgDigitalObject>('#Cell types', 'cellCount'),
+    kgExplorerNumberColumn<KgDigitalObject>('#Biomarker types', 'biomarkerCount'),
+    kgExplorerDateColumn<KgDigitalObject>('Last published', 'lastUpdated'),
   ];
+
+  /** Column sorts, sorted by digital object title by default */
+  readonly sorts = signal<SortPropDir[]>([{ prop: 'path', dir: 'asc' }]);
 
   /** Filter menu definitions */
   readonly filters: KgExplorerFilter<KgDigitalObject>[] = [
