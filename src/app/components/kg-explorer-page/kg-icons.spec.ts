@@ -9,7 +9,7 @@ function table(title: string, organs: string[] = []) {
 describe('getKgMetadataIcons', () => {
   it('shows the product icon of the type and the first organ', () => {
     expect(getKgMetadataIcons(table('cardiovascular system', ['heart', 'kidney']))).toEqual([
-      { name: 'asctb', label: 'WPP table', color: 'primary' },
+      { name: 'asctb', label: 'WPP table', color: 'secondary' },
       { name: 'heart', label: 'Heart + 1 organ', color: 'tertiary' },
     ]);
   });
@@ -34,7 +34,7 @@ describe('getKgMetadataIcons', () => {
     };
 
     expect(getKgMetadataIcons(collection)).toEqual([
-      { name: 'collections', label: 'Collection', color: 'primary' },
+      { name: 'collections', label: 'Collection', color: 'secondary' },
       { name: 'all-organs', label: '3 organs', color: 'tertiary' },
     ]);
   });
