@@ -6,6 +6,7 @@ import { getKgMetadataUrl, KG_DIGITAL_OBJECTS_URL, KgDigitalObject, parseKgDigit
 /** Loads the knowledge graph digital objects and their metadata */
 @Service()
 export class KgDataService {
+  /** Fetches the listing and metadata */
   private readonly http = inject(HttpClient);
 
   /** Digital object listing, loaded once and shared by the table and metadata pages */

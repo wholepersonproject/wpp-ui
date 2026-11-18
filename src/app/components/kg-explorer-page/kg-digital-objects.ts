@@ -51,16 +51,32 @@ export type KgDigitalObject = {
   lastUpdated: string;
 };
 
+/** Display labels of the digital object types (`doType`) */
 const TYPE_LABELS: Record<string, string> = {
   collection: 'Collection',
   schema: 'Schema',
   wpp: 'WPP table',
 };
 
+/**
+ * Reports a malformed digital object listing
+ *
+ * @param message What is wrong, including the path of the value
+ * @throws Error describing the problem
+ */
 function invalid(message: string): never {
   throw new Error(`Invalid knowledge graph digital objects: ${message}`);
 }
 
+/**
+ * Reads a required, non-empty string
+ *
+ * @param record Digital object
+ * @param key Property to read
+ * @param path Path of the digital object, used in error messages
+ * @returns The string
+ * @throws Error when the value is missing, empty, or not a string
+ */
 function readString(record: Record<string, unknown>, key: string, path: string): string {
   const value = record[key];
   if (typeof value !== 'string' || value.trim() === '') {
@@ -69,6 +85,15 @@ function readString(record: Record<string, unknown>, key: string, path: string):
   return value;
 }
 
+/**
+ * Reads a string or list of strings, treating a missing value as an empty list
+ *
+ * @param record Digital object
+ * @param key Property to read
+ * @param path Path of the digital object, used in error messages
+ * @returns The strings
+ * @throws Error when a value is not a string
+ */
 function readStrings(record: Record<string, unknown>, key: string, path: string): string[] {
   const value = record[key] ?? [];
   const values = Array.isArray(value) ? value : [value];
@@ -78,6 +103,15 @@ function readStrings(record: Record<string, unknown>, key: string, path: string)
   return values;
 }
 
+/**
+ * Reads an optional integer, which the listing may serialize as a string
+ *
+ * @param record Digital object
+ * @param key Property to read
+ * @param path Path of the digital object, used in error messages
+ * @returns The integer, or `undefined` when missing
+ * @throws Error when the value is not an integer
+ */
 function readCount(record: Record<string, unknown>, key: string, path: string): number | undefined {
   const value = record[key];
   if (value === undefined) {
@@ -90,6 +124,14 @@ function readCount(record: Record<string, unknown>, key: string, path: string): 
   return count;
 }
 
+/**
+ * Converts one `@graph` entry into a table row
+ *
+ * @param value Graph entry
+ * @param index Position of the entry, used in error messages
+ * @returns Table row of the digital object
+ * @throws Error when the entry is malformed
+ */
 function readDigitalObject(value: unknown, index: number): KgDigitalObject {
   const path = `@graph[${index}]`;
   if (typeof value !== 'object' || value === null || Array.isArray(value)) {

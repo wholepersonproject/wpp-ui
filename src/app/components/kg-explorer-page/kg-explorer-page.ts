@@ -31,6 +31,7 @@ export class KgExplorerPage {
   /** Filter menu state, toggled from the app header */
   protected readonly filtersMenu = inject(KgExplorerFiltersService);
 
+  /** Saves graph files */
   private readonly fileDownload = inject(FileDownloadService);
 
   /** Digital objects resolved by the route */

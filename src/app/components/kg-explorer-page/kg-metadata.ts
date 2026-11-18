@@ -2,24 +2,30 @@ import type { ContentNode } from '@atlasng/content-blocks/types';
 import type { KgExplorerMetadata, KgExplorerMetadataSection } from '@atlasng/kg-explorer';
 import { KG_GRAPH_FORMATS, KgDigitalObject, KgGraphFormat } from './kg-digital-objects';
 
+/** A JSON object of unknown shape */
 type JsonRecord = Record<string, unknown>;
 
+/** Returns the value if it is a JSON object, otherwise an empty object */
 function asRecord(value: unknown): JsonRecord {
   return typeof value === 'object' && value !== null && !Array.isArray(value) ? (value as JsonRecord) : {};
 }
 
+/** Returns the trimmed value if it is a non-empty string */
 function asString(value: unknown): string | undefined {
   return typeof value === 'string' && value.trim() !== '' ? value.trim() : undefined;
 }
 
+/** Returns the value, or each item of a list, as JSON objects; a missing value is an empty list */
 function asRecords(value: unknown): JsonRecord[] {
   return (Array.isArray(value) ? value : value === undefined ? [] : [value]).map(asRecord);
 }
 
+/** Wraps content in a paragraph content block */
 function paragraph(content: ContentNode | ContentNode[]): ContentNode {
   return { component: 'ContentParagraph', content };
 }
 
+/** Creates a text link content block */
 function link(href: string, label: string): ContentNode {
   return { component: 'TextLink', config: { href }, content: label };
 }
@@ -56,6 +62,13 @@ function peopleSection(title: string, value: unknown): KgExplorerMetadataSection
   return nodes.length > 0 ? { title, content: paragraph(nodes) } : undefined;
 }
 
+/**
+ * Description of the source data, or of the graph when the source description is still a `TODO` placeholder
+ *
+ * @param metadata Graph metadata (`metadata.json`)
+ * @param source Source data metadata (`was_derived_from`)
+ * @returns The section, or `undefined` when neither has a description
+ */
 function descriptionSection(metadata: JsonRecord, source: JsonRecord): KgExplorerMetadataSection | undefined {
   const sourceDescription = asString(source['description']);
   const description =
@@ -63,10 +76,12 @@ function descriptionSection(metadata: JsonRecord, source: JsonRecord): KgExplore
   return description ? { title: 'Description', content: paragraph(description) } : undefined;
 }
 
+/** Section with one paragraph of text, or `undefined` when there is no text */
 function textSection(title: string, text: string | undefined): KgExplorerMetadataSection | undefined {
   return text ? { title, content: paragraph(text) } : undefined;
 }
 
+/** Funders of the source data with their award numbers */
 function funderSection(source: JsonRecord): KgExplorerMetadataSection | undefined {
   const content = asRecords(source['funders']).flatMap((funder) => {
     const name = asString(funder['funder']);
@@ -79,6 +94,7 @@ function funderSection(source: JsonRecord): KgExplorerMetadataSection | undefine
   return content.length > 0 ? { title: 'Funder', content } : undefined;
 }
 
+/** License of the source data with its markdown links, falling back to the graph's license URL */
 function licenseSection(metadata: JsonRecord, source: JsonRecord): KgExplorerMetadataSection | undefined {
   const sourceLicense = asString(source['license']);
   const licenseUrl = asString(metadata['license']);
@@ -93,11 +109,13 @@ const PUBLISHER_NAMES: Record<string, string> = {
   WPP: 'Whole Person Physiome',
 };
 
+/** Publisher of the source data, falling back to the graph's publisher, with abbreviations spelled out */
 function publisherSection(metadata: JsonRecord, source: JsonRecord): KgExplorerMetadataSection | undefined {
   const publisher = asString(source['publisher']) ?? asString(metadata['publisher']);
   return textSection('Publisher', publisher && (PUBLISHER_NAMES[publisher] ?? publisher));
 }
 
+/** Chips with the digital object type and its capitalized organs */
 function tagsSection(item: KgDigitalObject): KgExplorerMetadataSection {
   const organs = item.organs.map((organ) => organ.charAt(0).toUpperCase() + organ.slice(1));
   return { title: 'Tags', content: { component: 'MetadataChips', config: { labels: [item.type, ...organs] } } };

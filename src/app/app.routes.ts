@@ -12,6 +12,13 @@ import { validateLandingPageContent } from './components/landing-page/landing-pa
 import { NotFoundPage } from './components/not-found-page/not found page';
 import { ServerErrorPage } from './components/server-error-page/server error page';
 
+/**
+ * Creates a resolver that loads a YAML content file
+ *
+ * @param url URL of the YAML file
+ * @param validate Optional check that converts the parsed value, throwing when it is invalid
+ * @returns Resolver of the parsed (and validated) content
+ */
 function createYamlSpecResolver<T = Record<string, unknown>>(
   url: string,
   validate?: (value: unknown) => T,
@@ -27,6 +34,7 @@ function createYamlSpecResolver<T = Record<string, unknown>>(
   };
 }
 
+/** Routes of the website */
 export const appRoutes: Route[] = [
   {
     path: '',

@@ -52,6 +52,7 @@ export const kgMetadataResolver: ResolveFn<KgMetadataPageData> = (route) => {
   templateUrl: './kg-metadata-page.html',
 })
 export class KgMetadataPage {
+  /** Saves graph files */
   private readonly fileDownload = inject(FileDownloadService);
 
   /** Digital object and metadata resolved by the route */
