@@ -1,10 +1,13 @@
 <ang-header-shell
-  logoUrl="wpp-header-dark.svg"
-  [hasLocalNavigation]="true"
+  logoSrc="wpp-header-dark.svg"
+  localNavigation
   [localNavigationExpanded]="navigation.leftMenuOpen()"
+  [localNavigationControls]="navigation.leftMenuId"
+  [appsMenuExpanded]="navigation.rightMenuOpen()"
+  [appsMenuControls]="navigation.rightMenuId"
   [navigationItems]="navigationItems().filter((item) => item.id !== 'home')"
-  (localNavigationToggle)="navigation.localNavigationToggle()"
-  (appsMenuToggle)="navigation.appsMenuToggle()"
+  (localNavigationClick)="navigation.toggleLocalNavigation()"
+  (appsMenuClick)="navigation.toggleAppsMenu()"
 >
   @if (kgExplorerFilters.available()) {
     <button
@@ -21,9 +24,9 @@
   }
 </ang-header-shell>
 <ang-navigation-container
-  [navigationItems]="localNavigationItems()"
-  [navRight]="appMenuItems()"
-  [socialMediaIds]="socialMediaIds()"
+  [leftNavigationItems]="localNavigationItems()"
+  [rightNavigationItems]="appMenuItems()"
+  [socials]="socialMediaIds()"
   #navigation
 >
   <main class="page-content">
@@ -31,10 +34,10 @@
   </main>
   <ang-footer
     organization="Whole Person Physiome"
-    logoImage="wpp-footer.svg"
+    logoSrc="wpp-footer.svg"
     [socials]="socialMediaIds()"
-    (openPrivacyPolicy)="openPrivacyPolicy()"
-    (openPrivacyPreferences)="openPrivacyPreferences()"
+    (privacyPolicyClick)="openPrivacyPolicy()"
+    (privacyPreferencesClick)="openPrivacyPreferences()"
   />
 </ang-navigation-container>
 

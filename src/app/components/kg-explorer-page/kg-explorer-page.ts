@@ -39,7 +39,7 @@ export class KgExplorerPage {
 
   /** Filter menu definitions */
   readonly filters: KgExplorerFilter<KgDigitalObject>[] = [
-    { id: 'type', label: 'Type', field: 'type', searchDisabled: true },
+    { id: 'type', label: 'Type', field: 'type', disableSearch: true },
     { id: 'organs', label: 'Organs', field: 'organs' },
   ];
 
