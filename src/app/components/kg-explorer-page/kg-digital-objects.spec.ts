@@ -101,4 +101,10 @@ describe('digital object URLs', () => {
 
     expect(turtle && getKgGraphFileName(item, 'v0.20261028', turtle)).toBe('urinary-system-v0.20261028.ttl');
   });
+
+  it('ignores a trailing slash in the digital object IRI', () => {
+    const json = KG_GRAPH_FORMATS.find((format) => format.extension === 'json');
+
+    expect(json && getKgGraphFileName({ id: `${item.id}/` }, 'draft', json)).toBe('urinary-system-draft.json');
+  });
 });

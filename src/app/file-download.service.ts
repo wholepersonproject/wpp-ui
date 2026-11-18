@@ -2,17 +2,6 @@ import { DOCUMENT } from '@angular/common';
 import { inject, Service } from '@angular/core';
 
 /**
- * Derives a file name from the last path segment of a URL
- *
- * @param url File URL
- * @returns Decoded file name, or `download` when the path has none
- */
-export function getFileNameFromUrl(url: string): string {
-  const path = new URL(url, 'http://localhost').pathname;
-  return decodeURIComponent(path.slice(path.lastIndexOf('/') + 1)) || 'download';
-}
-
-/**
  * Downloads remote files to the user's device instead of opening them in the browser.
  *
  * Browsers ignore the `download` attribute on cross-origin links, so the file is fetched and saved through a
@@ -20,16 +9,17 @@ export function getFileNameFromUrl(url: string): string {
  */
 @Service()
 export class FileDownloadService {
+  /** Document used to create the temporary download link and open fallback tabs */
   private readonly document = inject(DOCUMENT);
 
   /**
    * Downloads a file. Opens it in a new tab instead when it cannot be fetched, so the user can still get it.
    *
    * @param url URL of the file
-   * @param fileName Name of the saved file. Defaults to the last segment of the URL.
+   * @param fileName Name of the saved file
    * @returns Resolves once the download has started
    */
-  async download(url: string, fileName = getFileNameFromUrl(url)): Promise<void> {
+  async download(url: string, fileName: string): Promise<void> {
     let blob: Blob;
     try {
       const response = await fetch(url);

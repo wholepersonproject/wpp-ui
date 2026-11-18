@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { screen } from '@testing-library/dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { FileDownloadService, getFileNameFromUrl } from './file-download.service';
+import { FileDownloadService } from './file-download.service';
 
 const FILE_URL = 'https://cdn.example.org/reports/table%20info.csv';
 
@@ -11,16 +11,6 @@ function mockFetch(response: Response | Error): void {
     vi.fn(() => (response instanceof Error ? Promise.reject(response) : Promise.resolve(response))),
   );
 }
-
-describe('getFileNameFromUrl', () => {
-  it('returns the decoded last path segment', () => {
-    expect(getFileNameFromUrl(FILE_URL)).toBe('table info.csv');
-  });
-
-  it('falls back to a generic name for URLs without a file', () => {
-    expect(getFileNameFromUrl('https://cdn.example.org/')).toBe('download');
-  });
-});
 
 describe('FileDownloadService', () => {
   let openSpy: ReturnType<typeof vi.spyOn>;
@@ -41,27 +31,19 @@ describe('FileDownloadService', () => {
     vi.restoreAllMocks();
   });
 
-  it('downloads the fetched file under the name from its URL', async () => {
-    mockFetch(new Response('a,b'));
-
-    await TestBed.inject(FileDownloadService).download(FILE_URL);
-
-    expect(clickedLinks).toEqual([{ href: 'blob:file', download: 'table info.csv' }]);
-    expect(openSpy).not.toHaveBeenCalled();
-  });
-
-  it('uses a given file name', async () => {
+  it('downloads the fetched file under the given name', async () => {
     mockFetch(new Response('a,b'));
 
     await TestBed.inject(FileDownloadService).download(FILE_URL, 'summary.csv');
 
     expect(clickedLinks).toEqual([{ href: 'blob:file', download: 'summary.csv' }]);
+    expect(openSpy).not.toHaveBeenCalled();
   });
 
   it('removes the temporary link after the download starts', async () => {
     mockFetch(new Response('a,b'));
 
-    await TestBed.inject(FileDownloadService).download(FILE_URL);
+    await TestBed.inject(FileDownloadService).download(FILE_URL, 'summary.csv');
 
     expect(screen.queryByRole('link', { hidden: true })).not.toBeInTheDocument();
   });
@@ -69,7 +51,7 @@ describe('FileDownloadService', () => {
   it('opens the file when the server responds with an error', async () => {
     mockFetch(new Response('missing', { status: 404 }));
 
-    await TestBed.inject(FileDownloadService).download(FILE_URL);
+    await TestBed.inject(FileDownloadService).download(FILE_URL, 'summary.csv');
 
     expect(clickedLinks).toEqual([]);
     expect(openSpy).toHaveBeenCalledWith(FILE_URL, '_blank', 'noopener');
@@ -78,7 +60,7 @@ describe('FileDownloadService', () => {
   it('opens the file when it cannot be fetched', async () => {
     mockFetch(new TypeError('Failed to fetch'));
 
-    await TestBed.inject(FileDownloadService).download(FILE_URL);
+    await TestBed.inject(FileDownloadService).download(FILE_URL, 'summary.csv');
 
     expect(openSpy).toHaveBeenCalledWith(FILE_URL, '_blank', 'noopener');
   });
