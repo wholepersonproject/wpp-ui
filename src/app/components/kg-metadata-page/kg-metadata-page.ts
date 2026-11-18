@@ -4,8 +4,14 @@ import type { BreadcrumbItem } from '@atlasng/design-system/buttons/breadcrumbs'
 import type { VersionDownload } from '@atlasng/design-system/version-control';
 import { KgExplorerMetadata, KgExplorerMetadataView } from '@atlasng/kg-explorer';
 import { catchError, map, of, switchMap } from 'rxjs';
+import { FileDownloadService } from '../../file-download.service';
 import { KgDataService } from '../kg-explorer-page/kg-data.service';
-import { getKgGraphUrl, KgDigitalObject, KgGraphFormat } from '../kg-explorer-page/kg-digital-objects';
+import {
+  getKgGraphFileName,
+  getKgGraphUrl,
+  KgDigitalObject,
+  KgGraphFormat,
+} from '../kg-explorer-page/kg-digital-objects';
 import { buildKgMetadata } from '../kg-explorer-page/kg-metadata';
 
 /** Data resolved for a digital object's metadata page */
@@ -46,6 +52,8 @@ export const kgMetadataResolver: ResolveFn<KgMetadataPageData> = (route) => {
   templateUrl: './kg-metadata-page.html',
 })
 export class KgMetadataPage {
+  private readonly fileDownload = inject(FileDownloadService);
+
   /** Digital object and metadata resolved by the route */
   readonly data = input.required<KgMetadataPageData>();
 
@@ -56,8 +64,12 @@ export class KgMetadataPage {
     { name: this.data().metadata.title },
   ]);
 
-  /** Opens the digital object's graph in the chosen version and format */
+  /** Saves the digital object's graph in the chosen version and format */
   download({ item, format }: VersionDownload<KgGraphFormat>): void {
-    window.open(getKgGraphUrl(this.data().item, item.label, format), '_blank', 'noopener');
+    const digitalObject = this.data().item;
+    void this.fileDownload.download(
+      getKgGraphUrl(digitalObject, item.label, format),
+      getKgGraphFileName(digitalObject, item.label, format),
+    );
   }
 }

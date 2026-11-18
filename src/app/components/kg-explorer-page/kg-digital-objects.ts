@@ -158,3 +158,16 @@ export function getKgMetadataUrl(item: Pick<KgDigitalObject, 'id'>): string {
 export function getKgGraphUrl(item: Pick<KgDigitalObject, 'id'>, version: string, format: KgGraphFormat): string {
   return `${item.id}/${version}/graph.${format.extension}`;
 }
+
+/**
+ * Builds the file name of a digital object's graph download
+ *
+ * @param item Digital object
+ * @param version Version of the graph
+ * @param format Graph format
+ * @returns File name such as `urinary-system-v0.20261028.ttl`
+ */
+export function getKgGraphFileName(item: Pick<KgDigitalObject, 'id'>, version: string, format: KgGraphFormat): string {
+  const name = item.id.replace(/\/$/, '').split('/').pop();
+  return `${name}-${version}.${format.extension}`;
+}

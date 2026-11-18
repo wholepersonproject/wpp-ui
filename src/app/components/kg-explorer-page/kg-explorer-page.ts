@@ -10,8 +10,15 @@ import {
   KgExplorerTableView,
   KgExplorerTableViewConfig,
 } from '@atlasng/kg-explorer';
+import { FileDownloadService } from '../../file-download.service';
+import {
+  getKgGraphFileName,
+  getKgGraphUrl,
+  KG_GRAPH_FORMATS,
+  KgDigitalObject,
+  KgGraphFormat,
+} from './kg-digital-objects';
 import { KgExplorerFiltersService } from './kg-explorer-filters.service';
-import { getKgGraphUrl, KG_GRAPH_FORMATS, KgDigitalObject, KgGraphFormat } from './kg-digital-objects';
 
 /** Knowledge graph explorer table view of the WPP digital objects */
 @Component({
@@ -23,6 +30,8 @@ import { getKgGraphUrl, KG_GRAPH_FORMATS, KgDigitalObject, KgGraphFormat } from 
 export class KgExplorerPage {
   /** Filter menu state, toggled from the app header */
   protected readonly filtersMenu = inject(KgExplorerFiltersService);
+
+  private readonly fileDownload = inject(FileDownloadService);
 
   /** Digital objects resolved by the route */
   readonly data = input.required<KgDigitalObject[]>();
@@ -55,8 +64,11 @@ export class KgExplorerPage {
     inject(DestroyRef).onDestroy(() => this.filtersMenu.available.set(false));
   }
 
-  /** Opens the latest graph of a digital object in the chosen format */
+  /** Saves the latest graph of a digital object in the chosen format */
   download({ item, format }: KgExplorerDownloadRequest<KgDigitalObject, KgGraphFormat>): void {
-    window.open(getKgGraphUrl(item, item.version, format), '_blank', 'noopener');
+    void this.fileDownload.download(
+      getKgGraphUrl(item, item.version, format),
+      getKgGraphFileName(item, item.version, format),
+    );
   }
 }

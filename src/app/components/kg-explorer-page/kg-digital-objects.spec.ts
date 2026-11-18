@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  getKgGraphFileName,
   getKgGraphUrl,
   getKgMetadataPagePath,
   getKgMetadataUrl,
@@ -93,5 +94,11 @@ describe('digital object URLs', () => {
     expect(turtle && getKgGraphUrl(item, 'draft', turtle)).toBe(
       'https://kg.wholepersonphysiome.org/wpp/urinary-system/draft/graph.ttl',
     );
+  });
+
+  it('names graph downloads after the digital object and version', () => {
+    const turtle = KG_GRAPH_FORMATS.find((format) => format.extension === 'ttl');
+
+    expect(turtle && getKgGraphFileName(item, 'v0.20261028', turtle)).toBe('urinary-system-v0.20261028.ttl');
   });
 });
