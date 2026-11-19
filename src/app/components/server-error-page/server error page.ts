@@ -2,6 +2,7 @@ import { Component, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { AnyLink, AnyLinkCommand } from '@atlasng/common';
+import { excludePageFromSearch } from '../../exclude-page-from-search';
 
 @Component({
   selector: 'wpp-server-error-page',
@@ -11,4 +12,8 @@ import { AnyLink, AnyLinkCommand } from '@atlasng/common';
 })
 export class ServerErrorPage {
   readonly reportIssueLink = input<AnyLinkCommand>();
+
+  constructor() {
+    excludePageFromSearch();
+  }
 }

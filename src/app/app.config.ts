@@ -1,7 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ApplicationConfig, isDevMode, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, TitleStrategy, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 import { provideAnalytics } from '@atlasng/analytics';
 import { withDefaultBackend } from '@atlasng/analytics/default-backend';
 import { provideLinkHandler, withRouterHandler } from '@atlasng/common';
@@ -12,6 +12,7 @@ import {
 import { provideMarkdown } from 'ngx-markdown';
 import { appRoutes } from './app.routes';
 import { DrawerViewportScroller } from './drawer-viewport-scroller';
+import { PageTitleStrategy } from './page-title-strategy';
 
 // Social media button definitions for the application
 const SOCIAL_MEDIA_DEFS: SocialMediaButtonDefinition[] = [
@@ -54,6 +55,7 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     { provide: ViewportScroller, useClass: DrawerViewportScroller },
+    { provide: TitleStrategy, useClass: PageTitleStrategy },
     provideSocialMediaButtons(SOCIAL_MEDIA_DEFS),
     provideAnalytics(
       {},

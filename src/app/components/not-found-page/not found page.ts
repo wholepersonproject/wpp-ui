@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { excludePageFromSearch } from '../../exclude-page-from-search';
 
 @Component({
   selector: 'wpp-not-found-page',
@@ -8,4 +9,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './not found page.html',
   styleUrl: './not found page.scss',
 })
-export class NotFoundPage {}
+export class NotFoundPage {
+  constructor() {
+    excludePageFromSearch();
+  }
+}
