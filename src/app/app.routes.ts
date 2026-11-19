@@ -30,10 +30,7 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     component: LandingPage,
     resolve: {
-      data: createYamlSpecResolver(
-        'assets/content/landing-page/data.yaml',
-        validateLandingPageContent,
-      ),
+      data: createYamlSpecResolver('assets/content/landing-page/data.yaml', validateLandingPageContent),
     },
   },
   {
@@ -58,13 +55,6 @@ export const appRoutes: Route[] = [
     },
   },
   {
-    path: 'events',
-    component: ContentPage,
-    resolve: {
-      data: createYamlSpecResolver('assets/content/events-page/data.yaml'),
-    },
-  },
-  {
     path: 'models',
     component: ContentPage,
     resolve: {
@@ -75,9 +65,7 @@ export const appRoutes: Route[] = [
     path: 'privacy-policy',
     component: ContentPage,
     resolve: {
-      data: createYamlSpecResolver(
-        'assets/content/privacy-policy-page/data.yaml',
-      ),
+      data: createYamlSpecResolver('assets/content/privacy-policy-page/data.yaml'),
     },
   },
   {
@@ -91,9 +79,7 @@ export const appRoutes: Route[] = [
     path: 'visualizations',
     component: ContentPage,
     resolve: {
-      data: createYamlSpecResolver(
-        'assets/content/visualizations-page/data.yaml',
-      ),
+      data: createYamlSpecResolver('assets/content/visualizations-page/data.yaml'),
     },
   },
 
@@ -101,13 +87,14 @@ export const appRoutes: Route[] = [
   {
     path: '500',
     component: ServerErrorPage,
+    title: 'Server error',
     data: {
-      reportIssueLink:
-        'https://github.com/wholepersonproject/wpp-ui/issues/new',
+      reportIssueLink: 'https://github.com/wholepersonproject/wpp-ui/issues/new',
     },
   },
   {
     path: '**',
     component: NotFoundPage,
+    title: 'Page not found',
   },
 ];
