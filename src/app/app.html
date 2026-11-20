@@ -32,6 +32,12 @@
   <main class="page-content">
     <router-outlet />
   </main>
+  @if (!pageFooter.inPage()) {
+    <ng-container [ngTemplateOutlet]="footer" />
+  }
+</ang-navigation-container>
+
+<ng-template #footer>
   <ang-footer
     organization="Whole Person Physiome"
     logoSrc="wpp-footer.svg"
@@ -39,7 +45,7 @@
     (privacyPolicyClick)="openPrivacyPolicy()"
     (privacyPreferencesClick)="openPrivacyPreferences()"
   />
-</ang-navigation-container>
+</ng-template>
 
 @if (!preferencesSet()) {
   <ang-cookie-banner

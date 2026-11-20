@@ -26,7 +26,7 @@
     @include ds.ext-level-colors($name, $palette, color-scheme);
   }
 
-  @include ds.mat-all-defaults;
+  @include ds.defaults;
 }
 
 body {
@@ -64,6 +64,15 @@ body {
   --ang-cookie-banner-spacing: 0px !important;
   margin: 0;
   min-width: 20rem;
+}
+
+// The header shell's icon-color token only reaches its drawer menus, not the header's own icon buttons.
+ang-header-shell {
+  @include mat.icon-button-overrides(
+    (
+      icon-color: var(--mat-sys-primary-fixed-dim),
+    )
+  );
 }
 
 ang-footer {

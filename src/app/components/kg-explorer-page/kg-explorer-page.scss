@@ -1,9 +1,29 @@
+@use '@atlasng/design-system' as ds;
+
 wpp-kg-explorer-page {
   display: block;
   height: calc(100dvh - 3.5rem);
 
   ang-kg-explorer-table-view {
     height: 100%;
+  }
+
+  // The table view holds projected content to the table's max width, but the footer spans the whole panel.
+  ang-kg-explorer-table-panel {
+    container-type: inline-size;
+  }
+
+  ang-footer {
+    margin-inline: calc(50% - 50cqi);
+  }
+
+  ang-table {
+    @include ds.table-overrides(
+      (
+        header-text-color: var(--mat-sys-tertiary),
+        sort-indicator-color: var(--mat-sys-tertiary),
+      )
+    );
   }
 
   .ang-kg-explorer-filter-drawer {
