@@ -49,7 +49,6 @@ body {
       logo-color: red,
       container-color: map.get(theme.$primary-palette, 40),
       label-color: var(--mat-sys-primary-fixed),
-      icon-color: var(--mat-sys-primary-fixed-dim),
       divider-color: map.get(theme.$tertiary-palette, neutral-variant, 60),
       underline-color: var(--mat-sys-primary-fixed-dim),
     )
@@ -67,6 +66,7 @@ body {
 }
 
 // The header shell's icon-color token only reaches its drawer menus, not the header's own icon buttons.
+// https://github.com/cns-iu/AtlasNG/issues/504
 ang-header-shell {
   @include mat.icon-button-overrides(
     (

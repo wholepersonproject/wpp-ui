@@ -9,12 +9,19 @@ wpp-kg-explorer-page {
   }
 
   // The table view holds projected content to the table's max width, but the footer spans the whole panel.
+  // https://github.com/cns-iu/AtlasNG/issues/505
   ang-kg-explorer-table-panel {
     container-type: inline-size;
   }
 
   ang-footer {
     margin-inline: calc(50% - 50cqi);
+  }
+
+  // The table view doesn't expose the scroll area's `disableFade`, and the bottom fade washes over the footer.
+  // https://github.com/cns-iu/AtlasNG/issues/505
+  .ang-kg-explorer-table-panel--scroll-area > .ang-scroll-area--fade-bottom-overlay {
+    display: none;
   }
 
   ang-table {
@@ -24,9 +31,5 @@ wpp-kg-explorer-page {
         sort-indicator-color: var(--mat-sys-tertiary),
       )
     );
-  }
-
-  .ang-kg-explorer-filter-drawer {
-    min-width: calc(100% - 2.5rem);
   }
 }
