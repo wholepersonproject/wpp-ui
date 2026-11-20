@@ -133,11 +133,11 @@ export function getKgMetadataIcons(
   const product = PRODUCT_ICONS[item.typeId];
 
   return [
-    ...(product ? [{ name: product, label: item.type, color: 'secondary' as const }] : []),
+    ...(product ? [{ name: product, label: item.type, type: 'product' as const }] : []),
     {
       name: ORGAN_ICONS[organ ?? ALL_ORGANS],
       label: getOrganLabel(organ, item.organs.length),
-      color: 'tertiary',
+      type: 'organ',
     },
   ];
 }

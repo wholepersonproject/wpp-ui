@@ -9,8 +9,8 @@ function table(title: string, organs: string[] = []) {
 describe('getKgMetadataIcons', () => {
   it('shows the product icon of the type and the first organ', () => {
     expect(getKgMetadataIcons(table('cardiovascular system', ['heart', 'kidney']))).toEqual([
-      { name: 'asctb', label: 'WPP table', color: 'secondary' },
-      { name: 'heart', label: 'Heart + 1 organ', color: 'tertiary' },
+      { name: 'asctb', label: 'WPP table', type: 'product' },
+      { name: 'heart', label: 'Heart + 1 organ', type: 'organ' },
     ]);
   });
 
@@ -34,8 +34,8 @@ describe('getKgMetadataIcons', () => {
     };
 
     expect(getKgMetadataIcons(collection)).toEqual([
-      { name: 'collections', label: 'Collection', color: 'secondary' },
-      { name: 'all-organs', label: '3 organs', color: 'tertiary' },
+      { name: 'collections', label: 'Collection', type: 'product' },
+      { name: 'all-organs', label: '3 organs', type: 'organ' },
     ]);
   });
 
@@ -43,7 +43,7 @@ describe('getKgMetadataIcons', () => {
     expect(getKgMetadataIcons(table('glucose homeostasis'))[1]).toEqual({
       name: 'all-organs',
       label: 'Multiple organs',
-      color: 'tertiary',
+      type: 'organ',
     });
   });
 
