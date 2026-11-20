@@ -1,8 +1,12 @@
-:host {
+wpp-kg-explorer-page {
   display: block;
   height: calc(100dvh - 3.5rem);
 
   ang-kg-explorer-table-view {
     height: 100%;
+  }
+
+  .ang-kg-explorer-filter-drawer {
+    min-width: calc(100% - 2.5rem);
   }
 }
