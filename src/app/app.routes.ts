@@ -76,7 +76,7 @@ export const appRoutes: Route[] = [
     path: 'kg-explorer',
     component: KgExplorerPage,
     resolve: {
-      data: () => inject(KgDataService).digitalObjects$,
+      data: () => inject(KgDataService).explorerItems$,
     },
   },
   {
