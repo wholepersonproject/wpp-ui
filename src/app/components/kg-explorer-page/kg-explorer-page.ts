@@ -19,7 +19,7 @@ import { KgExplorerFiltersService } from './kg-explorer-filters.service';
 import { KgExplorerItem } from './kg-terms';
 
 /**
- * Sizes a column between the design's minimum and maximum widths. Columns grow from their minimum and share the
+ * Sizes a column between a minimum and maximum width. Columns grow from their minimum and share the
  * table's remaining width, each stopping at its maximum.
  *
  * @param minWidth Minimum width in pixels
@@ -51,14 +51,18 @@ export class KgExplorerPage {
   /** Digital objects with their terms, resolved by the route */
   readonly data = input.required<KgExplorerItem[]>();
 
-  /** Table columns with the design's minimum and maximum widths, created once so cell templates stay cached */
+  /**
+   * Table columns, created once so cell templates stay cached. Text columns grow to the design's maximum widths;
+   * number and date columns hug their header, so it stays on one line. The minimums fit the table beside the docked
+   * filter drawer on 1366px screens.
+   */
   readonly columns = [
-    kgExplorerLinkColumn<KgExplorerItem>('Digital objects', 'path', { labelProp: 'title' }, specWidth(140, 336)),
-    kgExplorerTextColumn<KgExplorerItem>('Digital object types', 'type', specWidth(140, 192)),
-    kgExplorerChipColumn<KgExplorerItem>('Organs', 'organLabels', specWidth(248, 500)),
-    kgExplorerNumberColumn<KgExplorerItem>('#Cell types', 'cellCount', specWidth(96, 128)),
-    kgExplorerNumberColumn<KgExplorerItem>('#Biomarker types', 'biomarkerCount', specWidth(132, 164)),
-    kgExplorerDateColumn<KgExplorerItem>('Last published', 'lastUpdated', specWidth(136, 144)),
+    kgExplorerLinkColumn<KgExplorerItem>('Digital objects', 'path', { labelProp: 'title' }, specWidth(120, 336)),
+    kgExplorerTextColumn<KgExplorerItem>('Digital object types', 'type', specWidth(110, 192)),
+    kgExplorerChipColumn<KgExplorerItem>('Organs', 'organLabels', specWidth(236, 500)),
+    kgExplorerNumberColumn<KgExplorerItem>('#Cell types', 'cellCount'),
+    kgExplorerNumberColumn<KgExplorerItem>('#Biomarker types', 'biomarkerCount'),
+    kgExplorerDateColumn<KgExplorerItem>('Last published', 'lastUpdated'),
   ];
 
   /** Column sorts, sorted by digital object title by default */
