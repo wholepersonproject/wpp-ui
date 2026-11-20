@@ -4,11 +4,21 @@ import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as yaml from 'js-yaml';
 import { map } from 'rxjs';
+import { KgDataService } from './components/kg-explorer-page/kg-data.service';
+import { KgExplorerPage } from './components/kg-explorer-page/kg-explorer-page';
+import { KgMetadataPage, kgMetadataResolver } from './components/kg-metadata-page/kg-metadata-page';
 import { LandingPage } from './components/landing-page/landing-page';
 import { validateLandingPageContent } from './components/landing-page/landing-page-content';
 import { NotFoundPage } from './components/not-found-page/not found page';
 import { ServerErrorPage } from './components/server-error-page/server error page';
 
+/**
+ * Creates a resolver that loads a YAML content file
+ *
+ * @param url URL of the YAML file
+ * @param validate Optional check that converts the parsed value, throwing when it is invalid
+ * @returns Resolver of the parsed (and validated) content
+ */
 function createYamlSpecResolver<T = Record<string, unknown>>(
   url: string,
   validate?: (value: unknown) => T,
@@ -24,16 +34,14 @@ function createYamlSpecResolver<T = Record<string, unknown>>(
   };
 }
 
+/** Routes of the website */
 export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
     component: LandingPage,
     resolve: {
-      data: createYamlSpecResolver(
-        'assets/content/landing-page/data.yaml',
-        validateLandingPageContent,
-      ),
+      data: createYamlSpecResolver('assets/content/landing-page/data.yaml', validateLandingPageContent),
     },
   },
   {
@@ -65,6 +73,20 @@ export const appRoutes: Route[] = [
     },
   },
   {
+    path: 'kg-explorer',
+    component: KgExplorerPage,
+    resolve: {
+      data: () => inject(KgDataService).explorerItems$,
+    },
+  },
+  {
+    path: 'kg-explorer/:type/:name',
+    component: KgMetadataPage,
+    resolve: {
+      data: kgMetadataResolver,
+    },
+  },
+  {
     path: 'models',
     component: ContentPage,
     resolve: {
@@ -75,9 +97,7 @@ export const appRoutes: Route[] = [
     path: 'privacy-policy',
     component: ContentPage,
     resolve: {
-      data: createYamlSpecResolver(
-        'assets/content/privacy-policy-page/data.yaml',
-      ),
+      data: createYamlSpecResolver('assets/content/privacy-policy-page/data.yaml'),
     },
   },
   {
@@ -91,9 +111,7 @@ export const appRoutes: Route[] = [
     path: 'visualizations',
     component: ContentPage,
     resolve: {
-      data: createYamlSpecResolver(
-        'assets/content/visualizations-page/data.yaml',
-      ),
+      data: createYamlSpecResolver('assets/content/visualizations-page/data.yaml'),
     },
   },
 
@@ -102,8 +120,7 @@ export const appRoutes: Route[] = [
     path: '500',
     component: ServerErrorPage,
     data: {
-      reportIssueLink:
-        'https://github.com/wholepersonproject/wpp-ui/issues/new',
+      reportIssueLink: 'https://github.com/wholepersonproject/wpp-ui/issues/new',
     },
   },
   {

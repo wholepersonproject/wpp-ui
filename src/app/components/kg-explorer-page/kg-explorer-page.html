@@ -1,0 +1,9 @@
+<ang-kg-explorer-table-view
+  [items]="data()"
+  [columns]="columns"
+  [filters]="filters"
+  [config]="config"
+  [(sorts)]="sorts"
+  [(filtersOpen)]="filtersMenu.open"
+  (download)="download($event)"
+/>
