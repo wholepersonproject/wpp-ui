@@ -46,7 +46,7 @@ describe('parseKgDigitalObjects', () => {
         type: 'WPP table',
         typeId: 'wpp',
         organs: ['ureter', 'urinary bladder', 'kidney'],
-        organLabels: ['Ureter', 'Urinary bladder', 'Kidney'],
+        organLabels: ['Kidney', 'Ureter', 'Urinary bladder'],
         version: 'v0.20261028',
         versions: ['draft', 'v0.20261028'],
         cellCount: 20,

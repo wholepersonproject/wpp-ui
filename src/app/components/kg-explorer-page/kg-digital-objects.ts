@@ -43,7 +43,7 @@ export type KgDigitalObject = {
   typeId: string;
   /** Organs covered by the digital object */
   organs: string[];
-  /** Organs as shown in the table: capitalized, or `Multiple organs` when none are listed */
+  /** Organs as shown in the table: capitalized and sorted alphabetically, or `Multiple organs` when none are listed */
   organLabels: string[];
   /** Latest version */
   version: string;
@@ -161,7 +161,7 @@ function readDigitalObject(value: unknown, index: number): KgDigitalObject {
     type: TYPE_LABELS[type] ?? type,
     typeId: type,
     organs,
-    organLabels: organs.length > 0 ? organs.map(capitalize) : ['Multiple organs'],
+    organLabels: organs.length > 0 ? organs.map(capitalize).sort((a, b) => a.localeCompare(b)) : ['Multiple organs'],
     version: readString(record, 'doVersion', path),
     versions: readStrings(record, 'versions', path),
     cellCount: readCount(record, 'cell_count', path),
