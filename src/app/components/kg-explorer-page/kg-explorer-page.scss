@@ -96,6 +96,8 @@ wpp-kg-explorer-page {
       text-wrap: balance;
     }
 
+    // Hugging columns can't wrap their header, so the label is narrowed to make it wrap.
+    // https://github.com/cns-iu/AtlasNG/issues/519
     .two-line-header .ang-table--text-header-label {
       width: min-content;
 
