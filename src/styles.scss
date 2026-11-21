@@ -107,6 +107,18 @@ ang-footer {
   column-gap: 0.5rem;
 }
 
+// Material lets button labels wrap.
+// https://github.com/cns-iu/AtlasNG/issues/512
+.mat-mdc-button-base {
+  white-space: nowrap;
+}
+
+// Two cookie banner buttons share a row from 440px wide, even when a label doesn't fit.
+// https://github.com/cns-iu/AtlasNG/issues/511
+ang-cookie-banner.ang-cookie-banner .ang-cookie-banner--action {
+  min-width: max-content;
+}
+
 // Every text hyperlink shares one underline and matches the weight of its surrounding text.
 // `a.ang-text-link` outranks AtlasNG's own `.ang-text-link` rule, which sets a fixed weight
 // and uses a `text-decoration` shorthand that would otherwise reset the thickness.
