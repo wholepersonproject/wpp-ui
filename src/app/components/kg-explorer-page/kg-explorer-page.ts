@@ -1,8 +1,9 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, DestroyRef, inject, input, signal, ViewEncapsulation } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import type { SortPropDir } from '@atlasng/design-system/table';
 import {
-  KgExplorerDownloadRequest,
+  KgExplorerDownloadHeaderCellDefinition,
   KgExplorerFilter,
   kgExplorerChipColumn,
   kgExplorerDateColumn,
@@ -14,7 +15,9 @@ import {
 } from '@atlasng/kg-explorer';
 import { FileDownloadService } from '../../file-download.service';
 import { PageFooterService } from '../../page-footer.service';
-import { getKgGraphFileName, getKgGraphUrl, KG_GRAPH_FORMATS, KgGraphFormat } from './kg-digital-objects';
+import { KgDataService } from './kg-data.service';
+import { getKgFileName, getKgFileUrl, KG_GRAPH_FORMATS, KgFileFormat } from './kg-digital-objects';
+import { KgDownloadCellDefinition } from './kg-download-cell';
 import { KG_EXPLORER_FILTERS_DOCK_BREAKPOINT, KgExplorerFiltersService } from './kg-explorer-filters.service';
 import { FilterDialogTitle, setFilterDialogTitles } from './kg-filter-dialog-titles';
 import { KgExplorerItem } from './kg-terms';
@@ -69,8 +72,11 @@ export class KgExplorerPage {
   /** App footer, rendered at the end of the table view's scroll area */
   protected readonly pageFooter = inject(PageFooterService);
 
-  /** Saves graph files */
+  /** Saves the digital objects' files */
   private readonly fileDownload = inject(FileDownloadService);
+
+  /** Files of each digital object by IRI, loaded after the table renders */
+  private readonly files = toSignal(inject(KgDataService).files$);
 
   /** Digital objects with their terms, resolved by the route */
   readonly data = input.required<KgExplorerItem[]>();
@@ -79,8 +85,23 @@ export class KgExplorerPage {
    * Table columns, created once so cell templates stay cached. Text columns grow to the design's maximum widths,
    * and their minimums keep each header to two lines at most. Number and date columns hug their header, which wraps
    * to two lines below 1919px. The minimums fit the table beside the docked filter drawer on 1366px screens.
+   * The download column lists the graph formats until each digital object's files load.
    */
   readonly columns = [
+    {
+      name: 'Download',
+      prop: '$$download',
+      width: 40,
+      flexGrow: 0,
+      sortable: false,
+      headerTemplate: KgExplorerDownloadHeaderCellDefinition,
+      cellTemplate: KgDownloadCellDefinition,
+      cellConfig: {
+        labelProp: 'title',
+        formats: (row: KgExplorerItem) => this.files()?.get(row.id) ?? KG_GRAPH_FORMATS,
+        download: (row: KgExplorerItem, format: KgFileFormat) => this.download(row, format),
+      },
+    },
     kgExplorerLinkColumn<KgExplorerItem>(
       'Digital object',
       'path',
@@ -104,9 +125,8 @@ export class KgExplorerPage {
   readonly filters: KgExplorerFilter<KgExplorerItem>[] = FILTERS;
 
   /** Table view configuration */
-  readonly config: KgExplorerTableViewConfig<KgExplorerItem, KgGraphFormat> = {
+  readonly config: KgExplorerTableViewConfig<KgExplorerItem, KgFileFormat> = {
     searchSuggestionField: 'title',
-    downloadFormats: KG_GRAPH_FORMATS,
     filtersDockBreakpoint: KG_EXPLORER_FILTERS_DOCK_BREAKPOINT,
     filterOptions: {
       breadcrumbs: [{ name: 'Home', command: '/' }, { name: 'Knowledge Graph Explorer' }],
@@ -127,11 +147,16 @@ export class KgExplorerPage {
     });
   }
 
-  /** Saves the latest graph of a digital object in the chosen format */
-  download({ item, format }: KgExplorerDownloadRequest<KgExplorerItem, KgGraphFormat>): void {
+  /**
+   * Saves a file of a digital object's latest version
+   *
+   * @param item Digital object
+   * @param format File to download
+   */
+  download(item: KgExplorerItem, format: KgFileFormat): void {
     void this.fileDownload.download(
-      getKgGraphUrl(item, item.version, format),
-      getKgGraphFileName(item, item.version, format),
+      getKgFileUrl(item, item.version, format),
+      getKgFileName(item, item.version, format),
     );
   }
 }

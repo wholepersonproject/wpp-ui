@@ -1,7 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
-import { combineLatest, map, Observable, shareReplay } from 'rxjs';
-import { getKgMetadataUrl, KG_DIGITAL_OBJECTS_URL, KgDigitalObject, parseKgDigitalObjects } from './kg-digital-objects';
+import { catchError, combineLatest, forkJoin, map, Observable, of, shareReplay, switchMap } from 'rxjs';
+import {
+  getKgMetadataUrl,
+  KG_DIGITAL_OBJECTS_URL,
+  KgDigitalObject,
+  KgFileFormat,
+  parseKgDigitalObjects,
+} from './kg-digital-objects';
+import { getKgFiles } from './kg-metadata';
 import {
   addKgTerms,
   KG_ASCTB_TERMS_URL,
@@ -29,6 +36,25 @@ export class KgDataService {
     this.http.get(KG_TERMS_INDEX_URL).pipe(map(parseKgTermsIndex)),
   ]).pipe(
     map(([items, terms, index]) => addKgTerms(items, terms, index)),
+    shareReplay({ bufferSize: 1, refCount: false }),
+  );
+
+  /**
+   * Files of every digital object by IRI, read from each one's latest metadata. A digital object whose metadata
+   * fails to load lists the graph formats.
+   */
+  readonly files$: Observable<Map<string, KgFileFormat[]>> = this.digitalObjects$.pipe(
+    switchMap((items) =>
+      forkJoin(
+        items.map((item) =>
+          this.getMetadata(item).pipe(
+            catchError(() => of(undefined)),
+            map((value) => [item.id, getKgFiles(item, value)] as const),
+          ),
+        ),
+      ),
+    ),
+    map((entries) => new Map(entries)),
     shareReplay({ bufferSize: 1, refCount: false }),
   );
 

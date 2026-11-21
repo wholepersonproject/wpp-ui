@@ -11,20 +11,20 @@ import {
 /** URL of the knowledge graph digital object listing */
 export const KG_DIGITAL_OBJECTS_URL = 'https://kg.wholepersonphysiome.org/kg/digital-objects.jsonld';
 
-/** A graph download format with the file extension it is served under */
-export interface KgGraphFormat extends VersionControlFileFormat {
-  /** Extension of the graph file in a version directory, e.g. `ttl` for `graph.ttl` */
-  extension: string;
+/** A file published in each version of a digital object, offered as a download format */
+export interface KgFileFormat extends VersionControlFileFormat {
+  /** Path of the file in a version directory, e.g. `graph.ttl` or `assets/Urinary_System.csv` */
+  path: string;
 }
 
-/** Graph serializations published for every digital object version */
-export const KG_GRAPH_FORMATS: KgGraphFormat[] = [
-  { ...JSON_LD_FILE_FORMAT, extension: 'jsonld' },
-  { ...TURTLE_FILE_FORMAT, extension: 'ttl' },
-  { ...N_TRIPLES_FILE_FORMAT, extension: 'nt' },
-  { ...N_QUADS_FILE_FORMAT, extension: 'nq' },
-  { ...RDF_XML_FILE_FORMAT, extension: 'xml' },
-  { ...JSON_FILE_FORMAT, extension: 'json' },
+/** Graph serializations published for every digital object version, in alphabetical order */
+export const KG_GRAPH_FORMATS: KgFileFormat[] = [
+  { ...JSON_FILE_FORMAT, path: 'graph.json' },
+  { ...JSON_LD_FILE_FORMAT, path: 'graph.jsonld' },
+  { ...N_QUADS_FILE_FORMAT, path: 'graph.nq' },
+  { ...N_TRIPLES_FILE_FORMAT, path: 'graph.nt' },
+  { ...RDF_XML_FILE_FORMAT, path: 'graph.xml' },
+  { ...TURTLE_FILE_FORMAT, path: 'graph.ttl' },
 ];
 
 /** A knowledge graph digital object listed in the explorer table */
@@ -205,26 +205,29 @@ export function getKgMetadataUrl(item: Pick<KgDigitalObject, 'id'>): string {
 }
 
 /**
- * Builds the URL of a digital object's graph in a version and format
+ * Builds the URL of a file in a version of a digital object
  *
  * @param item Digital object
- * @param version Version of the graph
- * @param format Graph format
- * @returns URL of the graph file
+ * @param version Version of the digital object
+ * @param format File to download
+ * @returns URL of the file
  */
-export function getKgGraphUrl(item: Pick<KgDigitalObject, 'id'>, version: string, format: KgGraphFormat): string {
-  return `${item.id}/${version}/graph.${format.extension}`;
+export function getKgFileUrl(item: Pick<KgDigitalObject, 'id'>, version: string, format: KgFileFormat): string {
+  return `${item.id}/${version}/${format.path}`;
 }
 
 /**
- * Builds the file name of a digital object's graph download
+ * Builds the name of a downloaded file from its own name and the version. Graph files are named after the
+ * digital object instead of `graph`.
  *
  * @param item Digital object
- * @param version Version of the graph
- * @param format Graph format
- * @returns File name such as `urinary-system-v0.20261028.ttl`
+ * @param version Version of the digital object
+ * @param format File to download
+ * @returns File name such as `urinary-system-v0.20261028.ttl` or `Urinary_System-v0.20261028.csv`
  */
-export function getKgGraphFileName(item: Pick<KgDigitalObject, 'id'>, version: string, format: KgGraphFormat): string {
-  const name = item.id.replace(/\/$/, '').split('/').pop();
-  return `${name}-${version}.${format.extension}`;
+export function getKgFileName(item: Pick<KgDigitalObject, 'id'>, version: string, format: KgFileFormat): string {
+  const file = format.path.slice(format.path.lastIndexOf('/') + 1);
+  const [stem, ...extensions] = file.split('.');
+  const name = stem === 'graph' ? item.id.replace(/\/$/, '').split('/').pop() : stem;
+  return [`${name}-${version}`, ...extensions].join('.');
 }
