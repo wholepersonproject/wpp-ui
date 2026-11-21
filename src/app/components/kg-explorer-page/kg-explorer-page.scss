@@ -10,11 +10,13 @@ wpp-kg-explorer-page {
 
   // The table view's encapsulated rule grows the drawer to its widest content, such as a long filter chip,
   // and outranks a single class.
+  // https://github.com/cns-iu/AtlasNG/issues/509
   .ang-kg-explorer-table-view--container > .ang-kg-explorer-table-view--sidenav.mat-sidenav {
     max-width: min(20rem, 100%);
   }
 
   // Long filter chips would otherwise widen the filter list past the drawer.
+  // https://github.com/cns-iu/AtlasNG/issues/507
   .ang-multi-select-filter-chip-list .mat-mdc-chip {
     max-width: 100%;
   }
@@ -42,6 +44,10 @@ wpp-kg-explorer-page {
         sort-indicator-color: var(--mat-sys-tertiary),
       )
     );
+
+    .balanced-cell {
+      text-wrap: balance;
+    }
 
     .two-line-header .ang-table--text-header-label {
       width: min-content;

@@ -84,7 +84,7 @@ ang-footer {
   );
   @include ds.social-media-button-overrides(
     (
-      color: var(--mat-sys-primary-fixed-dim),
+      color: var(--mat-sys-tertiary-fixed-dim),
     )
   );
   @include mat.button-overrides(
@@ -102,6 +102,7 @@ ang-footer {
 }
 
 // A truncated search list label otherwise runs into its count.
+// https://github.com/cns-iu/AtlasNG/issues/508
 .ang-search-list--label-count {
   column-gap: 0.5rem;
 }

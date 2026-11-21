@@ -60,7 +60,15 @@ export class KgExplorerPage {
    * to two lines below 1919px. The minimums fit the table beside the docked filter drawer on 1366px screens.
    */
   readonly columns = [
-    kgExplorerLinkColumn<KgExplorerItem>('Digital objects', 'path', { labelProp: 'title' }, specWidth(160, 336)),
+    kgExplorerLinkColumn<KgExplorerItem>(
+      'Digital objects',
+      'path',
+      { labelProp: 'title' },
+      {
+        ...specWidth(160, 336),
+        cellClass: 'balanced-cell',
+      },
+    ),
     kgExplorerTextColumn<KgExplorerItem>('Digital object types', 'type', specWidth(136, 192)),
     kgExplorerChipColumn<KgExplorerItem>('Organs', 'organLabels', specWidth(272, 500)),
     kgExplorerNumberColumn<KgExplorerItem>('#Cell types', 'cellCount', TWO_LINE_HEADER),
