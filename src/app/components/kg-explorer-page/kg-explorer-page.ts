@@ -113,9 +113,13 @@ export class KgExplorerPage {
     },
   };
 
-  /** Shows the header's filter toggle and moves the footer into the table view while it is displayed */
+  /**
+   * Shows the header's filter toggle and moves the footer into the table view while it is displayed. The filter menu
+   * starts open when docked, so it doesn't slide in on arrival.
+   */
   constructor() {
     this.filtersMenu.available.set(true);
+    this.filtersMenu.reset();
     this.pageFooter.inPage.set(true);
     inject(DestroyRef).onDestroy(() => {
       this.filtersMenu.available.set(false);

@@ -35,6 +35,23 @@ describe('KgExplorerFiltersService', () => {
     expect(service.open()).toBe(false);
   });
 
+  it('resets a docked filter menu to open', () => {
+    const service = setup(true);
+
+    service.reset();
+
+    expect(service.open()).toBe(true);
+  });
+
+  it('resets a filter menu that slides over the page to closed', () => {
+    const service = setup(false);
+    service.open.set(true);
+
+    service.reset();
+
+    expect(service.open()).toBe(false);
+  });
+
   it('closes a filter menu that slides over the page', () => {
     const service = setup(false);
     service.open.set(true);

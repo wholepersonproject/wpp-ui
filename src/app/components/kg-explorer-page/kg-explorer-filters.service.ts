@@ -21,6 +21,16 @@ export class KgExplorerFiltersService {
     this.open.update((open) => !open);
   }
 
+  /**
+   * Opens a docked filter menu and closes one that slides over the page. Call it before the table view renders, so
+   * the menu arrives in place instead of sliding in once the table view opens it.
+   *
+   * @see https://github.com/cns-iu/AtlasNG/issues/516
+   */
+  reset(): void {
+    this.open.set(this.docked());
+  }
+
   /** Closes the filter menu when it slides over the page; a docked menu stays open */
   closeOverlay(): void {
     if (!this.docked()) {

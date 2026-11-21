@@ -15,6 +15,16 @@ wpp-kg-explorer-page {
     max-width: min(20rem, 100%);
   }
 
+  // Material enables drawer transitions on a timer, so after a slow first render the docked drawer would slide in on
+  // arrival. Transitions run only while Material animates a toggle.
+  // https://github.com/cns-iu/AtlasNG/issues/516
+  .ang-kg-explorer-table-view--container {
+    > .mat-drawer:not(.mat-drawer-animating),
+    &:not(:has(> .mat-drawer-animating)) > .mat-drawer-content {
+      transition: none;
+    }
+  }
+
   // Long filter chips would otherwise widen the filter list past the drawer.
   // https://github.com/cns-iu/AtlasNG/issues/507
   .ang-multi-select-filter-chip-list .mat-mdc-chip {
@@ -59,11 +69,14 @@ wpp-kg-explorer-page {
       )
     );
 
+    // The table has no token for the space between the header divider and the first row.
+    // https://github.com/cns-iu/AtlasNG/issues/384
     .datatable-body {
       padding-top: 0.25rem;
     }
 
     // The chip cell has no tokens for its spacing or padding, which come from Material's chip styles.
+    // https://github.com/cns-iu/AtlasNG/issues/518
     .ang-table--chip-cell.mat-mdc-chip-set {
       .mdc-evolution-chip-set__chips {
         gap: 0.25rem;
