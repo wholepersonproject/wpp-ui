@@ -45,6 +45,7 @@ export const kgMetadataResolver: ResolveFn<KgMetadataPageData> = (route) => {
   selector: 'wpp-kg-metadata-page',
   imports: [KgExplorerMetadataView],
   templateUrl: './kg-metadata-page.html',
+  styleUrl: './kg-metadata-page.scss',
 })
 export class KgMetadataPage {
   /** Saves the digital object's files */
