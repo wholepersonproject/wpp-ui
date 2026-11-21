@@ -5,10 +5,11 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router, RouterModule } from '@angular/router';
+import { EventScope, TrackClick } from '@atlasng/analytics';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
 import { AnyLink } from '@atlasng/common';
 import { CookieBanner, CookieBannerPrivacyPolicy } from '@atlasng/design-system/cookie-banner';
-import { Footer } from '@atlasng/design-system/footer';
+import { Footer, FooterLogo } from '@atlasng/design-system/footer';
 import { TextLink } from '@atlasng/design-system/links/text-link';
 import { CookieModal, CookieModalData } from '@atlasng/labs/cookie-modal';
 import {
@@ -30,7 +31,9 @@ import { PageFooterService } from './page-footer.service';
     AnyLink,
     CookieBanner,
     CookieBannerPrivacyPolicy,
+    EventScope,
     Footer,
+    FooterLogo,
     HeaderShell,
     HeaderShellAction,
     MatButtonModule,
@@ -39,6 +42,7 @@ import { PageFooterService } from './page-footer.service';
     NavigationContainer,
     NgTemplateOutlet,
     TextLink,
+    TrackClick,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

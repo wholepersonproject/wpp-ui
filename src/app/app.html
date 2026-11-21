@@ -44,7 +44,19 @@
     [socials]="socialMediaIds()"
     (privacyPolicyClick)="openPrivacyPolicy()"
     (privacyPreferencesClick)="openPrivacyPreferences()"
-  />
+  >
+    <!-- The footer's default logo is a fill image, which iOS draws squished: https://github.com/cns-iu/AtlasNG/issues/439 -->
+    <a
+      angFooterLogo
+      angAnyLink="/"
+      angEventScope="logo"
+      angTrackClick
+      matTooltip="Homepage"
+      aria-label="Visit Whole Person Physiome"
+    >
+      <img class="footer-logo-image" src="wpp-footer.svg" alt="" width="128" height="48" />
+    </a>
+  </ang-footer>
 </ng-template>
 
 @if (!preferencesSet()) {

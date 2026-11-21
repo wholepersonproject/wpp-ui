@@ -79,7 +79,7 @@ ang-footer {
   @include ds.footer-overrides(
     (
       background-color: map.get(theme.$tertiary-palette, 40),
-      copyright-color: map.get(theme.$tertiary-palette, neutral-variant, 80),
+      copyright-color: map.get(theme.$tertiary-palette, 100),
     )
   );
   @include ds.social-media-button-overrides(
