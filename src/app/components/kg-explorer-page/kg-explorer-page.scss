@@ -42,8 +42,30 @@ wpp-kg-explorer-page {
       (
         header-text-color: var(--mat-sys-tertiary),
         sort-indicator-color: var(--mat-sys-tertiary),
+        // Matches the metadata page's chips. https://github.com/cns-iu/AtlasNG/issues/510
+        chip-cell-container-shape: var(--mat-sys-corner-extra-small),
       )
     );
+
+    .datatable-body {
+      padding-top: 0.25rem;
+    }
+
+    // The chip cell has no tokens for its spacing or padding, which come from Material's chip styles.
+    .ang-table--chip-cell.mat-mdc-chip-set {
+      .mdc-evolution-chip-set__chips {
+        gap: 0.25rem;
+        margin: 0;
+      }
+
+      .mdc-evolution-chip {
+        margin: 0;
+      }
+
+      .mdc-evolution-chip__action--primary {
+        padding-inline: 0.625rem;
+      }
+    }
 
     .balanced-cell {
       text-wrap: balance;
