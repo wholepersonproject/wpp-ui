@@ -101,7 +101,11 @@ export class App {
     });
   }
 
-  /** Toggles the knowledge graph explorer's filter menu and closes the navigation drawers */
+  /**
+   * Toggles the knowledge graph explorer's filter menu and closes the navigation drawers
+   *
+   * @see https://github.com/cns-iu/AtlasNG/issues/529
+   */
   toggleKgExplorerFilters(): void {
     this.kgExplorerFilters.toggle();
     closeDrawers(this.navigationContainer());

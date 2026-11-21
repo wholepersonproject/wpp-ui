@@ -31,7 +31,11 @@ export class KgExplorerFiltersService {
     this.open.set(this.docked());
   }
 
-  /** Closes the filter menu when it slides over the page; a docked menu stays open */
+  /**
+   * Closes the filter menu when it slides over the page; a docked menu stays open
+   *
+   * @see https://github.com/cns-iu/AtlasNG/issues/529
+   */
   closeOverlay(): void {
     if (!this.docked()) {
       this.open.set(false);
