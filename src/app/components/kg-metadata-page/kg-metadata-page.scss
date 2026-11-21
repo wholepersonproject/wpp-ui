@@ -1,6 +1,7 @@
 // The page scrolls below the 3.5rem app header, so the sticky version control panel leaves room for it, keeping
 // the same space below the panel as above it. @atlasng/kg-explorer has no Sass override mixins, so the token is
 // set directly.
+// https://github.com/cns-iu/AtlasNG/issues/528
 ang-kg-explorer-metadata-view {
   --ang-kg-explorer-metadata-view-version-control-offset: 3.5rem;
 }
