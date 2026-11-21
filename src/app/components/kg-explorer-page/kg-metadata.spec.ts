@@ -17,7 +17,23 @@ const ITEM: KgDigitalObject = {
   lastUpdated: '2026-10-28',
 };
 
+/** Base URL of the urinary system's latest version on the CDN */
+const VERSION_URL = 'https://cdn.wholepersonphysiome.org/digital-objects/wpp/urinary-system/v0.20261028';
+
+/**
+ * Graph distributions as a version's metadata lists them
+ *
+ * @param base Base URL of the version
+ */
+function graphDistributions(base: string) {
+  return ['json', 'ttl', 'jsonld', 'xml', 'nt', 'nq'].map((extension) => ({
+    downloadUrl: `${base}/graph.${extension}`,
+  }));
+}
+
 const METADATA = {
+  version: 'v0.20261028',
+  distributions: graphDistributions(VERSION_URL),
   description: 'The graph representation of the urinary system dataset.',
   creation_date: '2026-10-29',
   publisher: 'HuBMAP',
@@ -35,12 +51,7 @@ const METADATA = {
     license:
       'Creative Commons Attribution 4.0 International ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))',
     funders: [{ funder: 'National Institutes of Health', awardNumber: 'U24AT013504' }],
-    distributions: [
-      {
-        downloadUrl:
-          'https://cdn.wholepersonphysiome.org/digital-objects/wpp/urinary-system/v0.20261028/assets/Urinary_System.csv',
-      },
-    ],
+    distributions: [{ downloadUrl: `${VERSION_URL}/assets/Urinary_System.csv` }],
   },
 };
 
@@ -56,6 +67,80 @@ describe('buildKgMetadata', () => {
     expect(metadata.url).toBe(ITEM.url);
     expect(metadata.versions?.map((version) => version.label)).toEqual(['v0.20261028', 'draft']);
     expect(metadata.versions?.[0]?.formats.length).toBeGreaterThan(0);
+  });
+
+  it('lists the source CSV first, then the graph formats alphabetically, in every version', () => {
+    const formats = buildKgMetadata(ITEM, METADATA).versions?.map((version) => version.formats);
+    const labels = ['CSV', 'JSON', 'JSON-LD', 'N-Quads', 'N-Triples', 'RDF/XML', 'Turtle'];
+
+    expect(formats?.map((files) => files.map(({ label }) => label))).toEqual([labels, labels]);
+    expect(formats?.[0]?.map(({ path }) => path)).toEqual([
+      'assets/Urinary_System.csv',
+      'graph.json',
+      'graph.jsonld',
+      'graph.nq',
+      'graph.nt',
+      'graph.xml',
+      'graph.ttl',
+    ]);
+  });
+
+  it('labels source and graph files that share a format as raw data and graph data', () => {
+    const base = 'https://cdn.wholepersonphysiome.org/digital-objects/schema/wpp/draft';
+    const files = ['schema.yaml', 'schema.context.jsonld', 'schema.json', 'schema.mmd', 'schema.png', 'schema.svg'];
+    const schema = {
+      version: 'draft',
+      distributions: graphDistributions(base),
+      was_derived_from: { distributions: files.map((file) => ({ downloadUrl: `${base}/assets/${file}` })) },
+    };
+
+    expect(buildKgMetadata(ITEM, schema).versions?.[0]?.formats.map(({ label }) => label)).toEqual([
+      'JSON (graph data)',
+      'JSON (raw data)',
+      'JSON-LD (graph data)',
+      'JSON-LD (raw data)',
+      'Mermaid',
+      'N-Quads',
+      'N-Triples',
+      'PNG',
+      'RDF/XML',
+      'SVG',
+      'Turtle',
+      'YAML',
+    ]);
+  });
+
+  it('describes other files by their extension or name', () => {
+    const value = {
+      version: 'draft',
+      distributions: graphDistributions(VERSION_URL),
+      was_derived_from: {
+        distributions: [
+          { downloadUrl: 'https://example.org/data.parquetx' },
+          { downloadUrl: 'https://example.org/README' },
+          {},
+        ],
+      },
+    };
+    const formats = buildKgMetadata(ITEM, value).versions?.[0]?.formats;
+
+    expect(formats?.find(({ label }) => label === 'PARQUETX')).toEqual({
+      label: 'PARQUETX',
+      description: '',
+      path: 'data.parquetx',
+    });
+    expect(formats?.find(({ path }) => path === 'README')?.label).toBe('README');
+  });
+
+  it('lists the graph formats alphabetically without metadata', () => {
+    expect(buildKgMetadata(ITEM, undefined).versions?.[0]?.formats.map(({ label }) => label)).toEqual([
+      'JSON',
+      'JSON-LD',
+      'N-Quads',
+      'N-Triples',
+      'RDF/XML',
+      'Turtle',
+    ]);
   });
 
   it('shows the product and organ icons above the title', () => {

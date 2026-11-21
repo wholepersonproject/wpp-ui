@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
-  getKgGraphFileName,
-  getKgGraphUrl,
+  getKgFileName,
+  getKgFileUrl,
   getKgMetadataPagePath,
   getKgMetadataUrl,
   KG_GRAPH_FORMATS,
@@ -46,7 +46,7 @@ describe('parseKgDigitalObjects', () => {
         type: 'WPP table',
         typeId: 'wpp',
         organs: ['ureter', 'urinary bladder', 'kidney'],
-        organLabels: ['Ureter', 'Urinary bladder', 'Kidney'],
+        organLabels: ['Kidney', 'Ureter', 'Urinary bladder'],
         version: 'v0.20261028',
         versions: ['draft', 'v0.20261028'],
         cellCount: 20,
@@ -100,23 +100,31 @@ describe('digital object URLs', () => {
     expect(getKgMetadataUrl(item)).toBe('https://kg.wholepersonphysiome.org/wpp/urinary-system/latest/metadata.json');
   });
 
-  it('points at the graph file of a version', () => {
-    const turtle = KG_GRAPH_FORMATS.find((format) => format.extension === 'ttl');
+  it('points at a file of a version', () => {
+    const turtle = KG_GRAPH_FORMATS.find((format) => format.path === 'graph.ttl');
 
-    expect(turtle && getKgGraphUrl(item, 'draft', turtle)).toBe(
+    expect(turtle && getKgFileUrl(item, 'draft', turtle)).toBe(
       'https://kg.wholepersonphysiome.org/wpp/urinary-system/draft/graph.ttl',
     );
   });
 
   it('names graph downloads after the digital object and version', () => {
-    const turtle = KG_GRAPH_FORMATS.find((format) => format.extension === 'ttl');
+    const turtle = KG_GRAPH_FORMATS.find((format) => format.path === 'graph.ttl');
 
-    expect(turtle && getKgGraphFileName(item, 'v0.20261028', turtle)).toBe('urinary-system-v0.20261028.ttl');
+    expect(turtle && getKgFileName(item, 'v0.20261028', turtle)).toBe('urinary-system-v0.20261028.ttl');
+  });
+
+  it('names other downloads after their file and version', () => {
+    const csv = { label: 'CSV', description: '', path: 'assets/Urinary_System.csv' };
+    const context = { label: 'JSON-LD', description: '', path: 'assets/schema.context.jsonld' };
+
+    expect(getKgFileName(item, 'v0.20261028', csv)).toBe('Urinary_System-v0.20261028.csv');
+    expect(getKgFileName(item, 'draft', context)).toBe('schema-draft.context.jsonld');
   });
 
   it('ignores a trailing slash in the digital object IRI', () => {
-    const json = KG_GRAPH_FORMATS.find((format) => format.extension === 'json');
+    const json = KG_GRAPH_FORMATS.find((format) => format.path === 'graph.json');
 
-    expect(json && getKgGraphFileName({ id: `${item.id}/` }, 'draft', json)).toBe('urinary-system-draft.json');
+    expect(json && getKgFileName({ id: `${item.id}/` }, 'draft', json)).toBe('urinary-system-draft.json');
   });
 });

@@ -6,8 +6,8 @@
   [appsMenuExpanded]="navigation.rightMenuOpen()"
   [appsMenuControls]="navigation.rightMenuId"
   [navigationItems]="navigationItems().filter((item) => item.id !== 'home')"
-  (localNavigationClick)="navigation.toggleLocalNavigation()"
-  (appsMenuClick)="navigation.toggleAppsMenu()"
+  (localNavigationClick)="navigation.toggleLocalNavigation(); kgExplorerFilters.closeOverlay()"
+  (appsMenuClick)="navigation.toggleAppsMenu(); kgExplorerFilters.closeOverlay()"
 >
   @if (kgExplorerFilters.available()) {
     <button
@@ -17,7 +17,7 @@
       [matTooltip]="kgExplorerFilters.open() ? 'Hide filters' : 'Show filters'"
       [attr.aria-label]="kgExplorerFilters.open() ? 'Hide filters' : 'Show filters'"
       [attr.aria-pressed]="kgExplorerFilters.open()"
-      (click)="kgExplorerFilters.toggle()"
+      (click)="toggleKgExplorerFilters()"
     >
       <mat-icon fontIcon="tune" />
     </button>
@@ -32,14 +32,32 @@
   <main class="page-content">
     <router-outlet />
   </main>
+  @if (!pageFooter.inPage()) {
+    <ng-container [ngTemplateOutlet]="footer" />
+  }
+</ang-navigation-container>
+
+<ng-template #footer>
   <ang-footer
     organization="Whole Person Physiome"
     logoSrc="wpp-footer.svg"
     [socials]="socialMediaIds()"
     (privacyPolicyClick)="openPrivacyPolicy()"
     (privacyPreferencesClick)="openPrivacyPreferences()"
-  />
-</ang-navigation-container>
+  >
+    <!-- The footer's default logo is a fill image, which iOS draws squished: https://github.com/cns-iu/AtlasNG/issues/439 -->
+    <a
+      angFooterLogo
+      angAnyLink="/"
+      angEventScope="logo"
+      angTrackClick
+      matTooltip="Homepage"
+      aria-label="Visit Whole Person Physiome"
+    >
+      <img class="footer-logo-image" src="wpp-footer.svg" alt="" width="128" height="48" />
+    </a>
+  </ang-footer>
+</ng-template>
 
 @if (!preferencesSet()) {
   <ang-cookie-banner

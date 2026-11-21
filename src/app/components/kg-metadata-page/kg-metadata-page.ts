@@ -6,12 +6,7 @@ import { KgExplorerMetadata, KgExplorerMetadataView } from '@atlasng/kg-explorer
 import { catchError, map, of, switchMap } from 'rxjs';
 import { FileDownloadService } from '../../file-download.service';
 import { KgDataService } from '../kg-explorer-page/kg-data.service';
-import {
-  getKgGraphFileName,
-  getKgGraphUrl,
-  KgDigitalObject,
-  KgGraphFormat,
-} from '../kg-explorer-page/kg-digital-objects';
+import { getKgFileName, getKgFileUrl, KgDigitalObject, KgFileFormat } from '../kg-explorer-page/kg-digital-objects';
 import { buildKgMetadata } from '../kg-explorer-page/kg-metadata';
 
 /** Data resolved for a digital object's metadata page */
@@ -19,7 +14,7 @@ export interface KgMetadataPageData {
   /** Digital object from the listing */
   item: KgDigitalObject;
   /** Page content built from the digital object's metadata */
-  metadata: KgExplorerMetadata<KgGraphFormat>;
+  metadata: KgExplorerMetadata<KgFileFormat>;
 }
 
 /**
@@ -50,9 +45,10 @@ export const kgMetadataResolver: ResolveFn<KgMetadataPageData> = (route) => {
   selector: 'wpp-kg-metadata-page',
   imports: [KgExplorerMetadataView],
   templateUrl: './kg-metadata-page.html',
+  styleUrl: './kg-metadata-page.scss',
 })
 export class KgMetadataPage {
-  /** Saves graph files */
+  /** Saves the digital object's files */
   private readonly fileDownload = inject(FileDownloadService);
 
   /** Digital object and metadata resolved by the route */
@@ -65,12 +61,12 @@ export class KgMetadataPage {
     { name: this.data().metadata.title },
   ]);
 
-  /** Saves the digital object's graph in the chosen version and format */
-  download({ item, format }: VersionDownload<KgGraphFormat>): void {
+  /** Saves a file of the digital object in the chosen version */
+  download({ item, format }: VersionDownload<KgFileFormat>): void {
     const digitalObject = this.data().item;
     void this.fileDownload.download(
-      getKgGraphUrl(digitalObject, item.label, format),
-      getKgGraphFileName(digitalObject, item.label, format),
+      getKgFileUrl(digitalObject, item.label, format),
+      getKgFileName(digitalObject, item.label, format),
     );
   }
 }

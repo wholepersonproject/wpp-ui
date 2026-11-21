@@ -1,6 +1,19 @@
 import type { ContentNode } from '@atlasng/content-blocks/types';
+import {
+  CSV_FILE_FORMAT,
+  JSON_FILE_FORMAT,
+  JSON_LD_FILE_FORMAT,
+  JSON_LD_GRAPH_DATA_FILE_FORMAT,
+  JSON_LD_RAW_DATA_FILE_FORMAT,
+  PDF_FILE_FORMAT,
+  PNG_FILE_FORMAT,
+  SVG_FILE_FORMAT,
+  TSV_FILE_FORMAT,
+  VersionControlFileFormat,
+  YAML_FILE_FORMAT,
+} from '@atlasng/design-system/version-control';
 import type { KgExplorerMetadata, KgExplorerMetadataSection } from '@atlasng/kg-explorer';
-import { KG_GRAPH_FORMATS, KgDigitalObject, KgGraphFormat } from './kg-digital-objects';
+import { KG_GRAPH_FORMATS, KgDigitalObject, KgFileFormat } from './kg-digital-objects';
 import { getKgMetadataIcons } from './kg-icons';
 
 /** A JSON object of unknown shape */
@@ -122,6 +135,99 @@ function tagsSection(item: KgDigitalObject): KgExplorerMetadataSection {
   return { title: 'Tags', content: { component: 'MetadataChips', config: { labels: [item.type, ...organs] } } };
 }
 
+/** Formats of source data files, by file extension */
+const SOURCE_FORMATS: Record<string, VersionControlFileFormat> = {
+  csv: CSV_FILE_FORMAT,
+  json: JSON_FILE_FORMAT,
+  jsonld: JSON_LD_FILE_FORMAT,
+  mmd: { label: 'Mermaid', description: 'Diagram written in Mermaid text syntax.' },
+  pdf: PDF_FILE_FORMAT,
+  png: PNG_FILE_FORMAT,
+  svg: SVG_FILE_FORMAT,
+  tsv: TSV_FILE_FORMAT,
+  yaml: YAML_FILE_FORMAT,
+  yml: YAML_FILE_FORMAT,
+};
+
+/**
+ * Describes a file by its path in a version directory. Graph files use the graph formats, and other files are
+ * described by their extension.
+ *
+ * @param path Path of the file, e.g. `graph.ttl` or `assets/Urinary_System.csv`
+ * @returns The file as a download format
+ */
+function fileFormat(path: string): KgFileFormat {
+  const graph = KG_GRAPH_FORMATS.find((format) => format.path === path);
+  if (graph) {
+    return graph;
+  }
+  const file = path.slice(path.lastIndexOf('/') + 1);
+  const dot = file.lastIndexOf('.');
+  const extension = dot >= 0 ? file.slice(dot + 1).toLowerCase() : '';
+  return { ...(SOURCE_FORMATS[extension] ?? { label: extension.toUpperCase() || file, description: '' }), path };
+}
+
+/**
+ * Lists the files of a metadata `distributions` value, with their paths relative to the version directory
+ *
+ * @param value Distributions of the graph or of its source data
+ * @param version Version the download URLs point into
+ * @returns One download format per distribution with a download URL
+ */
+function distributionFiles(value: unknown, version: string): KgFileFormat[] {
+  return asRecords(value).flatMap((distribution) => {
+    const url = asString(distribution['downloadUrl']);
+    if (!url) {
+      return [];
+    }
+    const marker = `/${version}/`;
+    const index = url.indexOf(marker);
+    return [fileFormat(index >= 0 ? url.slice(index + marker.length) : url.slice(url.lastIndexOf('/') + 1))];
+  });
+}
+
+/** Lists CSV first, as the source of the WPP tables, then the other files alphabetically */
+function compareFiles(a: KgFileFormat, b: KgFileFormat): number {
+  const csvFirst = Number(b.label === CSV_FILE_FORMAT.label) - Number(a.label === CSV_FILE_FORMAT.label);
+  return csvFirst || a.label.localeCompare(b.label);
+}
+
+/**
+ * Lists the graph and source data files of a digital object. A format both include, such as a schema's JSON,
+ * is labeled as graph data or raw data. Without graph distributions, the published graph formats are listed.
+ *
+ * @param metadata Graph metadata (`metadata.json`)
+ * @param source Source data metadata (`was_derived_from`)
+ * @param version Version of the metadata
+ * @returns The files, CSV first and the rest alphabetically
+ */
+function kgFiles(metadata: JsonRecord, source: JsonRecord, version: string): KgFileFormat[] {
+  const listedGraph = distributionFiles(metadata['distributions'], version);
+  const graph = listedGraph.length > 0 ? listedGraph : KG_GRAPH_FORMATS;
+  const raw = distributionFiles(source['distributions'], version);
+  const graphLabels = new Set(graph.map(({ label }) => label));
+  const shared = new Set(raw.map(({ label }) => label).filter((label) => graphLabels.has(label)));
+  const qualify = (file: KgFileFormat, kind: VersionControlFileFormat, name: string): KgFileFormat =>
+    shared.has(file.label) ? { ...file, label: `${file.label} (${name})`, description: kind.description } : file;
+
+  return [
+    ...graph.map((file) => qualify(file, JSON_LD_GRAPH_DATA_FILE_FORMAT, 'graph data')),
+    ...raw.map((file) => qualify(file, JSON_LD_RAW_DATA_FILE_FORMAT, 'raw data')),
+  ].sort(compareFiles);
+}
+
+/**
+ * Lists the files published in each version of a digital object
+ *
+ * @param item Digital object
+ * @param value Parsed `latest/metadata.json`, or `undefined` when it didn't load
+ * @returns The files, CSV first and the rest alphabetically
+ */
+export function getKgFiles(item: KgDigitalObject, value: unknown): KgFileFormat[] {
+  const metadata = asRecord(value);
+  return kgFiles(metadata, asRecord(metadata['was_derived_from']), asString(metadata['version']) ?? item.version);
+}
+
 /**
  * Builds the metadata page content of a digital object
  *
@@ -129,7 +235,7 @@ function tagsSection(item: KgDigitalObject): KgExplorerMetadataSection {
  * @param value Parsed `latest/metadata.json` of the digital object
  * @returns Title, icons, sections, URL and versions of the metadata page
  */
-export function buildKgMetadata(item: KgDigitalObject, value: unknown): KgExplorerMetadata<KgGraphFormat> {
+export function buildKgMetadata(item: KgDigitalObject, value: unknown): KgExplorerMetadata<KgFileFormat> {
   const metadata = asRecord(value);
   const source = asRecord(metadata['was_derived_from']);
 
@@ -147,12 +253,14 @@ export function buildKgMetadata(item: KgDigitalObject, value: unknown): KgExplor
   ].filter((section): section is KgExplorerMetadataSection => section !== undefined);
 
   const versions = [item.version, ...item.versions.filter((version) => version !== item.version)];
+  // Every published version has the same files as the latest.
+  const files = getKgFiles(item, value);
 
   return {
     title: item.title,
     icons: getKgMetadataIcons(item),
     url: item.url,
     sections,
-    versions: versions.map((label) => ({ label, formats: KG_GRAPH_FORMATS })),
+    versions: versions.map((label) => ({ label, formats: files })),
   };
 }

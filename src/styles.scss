@@ -26,7 +26,7 @@
     @include ds.ext-level-colors($name, $palette, color-scheme);
   }
 
-  @include ds.mat-all-defaults;
+  @include ds.defaults;
 }
 
 body {
@@ -49,7 +49,6 @@ body {
       logo-color: red,
       container-color: map.get(theme.$primary-palette, 40),
       label-color: var(--mat-sys-primary-fixed),
-      icon-color: var(--mat-sys-primary-fixed-dim),
       divider-color: map.get(theme.$tertiary-palette, neutral-variant, 60),
       underline-color: var(--mat-sys-primary-fixed-dim),
     )
@@ -66,16 +65,26 @@ body {
   min-width: 20rem;
 }
 
+// The header shell's icon-color token only reaches its drawer menus, not the header's own icon buttons.
+// https://github.com/cns-iu/AtlasNG/issues/504
+ang-header-shell {
+  @include mat.icon-button-overrides(
+    (
+      icon-color: var(--mat-sys-primary-fixed-dim),
+    )
+  );
+}
+
 ang-footer {
   @include ds.footer-overrides(
     (
       background-color: map.get(theme.$tertiary-palette, 40),
-      copyright-color: map.get(theme.$tertiary-palette, neutral-variant, 80),
+      copyright-color: map.get(theme.$tertiary-palette, 100),
     )
   );
   @include ds.social-media-button-overrides(
     (
-      color: var(--mat-sys-primary-fixed-dim),
+      color: var(--mat-sys-tertiary-fixed-dim),
     )
   );
   @include mat.button-overrides(
@@ -83,6 +92,31 @@ ang-footer {
       text-label-text-color: var(--mat-sys-tertiary-fixed),
     )
   );
+}
+
+// The chip tray's leave animation outlasts the full-screen search list's, which keeps the list in the page
+// long enough to replay its open animation after Done.
+// https://github.com/cns-iu/AtlasNG/issues/503
+.ang-multi-select-filter--panel-leave .ang-multi-select-filter--chip-tray-leave {
+  animation: none;
+}
+
+// A truncated search list label otherwise runs into its count.
+// https://github.com/cns-iu/AtlasNG/issues/508
+.ang-search-list--label-count {
+  column-gap: 0.5rem;
+}
+
+// Material lets button labels wrap.
+// https://github.com/cns-iu/AtlasNG/issues/512
+.mat-mdc-button-base {
+  white-space: nowrap;
+}
+
+// Two cookie banner buttons share a row from 440px wide, even when a label doesn't fit.
+// https://github.com/cns-iu/AtlasNG/issues/511
+ang-cookie-banner.ang-cookie-banner .ang-cookie-banner--action {
+  min-width: max-content;
 }
 
 // Every text hyperlink shares one underline and matches the weight of its surrounding text.

@@ -72,6 +72,7 @@ export const appRoutes: Route[] = [
       data: createYamlSpecResolver('assets/content/events-page/data.yaml'),
     },
   },
+  // TODO(#88): title the Knowledge Graph Explorer routes and list them in the sitemap, as noted on #92
   {
     path: 'kg-explorer',
     component: KgExplorerPage,
