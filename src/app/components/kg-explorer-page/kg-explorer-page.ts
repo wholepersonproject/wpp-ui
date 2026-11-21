@@ -16,6 +16,7 @@ import { FileDownloadService } from '../../file-download.service';
 import { PageFooterService } from '../../page-footer.service';
 import { getKgGraphFileName, getKgGraphUrl, KG_GRAPH_FORMATS, KgGraphFormat } from './kg-digital-objects';
 import { KG_EXPLORER_FILTERS_DOCK_BREAKPOINT, KgExplorerFiltersService } from './kg-explorer-filters.service';
+import { FilterDialogTitle, setFilterDialogTitles } from './kg-filter-dialog-titles';
 import { KgExplorerItem } from './kg-terms';
 
 /**
@@ -32,6 +33,26 @@ function specWidth(minWidth: number, maxWidth: number) {
 
 /** Wraps a hugging column's header to two lines on screens narrower than 1919px */
 const TWO_LINE_HEADER = { headerClass: 'two-line-header' };
+
+/**
+ * Filter menu definitions, with the titles of their full-screen dialogs below 960px.
+ *
+ * TODO(cns-iu/AtlasNG#515): drop `FilterDialogTitle` and `setFilterDialogTitles` once filters accept `dialogTitle`
+ */
+const FILTERS: (KgExplorerFilter<KgExplorerItem> & FilterDialogTitle)[] = [
+  { id: 'type', label: 'Digital object types', dialogTitle: 'Digital object type filters', field: 'type' },
+  { id: 'organs', label: 'Organs', dialogTitle: 'Organ filters', field: 'organs' },
+  {
+    id: 'anatomicalStructures',
+    label: 'Anatomical structures',
+    dialogTitle: 'Anatomical structure filters',
+    field: 'anatomicalStructures',
+  },
+  { id: 'cellTypes', label: 'Cell types', dialogTitle: 'Cell type filters', field: 'cellTypes' },
+  { id: 'biomarkerTypes', label: 'Biomarker types', dialogTitle: 'Biomarker filters', field: 'biomarkers' },
+];
+
+setFilterDialogTitles(FILTERS);
 
 /** Knowledge graph explorer table view of the WPP digital objects */
 @Component({
@@ -80,17 +101,7 @@ export class KgExplorerPage {
   readonly sorts = signal<SortPropDir[]>([{ prop: 'path', dir: 'asc' }]);
 
   /** Filter menu definitions */
-  readonly filters: KgExplorerFilter<KgExplorerItem>[] = [
-    { id: 'type', label: 'Digital object types', field: 'type' },
-    { id: 'organs', label: 'Organs', field: 'organs' },
-    {
-      id: 'anatomicalStructures',
-      label: 'Anatomical structures',
-      field: 'anatomicalStructures',
-    },
-    { id: 'cellTypes', label: 'Cell types', field: 'cellTypes' },
-    { id: 'biomarkerTypes', label: 'Biomarker types', field: 'biomarkers' },
-  ];
+  readonly filters: KgExplorerFilter<KgExplorerItem>[] = FILTERS;
 
   /** Table view configuration */
   readonly config: KgExplorerTableViewConfig<KgExplorerItem, KgGraphFormat> = {
