@@ -8,8 +8,15 @@ wpp-kg-explorer-page {
     height: 100%;
   }
 
-  .ang-kg-explorer-table-view--sidenav {
+  // The table view's encapsulated rule grows the drawer to its widest content, such as a long filter chip,
+  // and outranks a single class.
+  .ang-kg-explorer-table-view--container > .ang-kg-explorer-table-view--sidenav.mat-sidenav {
     max-width: min(20rem, 100%);
+  }
+
+  // Long filter chips would otherwise widen the filter list past the drawer.
+  .ang-multi-select-filter-chip-list .mat-mdc-chip {
+    max-width: 100%;
   }
 
   // The table view holds projected content to the table's max width, but the footer spans the whole panel.

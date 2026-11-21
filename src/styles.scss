@@ -101,6 +101,11 @@ ang-footer {
   animation: none;
 }
 
+// A truncated search list label otherwise runs into its count.
+.ang-search-list--label-count {
+  column-gap: 0.5rem;
+}
+
 // Every text hyperlink shares one underline and matches the weight of its surrounding text.
 // `a.ang-text-link` outranks AtlasNG's own `.ang-text-link` rule, which sets a fixed weight
 // and uses a `text-decoration` shorthand that would otherwise reset the thickness.
