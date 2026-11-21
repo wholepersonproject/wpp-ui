@@ -1,5 +1,20 @@
+@use '@atlasng/design-system' as ds;
+
 .ang-kg-explorer-download-cell--menu {
   max-width: 20rem;
+
+  // A menu taller than the space above and below its button is pushed over the button. Half the viewport always
+  // fits on one side.
+  // https://github.com/cns-iu/AtlasNG/issues/520
+  .kg-download-cell--scroll-area {
+    max-height: calc(50dvh - 1.5rem);
+
+    @include ds.scroll-area-overrides(
+      (
+        container-color: var(--mat-menu-container-color, var(--mat-sys-surface-container)),
+      )
+    );
+  }
 
   .mat-mdc-menu-item {
     align-items: flex-start;

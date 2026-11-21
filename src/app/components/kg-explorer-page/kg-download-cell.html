@@ -27,20 +27,22 @@
 
     <mat-menu class="ang-kg-explorer-download-cell--menu" #menu="matMenu">
       <ng-template matMenuContent>
-        @for (format of formats; track format) {
-          <button mat-menu-item type="button" (click)="config.download(row, format)">
-            <mat-icon fontIcon="download" />
-            <span class="ang-kg-explorer-download-cell--option">
-              <span class="ang-kg-explorer-download-cell--option-label">{{ format.label }}</span>
-              @if (format.description) {
-                <span class="ang-kg-explorer-download-cell--option-description">{{ format.description }}</span>
-              }
-            </span>
-          </button>
-          @if (hasDividerAfter(formats, $index)) {
-            <mat-divider />
+        <ang-scroll-area class="kg-download-cell--scroll-area" orientation="vertical">
+          @for (format of formats; track format) {
+            <button mat-menu-item type="button" (click)="config.download(row, format)">
+              <mat-icon fontIcon="download" />
+              <span class="ang-kg-explorer-download-cell--option">
+                <span class="ang-kg-explorer-download-cell--option-label">{{ format.label }}</span>
+                @if (format.description) {
+                  <span class="ang-kg-explorer-download-cell--option-description">{{ format.description }}</span>
+                }
+              </span>
+            </button>
+            @if (hasDividerAfter(formats, $index)) {
+              <mat-divider />
+            }
           }
-        }
+        </ang-scroll-area>
       </ng-template>
     </mat-menu>
   }

@@ -4,6 +4,7 @@ import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatTooltip } from '@angular/material/tooltip';
+import { ScrollArea } from '@atlasng/design-system/scroll-area';
 import { CellTemplateContext } from '@atlasng/design-system/table';
 import { CSV_FILE_FORMAT } from '@atlasng/design-system/version-control';
 import { KgExplorerDownloadCellDefinition } from '@atlasng/kg-explorer';
@@ -22,10 +23,12 @@ export function hasDividerAfter(formats: readonly KgFileFormat[], index: number)
 }
 
 /**
- * Download cell that separates the source CSV from the other formats with a divider. AtlasNG's download cell can't
- * group formats, so this copies its template and styles and adds the divider.
+ * Download cell that separates the source CSV from the other formats with a divider, and keeps its menu beside the
+ * button. AtlasNG's download cell can't group formats, and its menu can cover the button, so this copies its
+ * template and styles, adds the divider, and scrolls a long menu.
  *
- * TODO(cns-iu/AtlasNG#455): use the table view's download column once it groups formats with dividers
+ * TODO(cns-iu/AtlasNG#455, cns-iu/AtlasNG#520): use the table view's download column once it groups formats with
+ * dividers and keeps its menu beside the button
  */
 @Component({
   selector: 'wpp-kg-download-cell-definition',
@@ -39,6 +42,7 @@ export function hasDividerAfter(formats: readonly KgFileFormat[], index: number)
     MatMenuItem,
     MatMenuTrigger,
     MatTooltip,
+    ScrollArea,
   ],
   templateUrl: './kg-download-cell.html',
   styleUrl: './kg-download-cell.scss',
