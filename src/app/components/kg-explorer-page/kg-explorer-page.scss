@@ -8,6 +8,10 @@ wpp-kg-explorer-page {
     height: 100%;
   }
 
+  .ang-kg-explorer-table-view--sidenav {
+    max-width: min(20rem, 100%);
+  }
+
   // The table view holds projected content to the table's max width, but the footer spans the whole panel.
   // https://github.com/cns-iu/AtlasNG/issues/505
   ang-kg-explorer-table-panel {
@@ -31,5 +35,13 @@ wpp-kg-explorer-page {
         sort-indicator-color: var(--mat-sys-tertiary),
       )
     );
+
+    .two-line-header .ang-table--text-header-label {
+      width: min-content;
+
+      @include ds.breakpoint(1919px) {
+        width: auto;
+      }
+    }
   }
 }

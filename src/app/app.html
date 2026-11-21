@@ -6,8 +6,8 @@
   [appsMenuExpanded]="navigation.rightMenuOpen()"
   [appsMenuControls]="navigation.rightMenuId"
   [navigationItems]="navigationItems().filter((item) => item.id !== 'home')"
-  (localNavigationClick)="navigation.toggleLocalNavigation()"
-  (appsMenuClick)="navigation.toggleAppsMenu()"
+  (localNavigationClick)="navigation.toggleLocalNavigation(); kgExplorerFilters.closeOverlay()"
+  (appsMenuClick)="navigation.toggleAppsMenu(); kgExplorerFilters.closeOverlay()"
 >
   @if (kgExplorerFilters.available()) {
     <button
@@ -17,7 +17,7 @@
       [matTooltip]="kgExplorerFilters.open() ? 'Hide filters' : 'Show filters'"
       [attr.aria-label]="kgExplorerFilters.open() ? 'Hide filters' : 'Show filters'"
       [attr.aria-pressed]="kgExplorerFilters.open()"
-      (click)="kgExplorerFilters.toggle()"
+      (click)="toggleKgExplorerFilters()"
     >
       <mat-icon fontIcon="tune" />
     </button>

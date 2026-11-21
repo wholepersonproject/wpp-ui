@@ -15,7 +15,7 @@ import {
 import { FileDownloadService } from '../../file-download.service';
 import { PageFooterService } from '../../page-footer.service';
 import { getKgGraphFileName, getKgGraphUrl, KG_GRAPH_FORMATS, KgGraphFormat } from './kg-digital-objects';
-import { KgExplorerFiltersService } from './kg-explorer-filters.service';
+import { KG_EXPLORER_FILTERS_DOCK_BREAKPOINT, KgExplorerFiltersService } from './kg-explorer-filters.service';
 import { KgExplorerItem } from './kg-terms';
 
 /**
@@ -29,6 +29,9 @@ import { KgExplorerItem } from './kg-terms';
 function specWidth(minWidth: number, maxWidth: number) {
   return { fitContent: false, minWidth, maxWidth, flexGrow: 1 };
 }
+
+/** Wraps a hugging column's header to two lines on screens narrower than 1919px */
+const TWO_LINE_HEADER = { headerClass: 'two-line-header' };
 
 /** Knowledge graph explorer table view of the WPP digital objects */
 @Component({
@@ -52,17 +55,17 @@ export class KgExplorerPage {
   readonly data = input.required<KgExplorerItem[]>();
 
   /**
-   * Table columns, created once so cell templates stay cached. Text columns grow to the design's maximum widths;
-   * number and date columns hug their header, so it stays on one line. The minimums fit the table beside the docked
-   * filter drawer on 1366px screens.
+   * Table columns, created once so cell templates stay cached. Text columns grow to the design's maximum widths,
+   * and their minimums keep each header to two lines at most. Number and date columns hug their header, which wraps
+   * to two lines below 1919px. The minimums fit the table beside the docked filter drawer on 1366px screens.
    */
   readonly columns = [
-    kgExplorerLinkColumn<KgExplorerItem>('Digital objects', 'path', { labelProp: 'title' }, specWidth(120, 336)),
-    kgExplorerTextColumn<KgExplorerItem>('Digital object types', 'type', specWidth(110, 192)),
-    kgExplorerChipColumn<KgExplorerItem>('Organs', 'organLabels', specWidth(236, 500)),
-    kgExplorerNumberColumn<KgExplorerItem>('#Cell types', 'cellCount'),
-    kgExplorerNumberColumn<KgExplorerItem>('#Biomarker types', 'biomarkerCount'),
-    kgExplorerDateColumn<KgExplorerItem>('Last published', 'lastUpdated'),
+    kgExplorerLinkColumn<KgExplorerItem>('Digital objects', 'path', { labelProp: 'title' }, specWidth(160, 336)),
+    kgExplorerTextColumn<KgExplorerItem>('Digital object types', 'type', specWidth(136, 192)),
+    kgExplorerChipColumn<KgExplorerItem>('Organs', 'organLabels', specWidth(272, 500)),
+    kgExplorerNumberColumn<KgExplorerItem>('#Cell types', 'cellCount', TWO_LINE_HEADER),
+    kgExplorerNumberColumn<KgExplorerItem>('#Biomarker types', 'biomarkerCount', TWO_LINE_HEADER),
+    kgExplorerDateColumn<KgExplorerItem>('Last published', 'lastUpdated', TWO_LINE_HEADER),
   ];
 
   /** Column sorts, sorted by digital object title by default */
@@ -70,7 +73,7 @@ export class KgExplorerPage {
 
   /** Filter menu definitions */
   readonly filters: KgExplorerFilter<KgExplorerItem>[] = [
-    { id: 'type', label: 'Digital objects', field: 'type' },
+    { id: 'type', label: 'Digital object types', field: 'type' },
     { id: 'organs', label: 'Organs', field: 'organs' },
     {
       id: 'anatomicalStructures',
@@ -85,6 +88,7 @@ export class KgExplorerPage {
   readonly config: KgExplorerTableViewConfig<KgExplorerItem, KgGraphFormat> = {
     searchSuggestionField: 'title',
     downloadFormats: KG_GRAPH_FORMATS,
+    filtersDockBreakpoint: KG_EXPLORER_FILTERS_DOCK_BREAKPOINT,
     filterOptions: {
       breadcrumbs: [{ name: 'Home', command: '/' }, { name: 'Knowledge Graph Explorer' }],
     },

@@ -94,6 +94,13 @@ ang-footer {
   );
 }
 
+// The chip tray's leave animation outlasts the full-screen search list's, which keeps the list in the page
+// long enough to replay its open animation after Done.
+// https://github.com/cns-iu/AtlasNG/issues/503
+.ang-multi-select-filter--panel-leave .ang-multi-select-filter--chip-tray-leave {
+  animation: none;
+}
+
 // Every text hyperlink shares one underline and matches the weight of its surrounding text.
 // `a.ang-text-link` outranks AtlasNG's own `.ang-text-link` rule, which sets a fixed weight
 // and uses a `text-decoration` shorthand that would otherwise reset the thickness.

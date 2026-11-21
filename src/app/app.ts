@@ -18,7 +18,7 @@ import {
   NavigationContainer,
 } from '@atlasng/labs/header-shell';
 import { KgExplorerFiltersService } from './components/kg-explorer-page/kg-explorer-filters.service';
-import { closeDrawersOnNavigation } from './close-drawers-on-navigation';
+import { closeDrawers, closeDrawersOnNavigation } from './close-drawers-on-navigation';
 import { APP_MENU_ITEMS, createLocalNavigationItems, PRIMARY_NAVIGATION_ITEMS } from './navigation';
 import { PageFooterService } from './page-footer.service';
 
@@ -53,9 +53,9 @@ export class App {
   /** Open cookie preferences dialog, if any */
   private ref?: MatDialogRef<CookieModal>;
 
-  /** Filter menu of the knowledge graph explorer table view */
+  /** Filter menu of the knowledge graph explorer table view, closed when a navigation drawer is toggled over it */
   protected readonly kgExplorerFilters = inject(KgExplorerFiltersService);
-  /** Navigation drawers, closed after each navigation */
+  /** Navigation drawers, closed after each navigation and when the filter menu is toggled */
   private readonly navigationContainer = viewChild(NavigationContainer);
   /** Footer placement, moved into pages that scroll inside their own scroll area */
   protected readonly pageFooter = inject(PageFooterService);
@@ -95,6 +95,12 @@ export class App {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
       this.currentTheme.set(event.matches ? 'dark' : 'light');
     });
+  }
+
+  /** Toggles the knowledge graph explorer's filter menu and closes the navigation drawers */
+  toggleKgExplorerFilters(): void {
+    this.kgExplorerFilters.toggle();
+    closeDrawers(this.navigationContainer());
   }
 
   /** Navigates to the privacy policy page */
