@@ -61,7 +61,7 @@ export class KgExplorerPage {
    */
   readonly columns = [
     kgExplorerLinkColumn<KgExplorerItem>(
-      'Digital objects',
+      'Digital object',
       'path',
       { labelProp: 'title' },
       {
@@ -89,7 +89,7 @@ export class KgExplorerPage {
       field: 'anatomicalStructures',
     },
     { id: 'cellTypes', label: 'Cell types', field: 'cellTypes' },
-    { id: 'biomarkerTypes', label: 'Biomarkers', field: 'biomarkers' },
+    { id: 'biomarkerTypes', label: 'Biomarker types', field: 'biomarkers' },
   ];
 
   /** Table view configuration */
