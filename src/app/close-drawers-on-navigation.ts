@@ -24,8 +24,15 @@ export function closeDrawersOnNavigation(drawers: Signal<NavigationDrawers | und
       filter((event) => event instanceof NavigationEnd || event instanceof NavigationSkipped),
       takeUntilDestroyed(),
     )
-    .subscribe(() => {
-      drawers()?.leftMenuOpen.set(false);
-      drawers()?.rightMenuOpen.set(false);
-    });
+    .subscribe(() => closeDrawers(drawers()));
+}
+
+/**
+ * Closes both navigation drawers.
+ *
+ * @param drawers The app's navigation container, or `undefined` before it renders
+ */
+export function closeDrawers(drawers: NavigationDrawers | undefined): void {
+  drawers?.leftMenuOpen.set(false);
+  drawers?.rightMenuOpen.set(false);
 }

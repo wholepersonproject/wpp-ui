@@ -1,13 +1,15 @@
-import { Component, computed, inject, model, signal, viewChild } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import { Component, computed, effect, inject, model, signal, TemplateRef, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router, RouterModule } from '@angular/router';
+import { EventScope, TrackClick } from '@atlasng/analytics';
 import { AnalyticsPermissionsManager } from '@atlasng/analytics/permissions';
 import { AnyLink } from '@atlasng/common';
 import { CookieBanner, CookieBannerPrivacyPolicy } from '@atlasng/design-system/cookie-banner';
-import { Footer } from '@atlasng/design-system/footer';
+import { Footer, FooterLogo } from '@atlasng/design-system/footer';
 import { TextLink } from '@atlasng/design-system/links/text-link';
 import { CookieModal, CookieModalData } from '@atlasng/labs/cookie-modal';
 import {
@@ -17,8 +19,9 @@ import {
   NavigationContainer,
 } from '@atlasng/labs/header-shell';
 import { KgExplorerFiltersService } from './components/kg-explorer-page/kg-explorer-filters.service';
-import { closeDrawersOnNavigation } from './close-drawers-on-navigation';
+import { closeDrawers, closeDrawersOnNavigation } from './close-drawers-on-navigation';
 import { APP_MENU_ITEMS, createLocalNavigationItems, PRIMARY_NAVIGATION_ITEMS } from './navigation';
+import { PageFooterService } from './page-footer.service';
 
 /** Root shell of the website: header, navigation drawers, routed page, footer, and cookie consent */
 @Component({
@@ -28,14 +31,18 @@ import { APP_MENU_ITEMS, createLocalNavigationItems, PRIMARY_NAVIGATION_ITEMS } 
     AnyLink,
     CookieBanner,
     CookieBannerPrivacyPolicy,
+    EventScope,
     Footer,
+    FooterLogo,
     HeaderShell,
     HeaderShellAction,
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
     NavigationContainer,
+    NgTemplateOutlet,
     TextLink,
+    TrackClick,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -50,10 +57,14 @@ export class App {
   /** Open cookie preferences dialog, if any */
   private ref?: MatDialogRef<CookieModal>;
 
-  /** Filter menu of the knowledge graph explorer table view */
+  /** Filter menu of the knowledge graph explorer table view, closed when a navigation drawer is toggled over it */
   protected readonly kgExplorerFilters = inject(KgExplorerFiltersService);
-  /** Navigation drawers, closed after each navigation */
+  /** Navigation drawers, closed after each navigation and when the filter menu is toggled */
   private readonly navigationContainer = viewChild(NavigationContainer);
+  /** Footer placement, moved into pages that scroll inside their own scroll area */
+  protected readonly pageFooter = inject(PageFooterService);
+  /** Footer template, rendered by the shell or by the displayed page */
+  private readonly footer = viewChild.required<TemplateRef<unknown>>('footer');
 
   /** Whether the user has already chosen cookie preferences; hides the cookie banner */
   readonly preferencesSet = signal(this.permissionsManager.syncFromStorage());
@@ -78,15 +89,22 @@ export class App {
   /** Logo matching the current color scheme */
   readonly headerLogo = computed(() => (this.currentTheme() === 'dark' ? 'wpp-header-dark.svg' : 'wpp-header.svg'));
 
-  /** Closes the drawers after navigation and follows changes to the system color scheme */
+  /** Closes the drawers after navigation, shares the footer with pages, and follows the system color scheme */
   constructor() {
     closeDrawersOnNavigation(this.navigationContainer);
+    effect(() => this.pageFooter.template.set(this.footer()));
 
     this.currentTheme.set(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
       this.currentTheme.set(event.matches ? 'dark' : 'light');
     });
+  }
+
+  /** Toggles the knowledge graph explorer's filter menu and closes the navigation drawers */
+  toggleKgExplorerFilters(): void {
+    this.kgExplorerFilters.toggle();
+    closeDrawers(this.navigationContainer());
   }
 
   /** Navigates to the privacy policy page */

@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { closeDrawersOnNavigation } from './close-drawers-on-navigation';
+import { closeDrawers, closeDrawersOnNavigation } from './close-drawers-on-navigation';
 
 @Component({ template: '' })
 class EmptyPage {}
@@ -51,5 +51,20 @@ describe('closeDrawersOnNavigation', () => {
     TestBed.runInInjectionContext(() => closeDrawersOnNavigation(signal(undefined)));
 
     await expect(router.navigateByUrl('/about')).resolves.toBe(true);
+  });
+});
+
+describe('closeDrawers', () => {
+  it('closes both drawers', () => {
+    const drawers = { leftMenuOpen: signal(true), rightMenuOpen: signal(true) };
+
+    closeDrawers(drawers);
+
+    expect(drawers.leftMenuOpen()).toBe(false);
+    expect(drawers.rightMenuOpen()).toBe(false);
+  });
+
+  it('ignores a navigation container that has not rendered', () => {
+    expect(() => closeDrawers(undefined)).not.toThrow();
   });
 });

@@ -1,3 +1,5 @@
+@use '@atlasng/design-system' as ds;
+
 wpp-kg-explorer-page {
   display: block;
   height: calc(100dvh - 3.5rem);
@@ -6,7 +8,87 @@ wpp-kg-explorer-page {
     height: 100%;
   }
 
-  .ang-kg-explorer-filter-drawer {
-    min-width: calc(100% - 2.5rem);
+  // The table view's encapsulated rule grows the drawer to its widest content, such as a long filter chip,
+  // and outranks a single class.
+  // https://github.com/cns-iu/AtlasNG/issues/509
+  .ang-kg-explorer-table-view--container > .ang-kg-explorer-table-view--sidenav.mat-sidenav {
+    max-width: min(20rem, 100%);
+  }
+
+  // Long filter chips would otherwise widen the filter list past the drawer.
+  // https://github.com/cns-iu/AtlasNG/issues/507
+  .ang-multi-select-filter-chip-list .mat-mdc-chip {
+    max-width: 100%;
+  }
+
+  // The table view holds projected content to the table's max width, but the footer spans the whole panel.
+  // The table area fills the panel's height, so the footer starts below the fold even with few results.
+  // https://github.com/cns-iu/AtlasNG/issues/505
+  ang-kg-explorer-table-panel {
+    container-type: size;
+  }
+
+  .ang-kg-explorer-table-panel--container {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 100cqb;
+    padding-bottom: 2rem;
+  }
+
+  ang-footer {
+    position: absolute;
+    top: 100%;
+    inset-inline: calc(50% - 50cqi);
+  }
+
+  // The table view doesn't expose the scroll area's `disableFade`, and the fades wash over the search field
+  // and the footer.
+  // https://github.com/cns-iu/AtlasNG/issues/505
+  .ang-kg-explorer-table-panel--scroll-area
+    > :is(.ang-scroll-area--fade-top-overlay, .ang-scroll-area--fade-bottom-overlay) {
+    display: none;
+  }
+
+  ang-table {
+    @include ds.table-overrides(
+      (
+        header-text-color: var(--mat-sys-tertiary),
+        sort-indicator-color: var(--mat-sys-tertiary),
+        // Matches the metadata page's chips. https://github.com/cns-iu/AtlasNG/issues/510
+        chip-cell-container-shape: var(--mat-sys-corner-extra-small),
+      )
+    );
+
+    .datatable-body {
+      padding-top: 0.25rem;
+    }
+
+    // The chip cell has no tokens for its spacing or padding, which come from Material's chip styles.
+    .ang-table--chip-cell.mat-mdc-chip-set {
+      .mdc-evolution-chip-set__chips {
+        gap: 0.25rem;
+        margin: 0;
+      }
+
+      .mdc-evolution-chip {
+        margin: 0;
+      }
+
+      .mdc-evolution-chip__action--primary {
+        padding-inline: 0.5rem;
+      }
+    }
+
+    .balanced-cell {
+      text-wrap: balance;
+    }
+
+    .two-line-header .ang-table--text-header-label {
+      width: min-content;
+
+      @include ds.breakpoint(1919px) {
+        width: auto;
+      }
+    }
   }
 }

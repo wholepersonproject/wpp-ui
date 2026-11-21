@@ -6,4 +6,6 @@
   [(sorts)]="sorts"
   [(filtersOpen)]="filtersMenu.open"
   (download)="download($event)"
-/>
+>
+  <ng-container [ngTemplateOutlet]="pageFooter.template() ?? null" />
+</ang-kg-explorer-table-view>
